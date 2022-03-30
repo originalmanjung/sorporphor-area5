@@ -1,0 +1,76 @@
+@extends('layouts.admin.app')
+@push('css')
+<style>
+    .dataTable-table > tbody > tr > td, .dataTable-table > tbody > tr > th, .dataTable-table > tfoot > tr > td, .dataTable-table > tfoot > tr > th, .dataTable-table > thead > tr > td, .dataTable-table > thead > tr > th {
+            vertical-align: middle;
+            text: center;
+    }
+</style>
+@endpush
+@section('content')
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Role</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">จัดการสิทธิ์ผู้ใช้งาน</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-table me-1"></i>สิทธิ์ผู้ใช้งานทั้งหมด</div>
+            {{-- <a href="{{ route('app.roles.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้างสิทธิ์</a> --}}
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">สิทธิ์</th>
+                        <th scope="col">อัฟเดทล่าสุด</th>
+                        <th scope="col">การจัดการ</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">สิทธิ์</th>
+                        <th scope="col">อัฟเดทล่าสุด</th>
+                        <th scope="col">การจัดการ</th>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    @foreach ($roles as $key => $role)
+                        <tr>
+                            <td>{{ $role->name }}</td>
+                            <td>
+                                @if ($role->permissions->count() > 0)
+                                    <h6><span class="badge rounded-pill bg-primary">มี {{ $role->permissions->count() }} สิทธิ์</span></h6>
+                                @else
+                                    <h6><span class="badge rounded-pill bg-danger">ไม่พบสิทธิ์</span></h6>
+                                @endif
+                            </td>
+                            <td>{{ $role->updated_at->diffForHumans() }}</td>
+                            <td class="text-center">
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                    <a href="{{ route('app.roles.edit', $role->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                    @if ($role->deletable == true)
+                                    <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $role->id }})"><i class="fa fa-trash"></i></a>
+                                        <form id="delete-form-{{ $role->id }}" action="{{ route('app.roles.destroy',$role->id) }}" method="POST" style="display: none;">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    @endif
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+@include('sweetalert::alert')
+@endsection
+@push('js')
+    <script src="{{ asset('js/admin-script.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2.all.js') }}"></script>
+@endpush
