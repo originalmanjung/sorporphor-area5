@@ -163,26 +163,26 @@ class PermissionSeeder extends Seeder
         ]);
 
         // Mission
-        $moduleAppMission = Module::updateOrCreate(['name' => 'จัดการภาระกิจหน้าที่']);
+        $moduleAppMission = Module::updateOrCreate(['name' => 'จัดการวิสัยทัศน์ พันธกิจ']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppMission->id,
             'name' => 'Access Missions',
-            'slug' => 'app.Missions.index',
+            'slug' => 'app.missions.index',
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppMission->id,
             'name' => 'Create Mission',
-            'slug' => 'app.Missions.create',
+            'slug' => 'app.missions.create',
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppMission->id,
             'name' => 'Edit Mission',
-            'slug' => 'app.Missions.edit',
+            'slug' => 'app.missions.edit',
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppMission->id,
             'name' => 'Delete Mission',
-            'slug' => 'app.Missions.destroy',
+            'slug' => 'app.missions.destroy',
         ]);
 
         // ManageStructure

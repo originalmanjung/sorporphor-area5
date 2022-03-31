@@ -47,7 +47,7 @@ class UserController extends Controller
     public function create()
     {
         Gate::authorize('app.users.create');
-        $roles = Role::whereNotIn('name', ['แอดมิน'])->get();
+        $roles = Role::all();
         return view('admin.user.form',[
             'roles' => $roles
         ]);
@@ -100,7 +100,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         Gate::authorize('app.users.edit');
-        $roles = Role::whereNotIn('name', ['แอดมิน'])->get();
+        $roles = Role::all();
         return view('admin.user.form',[
             'user' => $user,
             'roles' => $roles

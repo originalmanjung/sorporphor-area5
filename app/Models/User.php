@@ -142,6 +142,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Get all of the comments for the User
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+
+    public function missions()
+    {
+        return $this->hasMany(Mission::class);
+    }
+
+    /**
      * Get the user associated with the User
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

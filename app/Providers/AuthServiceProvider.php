@@ -30,6 +30,8 @@ use App\Models\Banner;
 use App\Policies\BannerPolicy;
 use App\Models\MenuPersonalWork;
 use App\Policies\MenuPersonalWorkPolicy;
+use App\Models\Mission;
+use App\Policies\MissionPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -53,6 +55,7 @@ class AuthServiceProvider extends ServiceProvider
         Banner::class => BannerPolicy::class,
         BlogSchool::class => BlogSchoolPolicy::class,
         MenuPersonalWork::class => MenuPersonalWorkPolicy::class,
+        Mission::class => MissionPolicy::class,
     ];
 
     /**
