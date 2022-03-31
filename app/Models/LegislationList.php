@@ -26,12 +26,12 @@ class LegislationList extends Model
         return $query->where('status', '=', 1);
     }
 
-    public function scopeMenualplanwork($query)
+    public function scopeManualplanwork($query)
     {
         return $query->where('slug', '=', 'ยุธศาสตร์แผนปฏิบัติราชการ');
     }
 
-    public function scopeMenualwork($query)
+    public function scopeManualwork($query)
     {
         return $query->where('slug', '=', 'คู่มือหรือมาตรฐานการปฏิบัติงาน');
     }

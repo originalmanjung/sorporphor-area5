@@ -32,7 +32,7 @@ class RoleController extends Controller
     public function index()
     {
         Gate::authorize('app.roles.index');
-        $roles = Role::whereNotIn('name', ['แอดมิน'])->get();
+        $roles = Role::whereNotIn('name', ['แอดมิน'])->get()->sortDesc();
         return view('admin.role.index',[
             'roles' => $roles
         ]);
@@ -46,7 +46,8 @@ class RoleController extends Controller
     public function create()
     {
         Gate::authorize('app.roles.create');
-        $modules = Module::all();
+        // $modules = Module::all();
+        $modules = Module::whereNotIn('id', ['1','2','3','4','5','6','7','8'])->get();
         return view('admin.role.form',[
             'modules' => $modules
         ]);
@@ -87,7 +88,7 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         Gate::authorize('app.roles.edit');
-        $modules = Module::all();
+        $modules = Module::whereNotIn('id', ['1','2','3','4','5','6','7','8'])->get();
         return view('admin.role.form',[
             'role' => $role,
             'modules' => $modules
@@ -103,8 +104,9 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
+        // return $request->all();
         $role->update([
-            'name' => $role->name,
+            'name' => $request->name,
         ]);
         $role->permissions()->sync($request->input('permissions', []));
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');

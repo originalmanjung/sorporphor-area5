@@ -8,8 +8,8 @@ use App\Models\News;
 use App\Policies\NewsPolicy;
 use App\Models\BlogSchool;
 use App\Policies\BlogSchoolPolicy;
-use App\Models\LegislationCategory;
-use App\Policies\LegislationCategoryPolicy;
+use App\Models\LegislationList;
+use App\Policies\LegislationListPolicy;
 use App\Models\Legislation;
 use App\Policies\LegislationPolicy;
 use App\Models\Notice;
@@ -43,7 +43,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         News::class => NewsPolicy::class,
-        LegislationCategory::class => LegislationCategoryPolicy::class,
+        LegislationList::class => LegislationListPolicy::class,
         Legislation::class => LegislationPolicy::class,
         Notice::class => NoticePolicy::class,
         NoticeSchool::class => NoticeSchoolPolicy::class,

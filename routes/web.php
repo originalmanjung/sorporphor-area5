@@ -71,7 +71,7 @@ Route::resource('opinions', OpinionController::class)->only(['create','store']);
 // Q&A
 Route::resource('questions', QuestionController::class)->except(['edit','update','destroy']);
 //คู่มือปฏิบัติงานกลุ่ม
-Route::get('legislationMenualWork', [LegislationListController::class, 'MenualWork'])->name('legislationList.MenualWork');
+Route::get('legislationMenualWork', [LegislationListController::class, 'ManualWork'])->name('legislationList.ManualWork');
 //ยุธศาสตร์แผนปฏิบัติราชการ
 Route::get('legislationPlanWork', [LegislationListController::class, 'PlanWork'])->name('legislationList.PlanWork');
 // คู่มือปฏิบัติงานรายบุคคล

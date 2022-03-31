@@ -10,16 +10,16 @@ class LegislationListController extends Controller
 
     public function PlanWork()
     {
-        $legislationLists = LegislationList::with('legislations')->menualplanwork()->active()->firstOrFail();
+        $legislationLists = LegislationList::with('legislations')->manualplanwork()->active()->first();
         return view('legislationList.legislationListPlanWork',[
             'legislationLists' => $legislationLists
         ]);
     }
 
-    public function MenualWork()
+    public function ManualWork()
     {
-        $legislationLists = LegislationList::with('legislations')->menualwork()->active()->firstOrFail();
-        return view('legislationList.legislationListMenualWork',[
+        $legislationLists = LegislationList::with('legislations')->manualwork()->active()->first();
+        return view('legislationList.legislationListManualWork',[
             'legislationLists' => $legislationLists
         ]);
     }

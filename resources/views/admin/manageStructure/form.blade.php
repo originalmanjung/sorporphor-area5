@@ -16,7 +16,7 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <div><i class="fas fa-table me-1"></i>สร้างรูปแบนเนอร์</div>
+            <div><i class="fas fa-table me-1"></i>สร้างรูป</div>
             <a href="{{ route('app.manageStructures.index') }}" type="button" class="btn btn-danger"><i
                     class="fas fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>

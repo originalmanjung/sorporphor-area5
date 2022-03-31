@@ -17,7 +17,7 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>สิทธิ์ผู้ใช้งานทั้งหมด</div>
-            {{-- <a href="{{ route('app.roles.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้างสิทธิ์</a> --}}
+            <a href="{{ route('app.roles.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้างสิทธิ์</a>
         </div>
         <div class="card-body">
             <table id="datatablesSimple">

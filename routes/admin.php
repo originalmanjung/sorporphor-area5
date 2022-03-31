@@ -40,7 +40,7 @@ use App\Http\Controllers\Admin\ManageStructureController;
 */
 
 Route::get('dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
-Route::resource('roles', RoleController::class)->except(['show','create','store']);
+Route::resource('roles', RoleController::class)->except(['show']);
 Route::resource('users', UserController::class);
 // กิจกรรม สพป.
 Route::resource('news', NewsController::class);

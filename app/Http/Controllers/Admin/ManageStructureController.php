@@ -30,7 +30,7 @@ class ManageStructureController extends Controller
     {
         Gate::authorize('app.manageStructures.index');
         $manageStructures = ManageStructure::orderBy('created_at', 'desc')->get();
-        return view('admin.ManageStructure.index',[
+        return view('admin.manageStructure.index',[
             'manageStructures' => $manageStructures
         ]);
     }
@@ -43,7 +43,7 @@ class ManageStructureController extends Controller
     public function create()
     {
         Gate::authorize('app.manageStructures.create');
-        return view('admin.ManageStructure.form');
+        return view('admin.manageStructure.form');
     }
 
     /**
@@ -81,7 +81,7 @@ class ManageStructureController extends Controller
      */
     public function show(ManageStructure $manageStructure)
     {
-        return view('admin.manageStructures.show',[
+        return view('admin.manageStructure.show',[
             'manageStructure' => $manageStructure
         ]);
     }

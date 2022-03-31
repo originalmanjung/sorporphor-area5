@@ -12,7 +12,7 @@
 <div class="container-fluid px-4">
     <h1 class="mt-4">Legislation Lists</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">จัดการประเภท</li>
+        <li class="breadcrumb-item active">จัดการประเภท ITA</li>
     </ol>
 
     <div class="card mb-4">
@@ -26,6 +26,7 @@
                     <tr>
                         <th scope="col">ลำดับที่</th>
                         <th scope="col">ชื่อประเภท</th>
+                        <th scope="col">กลุ่มงาน</th>
                         <th scope="col">สถานะ</th>
                         <th scope="col">สร้างล่าสุด</th>
                         <th scope="col">การจัดการ</th>
@@ -35,6 +36,7 @@
                     <tr>
                         <th scope="col">ลำดับที่</th>
                         <th scope="col">ชื่อประเภท</th>
+                        <th scope="col">กลุ่มงาน</th>
                         <th scope="col">สถานะ</th>
                         <th scope="col">สร้างล่าสุด</th>
                         <th scope="col">การจัดการ</th>
@@ -43,8 +45,9 @@
                 <tbody>
                     @foreach ($legislationLists as $key => $legislationList)
                         <tr>
-                            <td>{{ $key+1 }}</td>
+                            <td>{{ ++$i }}</td>
                             <td>{{ $legislationList->name }}</td>
+                             <td>{{ $legislationList->role->name }}</td>
                             <td>
                                 @if ($legislationList->status == '1')
                                     <span class="badge bg-success">Active</span>

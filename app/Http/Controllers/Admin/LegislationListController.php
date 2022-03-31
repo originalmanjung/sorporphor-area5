@@ -14,6 +14,16 @@ Use Alert;
 class LegislationListController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->authorizeResource(LegislationList::class, 'legislationList');
+    }
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -21,10 +31,14 @@ class LegislationListController extends Controller
     public function index()
     {
         Gate::authorize('app.legislationLists.index');
-        $legislationLists = LegislationList::all();
+        if (auth()->user()->role_id == 1) {
+            $legislationLists = LegislationList::all()->sortDesc();
+        } else {
+            $legislationLists = LegislationList::where('role_id', auth()->user()->role_id)->get()->sortDesc();
+        }
         return view('admin.legislationList.index',[
             'legislationLists' => $legislationLists
-        ]);
+        ])->with('i');
     }
 
     /**

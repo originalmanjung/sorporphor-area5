@@ -16,14 +16,24 @@
         <div class="card-body">
 
 
-                <form id="roleFrom" role="form" method="POST" action="{{ isset($role) ? route('app.roles.update',$role->id) : '' }}">
+                <form id="roleFrom" role="form" method="POST" action="{{ isset($role) ? route('app.roles.update',$role->id) : route('app.roles.store') }}">
                     @csrf
                     @if (isset($role))
                         @method('PUT')
                     @endif
                     <div class="card-body">
-                    <h2><span class="badge bg-primary mb-4">จัดการสิทธิ์ {{ $role->name }}</span></h2>
-
+                        @if (isset($role))
+                            <h2><span class="badge bg-primary mb-4">จัดการสิทธิ์ {{ $role->name }}</span></h2>
+                        @endif
+                        <div class="form-group mb-3">
+                            <label for="formGroupExampleInput">ชื่อสิทธิ์</label>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $role->name ?? old('name') }}" placeholder="กรอกข้อมูล">
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
                         <div class="form-group mb-3">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="form-check-input" id="select-all">
@@ -59,23 +69,22 @@
                             </div>
                         </div>
                         @endforelse
-
-                        <button type="button" class="btn btn-danger" id="reset-btn">
-                            <i class="fas fa-redo"></i>
-                            <span>Reset</span>
-                        </button>
-
-                        <button class="btn btn-primary" onclick="showLoading(@isset($news) 'กำลังอัฟเดทข้อมูล...' @else 'กำลังเพิ่มข้อมูล...' @endisset,document.getElementById('roleFrom').id);">
-                            @isset($role)
-                            <i class="fas fa-arrow-circle-up"></i>
-                            <span>อัฟเดท</span>
-                            @else
-                            <i class="fas fa-plus-circle"></i>
-                            <span>สร้าง</span>
-                            @endisset
-                        </button>
                     </div>
                 </form>
+                <button type="button" class="btn btn-danger" id="reset-btn">
+                            <i class="fas fa-redo"></i>
+                            <span>Reset</span>
+                </button>
+
+                <button class="btn btn-primary" onclick="showLoading(@isset($news) 'กำลังอัฟเดทข้อมูล...' @else 'กำลังเพิ่มข้อมูล...' @endisset,document.getElementById('roleFrom').id);">
+                    @isset($role)
+                    <i class="fas fa-arrow-circle-up"></i>
+                    <span>อัฟเดท</span>
+                    @else
+                    <i class="fas fa-plus-circle"></i>
+                    <span>สร้าง</span>
+                    @endisset
+                </button>
         </div>
     </div>
 @endsection
@@ -105,9 +114,12 @@
         });
     </script>
     <script type="text/javascript">
-        if ( {{ $role->permissions->count() }} == 49) {
-            $('#select-all').prop('checked', true);
-        }
+        @if (isset($role))
+            if ( {{ $role->permissions->count() }} == 50) {
+                $('#select-all').prop('checked', true);
+            }
+        @endif
+        
         $('input[name="permissions[]"]').change(function() {
             var numberChecked = $('input[name="permissions[]"]:checked').length;
             if(numberChecked == 49) {

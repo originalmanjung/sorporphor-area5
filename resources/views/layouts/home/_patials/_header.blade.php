@@ -34,7 +34,7 @@
                           <li><a href="{{ route('duty.index') }}">ภาระกิจหน้าที่</a></li>
                           <li><a href="{{ route('legislationList.PlanWork') }}">ยุธศาสตร์ แผนปฏิบัติราชการ</a></li>
                           <li><a href="{{ route('manageStructure.index') }}">โครงการสร้างบริหารงาน</a></li>
-                          <li><a href="{{ route('legislationList.MenualWork') }}">คู่มือหรือมาตรฐานการปฏิบัติงาน</a></li>
+                          <li><a href="{{ route('legislationList.ManualWork') }}">คู่มือหรือมาตรฐานการปฏิบัติงาน</a></li>
                           <li><a href="{{ route('menualPersonalWorkAll') }}">คู่มือหรือมาตรฐานการปฏิบัติงานรายบุคคล</a></li>
                       </ul>
                   </li>

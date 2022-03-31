@@ -7,6 +7,7 @@ use App\Models\Legislation;
 use App\Models\LegislationList;
 use App\Models\LegislationFile;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Http\Request;
 use App\Http\Requests\Legislation\StoreLegislationRequest;
 use App\Http\Requests\Legislation\UpdateLegislationRequest;
@@ -37,9 +38,9 @@ class LegislationController extends Controller
     {
         Gate::authorize('app.legislations.index');
         if (auth()->user()->role_id == 1) {
-            $legislations = Legislation::with('legislationFiles')->orderBy('created_at', 'desc')->get();
+            $legislations = Legislation::with('legislationFiles')->get()->sortDesc();
         } else {
-            $legislations = Legislation::where('legislation_role', auth()->user()->role_id)->orderBy('created_at', 'desc')->get();
+            $legislations = Legislation::where('legislation_role', auth()->user()->role_id)->orderBy('created_at', 'desc')->get()->sortDesc();
         }
         return view('admin.legislation.index',[
             'legislations' => $legislations
@@ -55,9 +56,9 @@ class LegislationController extends Controller
     {
         Gate::authorize('app.legislations.create');
         if (auth()->user()->role_id == 1) {
-            $legislationList = LegislationList::all();
+            $legislationList = LegislationList::active()->get();
         } else {
-            $legislationList = LegislationList::where('role_id', auth()->user()->role_id)->get();
+            $legislationList = LegislationList::where('role_id', auth()->user()->role_id)->active()->get();
         }
         return view('admin.legislation.form',[
             'legislationList' => $legislationList

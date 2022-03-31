@@ -92,7 +92,7 @@
         <!-- ======= F.A.Q Section ======= -->
         <section id="faq" class="faq section-bg">
             <div class="container">
-                @if ($legislationLists->legislations->isNotEmpty())
+                @if (isset($legislationLists->legislations) && $legislationLists->legislations->count())
                     <div class="row row-cols-1 row-cols-md-2 g-4">
                         @foreach ($legislationLists->legislations as $key => $legislation)
                             @foreach ($legislation->legislationFiles as $legislationFile)
