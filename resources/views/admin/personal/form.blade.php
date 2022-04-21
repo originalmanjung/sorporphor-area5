@@ -41,7 +41,7 @@
                                         <div class="form-group row">
                                         <label for="inputBirth" class="form-label">Date:</label>
                                         <div class="ml-2">
-                                            <input type="text" id="datepicker" class="form-control @error('birthday') is-invalid @enderror" value="" name="birthday" width="270"/>
+                                            <input type="text" id="datepicker" class="form-control @error('birthday') is-invalid @enderror" value="" name="birthday" autocomplete="off" width="270"/>
                                             @error('birthday')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -128,7 +128,7 @@
                                         <option value="รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5" @if(isset($personal)) {{ $personal->position_general == 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5' ? 'selected' : '' }} @else {{ old('position_general') == 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5' ? 'selected':'' }}  @endif>รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5</option>
                                         <option value="ผู้อำนวยการกลุ่มอำนวยการ" @if(isset($personal)) {{ $personal->position_general == 'ผู้อำนวยการกลุ่มอำนวยการ' ? 'selected' : '' }} @else {{ old('position_general') == 'ผู้อำนวยการกลุ่มอำนวยการ' ? 'selected':'' }}  @endif>ผู้อำนวยการกลุ่มอำนวยการ</option>
                                         <option value="ผู้อำนวยการกลุ่มนโยบายและแผน" @if(isset($personal)) {{ $personal->position_general == 'ผู้อำนวยการกลุ่มนโยบายและแผน' ? 'selected' : '' }} @else {{ old('position_general') == 'ผู้อำนวยการกลุ่มนโยบายและแผน' ? 'selected':'' }}  @endif>ผู้อำนวยการกลุ่มนโยบายและแผน</option>
-                                        <option value="ผู้อำนวยการกลุ่มบริหารบุคคล" @if(isset($personal)) {{ $personal->position_general == 'ผู้อำนวยการกลุ่มบริหารบุคคล' ? 'selected' : '' }} @else {{ old('position_general') == 'ผู้อำนวยการกลุ่มบริหารบุคคล' ? 'selected':'' }}  @endif>ผู้อำนวยการกลุ่มบริหารบุคคล</option>
+                                        <option value="ผู้อำนวยการกลุ่มบริหารงานบุคคล" @if(isset($personal)) {{ $personal->position_general == 'ผู้อำนวยการกลุ่มบริหารงานบุคคล' ? 'selected' : '' }} @else {{ old('position_general') == 'ผู้อำนวยการกลุ่มบริหารงานบุคคล' ? 'selected':'' }}  @endif>ผู้อำนวยการกลุ่มบริหารงานบุคคล</option>
                                         <option value="ผู้อำนวยการกลุ่มบริหารงานการเงินและสินทรัพย์" @if(isset($personal)) {{ $personal->position_general == 'ผู้อำนวยการกลุ่มบริหารงานการเงินและสินทรัพย์' ? 'selected' : '' }} @else {{ old('position_general') == 'ผู้อำนวยการกลุ่มบริหารงานการเงินและสินทรัพย์' ? 'selected':'' }}  @endif>ผู้อำนวยการกลุ่มบริหารงานการเงินและสินทรัพย์</option>
                                         <option value="ผู้อำนวยการกลุ่มส่งเสริมการจัดการศึกษา" @if(isset($personal)) {{ $personal->position_general == 'ผู้อำนวยการกลุ่มส่งเสริมการจัดการศึกษา' ? 'selected' : '' }} @else {{ old('position_general') == 'ผู้อำนวยการกลุ่มส่งเสริมการจัดการศึกษา' ? 'selected':'' }}  @endif>ผู้อำนวยการกลุ่มส่งเสริมการจัดการศึกษา</option>
                                         <option value="ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา" @if(isset($personal)) {{ $personal->position_general == 'ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา' ? 'selected' : '' }} @else {{ old('position_general') == 'ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา' ? 'selected':'' }}  @endif>ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา</option>
@@ -175,7 +175,7 @@
                                             <option value="{{ $role->id }}" @if(isset($personal)) {{ $personal->role->id == $role->id ? 'selected' : '' }} @else {{ (collect(old('role_id'))->contains($role->id)) ? 'selected':'' }}  @endif >{{ $role->name }}</option>
                                         @endforeach
                                     </select>
-                                     @error('role')
+                                     @error('role_id')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
