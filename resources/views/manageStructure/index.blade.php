@@ -81,10 +81,10 @@
     <section id="breadcrumbs" class="breadcrumbs">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-                <h2>โครงการบริหารงาน</h2>
+                <h2>โครงสร้างการบริหารงาน</h2>
                 <ol>
                     <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>โครงการบริหารงาน</li>
+                    <li>โครงสร้างการบริหารงาน</li>
                 </ol>
             </div>
 

@@ -9,9 +9,9 @@
 
 
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Legislation Lists</h1>
+    <h1 class="mt-4">Legislation</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">จัดการหัวข้อ OTA</li>
+        <li class="breadcrumb-item active">จัดการหัวข้อ ITA</li>
     </ol>
 
     <div class="card">

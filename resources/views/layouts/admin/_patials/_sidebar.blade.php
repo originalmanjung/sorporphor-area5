@@ -55,13 +55,14 @@
                     </div>
 
                     <div class="sb-sidenav-menu-heading">ITA SETTING</div>
-                    <a class="nav-link collapsed {{ Route::is('app.legislations*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsOTA" aria-expanded="false" aria-controls="collapseLayoutsOTA">
+                    <a class="nav-link collapsed {{ Route::is('app.ita*') || Route::is('app.legislations*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsOTA" aria-expanded="false" aria-controls="collapseLayoutsOTA">
                         <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
                         ตั้งค่าส่วน ITA
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse {{ Route::is('app.legislationLists*') || Route::is('app.legislations*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*') ? 'show' : '' }}" id="collapseLayoutsOTA" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse {{ Route::is('app.ita*') || Route::is('app.legislationLists*') || Route::is('app.legislations*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*') ? 'show' : '' }}" id="collapseLayoutsOTA" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
+                            <a class="nav-link {{  Route::is('app.ita*') ? 'active' : '' }}" href="{{ route('app.ita.index') }}">ITA-2</a>
                             <a class="nav-link {{  Route::is('app.legislationLists*') ? 'active' : '' }}" href="{{ route('app.legislationLists.index') }}">Categories ITA</a>
                             <a class="nav-link {{  Route::is('app.legislations*') ? 'active' : '' }}" href="{{ route('app.legislations.index') }}">ITA</a>
                             <a class="nav-link {{ Route::is('app.purchases*') ? 'active' : '' }}" href="{{ route('app.purchases.index') }}">จัดซื้อ-จัดจ้าง</a>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLegislationListsTable extends Migration
+class CreateItasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateLegislationListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('legislation_lists', function (Blueprint $table) {
+        Schema::create('itas', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('role_id')->constrained('roles');
             $table->foreignId('parent_id')->nullable()->constrained('legislation_lists')->onDelete('cascade');;
-            $table->string('name');
+            $table->string('name')->unique();
+            $table->string('file')->nullable();
+            $table->string('url')->nullable();
             $table->string('slug');
             $table->boolean('status')->default(false);
             $table->timestamps();
@@ -32,6 +33,6 @@ class CreateLegislationListsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('legislation_lists');
+        Schema::dropIfExists('itas');
     }
 }

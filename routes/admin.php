@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\DutyController;
 use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\ManageStructureController;
+use App\Http\Controllers\Admin\ItaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -88,4 +89,6 @@ Route::resource('dutys', DutyController::class);
 Route::resource('histories', HistoryController::class);
 // โครงสร้างการบริหาร
 Route::resource('manageStructures', ManageStructureController::class)->except(['show']);
+// ITA
+Route::resource('ita', ItaController::class);
 

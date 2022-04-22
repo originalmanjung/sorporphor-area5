@@ -6,9 +6,8 @@
 <!-- ======= Breadcrumbs ======= -->
 <section id="breadcrumbs" class="breadcrumbs">
     <div class="container">
-
         <div class="d-flex justify-content-between align-items-center">
-            <h2>คณะผู้บริหาร สพป.เชียงใหม่ เขต 5</h2>
+            <h2> {{ $slug ?? 'คณะผู้บริหาร สพป.เชียงใหม่ เขต 5' }}</h2>
             <ol>
                 <li><a href="{{ route('home') }}">Home</a></li>
                 <li>Team</li>

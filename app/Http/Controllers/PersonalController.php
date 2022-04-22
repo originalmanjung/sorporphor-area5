@@ -12,12 +12,14 @@ class PersonalController extends Controller
     {
         if ($slug != null) {
             $id = Role::where('slug', $slug)->firstOrFail()->id;
-            $personals = Personal::department($id)->active()->orderBy('id', 'asc')->get();
+            $personals = Personal::with('role')->department($id)->active()->orderBy('id', 'asc')->get();
+            
         } else {
             $personals = Personal::manager()->active()->orderBy('id', 'asc')->get();
         }
         return view('personal',[
-            'personals' => $personals
+            'personals' => $personals,
+            'slug' => $slug
         ]);
     }
 }
