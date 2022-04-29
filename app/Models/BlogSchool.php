@@ -61,9 +61,9 @@ class BlogSchool extends Model
                     }
                 }
             }
-             $blogSchool->blogSchoolPhotos()->each(function($blogSchoolPhotos) {
+            $blogSchool->blogSchoolPhotos()->each(function($blogSchoolPhotos) {
                 $blogSchoolPhotos->delete(); // <-- direct deletion
-             });
+            });
         });
     }
 

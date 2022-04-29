@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateItasTable extends Migration
+class CreateIntergritiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateItasTable extends Migration
      */
     public function up()
     {
-        Schema::create('itas', function (Blueprint $table) {
+        Schema::create('intergrities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('parent_id')->nullable()->constrained('itas')->onDelete('cascade');;
@@ -21,7 +21,6 @@ class CreateItasTable extends Migration
             $table->string('file')->nullable();
             $table->string('url')->nullable();
             $table->string('slug');
-            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
@@ -33,6 +32,6 @@ class CreateItasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('itas');
+        Schema::dropIfExists('intergrities');
     }
 }

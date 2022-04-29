@@ -4,15 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use \Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 use Illuminate\Support\Facades\Storage;
 
-class Ita extends Model
+class Intergrity extends Model
 {
     use HasFactory;
 
     /**
-     * The attributes that are mass assignable.
+     * The attributes that aren't mass assignable.
      *
      * @var array
      */
@@ -23,12 +22,7 @@ class Ita extends Model
         $this->attributes['slug'] = slugUnicode($name);
     }
 
-    public function scopeActive($query)
-    {
-        return $query->where('status', '=', 1);
-    }
-
-    /**
+        /**
      * Get the user that owns the Legislation
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -46,19 +40,18 @@ class Ita extends Model
      */
     public function children()
     {
-        return $this->hasMany(self::class, 'parent_id');
+        return $this->hasMany(Intergrity::class, 'parent_id');
     }
 
     public static function boot() {
         parent::boot();
-        self::deleting(function($ita) { // before delete() method call this
-            foreach ($ita->children()->get() as $itaSub) {
-                if (Storage::exists('public/ita_files/'.$itaSub->file)) {
-                    Storage::delete('public/ita_files/'.$itaSub->file);
+        self::deleting(function($intergrity) {
+            foreach ($intergrity->children()->get() as $intergrityItem) {
+                if (Storage::exists('public/intergrity_files/'.$intergrityItem->file)) {
+                    Storage::delete('public/intergrity_files/'.$intergrityItem->file);
                 }
-                $itaSub->delete();
+                $intergrityItem->delete();
             }
         });
     }
-    
 }

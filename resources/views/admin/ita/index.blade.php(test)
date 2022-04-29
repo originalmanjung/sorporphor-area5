@@ -1,0 +1,104 @@
+@extends('layouts.admin.app')
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/bstreeview.css') }}">
+<style>
+    .dataTable-table>tbody>tr>td,
+    .dataTable-table>tbody>tr>th,
+    .dataTable-table>tfoot>tr>td,
+    .dataTable-table>tfoot>tr>th,
+    .dataTable-table>thead>tr>td,
+    .dataTable-table>thead>tr>th {
+        vertical-align: middle;
+        text: center;
+    }
+    ul li a,
+    ol li a {
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    ol li {
+        margin-bottom: 15px !important;
+    }
+</style>
+@endpush
+@section('content')
+<div class="container-fluid px-4">
+    <h1 class="mt-4">Legislation</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">จัดการ ITA2</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div><i class="fas fa-table me-1"></i>ประเภททั้งหมด</div>
+            <a href="{{ route('app.ita.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้างประเภท</a>
+        </div>
+        <div class="card-body">
+        
+            <div id="tree">
+
+			</div>
+        </div>
+    </div>
+</div>
+@include('sweetalert::alert')
+@endsection
+@push('js')
+<script src="{{ asset('js/admin-script.js') }}"></script>
+<script src="{{ asset('js/sweetalert2.all.js') }}"></script>
+<script src="{{ asset('js/bstreeview.js') }}"></script>
+<script>
+		$(function () {
+
+            
+                var json = [
+                    @foreach($itas as $category)
+                    {
+                        text: "{{ $category->name }}",
+                        icon: "fa fa-inbox fa-fw",
+                        nodes: [
+                            {
+                                text: "Office",
+                                icon: "fa fa-inbox fa-fw",
+                                nodes: [
+                                    {
+                                        id:    "sub-node-1",
+                                        text:  "Sub Child Node 1",
+                                        icon:  "fa fa-folder",
+                                        icon2:  "fa fa-folder",
+                                        class: "nav-level-3",
+                                        href:  "https://google.com"
+                                    },
+                                    {
+                                        icon: "fa fa-inbox fa-fw",
+                                        text: "Customers"
+                                    },
+                                    {
+                                        icon: "fa fa-inbox fa-fw",
+                                        text: "Co-Workers"
+                                    }
+                                ]
+                            },
+                            {
+                                icon: "fa fa-inbox fa-fw",
+                                text: "Others"
+                            }
+                        ]
+                    },
+                     @endforeach
+                ];
+           
+			
+
+			$('#tree').bstreeview({
+				data: json,
+                expandIcon: 'fa fa-angle-down fa-fw',
+                collapseIcon: 'fa fa-angle-right fa-fw',
+                indent: 1.25,
+                parentsMarginLeft: '1.25rem',
+                openNodeLinkOnNewTab: true
+			});
+		});
+	</script>
+@endpush

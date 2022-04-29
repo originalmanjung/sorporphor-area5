@@ -32,6 +32,11 @@ use App\Models\MenuPersonalWork;
 use App\Policies\MenuPersonalWorkPolicy;
 use App\Models\Mission;
 use App\Policies\MissionPolicy;
+use App\Models\Ita;
+use App\Policies\ItaPolicy;
+use App\Models\Intergrity;
+use App\Policies\IntergrityPolicy;
+
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -56,6 +61,8 @@ class AuthServiceProvider extends ServiceProvider
         BlogSchool::class => BlogSchoolPolicy::class,
         MenuPersonalWork::class => MenuPersonalWorkPolicy::class,
         Mission::class => MissionPolicy::class,
+        Ita::class => ItaPolicy::class,
+        Intergrity::class => IntergrityPolicy::class,
     ];
 
     /**

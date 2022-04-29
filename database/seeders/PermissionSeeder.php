@@ -461,6 +461,30 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.legislations.destroy',
         ]);
 
+        // ITA-2
+        $moduleAppITA = Module::updateOrCreate(['name' => 'จัดการเพิ่มข้อมูล ITA2']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppITA->id,
+            'name' => 'Access ITA',
+            'slug' => 'app.ITA.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppITA->id,
+            'name' => 'Create ITA',
+            'slug' => 'app.ITA.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppITA->id,
+            'name' => 'Edit ITA',
+            'slug' => 'app.ITA.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppITA->id,
+            'name' => 'Delete ITA',
+            'slug' => 'app.ITA.destroy',
+        ]);
+
+
         // Compaint
         $moduleAppComplaint = Module::updateOrCreate(['name' => 'รับเรื่องร้องเรียน-ร้องทุกข์']);
         Permission::updateOrCreate([

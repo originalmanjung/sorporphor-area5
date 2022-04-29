@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "laravelista/comments": "^4.5",
-        "realrashid/sweet-alert": "^4.0"
+        "realrashid/sweet-alert": "^4.0",
+        "staudenmeir/laravel-adjacency-list": "^1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

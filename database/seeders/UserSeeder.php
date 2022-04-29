@@ -25,7 +25,15 @@ class UserSeeder extends Seeder
             'status' => true,
             'deletable' => false
         ]);
-
+        User::updateOrCreate([
+            'role_id' => Role::where('slug','กลุ่มกฎหมายและคดี')->first()->id,
+            'name' => 'test',
+            'email' => 'test@mail.com',
+            'username' => 'test',
+            'password' => Hash::make('11223344'),
+            'status' => true,
+            'deletable' => false
+        ]);
         // User::updateOrCreate([
         //     'role_id' => Role::where('slug','โรงเรียน')->first()->id,
         //     'name' => 'User',
