@@ -73,7 +73,7 @@ class IntergrityPolicy
      */
     public function delete(User $user, Intergrity $intergrity)
     {
-        //
+        return Auth::check() && $intergrity->user_id == Auth::id();
     }
 
     /**

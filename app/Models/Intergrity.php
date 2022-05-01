@@ -43,6 +43,7 @@ class Intergrity extends Model
         return $this->hasMany(Intergrity::class, 'parent_id');
     }
 
+
     public static function boot() {
         parent::boot();
         self::deleting(function($intergrity) {

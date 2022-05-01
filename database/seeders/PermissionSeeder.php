@@ -415,75 +415,29 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.budgets.destroy',
         ]);
 
-        // LegislationList
-        $moduleAppLegislationList = Module::updateOrCreate(['name' => 'จัดการเพิ่มหัวข้อ ITA']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislationList->id,
-            'name' => 'Access LegislationLists',
-            'slug' => 'app.legislationLists.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislationList->id,
-            'name' => 'Create Legislation',
-            'slug' => 'app.legislationLists.create',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislationList->id,
-            'name' => 'Edit Legislation',
-            'slug' => 'app.legislationLists.edit',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislationList->id,
-            'name' => 'Delete Legislation',
-            'slug' => 'app.legislationLists.destroy',
-        ]);
 
-        // Legislation
-        $moduleAppLegislation = Module::updateOrCreate(['name' => 'จัดการเพิ่มข้อมูล ITA']);
+        // Intergrity
+        $moduleAppIntergrity = Module::updateOrCreate(['name' => 'จัดการเพิ่มข้อมูล ITA']);
         Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislation->id,
-            'name' => 'Access Legislations',
-            'slug' => 'app.legislations.index',
+            'module_id' => $moduleAppIntergrity->id,
+            'name' => 'Access Intergrities',
+            'slug' => 'app.intergrities.index',
         ]);
         Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislation->id,
-            'name' => 'Create Legislation',
-            'slug' => 'app.legislations.create',
+            'module_id' => $moduleAppIntergrity->id,
+            'name' => 'Create Intergrities',
+            'slug' => 'app.intergrities.create',
         ]);
         Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislation->id,
-            'name' => 'Edit Legislation',
-            'slug' => 'app.legislations.edit',
+            'module_id' => $moduleAppIntergrity->id,
+            'name' => 'Edit Intergrities',
+            'slug' => 'app.intergrities.edit',
         ]);
         Permission::updateOrCreate([
-            'module_id' => $moduleAppLegislation->id,
-            'name' => 'Delete Legislation',
-            'slug' => 'app.legislations.destroy',
+            'module_id' => $moduleAppIntergrity->id,
+            'name' => 'Delete Intergrities',
+            'slug' => 'app.intergrities.destroy',
         ]);
-
-        // ITA-2
-        $moduleAppITA = Module::updateOrCreate(['name' => 'จัดการเพิ่มข้อมูล ITA2']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppITA->id,
-            'name' => 'Access ITA',
-            'slug' => 'app.ITA.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppITA->id,
-            'name' => 'Create ITA',
-            'slug' => 'app.ITA.create',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppITA->id,
-            'name' => 'Edit ITA',
-            'slug' => 'app.ITA.edit',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppITA->id,
-            'name' => 'Delete ITA',
-            'slug' => 'app.ITA.destroy',
-        ]);
-
 
         // Compaint
         $moduleAppComplaint = Module::updateOrCreate(['name' => 'รับเรื่องร้องเรียน-ร้องทุกข์']);

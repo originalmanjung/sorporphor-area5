@@ -15,7 +15,6 @@ use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\OpinionController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\LegislationListController;
 use App\Http\Controllers\MenuPersonalWorkController;
 use App\Http\Controllers\MissionController;
 use App\Http\Controllers\DutyController;
@@ -70,10 +69,6 @@ Route::resource('complaints', ComplaintController::class)->only(['index','create
 Route::resource('opinions', OpinionController::class)->only(['create','store']);
 // Q&A
 Route::resource('questions', QuestionController::class)->except(['edit','update','destroy']);
-//คู่มือปฏิบัติงานกลุ่ม
-Route::get('legislationMenualWork', [LegislationListController::class, 'ManualWork'])->name('legislationList.ManualWork');
-//ยุธศาสตร์แผนปฏิบัติราชการ
-Route::get('legislationPlanWork', [LegislationListController::class, 'PlanWork'])->name('legislationList.PlanWork');
 // คู่มือปฏิบัติงานรายบุคคล
 Route::get('menualPersonalWork', [MenuPersonalWorkController::class, 'menualPersonalWorkAll'])->name('menualPersonalWorkAll');
 Route::get('menualPersonalWorkFile/{slug}', [MenuPersonalWorkController::class, 'menualPersonalWorkShow'])->name('menualPersonalWorkShow');

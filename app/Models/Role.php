@@ -46,15 +46,6 @@ class Role extends Model
         return $this->belongsToMany(Permission::class);
     }
 
-    /**
-     * Get all of the comments for the Role
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function legislationLists()
-    {
-        return $this->hasMany(LegislationList::class);
-    }
 
     /**
      * Get all of the comments for the Role

@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Budget;
 use Illuminate\Http\Request;
-use App\Http\Requests\budget\StorebudgetRequest;
-use App\Http\Requests\budget\UpdatebudgetRequest;
+use App\Http\Requests\Budget\StoreBudgetRequest;
+use App\Http\Requests\Budget\UpdateBudgetRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 Use Alert;
@@ -57,7 +57,7 @@ class BudgetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorebudgetRequest $request)
+    public function store(StoreBudgetRequest $request)
     {
         Gate::authorize('app.budgets.create');
         $budget = new budget;
@@ -106,7 +106,7 @@ class BudgetController extends Controller
      * @param  \App\Models\Budget  $budget
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatebudgetRequest $request, Budget $budget)
+    public function update(UpdateBudgetRequest $request, Budget $budget)
     {
         Gate::authorize('app.budgets.edit');
         if ($request->hasfile('file')) {

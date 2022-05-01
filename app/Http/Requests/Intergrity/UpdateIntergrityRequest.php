@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Intergrity;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
 class UpdateIntergrityRequest extends FormRequest
 {
@@ -13,6 +14,7 @@ class UpdateIntergrityRequest extends FormRequest
      */
     public function authorize()
     {
+        Gate::authorize('app.intergrities.edit');
         return true;
     }
 
@@ -24,8 +26,8 @@ class UpdateIntergrityRequest extends FormRequest
     public function rules()
     {
         return [
-            'parent_id' => 'nullable',
-            'name'=>'required|string|max:255|exists:intergrities,name',
+            'parent_id' => 'nullable|numeric',
+            'name'=>'required|string|max:255|unique:intergrities,name,'.$this->intergrity->id,
             'url' => 'nullable|string|max:255',
             'file' => 'nullable|mimes:pdf',
         ];

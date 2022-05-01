@@ -8,6 +8,7 @@ use App\Http\Requests\Intergrity\UpdateIntergrityRequest;
 use App\Models\Intergrity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 Use Alert;
 
 class IntergrityController extends Controller
@@ -30,6 +31,7 @@ class IntergrityController extends Controller
      */
     public function index()
     {
+        Gate::authorize('app.intergrities.index');
         $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('admin.intergrity.index',[
             'intergrities' => $intergrities
@@ -43,7 +45,8 @@ class IntergrityController extends Controller
      */
     public function create()
     {
-        $intergrities = Intergrity::all();
+        Gate::authorize('app.intergrities.create');
+        $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('admin.intergrity.form',[
            'intergrities' => $intergrities
         ]);
@@ -57,10 +60,11 @@ class IntergrityController extends Controller
      */
     public function store(StoreIntergrityRequest $request)
     {
+        Gate::authorize('app.intergrities.create');
         if ($request->hasfile('file')) {
             $file = $request->file('file');
             $filename  = 'file-' . uniqid() . '.' .$file->getClientOriginalExtension();
-            $file->storeAs('ita_files', $filename, 'public');
+            $file->storeAs('intergrity_files', $filename, 'public');
         }
         Intergrity::create([
             'name' => $request->name,
@@ -81,7 +85,9 @@ class IntergrityController extends Controller
      */
     public function show(Intergrity $intergrity)
     {
-        //
+        return view('admin.intergrity.viewPDF',[
+            'intergrity' => $intergrity,
+        ]);
     }
 
     /**
@@ -92,7 +98,11 @@ class IntergrityController extends Controller
      */
     public function edit(Intergrity $intergrity)
     {
-        $intergrities = Intergrity::all();
+        Gate::authorize('app.intergrities.edit');
+        $intergrities = Intergrity::where([
+            ['parent_id',NULL],
+            ['id', '!=', $intergrity->id]
+        ])->get();
         return view('admin.intergrity.form',[
             'intergrity' => $intergrity,
             'intergrities' => $intergrities
@@ -108,13 +118,14 @@ class IntergrityController extends Controller
      */
     public function update(UpdateIntergrityRequest $request, Intergrity $intergrity)
     {
+        Gate::authorize('app.intergrities.edit');
         if ($request->hasfile('file')) {
             $file = $request->file('file');
             if($intergrity->file != null){
-                storage::disk('public')->delete('ita_files/'.$intergrity->file);
+                storage::disk('public')->delete('intergrity_files/'.$intergrity->file);
             }
             $filename  = 'file-' . uniqid() . '.' .$file->getClientOriginalExtension();
-            $file->storeAs('ita_files', $filename, 'public');
+            $file->storeAs('intergrity_files', $filename, 'public');
         }
         $intergrity->update([
             'name' => $request->name,
@@ -122,7 +133,6 @@ class IntergrityController extends Controller
             'parent_id' => $request->parent_id,
             'url' => $request->url,
             'file' => !isset($file) ? $intergrity->file : $filename,
-            'status' => $request->filled('status'),
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
         return  redirect()->route('app.intergrities.index');
@@ -136,7 +146,15 @@ class IntergrityController extends Controller
      */
     public function destroy(Intergrity $intergrity)
     {
-        //
+        Gate::authorize('app.intergrities.destroy');
+        if (Storage::exists('public/intergrity_files/'.$intergrity->file)) {
+            Storage::delete('public/intergrity_files/'.$intergrity->file);
+            $intergrity->delete();
+            return back();
+        } else {
+            Alert::error('File Not Found');
+            return back();
+        }
     }
 
     public function deleteFile(Intergrity $intergrity)

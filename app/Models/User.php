@@ -98,35 +98,6 @@ class User extends Authenticatable
         return $this->hasMany(Intergrity::class);
     }
 
-    /**
-     * Get all of the comments for the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function itas()
-    {
-        return $this->hasMany(Ita::class);
-    }
-
-    /**
-     * Get all of the comments for the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function legislations()
-    {
-        return $this->hasMany(Legislation::class);
-    }
-
-    /**
-     * Get all of the comments for the User
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function legislationCategories()
-    {
-        return $this->hasMany(LegislationCategory::class);
-    }
 
     /**
      * Get all of the comments for the User

@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LegislationList;
 use App\Models\Purchase;
 use App\Models\PaymentSlip;
 use App\Models\Job;
@@ -12,6 +11,7 @@ use App\Models\NoticeSchool;
 use App\Models\News;
 use App\Models\BlogSchool;
 use App\Models\Banner;
+use App\Models\Intergrity;
 use App\Models\Video;
 use Illuminate\Http\Request;
 
@@ -35,9 +35,8 @@ class HomeController extends Controller
         $budgets = Budget::limit(3)->orderBy('created_at', 'desc')->get();
         $notices = Notice::limit(3)->orderBy('created_at', 'desc')->get();
         $noticeSchools = NoticeSchool::limit(4)->orderBy('created_at', 'desc')->get();
-        $legislationLists = LegislationList::with('legislations')->active()->orderBy('created_at', 'desc')->get();
+        $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('home',[
-            'legislationLists' => $legislationLists,
             'purchases' => $purchases,
             'jobs' => $jobs,
             'paymentSlips' => $paymentSlips,
@@ -48,7 +47,8 @@ class HomeController extends Controller
             'blogschools' => $blogschools,
             'bannercarousels' => $bannercarousels,
             'bannercontents' => $bannercontents,
-            'videos' => $videos
+            'videos' => $videos,
+            'intergrities' => $intergrities
         ]);
     }
 }

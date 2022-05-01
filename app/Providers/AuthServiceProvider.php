@@ -8,10 +8,6 @@ use App\Models\News;
 use App\Policies\NewsPolicy;
 use App\Models\BlogSchool;
 use App\Policies\BlogSchoolPolicy;
-use App\Models\LegislationList;
-use App\Policies\LegislationListPolicy;
-use App\Models\Legislation;
-use App\Policies\LegislationPolicy;
 use App\Models\Notice;
 use App\Policies\NoticePolicy;
 use App\Models\NoticeSchool;
@@ -32,8 +28,6 @@ use App\Models\MenuPersonalWork;
 use App\Policies\MenuPersonalWorkPolicy;
 use App\Models\Mission;
 use App\Policies\MissionPolicy;
-use App\Models\Ita;
-use App\Policies\ItaPolicy;
 use App\Models\Intergrity;
 use App\Policies\IntergrityPolicy;
 
@@ -48,8 +42,6 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
         News::class => NewsPolicy::class,
-        LegislationList::class => LegislationListPolicy::class,
-        Legislation::class => LegislationPolicy::class,
         Notice::class => NoticePolicy::class,
         NoticeSchool::class => NoticeSchoolPolicy::class,
         Purchase::class => PurchasePolicy::class,
@@ -61,7 +53,6 @@ class AuthServiceProvider extends ServiceProvider
         BlogSchool::class => BlogSchoolPolicy::class,
         MenuPersonalWork::class => MenuPersonalWorkPolicy::class,
         Mission::class => MissionPolicy::class,
-        Ita::class => ItaPolicy::class,
         Intergrity::class => IntergrityPolicy::class,
     ];
 

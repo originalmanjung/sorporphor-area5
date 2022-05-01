@@ -146,21 +146,21 @@
                     @endif
                 </div>
                 <ul>
-                    @if ($legislationLists->isNotEmpty())
+                    @if ($intergrities->isNotEmpty())
                     <div class="row">
-                        @foreach ($legislationLists as $key => $legislationList)
+                        @foreach ($intergrities as $key => $intergrity)
                             <div class="col-lg-6">
                                 <li data-aos="fade-up" data-aos-delay="100">
                                     <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                        data-bs-target="#faq-list-{{ $key }}" class="collapsed"><h5>{{ $legislationList->name }}</h5>
+                                        data-bs-target="#faq-list-{{ $key }}" class="collapsed"><h5>{{ $intergrity->name }}</h5>
                                         <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="faq-list-{{ $key }}" class="collapse" data-bs-parent=".faq-list">
                                         <ul class="faq-wrap-item-list mb-3">
-                                            @foreach ($legislationList->legislations as $legislation)
+                                            {{-- @foreach ($legislationList->legislations as $legislation)
                                                 @foreach ($legislation->legislationFiles as $legislationFile)
                                                     <li><a href="{{ route('app.legislationFiles.show', $legislationFile->id) }}" class="text-dark" target="_blank"><i class="ri-check-double-line"></i>{{ $legislationFile->name }}</a></li>
                                                 @endforeach
-                                            @endforeach
+                                            @endforeach --}}
                                         </ul>
                                     </div>
                                 </li>

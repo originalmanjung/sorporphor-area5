@@ -16,7 +16,7 @@ class CreateIntergritiesTable extends Migration
         Schema::create('intergrities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('parent_id')->nullable()->constrained('itas')->onDelete('cascade');;
+            $table->foreignId('parent_id')->nullable()->constrained('intergrities')->onDelete('cascade');;
             $table->string('name')->unique();
             $table->string('file')->nullable();
             $table->string('url')->nullable();

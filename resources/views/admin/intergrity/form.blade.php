@@ -42,10 +42,14 @@
                         <select id="parent_id" class="form-select @error('parent_id') is-invalid @enderror" name="parent_id">
                             <option value="" selected>Choose...</option>
                             @foreach ($intergrities as $key=>$intergrityItem )
+                            <?php $dash=''; ?>
                             <option value="{{ $intergrityItem->id }}" @if(isset($intergrity))
                                 {{ $intergrity->parent_id == $intergrityItem->id ? 'selected' : '' }} @else
                                 {{ (collect(old('parent_id'))->contains($intergrityItem->id)) ? 'selected':'' }} @endif>
                                 {{ $intergrityItem->name }}</option>
+                                @if(count($intergrityItem->children))
+                                    @include('admin.intergrity.subList-option',['subList' => $intergrityItem->children])
+                                @endif
                             @endforeach
                         </select>
                         @error('parent_id')
@@ -96,7 +100,7 @@
                         </div>
                     </div>
                 </div>
-    
+
             </form>
             @if (isset($intergrity->file))
             <div class="row g-3">
@@ -104,14 +108,14 @@
                     <div class="col-md-6">
                         <div class="col mb-3 form-group">
                             <a class="btn btn-secondary btn-sm rounded-2" style="margin-left:3px;" type="button" href="{{ route('app.intergrities.show',$intergrity->id) }}" target="_blank">{{ $intergrity->file }}</a>
-                            <span> 
+                            <span>
                                 <a class="btn btn-danger btn-sm" type="button" onclick="deleteData({{ $intergrity->id }})"><i class="fa fa-trash"></i></a>
-                                <form id="delete-form-{{ $intergrity->id }}" action="{{ route('app.intergrities.deleteFile',$intergrity->id) }}" method="POST" style="display: none;">
+                                <form id="delete-form-{{ $intergrity->id }}" action="{{ route('app.intergrities.deleteFile',$intergrity) }}" method="POST" style="display: none;">
                                     @csrf
                                     @method('DELETE')
-                                </form>  
+                                </form>
                             </span>
-                        
+
                         </div>
                     </div>
                 </div>
@@ -144,7 +148,7 @@
             }else{
                 $('#parent_box').addClass('d-none');
                 $('#parent_id').val(null);
-            }     
+            }
         });
         if($('#isParent').is(':checked')) {
             $('#isParent').change();

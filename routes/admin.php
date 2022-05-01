@@ -7,9 +7,6 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\NewsPhotoController;
 use App\Http\Controllers\Admin\BlogSchoolController;
 use App\Http\Controllers\Admin\BlogSchoolPhotoController;
-use App\Http\Controllers\Admin\LegislationListController;
-use App\Http\Controllers\Admin\LegislationController;
-use App\Http\Controllers\Admin\LegislationFileController;
 use App\Http\Controllers\Admin\MenuPersonalWorkController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\NoticeSchoolController;
@@ -28,7 +25,6 @@ use App\Http\Controllers\Admin\DutyController;
 use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\IntergrityController;
 use App\Http\Controllers\Admin\ManageStructureController;
-use App\Http\Controllers\Admin\ItaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,10 +46,7 @@ Route::resource('news-photos', NewsPhotoController::class)->only(['destroy']);
 // กิจกรรมโรงเรียน
 Route::resource('blogSchools', BlogSchoolController::class);
 Route::resource('blogSchoolPhotos', BlogSchoolPhotoController::class)->only(['destroy']);
-// กฏระเบียบแต่ละฝ่าย
-Route::resource('legislationLists', LegislationListController::class)->except(['show']);
-Route::resource('legislations', LegislationController::class)->only(['index','create','store']);
-Route::resource('legislationFiles', LegislationFileController::class)->only(['destroy', 'show']);
+
 // คู่มือปฏิบัติงานรายบุคคล
 Route::resource('menuPersonalWorks', MenuPersonalWorkController::class);
 // ประกาศประชาสัมพันธ์ สพป.
@@ -91,13 +84,6 @@ Route::resource('histories', HistoryController::class);
 // โครงสร้างการบริหาร
 Route::resource('manageStructures', ManageStructureController::class)->except(['show']);
 // ITA
-Route::resource('ita', ItaController::class);
-Route::delete('ita-child/{id}/delete', [ItaController::class,'deleteChild'])->name('ita.delete-child');
-Route::delete('ita-sub-child/{id}/delete', [ItaController::class,'deleteSubChild'])->name('ita.delete-sub-child');
-Route::delete('ita-file/{id}/delete', [ItaController::class,'deleteFile'])->name('ita.deleteFile');
-
 Route::resource('intergrities', IntergrityController::class);
-// Route::delete('intergrities/child/{id}/delete', [IntergrityController::class,'deleteChild'])->name('intergrities.delete-child');
-// Route::delete('intergrities/sub-child/{id}/delete', [IntergrityController::class,'deleteSubChild'])->name('intergrities.delete-sub-child');
 Route::delete('intergrities/file/{intergrity}', [IntergrityController::class,'deleteFile'])->name('intergrities.deleteFile');
 
