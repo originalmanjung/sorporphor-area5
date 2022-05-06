@@ -35,7 +35,7 @@ class HomeController extends Controller
         $budgets = Budget::limit(3)->orderBy('created_at', 'desc')->get();
         $notices = Notice::limit(3)->orderBy('created_at', 'desc')->get();
         $noticeSchools = NoticeSchool::limit(4)->orderBy('created_at', 'desc')->get();
-        $intergrities = Intergrity::where('parent_id',NULL)->get();
+        $intergrities = Intergrity::where('parent_id',NULL)->active()->get();
         return view('home',[
             'purchases' => $purchases,
             'jobs' => $jobs,
@@ -49,6 +49,23 @@ class HomeController extends Controller
             'bannercontents' => $bannercontents,
             'videos' => $videos,
             'intergrities' => $intergrities
+        ]);
+    }
+
+    public function intergrityMenualWork()
+    {
+        $intergrityMenualwork = Intergrity::menualwork()->active()->get();
+        return view('intergrity-plane-menual.intergrityMenualWork',[
+            'intergrityMenualwork' => $intergrityMenualwork
+        ]);
+    }
+
+    public function intergrityMenualPlaneWork()
+    {
+        
+        $intergrityPlanelwork = Intergrity::menualplanework()->active()->get();
+        return view('intergrity-plane-menual.intergrityPlaneWork',[
+            'intergrityPlanelwork' => $intergrityPlanelwork
         ]);
     }
 }

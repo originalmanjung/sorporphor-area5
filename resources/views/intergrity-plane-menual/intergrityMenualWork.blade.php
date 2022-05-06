@@ -92,29 +92,33 @@
         <!-- ======= F.A.Q Section ======= -->
         <section id="faq" class="faq section-bg">
             <div class="container">
-                @if (isset($legislationLists->legislations) && $legislationLists->legislations->count())
-                    <div class="row row-cols-1 row-cols-md-2 g-4">
-                        @foreach ($legislationLists->legislations as $key => $legislation)
-                            @foreach ($legislation->legislationFiles as $legislationFile)
-                            <div class="col" style="margin-bottom: 50px;">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $legislationFile->name }}</h5>
-                                </div>
-                                <div class="card h-100">
-                                    <iframe class="vh-100" style="height: 100%" height="100%" width=100% src="{{ asset('storage/legislation_files/'.$legislationFile->filename) }}"></iframe>
-                                </div>
-                            </div>
-                            @endforeach
-                        @endforeach
+               @if($intergrityMenualwork->isEmpty()) 
+                <div class="card text-center border border-1">
+                    <div class="card-header">
+                        Notification
                     </div>
-                    @else
-                    <div class="card text-center border border-1">
-                        <div class="card-header">
-                            Notification
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text">No information was found at this time.</p>
-                        </div>
+                    <div class="card-body">
+                        <p class="card-text">No information was found at this time.</p>
+                    </div>
+                </div>
+                @else
+                <div class="row row-cols-1 row-cols-md-2 g-4">
+                        @foreach ($intergrityMenualwork as $key => $intergrity)
+                            @if($intergrity->children->isEmpty())
+                                <div class="card text-center border border-1">
+                                    <div class="card-header">
+                                        Notification
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text">No information was found at this time.</p>
+                                    </div>
+                                </div>
+                            @else
+                                @foreach ($intergrity->children as $child)
+                                    @include('intergrity-plane-menual.intergritySub', ['subChild' => $child])
+                                @endforeach
+                            @endif
+                        @endforeach
                     </div>
                 @endif
             </div>

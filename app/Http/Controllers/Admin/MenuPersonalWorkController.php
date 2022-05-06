@@ -10,6 +10,7 @@ use App\Http\Requests\MenuPersonalWork\UpdateMenuPersonalWorkRequest;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 Use Alert;
+use App\Models\Role;
 
 class MenuPersonalWorkController extends Controller
 {
@@ -44,7 +45,10 @@ class MenuPersonalWorkController extends Controller
      */
     public function create()
     {
-        return view('admin.menuPersonalWork.form');
+        $roles = Role::whereNotIn('name', ['แอดมิน', 'ผู้ใช้ทั่วไป', 'โรงเรียน', 'ผู้บริหารสพป.ชม.5'])->get();
+        return view('admin.menuPersonalWork.form',[
+            'roles' => $roles,
+        ]);
     }
 
     /**
@@ -64,7 +68,7 @@ class MenuPersonalWorkController extends Controller
             'name' => $request->name,
             'file' => $filename,
             'user_id' => auth()->user()->id,
-            'role_id' => auth()->user()->role->id
+            'role_id' => $request->role
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
         return  redirect()->route('app.menuPersonalWorks.index');
@@ -91,8 +95,10 @@ class MenuPersonalWorkController extends Controller
      */
     public function edit(MenuPersonalWork $menuPersonalWork)
     {
+        $roles = Role::whereNotIn('name', ['แอดมิน', 'ผู้ใช้ทั่วไป', 'โรงเรียน', 'ผู้บริหารสพป.ชม.5'])->get();
         return view('admin.menuPersonalWork.form',[
-            'menuPersonalWork' => $menuPersonalWork
+            'menuPersonalWork' => $menuPersonalWork,
+            'roles' => $roles
         ]);
     }
 
@@ -116,6 +122,7 @@ class MenuPersonalWorkController extends Controller
         $menuPersonalWork->update([
             'name' => $request->name,
             'file' => !isset($file) ? $menuPersonalWork->file : $filename,
+            'role_id' => $request->role
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
         return  redirect()->route('app.menuPersonalWorks.index');

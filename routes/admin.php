@@ -85,5 +85,5 @@ Route::resource('histories', HistoryController::class);
 Route::resource('manageStructures', ManageStructureController::class)->except(['show']);
 // ITA
 Route::resource('intergrities', IntergrityController::class);
+Route::get('intergrities/pdf/{intergrity}', [IntergrityController::class,'showPDF'])->name('intergrities.showPDF');
 Route::delete('intergrities/file/{intergrity}', [IntergrityController::class,'deleteFile'])->name('intergrities.deleteFile');
-

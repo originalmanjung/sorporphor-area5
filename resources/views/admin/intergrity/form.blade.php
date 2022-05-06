@@ -1,9 +1,7 @@
 @extends('layouts.admin.app')
 @push('css')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-    media="screen">
-<link rel="stylesheet" type="text/css"
-    href="https://unpkg.com/file-upload-with-preview@4.1.0/dist/file-upload-with-preview.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/file-upload-with-preview@4.1.0/dist/file-upload-with-preview.min.css" />
 @endpush
 @section('content')
 
@@ -17,8 +15,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>สร้างหัวข้อ ITA</div>
-            <a href="{{ route('app.intergrities.index') }}" type="button" class="btn btn-danger"><i
-                    class="fas fa-arrow-circle-left"></i> ย้อนกลับ</a>
+            <a href="@if (isset($intergrity)){{ redirect()->getUrlGenerator()->previous() }}@else {{ route('app.intergrities.index') }} @endif" type="button" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>
         <div class="card-body">
             <form class="row g-3" id="ITAFrom" ita="form" method="POST" action="{{ isset($intergrity) ? route('app.intergrities.update',$intergrity->id) : route('app.intergrities.store') }}" enctype="multipart/form-data">
@@ -26,6 +23,7 @@
                 @if (isset($intergrity))
                     @method('PUT')
                 @endif
+                @if(empty($intergrity))
                 <div class="row g-2">
                     <div class="col-md-6 mb-2">
                         <div class="form-check @error('isParent') is-invalid @enderror">
@@ -36,20 +34,18 @@
                         </div>
                     </div>
                 </div>
-                 <div class="row g-2 d-none" id="parent_box">
+                <div class="row g-2 d-none" id="parent_box">
                     <div class="col-md-6 mb-3">
                         <label for="inputState" class="form-label">หัวข้อหลัก</label>
                         <select id="parent_id" class="form-select @error('parent_id') is-invalid @enderror" name="parent_id">
                             <option value="" selected>Choose...</option>
                             @foreach ($intergrities as $key=>$intergrityItem )
                             <?php $dash=''; ?>
-                            <option value="{{ $intergrityItem->id }}" @if(isset($intergrity))
-                                {{ $intergrity->parent_id == $intergrityItem->id ? 'selected' : '' }} @else
-                                {{ (collect(old('parent_id'))->contains($intergrityItem->id)) ? 'selected':'' }} @endif>
+                            <option value="{{ $intergrityItem->id }}" @if(isset($intergrity)) {{ $intergrity->parent_id == $intergrityItem->id ? 'selected' : '' }} @else {{ (collect(old('parent_id'))->contains($intergrityItem->id)) ? 'selected':'' }} @endif>
                                 {{ $intergrityItem->name }}</option>
-                                @if(count($intergrityItem->children))
-                                    @include('admin.intergrity.subList-option',['subList' => $intergrityItem->children])
-                                @endif
+                            @if(count($intergrityItem->children))
+                            @include('admin.intergrity.subList-option',['subList' => $intergrityItem->children])
+                            @endif
                             @endforeach
                         </select>
                         @error('parent_id')
@@ -59,13 +55,23 @@
                         @enderror
                     </div>
                 </div>
+                @endif
+
+                @if (isset($intergrity))
+                <div class="row g-2">
+                    <div class="col-md-6 mb-2">
+                        <label for="name" class="form-label">ลำดับหัวข้อ ทั้งหมด</label>
+                        @isset($intergrity->parent)
+                                @include('admin.intergrity.parentNameList', ['mainParent' => $intergrity->parent])
+                        @endisset
+                    </div>
+                </div>
+                @endif
                 <div class="row g-2">
                     <div class="col-md-6">
                         <div class="col mb-3 form-group">
                             <label for="name" class="form-label">ชื่อหัวข้อ ITA</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
-                                name="name" value="{{ $intergrity->name ?? old('name') }}" autocomplete="name"
-                                autofocus>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $intergrity->name ?? old('name') }}" autocomplete="name" autofocus>
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -74,6 +80,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="row g-2">
                     <div class="col-md-6">
                         <div class="col mb-3 form-group">
@@ -100,7 +107,23 @@
                         </div>
                     </div>
                 </div>
-
+                @if(empty($intergrity->parent)) 
+                    <div class="row g-2" id="status_box">
+                    <div class="col-md-6 mb-3">
+                        <label for="inputState" class="form-label">สถานะ</label>
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="status" name="status" @isset($intergrity) {{ $intergrity->status == true ? 'checked' : '' }} @endisset>
+                            <label class="form-check-label" for="status">เปิดใช้งาน</label>
+                            @error('status')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div>
+                </div>
+                @endif
+                
             </form>
             @if (isset($intergrity->file))
             <div class="row g-3">
@@ -120,10 +143,9 @@
                     </div>
                 </div>
             </div>
-             @endif
+            @endif
             <div class="col-12">
-                <button class="btn btn-primary"
-                    onclick="showLoading(@isset($intergrity) 'กำลังอัฟเดทข้อมูล...' @else 'กำลังเพิ่มข้อมูล...' @endisset,document.getElementById('ITAFrom').id);">
+                <button class="btn btn-primary" onclick="showLoading(@isset($intergrity) 'กำลังอัฟเดทข้อมูล...' @else 'กำลังเพิ่มข้อมูล...' @endisset,document.getElementById('ITAFrom').id);">
                     @isset($intergrity)
                     <i class="fas fa-arrow-circle-up"></i>
                     <span>อัฟเดท</span>
@@ -135,24 +157,28 @@
             </div>
         </div>
     </div>
-    @include('sweetalert::alert')
-    @endsection
-    @push('js')
-    <script src="{{ asset('js/sweetalert2.all.js') }}"></script>
-    <script src="{{ asset('js/admin-script.js') }}"></script>
-    <script type="text/javascript">
+</div>
+@include('sweetalert::alert')
+@endsection
+@push('js')
+<script src="{{ asset('js/sweetalert2.all.js') }}"></script>
+<script src="{{ asset('js/admin-script.js') }}"></script>
+<script type="text/javascript">
     $(document).ready(function() {
         $('#isParent').change(function(){
             if ($(this).is(':checked')){
                 $('#parent_box').removeClass('d-none');
+                $('#status_box').addClass('d-none');
+                $('#status').prop('checked', false);
             }else{
                 $('#parent_box').addClass('d-none');
                 $('#parent_id').val(null);
+                $('#status_box').removeClass('d-none');
             }
         });
         if($('#isParent').is(':checked')) {
             $('#isParent').change();
         }
     });
-    </script>
-    @endpush
+</script>
+@endpush

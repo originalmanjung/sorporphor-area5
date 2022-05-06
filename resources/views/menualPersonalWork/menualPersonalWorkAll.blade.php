@@ -41,7 +41,7 @@
                                 <ul class="faq-wrap-item-list mb-3">
                                     @if ($menualPersonalWork->menuPersonalWorks->isNotEmpty())
                                         @foreach ($menualPersonalWork->menuPersonalWorks as $menuPersonalWork)
-                                        <li><a href="{{ route('menualPersonalWorkShow', $menuPersonalWork->slug) }}" class="text-dark"><i class="ri-check-double-line"></i>{{ $menuPersonalWork->name }}</a></li>
+                                        <li><a href="{{ route('menualPersonalWorkShow', $menuPersonalWork->slug) }}" class="text-dark"><i class='bx bxs-file-pdf'></i>{{ $menuPersonalWork->name }}</a></li>
                                         @endforeach
                                     @else
                                     <div class="card text-center border border-1 mt-4">

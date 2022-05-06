@@ -69,6 +69,10 @@ Route::resource('complaints', ComplaintController::class)->only(['index','create
 Route::resource('opinions', OpinionController::class)->only(['create','store']);
 // Q&A
 Route::resource('questions', QuestionController::class)->except(['edit','update','destroy']);
+//คู่มือปฏิบัติงานกลุ่ม
+Route::get('intergrityMenualWork', [HomeController::class, 'intergrityMenualWork'])->name('menual.work');
+//ยุธศาสตร์แผนปฏิบัติราชการ
+Route::get('intergrityMenualPlanWork', [HomeController::class, 'intergrityMenualPlaneWork'])->name('menual.planework');
 // คู่มือปฏิบัติงานรายบุคคล
 Route::get('menualPersonalWork', [MenuPersonalWorkController::class, 'menualPersonalWorkAll'])->name('menualPersonalWorkAll');
 Route::get('menualPersonalWorkFile/{slug}', [MenuPersonalWorkController::class, 'menualPersonalWorkShow'])->name('menualPersonalWorkShow');

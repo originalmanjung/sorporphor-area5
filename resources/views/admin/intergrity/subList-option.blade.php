@@ -1,4 +1,4 @@
-<?php $dash.='-- '; ?>
+<?php $dash.='>>'; ?>
 @foreach($subList as $subChild)
 <option value="{{ $subChild->id }}" @if(isset($intergrity))
     {{ $intergrity->parent_id == $subChild->id ? 'selected' : '' }} @else

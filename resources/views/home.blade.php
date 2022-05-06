@@ -2,7 +2,13 @@
 
 @push('css')
 <style>
-
+.collapse{
+    display:     block;
+    visibility:  visible;
+    overflow:    hidden;
+    min-height:  60px; // whatever you want here
+    height:      0; // if you want it to start collapsed, you need this, else remove this
+  }
 </style>
 @endpush
 @section('content')
@@ -145,39 +151,38 @@
                         </div>
                     @endif
                 </div>
+                
                 <ul>
                     @if ($intergrities->isNotEmpty())
-                    <div class="row">
-                        @foreach ($intergrities as $key => $intergrity)
-                            <div class="col-lg-6">
-                                <li data-aos="fade-up" data-aos-delay="100">
-                                    <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
-                                        data-bs-target="#faq-list-{{ $key }}" class="collapsed"><h5>{{ $intergrity->name }}</h5>
+                        
+                            @foreach ($intergrities as $key => $intergrity)                                
+                                    <li data-aos="fade-up" data-aos-delay="100"><i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-{{ $key }}" class="collapsed"><h5>{{ $intergrity->name }}</h5>
                                         <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                    <div id="faq-list-{{ $key }}" class="collapse" data-bs-parent=".faq-list">
-                                        <ul class="faq-wrap-item-list mb-3">
-                                            {{-- @foreach ($legislationList->legislations as $legislation)
-                                                @foreach ($legislation->legislationFiles as $legislationFile)
-                                                    <li><a href="{{ route('app.legislationFiles.show', $legislationFile->id) }}" class="text-dark" target="_blank"><i class="ri-check-double-line"></i>{{ $legislationFile->name }}</a></li>
+                                        <div id="faq-list-{{ $key }}" class="collapse" data-bs-parent=".faq-list">
+                                            <ul class="faq-wrap-item-list mb-3">
+                                                @foreach ($intergrity->children as $child)
+                                                    @include('subIntergrity', ['subChild' => $child])
                                                 @endforeach
-                                            @endforeach --}}
-                                        </ul>
-                                    </div>
-                                </li>
-                            </div>
-                        @endforeach
-                    </div>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                
+
+                               
+                            @endforeach
+                        
                     @else
-                    <div class="card text-center border border-1">
-                        <div class="card-header">
-                            Notification
+                        <div class="card text-center border border-1">
+                            <div class="card-header">
+                                Notification
+                            </div>
+                            <div class="card-body">
+                            <p class="card-text">No information was found at this time.</p>
+                            </div>
                         </div>
-                        <div class="card-body">
-                          <p class="card-text">No information was found at this time.</p>
-                        </div>
-                    </div>
                     @endif
                 </ul>
+
             </div>
     </section><!-- End Frequently Asked Questions Section -->
 
@@ -645,4 +650,6 @@
 </main>
 @endsection
 @push('script')
+<script>
+</script>
 @endpush

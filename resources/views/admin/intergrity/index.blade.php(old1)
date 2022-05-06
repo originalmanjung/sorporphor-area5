@@ -39,7 +39,7 @@
                         <th scope="col">ลำดับที่</th>
                         <th scope="col">ชื่อประเภท</th>
                         <th scope="col">สถานะ</th>
-                        <th scope="col">สร้างล่าสุด</th>
+                        <th scope="col">ผู้สร้าง</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </thead>
@@ -48,7 +48,7 @@
                         <th scope="col">ลำดับที่</th>
                         <th scope="col">ชื่อประเภท</th>
                         <th scope="col">สถานะ</th>
-                        <th scope="col">สร้างล่าสุด</th>
+                        <th scope="col">ผู้สร้าง</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </tfoot>
@@ -69,43 +69,24 @@
                                             @if($intergrity->children->isEmpty())
                                                  <strong>ไม่มีหัวข้อย่อย</strong>
                                             @else
-                                                @foreach($intergrity->children as $child)
-                                                <div style="margin-left: 20px;">
-                                                    <ul>
-                                                        <li class="d-flex align-items-center"><a href="{{ $child->url ?? '#' }}" class="" style="margin-right:10px;">{{ $child->name }}</a>
-                                                            @isset($child->file)<a class="btn btn-primary btn-sm rounded-3" style="margin-left:3px;" type="button" href="{{ route('app.intergrities.show',$child->id) }}" target="_blank"><i class="fas fa-file-pdf"></i></a>@endisset
-                                                            <a class="btn btn-success btn-sm rounded-3" style="margin-left:3px;" type="button" href="{{ route('app.intergrities.edit', $child->id)}}"><i class="fas fa-edit"></i></a>
-                                                            <a class="btn btn-danger btn-sm rounded-3" style="margin-left:3px;" type="button" onclick="deleteData({{ $child->id }})"><i class="fa fa-trash"></i></a>
-                                                            <form id="delete-form-{{ $child->id }}" action="{{ route('app.intergrities.destroy',$child->id) }}" method="POST" style="display: none;">
-                                                                @csrf
-                                                                @method('DELETE')
-                                                            </form>
-                                                        </li>
-                                                    </ul>
-
-
-                                                    <div style="margin-left:40px; margin-top:-5px;">
-                                                        <ol>
-                                                            @foreach($child->children as $subChild)
-                                                                <li class=""><a href="{{ $subChild->url ?? '#' }}" >{{ $subChild->name }}</a>
-                                                                    @isset($subChild->file)<a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.intergrities.show',$subChild->id) }}" target="_blank"><i class="fas fa-file-pdf"></i></a>@endisset
-                                                                    <a class="btn btn-success btn-sm rounded-3" style="" type="button" href="{{ route('app.intergrities.edit', $subChild->id)}}"><i class="fas fa-edit"></i></a>
-                                                                    <a class="btn btn-danger btn-sm rounded-3" style="" type="button" onclick="deleteData({{ $subChild->id }})"><i class="fa fa-trash"></i></a>
-                                                                    <form id="delete-form-{{ $subChild->id }}" action="{{ route('app.intergrities.destroy',$subChild->id) }}" method="POST" style="display: none;">
-                                                                        @csrf
-                                                                        @method('DELETE')
-                                                                    </form>
-                                                                </li>
-                                                            @endforeach
-                                                        </ol>
-                                                    </div>
-
-                                                </div>
-                                                @endforeach
+                                                <ul>
+                                                    @foreach ($intergrity->children as $child)
+                                                        @include('admin.intergrity.subList', ['subChild' => $child])
+                                                    @endforeach
+                                                </ul>
                                             @endif
+                                        </div>
+                                    </div>
+                                </div>
                         </td>
-                        <td>{{ $intergrity->user->name}}</td>
-                        <td>{{ $intergrity->created_at->diffForHumans() }}</td>
+                        <td>
+                            @if ($intergrity->status == '1')
+                                <span class="badge bg-success">Active</span>
+                            @else
+                                <span class="badge bg-danger">Inactive</span>
+                            @endif
+                        </td>
+                        <td>{{ $intergrity->user->name }}</td>
                         <td class="text-center">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                 @canany(['update', 'delete'], $intergrity)

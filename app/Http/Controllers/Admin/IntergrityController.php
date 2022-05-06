@@ -11,8 +11,10 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 Use Alert;
 
+
 class IntergrityController extends Controller
 {
+    public $category;
     /**
      * Create a new controller instance.
      *
@@ -22,6 +24,7 @@ class IntergrityController extends Controller
     {
         $this->middleware('auth');
         $this->authorizeResource(Intergrity::class, 'intergrity');
+        $this->category = new Intergrity;
     }
 
     /**
@@ -32,7 +35,7 @@ class IntergrityController extends Controller
     public function index()
     {
         Gate::authorize('app.intergrities.index');
-        $intergrities = Intergrity::where('parent_id',NULL)->get();
+        $intergrities = Intergrity::all();
         return view('admin.intergrity.index',[
             'intergrities' => $intergrities
         ]);
@@ -60,6 +63,7 @@ class IntergrityController extends Controller
      */
     public function store(StoreIntergrityRequest $request)
     {
+        // return $request->all();
         Gate::authorize('app.intergrities.create');
         if ($request->hasfile('file')) {
             $file = $request->file('file');
@@ -72,6 +76,7 @@ class IntergrityController extends Controller
             'parent_id' => $request->parent_id,
             'url' => $request->url,
             'file' => $filename ?? null,
+            'status' => $request->filled('status')
         ]);
         Alert::toast('เพิ่มข้อมูลสำเร็จ!','success');
         return redirect()->route('app.intergrities.index')->withSuccess('Success message');
@@ -85,8 +90,10 @@ class IntergrityController extends Controller
      */
     public function show(Intergrity $intergrity)
     {
-        return view('admin.intergrity.viewPDF',[
+        $intergrities = Intergrity::where('parent_id',NULL)->get();
+        return view('admin.intergrity.show',[
             'intergrity' => $intergrity,
+            'intergrities' => $intergrities,
         ]);
     }
 
@@ -99,13 +106,8 @@ class IntergrityController extends Controller
     public function edit(Intergrity $intergrity)
     {
         Gate::authorize('app.intergrities.edit');
-        $intergrities = Intergrity::where([
-            ['parent_id',NULL],
-            ['id', '!=', $intergrity->id]
-        ])->get();
         return view('admin.intergrity.form',[
             'intergrity' => $intergrity,
-            'intergrities' => $intergrities
         ]);
     }
 
@@ -130,9 +132,10 @@ class IntergrityController extends Controller
         $intergrity->update([
             'name' => $request->name,
             'user_id' => auth()->user()->id,
-            'parent_id' => $request->parent_id,
+            'parent_id' => $intergrity->parent_id,
             'url' => $request->url,
             'file' => !isset($file) ? $intergrity->file : $filename,
+            'status' => $request->filled('status')
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
         return  redirect()->route('app.intergrities.index');
@@ -149,12 +152,10 @@ class IntergrityController extends Controller
         Gate::authorize('app.intergrities.destroy');
         if (Storage::exists('public/intergrity_files/'.$intergrity->file)) {
             Storage::delete('public/intergrity_files/'.$intergrity->file);
-            $intergrity->delete();
-            return back();
-        } else {
-            Alert::error('File Not Found');
-            return back();
         }
+        $intergrity->delete();
+        Alert::toast('ลบข้อมูลสำเร็จ!','success');
+        return back();
     }
 
     public function deleteFile(Intergrity $intergrity)
@@ -169,5 +170,19 @@ class IntergrityController extends Controller
             Alert::error('File Not Found');
             return back();
         }
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Intergrity  $intergrity
+     * @return \Illuminate\Http\Response
+     */
+    public function showPDF(Intergrity $intergrity)
+    {
+        return view('admin.intergrity.viewPDF',[
+            'intergrity' => $intergrity,
+        ]);
     }
 }

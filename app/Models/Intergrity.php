@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
 class Intergrity extends Model
 {
-    use HasFactory;
+    use HasFactory, HasRecursiveRelationships;
 
     /**
      * The attributes that aren't mass assignable.
@@ -33,16 +34,20 @@ class Intergrity extends Model
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get all of the comments for the Ita
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function children()
+    public function scopeActive($query)
     {
-        return $this->hasMany(Intergrity::class, 'parent_id');
+        return $query->where('status', '=', 1);
     }
 
+    public function scopeMenualplanework($query)
+    {
+        return $query->where('slug', '=', 'ยุธศาสตร์แผนปฏิบัติราชการ');
+    }
+
+    public function scopeMenualwork($query)
+    {
+        return $query->where('slug', '=', 'คู่มือหรือมาตรฐานการปฏิบัติงาน');
+    }
 
     public static function boot() {
         parent::boot();

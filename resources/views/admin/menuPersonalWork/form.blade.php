@@ -48,6 +48,21 @@
                                     @enderror
                                 </div>
                             </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="inputState" class="form-label">กลุ่มงาน</label>
+                                <select id="inputState" class="form-select @error('role') is-invalid @enderror" name="role">
+                                    <option value="" selected>Choose...</option>
+                                    @foreach ($roles as $key=>$role )
+                                        <option value="{{ $role->id }}" @if(isset($menuPersonalWork)) {{ $menuPersonalWork->role->id == $role->id ? 'selected' : '' }} @else {{ (collect(old('role'))->contains($role->id)) ? 'selected':'' }}  @endif >{{ $role->name }}</option>
+                                    @endforeach
+                                </select>
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                     </form>
                 </div>
