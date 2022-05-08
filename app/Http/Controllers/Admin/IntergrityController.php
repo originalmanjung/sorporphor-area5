@@ -11,10 +11,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Gate;
 Use Alert;
 
-
 class IntergrityController extends Controller
 {
-    public $category;
     /**
      * Create a new controller instance.
      *
@@ -24,7 +22,6 @@ class IntergrityController extends Controller
     {
         $this->middleware('auth');
         $this->authorizeResource(Intergrity::class, 'intergrity');
-        $this->category = new Intergrity;
     }
 
     /**
@@ -35,7 +32,7 @@ class IntergrityController extends Controller
     public function index()
     {
         Gate::authorize('app.intergrities.index');
-        $intergrities = Intergrity::all();
+        $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('admin.intergrity.index',[
             'intergrities' => $intergrities
         ]);
@@ -63,7 +60,6 @@ class IntergrityController extends Controller
      */
     public function store(StoreIntergrityRequest $request)
     {
-        // return $request->all();
         Gate::authorize('app.intergrities.create');
         if ($request->hasfile('file')) {
             $file = $request->file('file');
@@ -76,10 +72,9 @@ class IntergrityController extends Controller
             'parent_id' => $request->parent_id,
             'url' => $request->url,
             'file' => $filename ?? null,
-            'status' => $request->filled('status')
         ]);
         Alert::toast('เพิ่มข้อมูลสำเร็จ!','success');
-        return redirect()->route('app.intergrities.index')->withSuccess('Success message');
+        return back()->withSuccess('Success message');
     }
 
     /**
@@ -135,10 +130,16 @@ class IntergrityController extends Controller
             'parent_id' => $intergrity->parent_id,
             'url' => $request->url,
             'file' => !isset($file) ? $intergrity->file : $filename,
-            'status' => $request->filled('status')
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
-        return  redirect()->route('app.intergrities.index');
+        if (is_null($intergrity->parent_id)) {
+            return  redirect()->route('app.intergrities.index');
+        }elseif ($intergrity->parent->parent){
+            return  redirect()->route('app.intergrities.show',$intergrity->parent->parent->id);
+        }elseif ($intergrity->parent){
+            return  redirect()->route('app.intergrities.show',$intergrity->parent->id);
+        }
+
     }
 
     /**
@@ -165,7 +166,12 @@ class IntergrityController extends Controller
             $intergrity->update([
                 'file' => null,
             ]);
-            return back();
+            Alert::toast('ลบไฟล์สำเร็จ!','success');
+            if ($intergrity->parent->parent){
+                return  redirect()->route('app.intergrities.show',$intergrity->parent->parent->id);
+            }elseif ($intergrity->parent){
+                return  redirect()->route('app.intergrities.show',$intergrity->parent->id);
+            }
         } else {
             Alert::error('File Not Found');
             return back();

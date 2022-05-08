@@ -85,6 +85,9 @@ Route::get('histories', [HistoryController::class, 'index'])->name('histories.in
 // โครงสร้างการบริหารงาน
 Route::get('manageStructures', [ManageStructureController::class, 'index'])->name('manageStructure.index');
 
+// pdf
+Route::get('intergrity-pdf-view/{intergrity}', [HomeController::class, 'showPDF'])->name('showPDF');
+
 Route::get('contact/', function () {
     return view('contact');
 });

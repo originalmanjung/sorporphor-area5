@@ -21,7 +21,6 @@ class CreateIntergritiesTable extends Migration
             $table->string('file')->nullable();
             $table->string('url')->nullable();
             $table->string('slug');
-            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

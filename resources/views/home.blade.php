@@ -2,13 +2,8 @@
 
 @push('css')
 <style>
-.collapse{
-    display:     block;
-    visibility:  visible;
-    overflow:    hidden;
-    min-height:  60px; // whatever you want here
-    height:      0; // if you want it to start collapsed, you need this, else remove this
-  }
+
+
 </style>
 @endpush
 @section('content')
@@ -20,18 +15,17 @@
 
         <div class="carousel-inner" role="listbox">
             @if ($bannercarousels->isNotEmpty())
-                @foreach ($bannercarousels as $carousel)
-                <div class="carousel-item active"
-                    style="background-image: url({{ asset('storage/banner_files/'. $carousel->file) }})">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">{{ $carousel->name}}</h2>
-                            <p class="animate__animated animate__fadeInUp">{{ $carousel->description }}</p>
-                            <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">อ่านเพิ่มเติม</a>
-                        </div>
+            @foreach ($bannercarousels as $carousel)
+            <div class="carousel-item active" style="background-image: url({{ asset('storage/banner_files/'. $carousel->file) }})">
+                <div class="carousel-container">
+                    <div class="container">
+                        <h2 class="animate__animated animate__fadeInDown">{{ $carousel->name}}</h2>
+                        <p class="animate__animated animate__fadeInUp">{{ $carousel->description }}</p>
+                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">อ่านเพิ่มเติม</a>
                     </div>
                 </div>
-                @endforeach
+            </div>
+            @endforeach
             @else
             <div class="carousel-item active" style="background-image: url({{ config('app.placeholder').'1920x1128.png' }})">
                 <div class="carousel-container">
@@ -58,8 +52,9 @@
 
 <main id="main" class="bg-white">
 
-
-    <!-- ======= Testimonials Section Sorporphor ======= -->
+    <div class="row">
+        <div class="col-12 col-md-9">
+             <!-- ======= Testimonials Section Sorporphor ======= -->
     <section id="testimonials" class="testimonials">
         <div class="container" data-aos="fade-up">
 
@@ -71,119 +66,149 @@
             <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
                     @if ($news->isNotEmpty())
-                        @foreach ($news as $newsItem)
-                            <a href="{{ route('newsShow', $newsItem->slug) }}">
-                                <div class="swiper-slide">
-                                    <div class="d-flex align-items-stretch">
-                                        <div class="card">
-                                            <img src="@if($newsItem->newsphotos->isNotEmpty()) {{ asset('storage/news_photos/'. $newsItem->newsphotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" class="card-img-top" alt="...">
-                                            <h4><span class="badge bg-danger">กิจกรรมเชียงใหม่ เขต 5</span></h4>
-                                            <div class="card-icon">
-                                                <i class="bx bx-book-reader"></i>
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="card-title"><a >{{ Str::limit($newsItem->title, 150) }}</a></h5>
-                                                <p class="card-text">{{ Str::limit($newsItem->description, 200) }}</p>
-                                                <div class="d-flex">
-                                                    <small class="text-muted me-auto">{{ $newsItem->created_at->format('d/m/Y') }}</small>
-                                                    <h6>ผู้โพส : <span class="badge bg-secondary">{{ $newsItem->user->name }}</span></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- End testimonial item -->
-                            </a>
-                        @endforeach
-                    @else
+                    @foreach ($news as $newsItem)
+                    <a href="{{ route('newsShow', $newsItem->slug) }}">
                         <div class="swiper-slide">
                             <div class="d-flex align-items-stretch">
                                 <div class="card">
-                                    <img src="{{ config('app.placeholder').'1024x768.png' }}" class="card-img-top" alt="...">
-                                    <h4><span class="badge bg-danger">ยังไม่มีข้อมูล</span></h4>
+                                    <img src="@if($newsItem->newsphotos->isNotEmpty()) {{ asset('storage/news_photos/'. $newsItem->newsphotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" class="card-img-top" alt="...">
+                                    <h4><span class="badge bg-danger">กิจกรรมเชียงใหม่ เขต 5</span></h4>
                                     <div class="card-icon">
                                         <i class="bx bx-book-reader"></i>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title"><a >ยังไม่มีข้อมูล</a></h5>
-                                        <p class="card-text">ยังไม่มีข้อมูล</p>
+                                        <h5 class="card-title"><a>{{ Str::limit($newsItem->title, 150) }}</a></h5>
+                                        <p class="card-text">{{ Str::limit($newsItem->description, 200) }}</p>
                                         <div class="d-flex">
-                                            <small class="text-muted me-auto">ยังไม่มีข้อมูล</small>
-                                            <h6>ผู้โพส : <span class="badge bg-secondary">ยังไม่มีข้อมูล</span></h6>
+                                            <small class="text-muted me-auto">{{ $newsItem->created_at->format('d/m/Y') }}</small>
+                                            <h6>ผู้โพส : <span class="badge bg-secondary">{{ $newsItem->user->name }}</span></h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- End testimonial item -->
+                    </a>
+                    @endforeach
+                    @else
+                    <div class="swiper-slide">
+                        <div class="d-flex align-items-stretch">
+                            <div class="card">
+                                <img src="{{ config('app.placeholder').'1024x768.png' }}" class="card-img-top" alt="...">
+                                <h4><span class="badge bg-danger">ยังไม่มีข้อมูล</span></h4>
+                                <div class="card-icon">
+                                    <i class="bx bx-book-reader"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><a>ยังไม่มีข้อมูล</a></h5>
+                                    <p class="card-text">ยังไม่มีข้อมูล</p>
+                                    <div class="d-flex">
+                                        <small class="text-muted me-auto">ยังไม่มีข้อมูล</small>
+                                        <h6>ผู้โพส : <span class="badge bg-secondary">ยังไม่มีข้อมูล</span></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
                     @endif
                 </div>
                 <div class="swiper-pagination"></div>
                 @if ($news->isNotEmpty())
-                    <div class="mt-3" align="center"><a href="{{ route('newsAll') }}" type="button" class="btn btn-danger text-white">ดูทั้งหมด</a></div>
+                <div class="mt-3" align="center"><a href="{{ route('newsAll') }}" type="button" class="btn btn-danger text-white">ดูทั้งหมด</a></div>
                 @endif
             </div>
 
         </div>
     </section><!-- End Testimonials Section -->
+        </div>
+        <div class="col-12 col-md-3 d-flex align-items-center mt-5">
+
+            <div class="card" style="">
+                <img src="{{ config('app.placeholder').'200.png' }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+        </div>
+    </div>
+
+
 
     <!-- ======= Frequently Asked Questions Section ======= -->
     <section id="faq" class="faq section-bg">
-            <div class="faq-list">
-                <div class="section-title">
-                    <h2>Notification of the Department</h2>
-                    <p>ประกาศเจตจำนงสุจริตในการบริหาร สำนักงานเขตพื้นที่การศึกษาประถมศึกษาเชียงใหม่ เขต 5</p>
-                </div>
-                <div class="row mb-3">
-                    @if ($bannercontents->isNotEmpty())
-                        @foreach ($bannercontents as $content)
-                            <div class="col-lg-6">
-                                <img src="{{ asset('storage/banner_files/'. $content->file) }}" class="img-thumbnail img-fluid"
-                                    alt="...">
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="col-lg-6">
-                            <img src="{{ config('app.placeholder').'750x180.png' }}" class="img-thumbnail img-fluid"
-                                alt="...">
-                        </div>
-                        <div class="col-lg-6">
-                            <img src="{{ config('app.placeholder').'750x180.png' }}" class="img-thumbnail img-fluid"
-                                alt="...">
-                        </div>
-                    @endif
-                </div>
-                
-                <ul>
-                    @if ($intergrities->isNotEmpty())
-                        
-                            @foreach ($intergrities as $key => $intergrity)                                
-                                    <li data-aos="fade-up" data-aos-delay="100"><i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-{{ $key }}" class="collapsed"><h5>{{ $intergrity->name }}</h5>
-                                        <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
-                                        <div id="faq-list-{{ $key }}" class="collapse" data-bs-parent=".faq-list">
-                                            <ul class="faq-wrap-item-list mb-3">
-                                                @foreach ($intergrity->children as $child)
-                                                    @include('subIntergrity', ['subChild' => $child])
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    </li>
-                                
-
-                               
-                            @endforeach
-                        
-                    @else
-                        <div class="card text-center border border-1">
-                            <div class="card-header">
-                                Notification
-                            </div>
-                            <div class="card-body">
-                            <p class="card-text">No information was found at this time.</p>
-                            </div>
-                        </div>
-                    @endif
-                </ul>
-
+        <div class="faq-list">
+            <div class="section-title">
+                <h2>Notification of the Department</h2>
+                <p>ประกาศเจตจำนงสุจริตในการบริหาร สำนักงานเขตพื้นที่การศึกษาประถมศึกษาเชียงใหม่ เขต 5</p>
             </div>
+            <div class="row mb-3">
+                @if ($bannercontents->isNotEmpty())
+                @foreach ($bannercontents as $content)
+                <div class="col-lg-6">
+                    <img src="{{ asset('storage/banner_files/'. $content->file) }}" class="img-thumbnail img-fluid" alt="...">
+                </div>
+                @endforeach
+                @else
+                <div class="col-lg-6">
+                    <img src="{{ config('app.placeholder').'750x180.png' }}" class="img-thumbnail img-fluid" alt="...">
+                </div>
+                <div class="col-lg-6">
+                    <img src="{{ config('app.placeholder').'750x180.png' }}" class="img-thumbnail img-fluid" alt="...">
+                </div>
+                @endif
+            </div>
+
+
+            <ul>
+                @forelse($intergrities->chunk(3) as $key => $chunks)
+                    <div class="row">
+                        @foreach ($chunks as $key => $intergrity)
+                        <div class="col-4">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingThree">
+                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-data-{{ $key }}" aria-expanded="false" aria-controls="collapse-data-{{ $key }}">
+                                        {{ $intergrity->name }}
+                                      </button>
+                                    </h2>
+                                    <div id="collapse-data-{{ $key }}" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            @if($intergrity->children->count() > 0)
+                                                @foreach($intergrity->children as $child)
+                                                    <ul style="list-style-type: square; margin-left:10px;">
+                                                        <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><a class="text-primary" @if(!empty($child->url))href="{{ $child->url}}"@endif target="_blank">{{  $child->name }} @if(!empty($child->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($child->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                                    </ul>
+                                                    @foreach($child->children as $subchild)
+                                                    <ul style="list-style-type: circle;">
+                                                        <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px; margin-left:25px;"><a class="text-dark" @if(!empty($subchild->url))href="{{ $subchild->url}}"@endif @if(!empty($subchild->file))href="{{ route('showPDF',$subchild->id) }}"@endif target="_blank">{{  $subchild->name }} @if(!empty($subchild->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($subchild->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+
+                                                    </ul>
+                                                    @endforeach
+
+                                                @endforeach
+                                            @else
+                                                <strong class="text-center">ไม่พบข้อมูล</strong>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                @empty
+                    <div class="card text-center border border-1">
+                        <div class="card-header">
+                            Notification
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">No information was found at this time.</p>
+                        </div>
+                    </div>
+                @endforelse
+            </ul>
+
+        </div>
     </section><!-- End Frequently Asked Questions Section -->
 
     <!-- ======= Features Section ======= -->
@@ -226,29 +251,29 @@
                     <div class="row">
                         <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0">
                             @if ($notices->isNotEmpty())
-                                @foreach ($notices as $notice)
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $notice->name }}</h5>
-                                            <p class="card-text">{{ Str::limit($notice->description, 150) }}</p>
-                                        <div class="d-flex align-items-center">
-                                            <a href="{{ route('noticeShow', $notice->slug) }}" class="btn btn-danger btn-sm text-white me-auto">ดูเพิ่มเติม</a>
-                                            <h6>ผู้โพส: <span class="badge bg-secondary">{{ $notice->user->name }}</span></h6>
-                                        </div>
-                                            <div class="d-flex justify-content-end">
-                                                <p >{{ $notice->created_at->format('d/m/Y') }}</p>
-                                            </div>
-                                        </div>
+                            @foreach ($notices as $notice)
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $notice->name }}</h5>
+                                    <p class="card-text">{{ Str::limit($notice->description, 150) }}</p>
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('noticeShow', $notice->slug) }}" class="btn btn-danger btn-sm text-white me-auto">ดูเพิ่มเติม</a>
+                                        <h6>ผู้โพส: <span class="badge bg-secondary">{{ $notice->user->name }}</span></h6>
                                     </div>
-                                @endforeach
-                                <div class="mt-3 d-flex justify-content-end"><a href="{{ route('noticeAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
+                                    <div class="d-flex justify-content-end">
+                                        <p>{{ $notice->created_at->format('d/m/Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="mt-3 d-flex justify-content-end"><a href="{{ route('noticeAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
                             @else
                             <div class="card text-center border border-1">
                                 <div class="card-header">
                                     Notification
                                 </div>
                                 <div class="card-body">
-                                  <p class="card-text">No information was found at this time.</p>
+                                    <p class="card-text">No information was found at this time.</p>
                                 </div>
                             </div>
                             @endif
@@ -262,29 +287,29 @@
                     <div class="row">
                         <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0">
                             @if ($jobs->isNotEmpty())
-                                @foreach ($jobs as $job)
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $job->name }}</h5>
-                                            <p class="card-text">{{ Str::limit($job->description, 150) }}</p>
-                                        <div class="d-flex align-items-center">
-                                            <a href="{{ route('jobShow', $job->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
-                                            <h6>ผู้โพส: <span class="badge bg-secondary">{{ $job->user->name }}</span></h6>
-                                        </div>
-                                            <div class="d-flex justify-content-end">
-                                                <p >{{ $job->created_at->format('d/m/Y') }}</p>
-                                            </div>
-                                        </div>
+                            @foreach ($jobs as $job)
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $job->name }}</h5>
+                                    <p class="card-text">{{ Str::limit($job->description, 150) }}</p>
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('jobShow', $job->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
+                                        <h6>ผู้โพส: <span class="badge bg-secondary">{{ $job->user->name }}</span></h6>
                                     </div>
-                                @endforeach
-                                <div class="mt-3 d-flex justify-content-end"><a href="{{ route('jobAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
+                                    <div class="d-flex justify-content-end">
+                                        <p>{{ $job->created_at->format('d/m/Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="mt-3 d-flex justify-content-end"><a href="{{ route('jobAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
                             @else
                             <div class="card text-center border border-1">
                                 <div class="card-header">
                                     Notification
                                 </div>
                                 <div class="card-body">
-                                  <p class="card-text">No information was found at this time.</p>
+                                    <p class="card-text">No information was found at this time.</p>
                                 </div>
                             </div>
                             @endif
@@ -298,29 +323,29 @@
                     <div class="row">
                         <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0">
                             @if ($purchases->isNotEmpty())
-                                @foreach ($purchases as $purchase)
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $purchase->name }}</h5>
-                                            <p class="card-text">{{ Str::limit($purchase->description, 150) }}</p>
-                                        <div class="d-flex align-items-center">
-                                            <a href="{{ route('purchaseShow', $purchase->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
-                                            <h6>ผู้โพส: <span class="badge bg-secondary">{{ $purchase->user->name }}</span></h6>
-                                        </div>
-                                            <div class="d-flex justify-content-end">
-                                                <p >{{ $purchase->created_at->format('d/m/Y') }}</p>
-                                            </div>
-                                        </div>
+                            @foreach ($purchases as $purchase)
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $purchase->name }}</h5>
+                                    <p class="card-text">{{ Str::limit($purchase->description, 150) }}</p>
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('purchaseShow', $purchase->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
+                                        <h6>ผู้โพส: <span class="badge bg-secondary">{{ $purchase->user->name }}</span></h6>
                                     </div>
-                                @endforeach
-                                <div class="mt-3 d-flex justify-content-end"><a href="{{ route('purchaseAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
+                                    <div class="d-flex justify-content-end">
+                                        <p>{{ $purchase->created_at->format('d/m/Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="mt-3 d-flex justify-content-end"><a href="{{ route('purchaseAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
                             @else
                             <div class="card text-center border border-1">
                                 <div class="card-header">
                                     Notification
                                 </div>
                                 <div class="card-body">
-                                  <p class="card-text">No information was found at this time.</p>
+                                    <p class="card-text">No information was found at this time.</p>
                                 </div>
                             </div>
                             @endif
@@ -334,29 +359,29 @@
                     <div class="row">
                         <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0">
                             @if ($paymentSlips->isNotEmpty())
-                                @foreach ($paymentSlips as $paymentSlip)
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $paymentSlip->name }}</h5>
-                                            <p class="card-text">{{ Str::limit($paymentSlip->description, 150) }}</p>
-                                        <div class="d-flex align-items-center">
-                                            <a href="{{ route('paymentSlipShow', $paymentSlip->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
-                                            <h6>ผู้โพส: <span class="badge bg-secondary">{{ $paymentSlip->user->name }}</span></h6>
-                                        </div>
-                                            <div class="d-flex justify-content-end">
-                                                <p >{{ $paymentSlip->created_at->format('d/m/Y') }}</p>
-                                            </div>
-                                        </div>
+                            @foreach ($paymentSlips as $paymentSlip)
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $paymentSlip->name }}</h5>
+                                    <p class="card-text">{{ Str::limit($paymentSlip->description, 150) }}</p>
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('paymentSlipShow', $paymentSlip->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
+                                        <h6>ผู้โพส: <span class="badge bg-secondary">{{ $paymentSlip->user->name }}</span></h6>
                                     </div>
-                                @endforeach
-                                <div class="mt-3 d-flex justify-content-end"><a href="{{ route('paymentSlipAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
+                                    <div class="d-flex justify-content-end">
+                                        <p>{{ $paymentSlip->created_at->format('d/m/Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="mt-3 d-flex justify-content-end"><a href="{{ route('paymentSlipAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
                             @else
                             <div class="card text-center border border-1">
                                 <div class="card-header">
                                     Notification
                                 </div>
                                 <div class="card-body">
-                                  <p class="card-text">No information was found at this time.</p>
+                                    <p class="card-text">No information was found at this time.</p>
                                 </div>
                             </div>
                             @endif
@@ -370,29 +395,29 @@
                     <div class="row">
                         <div class="col-lg-7 order-2 order-lg-1 mt-3 mt-lg-0">
                             @if ($budgets->isNotEmpty())
-                                @foreach ($budgets as $budget)
-                                    <div class="card mb-2">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ $budget->name }}</h5>
-                                            <p class="card-text">{{ Str::limit($budget->description, 150) }}</p>
-                                        <div class="d-flex align-items-center">
-                                            <a href="{{ route('budgetShow', $budget->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
-                                            <h6>ผู้โพส: <span class="badge bg-secondary">{{ $budget->user->name }}</span></h6>
-                                        </div>
-                                            <div class="d-flex justify-content-end">
-                                                <p >{{ $budget->created_at->format('d/m/Y') }}</p>
-                                            </div>
-                                        </div>
+                            @foreach ($budgets as $budget)
+                            <div class="card mb-2">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $budget->name }}</h5>
+                                    <p class="card-text">{{ Str::limit($budget->description, 150) }}</p>
+                                    <div class="d-flex align-items-center">
+                                        <a href="{{ route('budgetShow', $budget->slug) }}" class="btn btn-danger btn-sm text-white me-auto">คลิกดูไฟล์</a>
+                                        <h6>ผู้โพส: <span class="badge bg-secondary">{{ $budget->user->name }}</span></h6>
                                     </div>
-                                @endforeach
-                                <div class="mt-3 d-flex justify-content-end"><a href="{{ route('budgetAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
+                                    <div class="d-flex justify-content-end">
+                                        <p>{{ $budget->created_at->format('d/m/Y') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                            <div class="mt-3 d-flex justify-content-end"><a href="{{ route('budgetAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
                             @else
                             <div class="card text-center border border-1">
                                 <div class="card-header">
                                     Notification
                                 </div>
                                 <div class="card-body">
-                                  <p class="card-text">No information was found at this time.</p>
+                                    <p class="card-text">No information was found at this time.</p>
                                 </div>
                             </div>
                             @endif
@@ -410,40 +435,40 @@
     <section id="gallery" class="gallery section-bg">
         <div class="container">
 
-        <div class="section-title">
-            <h2>Video & VTR</h2>
-            <p>วีดีโอ สพป.เชียงใหม่ เขต 5</p>
-        </div>
-          <div class="row no-gutters" data-aos="fade-left">
-            @if ($videos->isNotEmpty())
+            <div class="section-title">
+                <h2>Video & VTR</h2>
+                <p>วีดีโอ สพป.เชียงใหม่ เขต 5</p>
+            </div>
+            <div class="row no-gutters" data-aos="fade-left">
+                @if ($videos->isNotEmpty())
                 @foreach ($videos as $video)
                 <div class="col-lg-3 col-md-4 mb-4">
                     <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                    <a href="{{ route('videoShow',$video->slug) }}">
-                        <div class="img-span">
-                            <img src="{{ asset('storage/video_photos/' .$video->filename) }}" alt="" class="img-fluid">
-                            <h4><span class="badge bg-danger">VIDEO SPECIAL</span></h4>
-                        </div>
-                    </a>
+                        <a href="{{ route('videoShow',$video->slug) }}">
+                            <div class="img-span">
+                                <img src="{{ asset('storage/video_photos/' .$video->filename) }}" alt="" class="img-fluid">
+                                <h4><span class="badge bg-danger">VIDEO SPECIAL</span></h4>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 @endforeach
                 <div class="mt-3" align="center"><a href="{{ route('videoAll') }}" type="button" class="btn btn-danger text-white">ดูทั้งหมด</a></div>
-            @else
+                @else
                 <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
                     <div class="card-header">
                         Notification
                     </div>
                     <div class="card-body">
-                    <p class="card-text">No information was found at this time.</p>
+                        <p class="card-text">No information was found at this time.</p>
                     </div>
                 </div>
-            @endif
+                @endif
 
-          </div>
+            </div>
 
         </div>
-      </section><!-- End Gallery Section -->
+    </section><!-- End Gallery Section -->
 
     <!-- ======= Features Section ======= -->
 
@@ -459,54 +484,54 @@
             <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="swiper-wrapper">
                     @if ($blogschools->isNotEmpty())
-                        @foreach ($blogschools as $blogschool)
-                            <a href="{{ route('blogschoolShow', $blogschool->slug) }}">
-                                <div class="swiper-slide">
-                                    <div class="d-flex align-items-stretch">
-                                        <div class="card">
-                                            <img src="@if($blogschool->blogSchoolPhotos->isNotEmpty()) {{ asset('storage/blogschool_photos/'. $blogschool->blogSchoolPhotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" class="card-img-top" alt="...">
-                                            <h4><span class="badge bg-danger">กิจกรรมเชียงใหม่ เขต 5</span></h4>
-                                            <div class="card-icon">
-                                                <i class="bx bx-book-reader"></i>
-                                            </div>
-                                            <div class="card-body">
-                                                <h5 class="card-title"><a >{{ Str::limit($blogschool->title, 150) }}</a></h5>
-                                                <p class="card-text">{{ Str::limit($blogschool->description, 200) }}</p>
-                                                <div class="d-flex">
-                                                    <small class="text-muted me-auto">{{ $blogschool->created_at->format('d/m/Y') }}</small>
-                                                    <h6>ผู้โพส : <span class="badge bg-secondary">{{ $blogschool->user->name }}</span></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div><!-- End testimonial item -->
-                            </a>
-                        @endforeach
-                    @else
+                    @foreach ($blogschools as $blogschool)
+                    <a href="{{ route('blogschoolShow', $blogschool->slug) }}">
                         <div class="swiper-slide">
                             <div class="d-flex align-items-stretch">
                                 <div class="card">
-                                    <img src="{{ config('app.placeholder').'1024x768.png' }}" class="card-img-top" alt="...">
-                                    <h4><span class="badge bg-danger">ยังไม่มีข้อมูล</span></h4>
+                                    <img src="@if($blogschool->blogSchoolPhotos->isNotEmpty()) {{ asset('storage/blogschool_photos/'. $blogschool->blogSchoolPhotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" class="card-img-top" alt="...">
+                                    <h4><span class="badge bg-danger">กิจกรรมเชียงใหม่ เขต 5</span></h4>
                                     <div class="card-icon">
                                         <i class="bx bx-book-reader"></i>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title"><a >ยังไม่มีข้อมูล</a></h5>
-                                        <p class="card-text">ยังไม่มีข้อมูล</p>
+                                        <h5 class="card-title"><a>{{ Str::limit($blogschool->title, 150) }}</a></h5>
+                                        <p class="card-text">{{ Str::limit($blogschool->description, 200) }}</p>
                                         <div class="d-flex">
-                                            <small class="text-muted me-auto">ยังไม่มีข้อมูล</small>
-                                            <h6>ผู้โพส : <span class="badge bg-secondary">ยังไม่มีข้อมูล</span></h6>
+                                            <small class="text-muted me-auto">{{ $blogschool->created_at->format('d/m/Y') }}</small>
+                                            <h6>ผู้โพส : <span class="badge bg-secondary">{{ $blogschool->user->name }}</span></h6>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div><!-- End testimonial item -->
+                    </a>
+                    @endforeach
+                    @else
+                    <div class="swiper-slide">
+                        <div class="d-flex align-items-stretch">
+                            <div class="card">
+                                <img src="{{ config('app.placeholder').'1024x768.png' }}" class="card-img-top" alt="...">
+                                <h4><span class="badge bg-danger">ยังไม่มีข้อมูล</span></h4>
+                                <div class="card-icon">
+                                    <i class="bx bx-book-reader"></i>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title"><a>ยังไม่มีข้อมูล</a></h5>
+                                    <p class="card-text">ยังไม่มีข้อมูล</p>
+                                    <div class="d-flex">
+                                        <small class="text-muted me-auto">ยังไม่มีข้อมูล</small>
+                                        <h6>ผู้โพส : <span class="badge bg-secondary">ยังไม่มีข้อมูล</span></h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- End testimonial item -->
                     @endif
                 </div>
                 <div class="swiper-pagination"></div>
                 @if ($blogschools->isNotEmpty())
-                    <div class="mt-3" align="center"><a href="{{ route('blogschoolAll') }}" type="button" class="btn btn-danger text-white">ดูทั้งหมด</a></div>
+                <div class="mt-3" align="center"><a href="{{ route('blogschoolAll') }}" type="button" class="btn btn-danger text-white">ดูทั้งหมด</a></div>
                 @endif
             </div>
 
@@ -517,42 +542,42 @@
     <section id="services" class="services section-bg">
         <div class="container" data-aos="fade-up">
 
-          <div class="section-title">
-            <h2>Notice Schools</h2>
-            <p>ประชาสัมพันธ์โรงเรียน</p>
-          </div>
+            <div class="section-title">
+                <h2>Notice Schools</h2>
+                <p>ประชาสัมพันธ์โรงเรียน</p>
+            </div>
 
-          <div class="row" data-aos="fade-up" data-aos-delay="200">
-              @if ($noticeSchools->isNotEmpty())
-                    @foreach ($noticeSchools as $noticeSchool)
-                    <div class="col-md-6">
-                        <a href="{{ route('noticeSchoolShow',$noticeSchool->slug ) }}">
-                            <div class="icon-box h-100">
-                                <i class="bi bi-megaphone"></i>
-                                <h4>{{ $noticeSchool->name }}</h4>
-                                <p>{{ Str::limit($noticeSchool->description, 150) }}</p>
-                                <div class="d-flex wrap-author">
-                                    <h6 class="text-muted me-auto">{{ $noticeSchool->created_at->format('d/m/Y') }}</h6>
-                                    <h6>ผู้โพส : <span class="badge bg-secondary">{{ $noticeSchool->user->name }}</span></h6>
-                                </div>
-                              </div>
-                        </a>
-                    </div>
-                    @endforeach
-                    <div class="mt-5 d-flex justify-content-center"><a href="{{ route('noticeSchoolAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
-              @else
+            <div class="row" data-aos="fade-up" data-aos-delay="200">
+                @if ($noticeSchools->isNotEmpty())
+                @foreach ($noticeSchools as $noticeSchool)
+                <div class="col-md-6">
+                    <a href="{{ route('noticeSchoolShow',$noticeSchool->slug ) }}">
+                        <div class="icon-box h-100">
+                            <i class="bi bi-megaphone"></i>
+                            <h4>{{ $noticeSchool->name }}</h4>
+                            <p>{{ Str::limit($noticeSchool->description, 150) }}</p>
+                            <div class="d-flex wrap-author">
+                                <h6 class="text-muted me-auto">{{ $noticeSchool->created_at->format('d/m/Y') }}</h6>
+                                <h6>ผู้โพส : <span class="badge bg-secondary">{{ $noticeSchool->user->name }}</span></h6>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                @endforeach
+                <div class="mt-5 d-flex justify-content-center"><a href="{{ route('noticeSchoolAll') }}" type="button" class="btn btn-danger btn-sm text-white">ดูทั้งหมด</a></div>
+                @else
                 <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
                     <div class="card-header">
                         Notification
                     </div>
                     <div class="card-body">
-                    <p class="card-text">No information was found at this time.</p>
+                        <p class="card-text">No information was found at this time.</p>
                     </div>
                 </div>
-              @endif
+                @endif
 
 
-          </div>
+            </div>
 
         </div>
     </section><!-- End Services Section -->
@@ -651,5 +676,6 @@
 @endsection
 @push('script')
 <script>
+
 </script>
 @endpush

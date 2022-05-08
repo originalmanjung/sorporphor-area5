@@ -1109,7 +1109,7 @@ section {
 /*--------------------------------------------------------------
 # Frequently Asked Questions
 --------------------------------------------------------------*/
-.faq .faq-list {
+/* .faq .faq-list {
     padding: 0 100px;
 }
 
@@ -1158,10 +1158,6 @@ section {
     top: 0;
 }
 
-/* .faq .faq-list p {
-    margin-bottom: 0;
-    padding: 10px 0 0 0;
-} */
 
 .faq .faq-list .icon-show {
     display: none;
@@ -1225,7 +1221,7 @@ section {
     border: 0;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
     margin-bottom: 30px;
-}
+} */
 /*--------------------------------------------------------------
 # Testimonials
 --------------------------------------------------------------*/

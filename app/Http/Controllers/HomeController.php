@@ -14,6 +14,7 @@ use App\Models\Banner;
 use App\Models\Intergrity;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use PDF;
 
 class HomeController extends Controller
 {
@@ -35,7 +36,7 @@ class HomeController extends Controller
         $budgets = Budget::limit(3)->orderBy('created_at', 'desc')->get();
         $notices = Notice::limit(3)->orderBy('created_at', 'desc')->get();
         $noticeSchools = NoticeSchool::limit(4)->orderBy('created_at', 'desc')->get();
-        $intergrities = Intergrity::where('parent_id',NULL)->active()->get();
+        $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('home',[
             'purchases' => $purchases,
             'jobs' => $jobs,
@@ -62,10 +63,22 @@ class HomeController extends Controller
 
     public function intergrityMenualPlaneWork()
     {
-        
+
         $intergrityPlanelwork = Intergrity::menualplanework()->active()->get();
         return view('intergrity-plane-menual.intergrityPlaneWork',[
             'intergrityPlanelwork' => $intergrityPlanelwork
+        ]);
+    }
+
+    /**
+    * Write code on Method
+    *
+    * @return response()
+    */
+    public function showPDF(Intergrity $intergrity)
+    {
+        return view('viewPDF',[
+            'intergrity' => $intergrity,
         ]);
     }
 }

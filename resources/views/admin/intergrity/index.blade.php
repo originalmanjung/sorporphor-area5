@@ -30,15 +30,45 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>ประเภททั้งหมด</div>
-            <a href="{{ route('app.intergrities.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้างประเภท</a>
+            <!-- Button Modal -->
+            <div>
+                <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#intergrityModal">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม
+                </button>
+            </div>
         </div>
         <div class="card-body">
+            <!-- Modal -->
+            <form id="ITAFrom" ita="form" method="POST" action="{{ route('app.intergrities.store') }}">
+                @csrf
+                <div class="modal fade" id="intergrityModal" tabindex="-1" aria-labelledby="intergrityModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">สร้างหัวข้อหลัก</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row g-2">
+                                <div class="col mb-3 form-group">
+                                    <label for="name" class="form-label">หัวข้อ ITA :</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" autofocus required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </form>
             <table id="datatablesSimple">
                 <thead>
                     <tr>
                         <th scope="col">ลำดับที่</th>
                         <th scope="col">ชื่อประเภท</th>
-                        <th scope="col">สถานะ</th>
                         <th scope="col">ผู้สร้าง</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
@@ -47,7 +77,6 @@
                     <tr>
                         <th scope="col">ลำดับที่</th>
                         <th scope="col">ชื่อประเภท</th>
-                        <th scope="col">สถานะ</th>
                         <th scope="col">ผู้สร้าง</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
@@ -57,13 +86,6 @@
                     <tr>
                         <td>{{ $key + 1 }}</td>
                         <td>{{ $intergrity->name }} </td>
-                        <td>
-                            @if ($intergrity->status == '1')
-                                <span class="badge bg-success">Active</span>
-                            @else
-                                <span class="badge bg-danger">Inactive</span>
-                            @endif
-                        </td>
                         <td>{{ $intergrity->user->name }}</td>
                         <td class="text-center">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
@@ -90,4 +112,16 @@
 @push('js')
 <script src="{{ asset('js/admin-script.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.all.js') }}"></script>
+<script>
+    @if($errors->isNotEmpty())
+        Swal.fire({
+            icon: 'error',
+            title: 'Errors',
+            @foreach ($errors->all() as $error)
+            text: '{{ $error }}',
+            @endforeach
+            footer: '<a href="">Why do I have this issue?</a>'
+        })
+    @endisset
+</script>
 @endpush

@@ -23,49 +23,22 @@
                 @if (isset($intergrity))
                     @method('PUT')
                 @endif
-                @if(empty($intergrity))
-                <div class="row g-2">
-                    <div class="col-md-6 mb-2">
-                        <div class="form-check @error('isParent') is-invalid @enderror">
-                            <input class="form-check-input" type="checkbox" id="isParent" name="isParent" @isset($intergrity) {{ $intergrity->parent_id == true ? 'checked' : '' }} @else {{ old('isParent') ? 'checked' : '' }} @endisset>
-                            <label class="form-check-label" for="flexCheckDefault">
-                                เป็นหัวข้อย่อย
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="row g-2 d-none" id="parent_box">
-                    <div class="col-md-6 mb-3">
-                        <label for="inputState" class="form-label">หัวข้อหลัก</label>
-                        <select id="parent_id" class="form-select @error('parent_id') is-invalid @enderror" name="parent_id">
-                            <option value="" selected>Choose...</option>
-                            @foreach ($intergrities as $key=>$intergrityItem )
-                            <?php $dash=''; ?>
-                            <option value="{{ $intergrityItem->id }}" @if(isset($intergrity)) {{ $intergrity->parent_id == $intergrityItem->id ? 'selected' : '' }} @else {{ (collect(old('parent_id'))->contains($intergrityItem->id)) ? 'selected':'' }} @endif>
-                                {{ $intergrityItem->name }}</option>
-                            @if(count($intergrityItem->children))
-                            @include('admin.intergrity.subList-option',['subList' => $intergrityItem->children])
-                            @endif
-                            @endforeach
-                        </select>
-                        @error('parent_id')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </div>
-                @endif
-
-                @if (isset($intergrity))
+                @isset($intergrity->parent)
                 <div class="row g-2">
                     <div class="col-md-6 mb-2">
                         <label for="name" class="form-label">ลำดับหัวข้อ ทั้งหมด</label>
-                        @isset($intergrity->parent)
-                                @include('admin.intergrity.parentNameList', ['mainParent' => $intergrity->parent])
-                        @endisset
+                        @include('admin.intergrity.parentNameList', ['mainParent' => $intergrity->parent])
                     </div>
                 </div>
+                @endisset
+                @if ($errors->any())
+                    <div id="displayErrors" class="alert alert-danger d-none">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
                 <div class="row g-2">
                     <div class="col-md-6">
@@ -80,50 +53,36 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="row g-2">
-                    <div class="col-md-6">
-                        <div class="col mb-3 form-group">
-                            <label for="url" class="form-label">ลิ้ง URL</label>
-                            <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ $intergrity->url ?? old('url') }}" autofocus>
-                            @error('url')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                @isset($intergrity)
+                    @if($intergrity->parent_id != null)
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <div class="col mb-3 form-group">
+                                    <label for="url" class="form-label">ลิ้ง URL</label>
+                                    <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ $intergrity->url ?? old('url') }}" autofocus>
+                                    @error('url')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="row g-2">
-                    <div class="col-md-6">
-                        <div class="col mb-3 form-group">
-                            <label for="formFileSm" class="form-label">@if(isset($intergrity->file))แนบไฟล์ใหม่ @else แนบไฟล์ @endif</label>
-                            <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="formFileSm" type="file" name="file">
-                            @error('file')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <div class="col mb-3 form-group">
+                                    <label for="formFileSm" class="form-label">@if(isset($intergrity->file))แนบไฟล์ใหม่ @else แนบไฟล์ @endif</label>
+                                    <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="formFileSm" type="file" name="file">
+                                    @error('file')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                @if(empty($intergrity->parent)) 
-                    <div class="row g-2" id="status_box">
-                    <div class="col-md-6 mb-3">
-                        <label for="inputState" class="form-label">สถานะ</label>
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="status" name="status" @isset($intergrity) {{ $intergrity->status == true ? 'checked' : '' }} @endisset>
-                            <label class="form-check-label" for="status">เปิดใช้งาน</label>
-                            @error('status')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
-                @endif
-                
+                        @endif
+                @endisset
             </form>
             @if (isset($intergrity->file))
             <div class="row g-3">
@@ -163,22 +122,16 @@
 @push('js')
 <script src="{{ asset('js/sweetalert2.all.js') }}"></script>
 <script src="{{ asset('js/admin-script.js') }}"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#isParent').change(function(){
-            if ($(this).is(':checked')){
-                $('#parent_box').removeClass('d-none');
-                $('#status_box').addClass('d-none');
-                $('#status').prop('checked', false);
-            }else{
-                $('#parent_box').addClass('d-none');
-                $('#parent_id').val(null);
-                $('#status_box').removeClass('d-none');
-            }
-        });
-        if($('#isParent').is(':checked')) {
-            $('#isParent').change();
-        }
-    });
+<script>
+    @if($errors->isNotEmpty())
+            Swal.fire({
+                icon: 'error',
+                title: 'Errors',
+                @foreach ($errors->all() as $error)
+                text: '{{ $error }}',
+                @endforeach
+                footer: '<a href="">Why do I have this issue?</a>'
+            })
+    @endisset
 </script>
 @endpush

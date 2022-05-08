@@ -26,6 +26,7 @@
   <link href="{{ asset('home/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
   <link href="{{ asset('home/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ asset('home/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Template Main CSS File -->
   <link href="{{ asset('home/assets/css/style.css') }}" rel="stylesheet">
@@ -49,6 +50,7 @@
   <script src="{{ asset('home/assets/vendor/php-email-form/validate.js') }}"></script>
   <script src="{{ asset('home/assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('home/assets/vendor/waypoints/noframework.waypoints.js') }}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js" integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <!-- Template Main JS File -->
   <script src="{{ asset('home/assets/js/main.js') }}"></script>
 @stack('js')
