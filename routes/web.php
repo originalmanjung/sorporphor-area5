@@ -31,7 +31,9 @@ use App\Http\Controllers\ManageStructureController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/test', function () {
+    return view('index');
+});
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // ประชาสัมพันธ์
 Route::get('notices', [NoticeController::class, 'noticeAll'])->name('noticeAll');

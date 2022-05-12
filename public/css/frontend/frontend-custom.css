@@ -1,0 +1,242 @@
+/* Video */
+.block-img-video-1-wrap {
+    margin-top: 4rem;
+}
+
+.block-img-video-1-wrap .block-img-video-1 {
+    position: relative;
+    margin-top: -2rem;
+}
+
+@media (max-width: 991.98px) {
+    .block-img-video-1-wrap .block-img-video-1 {
+        margin-top: -2rem;
+    }
+}
+
+.block-img-video-1>a {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.block-img-video-1>a .icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #fff;
+    -webkit-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    transition: .3s all ease-in-out;
+}
+
+.block-img-video-1>a .icon>span {
+    position: absolute;
+    top: 50%;
+    font-size: .8rem;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #000;
+}
+
+.block-img-video-1>a:hover .icon {
+    background: #fff;
+    width: 90px;
+    height: 90px;
+}
+
+/* End Video */
+
+
+/* ITA */
+.ftco-faqs .myaccordion {
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.ftco-faqs .myaccordion .card,
+.ftco-faqs .myaccordion .card:last-child .card-header {
+    border: none;
+    background: transparent;
+}
+
+.ftco-faqs .myaccordion .card-header {
+    border: none;
+    background: transparent;
+}
+
+.ftco-faqs .myaccordion .card-header p {
+    position: relative;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: left;
+}
+
+.ftco-faqs .myaccordion .fa {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.3);
+}
+
+.ftco-faqs .myaccordion .btn {
+    width: 100%;
+    font-weight: 600;
+    color: black;
+    padding: 0;
+    text-transform: capitalize;
+    letter-spacing: 0;
+    border-radius: 0 !important;
+    margin-bottom: 10px;
+    border-radius: 40px !important;
+    -webkit-box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.21) !important;
+    -moz-box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.21) !important;
+    box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.21) !important;
+}
+
+.ftco-faqs .myaccordion .btn-link:hover,
+.ftco-faqs .myaccordion .btn-link:focus {
+    text-decoration: none;
+}
+
+
+.ftco-faqs [data-toggle="collapse"] .fa:before {
+    content: "\f078";
+    font-family: "FontAwesome";
+    font-style: normal;
+}
+
+.ftco-faqs [data-toggle="collapse"].collapsed .fa:before {
+    content: "\f077";
+    font-family: "FontAwesome";
+    font-style: normal;
+}
+
+.ftco-faqs button[aria-expanded="true"] {
+    background-color: #fd7e14;
+    color: #fff !important;
+}
+
+.ftco-faqs button[aria-expanded="true"] .fa {
+    color: #fff !important;
+}
+
+.ftco-faqs button[aria-expanded="false"] {
+    background-color: #fff;
+}
+
+.ftco-faqs .card-body {
+    background: #fff;
+    margin-bottom: 10px;
+    border-radius: 30px;
+    -webkit-box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.21) !important;
+    -moz-box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.21) !important;
+    box-shadow: 0px 2px 8px -4px rgba(0, 0, 0, 0.21) !important;
+}
+
+.ftco-faqs .card-body ol li {
+    margin-bottom: 10px;
+    padding-left: 10px;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.ftco-faqs .card-body ol li:last-child {
+    margin-bottom: 0;
+}
+
+/* End ITA */
+
+/* Notice */
+.tabulation .nav-pills .nav-item {
+    margin-bottom: 10px;
+}
+
+.tabulation .nav-pills .nav-item .nav-link {
+    background: #fff;
+    border-radius: 4px;
+    color: #000000;
+    font-weight: 600;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.tabulation .nav-pills .nav-item .nav-link span {
+    color: #fd7e14;
+    font-size: 30px;
+}
+
+.tabulation .nav-pills .nav-item .nav-link.active {
+    color: #fff;
+    background: #fd7e14;
+    border: 1px solid #fd7e14;
+}
+
+.tabulation .nav-pills .nav-item .nav-link.active span {
+    color: #fff;
+}
+
+.tabulation .tab-content {
+    background: #fff;
+    padding: 0;
+}
+
+.tabulation .tab-content .img {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 20px;
+}
+
+.tabulation .tab-content h3 {
+    font-weight: 700;
+}
+
+.tabulation .tab-content h3 a {
+    color: #000000;
+}
+
+/* End Notice */
+
+/* School Notice */
+.testimonial {
+    padding: 30px;
+    color: #000;
+    -webkit-box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.1);
+    line-height: 1.7;
+    font-style: italic;
+}
+
+.testimonial .vcard figure {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 50px;
+    flex: 0 0 50px;
+}
+
+.testimonial .vcard figure img {
+    border-radius: 50%;
+}
+
+.testimonial .vcard .vcard-text {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.2;
+}
+
+.testimonial .vcard .vcard-text .position {
+    color: #b3b3b3;
+}
+
+.testimonial strong {
+    font-weight: 400;
+    padding: .3rem 0;
+    background: #faf5bb;
+}
+/* End Schoold Notice */

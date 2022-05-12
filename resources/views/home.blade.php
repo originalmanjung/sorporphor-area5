@@ -160,44 +160,112 @@
 
 
             <ul>
-                @forelse($intergrities->chunk(3) as $key => $chunks)
+                @if($intergrities->count() > 0)
                     <div class="row">
-                        @foreach ($chunks as $key => $intergrity)
-                        <div class="col-4">
+                        <div class="col-12 col-md-4">
                             <div class="accordion" id="accordionExample">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingThree">
-                                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-data-{{ $key }}" aria-expanded="false" aria-controls="collapse-data-{{ $key }}">
-                                        {{ $intergrity->name }}
-                                      </button>
-                                    </h2>
-                                    <div id="collapse-data-{{ $key }}" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                
+                                    @foreach ($intergrities->slice(0, 5) as $key => $intergrity)
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ $key }}" aria-expanded="false" aria-controls="collapseTwo">
+                                            {{ $intergrity->name }}
+                                        </button>
+                                        </h2>
+                                        <div id="collapseTwo{{ $key }}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                         <div class="accordion-body">
                                             @if($intergrity->children->count() > 0)
-                                                @foreach($intergrity->children as $child)
-                                                    <ul style="list-style-type: square; margin-left:10px;">
-                                                        <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><a class="text-primary" @if(!empty($child->url))href="{{ $child->url}}"@endif target="_blank">{{  $child->name }} @if(!empty($child->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($child->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
-                                                    </ul>
-                                                    @foreach($child->children as $subchild)
-                                                    <ul style="list-style-type: circle;">
-                                                        <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px; margin-left:25px;"><a class="text-dark" @if(!empty($subchild->url))href="{{ $subchild->url}}"@endif @if(!empty($subchild->file))href="{{ route('showPDF',$subchild->id) }}"@endif target="_blank">{{  $subchild->name }} @if(!empty($subchild->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($subchild->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                                    @foreach($intergrity->children as $child)
+                                                        <ul style="list-style-type: square; margin-left:10px;">
+                                                            <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><a class="text-primary" @if(!empty($child->url))href="{{ $child->url}}"@endif target="_blank">{{  $child->name }} @if(!empty($child->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($child->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                                        </ul>
+                                                        @foreach($child->children as $subchild)
+                                                        <ul style="list-style-type: circle;">
+                                                            <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px; margin-left:25px;"><a class="text-dark" @if(!empty($subchild->url))href="{{ $subchild->url}}"@endif @if(!empty($subchild->file))href="{{ route('showPDF',$subchild->id) }}"@endif target="_blank">{{  $subchild->name }} @if(!empty($subchild->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($subchild->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
 
-                                                    </ul>
+                                                        </ul>
+                                                        @endforeach
+
                                                     @endforeach
-
-                                                @endforeach
-                                            @else
-                                                <strong class="text-center">ไม่พบข้อมูล</strong>
-                                            @endif
+                                                @else
+                                                    <strong class="text-center">ไม่พบข้อมูล</strong>
+                                                @endif
+                                        </div>
                                         </div>
                                     </div>
-                                </div>
+                                    @endforeach 
                             </div>
                         </div>
-                        @endforeach
+                        <div class="col-12 col-md-4">
+                            <div class="accordion" id="accordionExample">
+                
+                                    @foreach ($intergrities->slice(5, 5) as $key => $intergrity)
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ $key }}" aria-expanded="false" aria-controls="collapseTwo">
+                                            {{ $intergrity->name }}
+                                        </button>
+                                        </h2>
+                                        <div id="collapseTwo{{ $key }}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            @if($intergrity->children->count() > 0)
+                                                    @foreach($intergrity->children as $child)
+                                                        <ul style="list-style-type: square; margin-left:10px;">
+                                                            <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><a class="text-primary" @if(!empty($child->url))href="{{ $child->url}}"@endif target="_blank">{{  $child->name }} @if(!empty($child->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($child->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                                        </ul>
+                                                        @foreach($child->children as $subchild)
+                                                        <ul style="list-style-type: circle;">
+                                                            <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px; margin-left:25px;"><a class="text-dark" @if(!empty($subchild->url))href="{{ $subchild->url}}"@endif @if(!empty($subchild->file))href="{{ route('showPDF',$subchild->id) }}"@endif target="_blank">{{  $subchild->name }} @if(!empty($subchild->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($subchild->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+
+                                                        </ul>
+                                                        @endforeach
+
+                                                    @endforeach
+                                                @else
+                                                    <strong class="text-center">ไม่พบข้อมูล</strong>
+                                                @endif
+                                        </div>
+                                        </div>
+                                    </div>
+                                    @endforeach 
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="accordion" id="accordionExample">
+                                    @foreach ($intergrities->slice(10, 10) as $key => $intergrity)
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo{{ $key }}" aria-expanded="false" aria-controls="collapseTwo">
+                                            {{ $intergrity->name }}
+                                        </button>
+                                        </h2>
+                                        <div id="collapseTwo{{ $key }}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            @if($intergrity->children->count() > 0)
+                                                    @foreach($intergrity->children as $child)
+                                                        <ul style="list-style-type: square; margin-left:10px;">
+                                                            <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><a class="text-primary" @if(!empty($child->url))href="{{ $child->url}}"@endif target="_blank">{{  $child->name }} @if(!empty($child->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($child->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                                        </ul>
+                                                        @foreach($child->children as $subchild)
+                                                        <ul style="list-style-type: circle;">
+                                                            <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px; margin-left:25px;"><a class="text-dark" @if(!empty($subchild->url))href="{{ $subchild->url}}"@endif @if(!empty($subchild->file))href="{{ route('showPDF',$subchild->id) }}"@endif target="_blank">{{  $subchild->name }} @if(!empty($subchild->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($subchild->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+
+                                                        </ul>
+                                                        @endforeach
+
+                                                    @endforeach
+                                                @else
+                                                    <strong class="text-center">ไม่พบข้อมูล</strong>
+                                                @endif
+                                        </div>
+                                        </div>
+                                    </div>
+                                    @endforeach 
+                            </div>
+                        </div>
                     </div>
-                @empty
-                    <div class="card text-center border border-1">
+                @else
+                     <div class="card text-center border border-1">
                         <div class="card-header">
                             Notification
                         </div>
@@ -205,9 +273,8 @@
                             <p class="card-text">No information was found at this time.</p>
                         </div>
                     </div>
-                @endforelse
+                @endif
             </ul>
-
         </div>
     </section><!-- End Frequently Asked Questions Section -->
 
