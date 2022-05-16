@@ -1,6 +1,7 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
+
     .card {
         border-radius: 3px;
         border: 0;
@@ -77,19 +78,17 @@
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>โครงสร้างการบริหารงาน</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>โครงสร้างการบริหารงาน</li>
-                </ol>
-            </div>
-
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="title">
+                     <h2>โครงสร้างองค์กร</h2>
+                 </div>
+              </div>
+           </div>
         </div>
-    </section><!-- End Breadcrumbs -->
+     </div>
     <!-- ======= F.A.Q Section ======= -->
     <section id="faq" class="faq section-bg">
         <div class="container">

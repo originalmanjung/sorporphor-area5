@@ -201,7 +201,7 @@
                             </div>
                             <div class="row g-2">
                                 <div class="mb-3">
-                                    <label for="formAvatar" class="form-label">แนบรูป</label>
+                                    <label for="formAvatar" class="form-label">แนบรูป <span class="text-danger">* ขนาดมาตรฐาน 800x852 pixel | พื้นหลังสีขาว </span></label>
                                     <input class="form-control @error('avatar') is-invalid @enderror" type="file" name="avatar">
                                     @error('avatar')
                                         <span class="invalid-feedback" avatar="alert">

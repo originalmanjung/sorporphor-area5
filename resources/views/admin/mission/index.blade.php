@@ -18,9 +18,7 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>วิสัยทัศน์ พันธกิจ ทั้งหมด</div>
-            @if ($missions->isEmpty())
-                <a href="{{ route('app.missions.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
-            @endif
+            <a href="{{ route('app.missions.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
         </div>
         <div class="card-body">
             <table id="datatablesSimple">

@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\DutyController;
 use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\IntergrityController;
+use App\Http\Controllers\Admin\LawController;
 use App\Http\Controllers\Admin\ManageStructureController;
 
 /*
@@ -87,3 +88,6 @@ Route::resource('manageStructures', ManageStructureController::class)->except(['
 Route::resource('intergrities', IntergrityController::class);
 Route::get('intergrities/pdf/{intergrity}', [IntergrityController::class,'showPDF'])->name('intergrities.showPDF');
 Route::delete('intergrities/file/{intergrity}', [IntergrityController::class,'deleteFile'])->name('intergrities.deleteFile');
+// กฏหมายที่เกี่ยวข้อง
+Route::resource('laws', LawController::class);
+Route::get('laws/child-law/{law}', [LawController::class,'createChild'])->name('laws.createChild');

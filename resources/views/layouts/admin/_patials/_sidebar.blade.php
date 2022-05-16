@@ -30,7 +30,7 @@
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link {{ Route::is('app.histories*') ? 'active' : '' }}" href="{{ route('app.histories.index') }}">ประวัติความเป็นมา</a>
                             <a class="nav-link {{ Route::is('app.missions*') ? 'active' : '' }}" href="{{ route('app.missions.index') }}">วิสัยทัศน์ พันธกิจ</a>
-                            <a class="nav-link {{ Route::is('app.dutys*') ? 'active' : '' }}" href="{{ route('app.dutys.index') }}">ภาระกิจหน้าที่</a>
+                            <a class="nav-link {{ Route::is('app.dutys*') ? 'active' : '' }}" href="{{ route('app.dutys.index') }}">อำนาจหน้าที่</a>
                             <a class="nav-link {{ Route::is('app.manageStructures*') ? 'active' : '' }}" href="{{ route('app.manageStructures.index') }}">โครงสร้างการบริหาร</a>
                             <a class="nav-link {{ Route::is('app.banners*') ? 'active' : '' }}" href="{{ route('app.banners.index') }}">แบนเนอร์</a>
                             <a class="nav-link {{ Route::is('app.personals*') ? 'active' : '' }}" href="{{ route('app.personals.index') }}">บุคลากร</a>
@@ -40,32 +40,33 @@
 
                 @if (Auth::user()->role->slug != 'โรงเรียน')
                     <div class="sb-sidenav-menu-heading">GENERAL</div>
-                    <a class="nav-link collapsed {{ Route::is('app.news*') || Route::is('app.videos*') || Route::is('app.notices*') || Route::is('app.jobs*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsGeneral" aria-expanded="false" aria-controls="collapseLayoutsGeneral">
+                    <a class="nav-link collapsed {{ Route::is('app.news*') || Route::is('app.videos*') || Route::is('app.notices*') || Route::is('app.jobs*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsGeneral" aria-expanded="false" aria-controls="collapseLayoutsGeneral">
                         <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
                         การใช้งานทั่วไป
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse {{ Route::is('app.news*') || Route::is('app.videos*') || Route::is('app.notices*') || Route::is('app.jobs*') ? 'show' : '' }}" id="collapseLayoutsGeneral" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse {{ Route::is('app.news*') || Route::is('app.videos*') || Route::is('app.notices*') || Route::is('app.jobs*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*')  ? 'show' : '' }}" id="collapseLayoutsGeneral" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link {{ Route::is('app.news*') ? 'active' : '' }}" href="{{ route('app.news.index') }}">กิจจกรรม สพป.</a>
                             <a class="nav-link {{ Route::is('app.videos*') ? 'active' : '' }}" href="{{ route('app.videos.index') }}">วิดีโอลิ้ง</a>
                             <a class="nav-link {{ Route::is('app.notices*') ? 'active' : '' }}" href="{{ route('app.notices.index') }}">ประชาสัมพันธ์</a>
                             <a class="nav-link {{ Route::is('app.jobs*') ? 'active' : '' }}" href="{{ route('app.jobs.index') }}">รับสมัครงาน</a>
+                            <a class="nav-link {{ Route::is('app.purchases*') ? 'active' : '' }}" href="{{ route('app.purchases.index') }}">จัดซื้อ-จัดจ้าง</a>
+                            <a class="nav-link {{ Route::is('app.paymentSlips*') ? 'active' : '' }}" href="{{ route('app.paymentSlips.index') }}">แจ้งการโอนเงิน</a>
+                            <a class="nav-link {{ Route::is('app.budgets*') ? 'active' : '' }}" href="{{ route('app.budgets.index') }}">งบทดลอง</a>
                         </nav>
                     </div>
 
                     <div class="sb-sidenav-menu-heading">ITA SETTING</div>
-                    <a class="nav-link collapsed {{ Route::is('app.intergrities*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsOTA" aria-expanded="false" aria-controls="collapseLayoutsOTA">
+                    <a class="nav-link collapsed {{ Route::is('app.intergrities*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsOTA" aria-expanded="false" aria-controls="collapseLayoutsOTA">
                         <div class="sb-nav-link-icon"><i class="fas fa-tasks"></i></div>
                         ตั้งค่าส่วน ITA
                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                     </a>
-                    <div class="collapse {{ Route::is('app.intergrities*') || Route::is('app.purchases*') || Route::is('app.paymentSlips*') || Route::is('app.budgets*') ? 'show' : '' }}" id="collapseLayoutsOTA" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                    <div class="collapse {{ Route::is('app.intergrities*') ? 'show' : '' }}" id="collapseLayoutsOTA" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link {{  Route::is('app.intergrities*') ? 'active' : '' }}" href="{{ route('app.intergrities.index') }}">ITA</a>
-                            <a class="nav-link {{ Route::is('app.purchases*') ? 'active' : '' }}" href="{{ route('app.purchases.index') }}">จัดซื้อ-จัดจ้าง</a>
-                            <a class="nav-link {{ Route::is('app.paymentSlips*') ? 'active' : '' }}" href="{{ route('app.paymentSlips.index') }}">แจ้งการโอนเงิน</a>
-                            <a class="nav-link {{ Route::is('app.budgets*') ? 'active' : '' }}" href="{{ route('app.budgets.index') }}">งบทดลอง</a>
+
                         </nav>
                     </div>
 
@@ -73,6 +74,10 @@
                     <a class="nav-link {{ Route::is('app.menuPersonalWorks*') ? 'active' : '' }}" href="{{ route('app.menuPersonalWorks.index') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-folder-minus"></i></div>
                         คู่มือปฎิบัติงานรายบุคคล
+                    </a>
+                    <a class="nav-link {{ Route::is('app.laws*') ? 'active' : '' }}" href="{{ route('app.laws.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-archway"></i></div>
+                        กฏหมายที่เกี่ยวข้อง
                     </a>
 
                     <div class="sb-sidenav-menu-heading">Complaint</div>

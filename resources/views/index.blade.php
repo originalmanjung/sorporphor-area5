@@ -1,102 +1,165 @@
 @extends('layouts.frontend.app')
 @push('css')
 <link rel="stylesheet" href="{{ asset('css/frontend/frontend-custom.css') }}">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endpush
 @push('js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" integrity="sha512-IsNh5E3eYy3tr/JiX2Yx4vsCujtkhwl7SLqgnwLNgf04Hrt9BT9SXlLlZlWx+OK4ndzAoALhsMNcCmkggjZB1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
+    /*------------------
+        Background Set
+    --------------------*/
+    $('.set-bg').each(function() {
+        var bg = $(this).data('setbg');
+        $(this).css('background-image', 'url(' + bg + ')');
+    });
+    /*------------------------
+    		Video Slider
+        ----------------------- */
+    $(".video-slider").owlCarousel({
+        items: 4
+        , dots: false
+        , autoplay: true
+        , margin: 0
+        , loop: true
+        , smartSpeed: 1200
+        , nav: true
+        , navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>']
+        , responsive: {
+            0: {
+                items: 1
+            , }
+            , 480: {
+                items: 2
+            , }
+            , 768: {
+                items: 3
+            , }
+            , 992: {
+                items: 4
+            , }
+        , }
+    });
 
+    /*------------------
+        Magnific Popup
+    --------------------*/
+    $('.video-popup').magnificPopup({
+        type: 'iframe'
+    });
+
+
+    var carousel = function() {
+		$('.carousel-testimony').owlCarousel({
+			center: true,
+			loop: true,
+            autoplay: true,
+			items:1,
+			margin: 30,
+			stagePadding: 0,
+            nav: false,
+            dots: true,
+			navText: ['<span class="ion-ios-arrow-back">', '<span class="ion-ios-arrow-forward">'],
+			responsive:{
+				0:{
+					items: 1
+				},
+				600:{
+					items: 2
+				},
+				1000:{
+					items: 3
+				}
+			}
+		});
+
+	};
+	carousel();
 </script>
 @endpush
 @section('content')
+
 <div class="slide-one-item home-slider owl-carousel">
-
-    <div class="site-blocks-cover inner-page overlay" style="background-image: url({{ asset('funder-template/images/hero_bg_1.jpg') }});" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-6" data-aos="fade">
-                    <h1 class="font-secondary font-weight-bold text-uppercase">Small Business Insurance Agency</h1>
-                    <span class="caption d-block text-white">An Insurance Company</span>
+    @if ($bannercarousels->isNotEmpty())
+        @foreach ($bannercarousels as $carousel)
+        <div class="site-blocks-cover inner-page overlay" style="background-image: url({{ asset('storage/banner_files/'. $carousel->file) }})" data-aos="fade" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7 text-center" data-aos="fade">
+                        <h1 class="font-secondary font-weight-bold text-uppercase">{{ $carousel->name ?? ''}}</h1>
+                        <span class="caption d-block text-white">{{ $carousel->description ?? '' }}</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="site-blocks-cover inner-page overlay" style="background-image: url({{ asset('funder-template/images/hero_bg_2.jpg') }});" data-aos="fade" data-stellar-background-ratio="0.5">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-7 text-center" data-aos="fade">
-                    <h1 class="font-secondary font-weight-bold text-uppercase">Insurance Coverage To Meet Your Needs</h1>
-                    <span class="caption d-block text-white">You Will Love Our Services</span>
+        @endforeach
+    @else
+        <div class="site-blocks-cover inner-page overlay" style="background-image: url({{ config('app.placeholder').'1920x1128.png' }})" data-aos="fade" data-stellar-background-ratio="0.5">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-md-7 text-center" data-aos="fade">
+                        <h1 class="font-secondary font-weight-bold text-uppercase">ยังไม่มีข้อมูลหัวข้อเรื่อง</h1>
+                        <span class="caption d-block text-white">ยังไม่มีข้อมูลคอนเทนต์</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    @endif
+
 </div>
-
-
 
 <!-- กลุ่มผู้บริหาร สพป. -->
-<div class="site-section block-14 nav-direction-white">
-
+<section class="ftco-section">
     <div class="container">
-
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <h2 class="site-section-heading text-center text-uppercase">Testimonies</h2>
+        <div class="row" style="margin-top:130px;">
+            <div class="col-md-12 text-center mb-5">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">WELCOME</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">คณะผู้บริหาร สพป.เชียงใหม่ เขต 5</h2>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-12 ftco-animate">
+                <div class="carousel-testimony owl-carousel mb-5">
+                    @if($personals->isNotEmpty())
+                        @foreach ($personals as $personal)
+                            <div class="item">
+                                <div class="speaker">
+                                    <img src="@if(!empty($personal->avatar)) {{ asset('storage/personal_avatars/'. $personal->avatar) }}  @else {{ config('app.placeholder').'800x852.png' }}@endif" class="img-fluid" alt="Colorlib HTML5 Template">
+                                    <div class="text text-center py-3">
+                                        <h3>{{ $personal->name ?? '' }}</h3>
+                                        <span class="position">{{ $personal->position_general ?? '' }}</span>
+                                        <ul class="ftco-social mt-3">
+                                            <li class="ftco-animate"><a href="{{ $personal->twitter ?? '' }}"><span class="icon-twitter"></span></a></li>
+                                            <li class="ftco-animate"><a href="{{ $personal->facebook ?? '' }}"><span class="icon-facebook"></span></a></li>
+                                            <li class="ftco-animate"><a href="{{ $personal->instagram ?? '' }}"><span class="icon-instagram"></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
 
-        <div class="nonloop-block-14 owl-carousel">
+                    @endif
+                    {{-- <div class="item">
+                        <div class="speaker">
+                            <img src="{{ asset('images/teams/speaker-1.jpg') }}" class="img-fluid" alt="Colorlib HTML5 Template">
+                            <div class="text text-center py-3">
+                                <h3>John Adams</h3>
+                                <span class="position">Web Developer</span>
+                                <ul class="ftco-social mt-3">
+                                    <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                                    <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> --}}
 
-            <div class="">
-                <div class="d-block block-testimony w-75 mx-auto text-center">
-                    <div class="person w-25 mx-auto mb-4">
-                        <img src="{{ asset('funder-template/images/person_1.jpg') }}" alt="Image" class="img-fluid rounded-circle">
-                    </div>
-                    <div>
-                        <h2 class="h5 mb-2">Katie Johnson</h2>
-                        <h2 class="h6 text-secondary">System Analesis</h2>
-                    </div>
                 </div>
             </div>
-            <div class="p-5">
-                <div class="d-block block-testimony w-75 mx-auto text-center">
-                    <div class="person w-25 mx-auto mb-4">
-                        <img src="{{ asset('funder-template/images/person_2.jpg') }}" alt="Image" class="img-fluid rounded-circle">
-                    </div>
-                    <div>
-                        <h2 class="h5 mb-4">Jun Mars</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="p-5">
-                <div class="d-block block-testimony w-75 mx-auto text-center">
-                    <div class="person w-25 mx-auto mb-4">
-                        <img src="{{ asset('funder-template/images/person_3.jpg') }}" alt="Image" class="img-fluid rounded-circle">
-                    </div>
-                    <div>
-                        <h2 class="h5 mb-4">Shane Holmes</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="p-5">
-                <div class="d-block block-testimony w-75 mx-auto text-center">
-                    <div class="person w-25 mx-auto mb-4">
-                        <img src="{{ asset('funder-template/images/person_4.jpg') }}" alt="Image" class="img-fluid rounded-circle">
-                    </div>
-                    <div>
-                        <h2 class="h5 mb-4">Mark Johnson</h2>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
     </div>
-
-</div>
+</section>
 <!-- สิ้นสุด กลุ่มผู้บริหาร สพป. -->
 
 <!-- กิจกรรม สพป. -->
@@ -109,111 +172,92 @@
             </div>
         </div>
         <div class="row">
+
             <div class="col-md-12 block-13 nav-direction-white">
                 <div class="nonloop-block-13 owl-carousel">
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_1.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Home Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+
+                    @if ($news->isNotEmpty())
+                        @foreach ($news as $newsItem)
+                        <div class="media-image card w-100 h-100  border-0">
+                            <a class="wrap-card-img" href="{{ route('newsShow', $newsItem->slug) }}"><img src="@if($newsItem->newsphotos->isNotEmpty()) {{ asset('storage/news_photos/'. $newsItem->newsphotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
+                            <div class="media-image-body card-body">
+                              <h2 class="card-title">{{ Str::limit($newsItem->title, 65) ?? '' }}</h2>
+                              <p class="card-text">{{ Str::limit($newsItem->description, 120) ?? '' }}</p>
+                            </div>
+                            <div class="p-4 mb-3">
+                                <a href="{{ route('newsShow', $newsItem->slug) }}" class="btn btn-primary text-white px-4"><span >อ่านเพิ่มเติม</span></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_2.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Auto Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                    @endforeach
+                    @else
+                        <div class="media-image card w-100 h-100  border-0">
+                            <img src="{{ config('app.placeholder').'1024x768.png' }}" alt="Image" class="img-fluid">
+                            <div class="media-image-body card-body">
+                                <h5 class="card-title">ไม่พบข้อมูล</h5>
+                                <p class="card-text">ไม่พบข้อมูล</p>
+                                <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">อ่านเพิ่มเติม</span></a></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_3.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Travel Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_1.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Home Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_2.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Auto Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_3.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Travel Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
+                    @endif
+
                 </div>
-                <p class="mt-5" align="center"><a href="#" class="btn btn-outline-primary py-2 px-4">Insured Yours Now</a></p>
+                @if ($news->isNotEmpty())
+                <p class="mt-5" align="center"><a href="{{ route('newsAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @endif
+
             </div>
         </div>
     </div>
 </div>
 <!-- สิ้นสุด กิจกรรม สพป. -->
 
-<!-- Video -->
-<div class="site-section" id="about-section">
+<!-- Video Section Begin -->
+<section class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center mb-5">
                 <span class="caption d-block mb-2 font-secondary font-weight-bold">VIDEO &amp; VTR</span>
                 <h2 class="site-section-heading text-uppercase text-center font-secondary">วีดีโอ สพป.เชียงใหม่ เขต 5</h2>
             </div>
         </div>
-        <div class="row block-img-video-1-wrap">
-            <div class="col-md-6 mb-5">
-                <figure class="block-img-video-1">
-                    <a href="https://www.youtube.com/watch?v=fLCjQJCekTs" data-fancybox data-ratio="2">
-                        <span class="icon"><span class="icon-play"></span></span>
-                        <img src="{{ asset('funder-template/images/cargo_delivery_big.jpg') }}" alt="Image" class="img-fluid">
-                    </a>
-                </figure>
+        <div class="row">
+            <div class="video-slider owl-carousel">
+
+
+                @if ($videos->isNotEmpty())
+                    @foreach ($videos as $video)
+                    <div class="col-lg-3">
+                        <div class="video-item set-bg" data-setbg="{{ asset('storage/video_photos/' .$video->filename) }}">
+                            <div class="vi-title">
+                                <h5>A World Of Infinite Opportunities</h5>
+                            </div>
+                            <a href="{{ $video->url }}" class="play-btn video-popup"><img src="{{ asset('images/videos/play.png') }}" alt=""></a>
+                            <div class="vi-time">{{ $video->user->name }}</div>
+                        </div>
+                    </div>
+                    @endforeach
+                @else
+                <div class="col-lg-3">
+                        <div class="video-item set-bg" data-setbg="{{ config('app.placeholder').'200x200.png' }}">
+                            <div class="vi-title">
+                                <h5>Title not fund.</h5>
+                            </div>
+                            <a href="" class="play-btn video-popup"><img src="{{ asset('images/videos/play.png') }}" alt=""></a>
+                            <div class="vi-time">author not fund</div>
+                        </div>
+                    </div>
+                @endif
+
             </div>
-            <div class="col-md-6 mb-5">
-                <figure class="block-img-video-1">
-                    <a href="https://www.youtube.com/watch?v=fLCjQJCekTs" data-fancybox data-ratio="2">
-                        <span class="icon"><span class="icon-play"></span></span>
-                        <img src="{{ asset('funder-template/images/cargo_delivery_big.jpg') }}" alt="Image" class="img-fluid">
-                    </a>
-                </figure>
-            </div>
-            <div class="col-md-6 mb-5">
-                <figure class="block-img-video-1">
-                    <a href="https://www.youtube.com/watch?v=fLCjQJCekTs" data-fancybox data-ratio="2">
-                        <span class="icon"><span class="icon-play"></span></span>
-                        <img src="{{ asset('funder-template/images/cargo_delivery_big.jpg') }}" alt="Image" class="img-fluid">
-                    </a>
-                </figure>
-            </div>
-            <div class="col-md-6 mb-5">
-                <figure class="block-img-video-1">
-                    <a href="https://www.youtube.com/watch?v=fLCjQJCekTs" data-fancybox data-ratio="2">
-                        <span class="icon"><span class="icon-play"></span></span>
-                        <img src="{{ asset('funder-template/images/cargo_delivery_big.jpg') }}" alt="Image" class="img-fluid">
-                    </a>
-                </figure>
-            </div>
+
+
+            @if ($videos->isNotEmpty())
+            <p class="mt-5 mx-auto" align="center"><a href="{{ route('newsAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+            @endif
         </div>
-        <p class="mt-3" align="center"><a href="#" class="btn btn-outline-primary py-2 px-4">Insured Yours Now</a></p>
     </div>
-</div>
-<!-- end of video -->
+</section>
+<!-- Video Section End -->
 
 <!-- กิจกรรม โรงเรียน. -->
 <div class="site-section bg-light">
@@ -227,209 +271,117 @@
         <div class="row">
             <div class="col-md-12 block-13 nav-direction-white">
                 <div class="nonloop-block-13 owl-carousel">
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_1.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Home Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                    @if ($blogschools->isNotEmpty())
+                        @foreach ($blogschools as $blogschool)
+                        <div class="media-image card w-100 h-100  border-0">
+                            <a class="wrap-card-img" href="{{ route('blogschoolShow', $blogschool->slug) }}"><img src="@if($blogschool->blogSchoolPhotos->isNotEmpty()) {{ asset('storage/blogschool_photos/'. $blogschool->blogSchoolPhotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
+                            <div class="media-image-body card-body">
+                              <h2 class="card-title">{{ Str::limit($blogschool->title, 65) ?? '' }}</h2>
+                              <p class="card-text">{{ Str::limit($blogschool->description, 120) ?? '' }}</p>
+                            </div>
+                            <div class="p-4 mb-3">
+                                <a href="{{ route('blogschoolShow', $blogschool->slug) }}" class="btn btn-primary text-white px-4"><span >อ่านเพิ่มเติม</span></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_2.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Auto Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
+                    @endforeach
+                    @else
+                        <div class="media-image card w-100 h-100  border-0">
+                            <img src="{{ config('app.placeholder').'1024x768.png' }}" alt="Image" class="img-fluid">
+                            <div class="media-image-body card-body">
+                                <h5 class="card-title">ไม่พบข้อมูล</h5>
+                                <p class="card-text">ไม่พบข้อมูล</p>
+                                <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">อ่านเพิ่มเติม</span></a></p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_3.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Travel Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_1.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Home Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_2.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Auto Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
-                    <div class="media-image">
-                        <img src="{{ asset('funder-template/images/img_3.jpg') }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body">
-                            <h2 class="font-secondary text-uppercase">Travel Insurance</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, voluptate.</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">Learn More</span></a></p>
-                        </div>
-                    </div>
+                    @endif
                 </div>
+                @if ($blogschools->isNotEmpty())
+                <p class="mt-5" align="center"><a href="{{ route('blogschoolAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @endif
             </div>
         </div>
-        <p class="mt-5" align="center"><a href="#" class="btn btn-outline-primary py-2 px-4">Insured Yours Now</a></p>
     </div>
 </div>
 <!-- สิ้นสุด กิจกรรม โรงเรียน. -->
 
 <!-- ITA -->
-<section class="site-section ftco-section ftco-faqs">
+<div class="faqs">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">PUBLIC DISCLOSURE OF INFORMATION</span>
-                <h2 class="site-section-heading text-uppercase text-center font-secondary">การเปิดเผยข้อมูลสาธารณะ</h2>
-            </div>
+        <div class="section-header text-center mb-5 mt-5">
+            <span class="caption d-block mb-2 font-secondary font-weight-bold">PUBLIC DISCLOSURE OF INFORMATION</span>
+            <h2 class="site-section-heading text-uppercase text-center font-secondary">การเปิดเผยข้อมูลสาธารณะ</h2>
         </div>
-        <div class="row mt-4">
-
-            <div class="col-lg-6">
-                <div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
-
-                    <div class="card">
-                        <div class="card-header p-0" id="headingTwo" role="tab">
-                            <h2 class="mb-0">
-                                <button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
-                                    <p class="mb-0">How to manage your pets?</p>
-                                    <i class="fa" aria-hidden="true"></i>
-                                </button>
-                            </h2>
-                        </div>
-                        <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="card-body py-3 px-0">
-                                <ol>
-                                    <li>Far far away, behind the word mountains</li>
-                                    <li>Consonantia, there live the blind texts</li>
-                                    <li>When she reached the first hills of the Italic Mountains</li>
-                                    <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                    <li>Separated they live in Bookmarksgrove right</li>
-                                </ol>
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <div id="accordion-1">
+                    <div class="card wow fadeInRight" data-wow-delay="0.1s">
+                        @foreach ($intergrities->slice(0, 7) as $key => $intergrity)
+                            <div class="card-header">
+                                <a class="card-link collapsed" data-toggle="collapse" href="#collapse{{ $key }}">
+                                    {{ $intergrity->name }}
+                                </a>
                             </div>
-                        </div>
-                    </div>
+                            <div id="collapse{{ $key }}" class="collapse" data-parent="#accordion-2">
+                                <div class="card-body">
+                                    @if($intergrity->children->count() > 0)
+                                        @foreach($intergrity->children as $child)
+                                            <ul style="list-style-type: square;">
+                                                <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><a class="text-primary" @if(!empty($child->url))href="{{ $child->url}}"@endif target="_blank">{{ $child->name }} @if(!empty($child->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($child->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                            </ul>
+                                            @foreach($child->children as $subchild)
+                                                <ul style="list-style-type: circle;">
+                                                    <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px; margin-left:25px;"><a class="text-dark" @if(!empty($subchild->url))href="{{ $subchild->url}}"@endif @if(!empty($subchild->file))href="{{ route('showPDF',$subchild->id) }}"@endif target="_blank">{{ $subchild->name }} @if(!empty($subchild->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($subchild->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
 
-                    <div class="card">
-                        <div class="card-header p-0" id="headingThree" role="tab">
-                            <h2 class="mb-0">
-                                <button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
-                                    <p class="mb-0">What is the best grooming for your pets?</p>
-                                    <i class="fa" aria-hidden="true"></i>
-                                </button>
-                            </h2>
-                        </div>
-                        <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="card-body py-3 px-0">
-                                <ol>
-                                    <li>Far far away, behind the word mountains</li>
-                                    <li>Consonantia, there live the blind texts</li>
-                                    <li>When she reached the first hills of the Italic Mountains</li>
-                                    <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                    <li>Separated they live in Bookmarksgrove right</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+                                                </ul>
+                                            @endforeach
 
-                    <div class="card">
-                        <div class="card-header p-0" id="headingFour" role="tab">
-                            <h2 class="mb-0">
-                                <button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
-                                    <p class="mb-0">What are those requirements for sitting pets?</p>
-                                    <i class="fa" aria-hidden="true"></i>
-                                </button>
-                            </h2>
-                        </div>
-                        <div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="card-body py-3 px-0">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                    right at the coast of the Semantics, a large language ocean.</p>
+                                        @endforeach
+                                        @else
+                                            <strong class="text-center">ไม่พบข้อมูล</strong>
+                                        @endif
+                                </div>
                             </div>
-                        </div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
-
-                    <div class="card">
-                        <div class="card-header p-0" id="headingTwo" role="tab">
-                            <h2 class="mb-0">
-                                <button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
-                                    <p class="mb-0">How to manage your pets?</p>
-                                    <i class="fa" aria-hidden="true"></i>
-                                </button>
-                            </h2>
-                        </div>
-                        <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="card-body py-3 px-0">
-                                <ol>
-                                    <li>Far far away, behind the word mountains</li>
-                                    <li>Consonantia, there live the blind texts</li>
-                                    <li>When she reached the first hills of the Italic Mountains</li>
-                                    <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                    <li>Separated they live in Bookmarksgrove right</li>
-                                </ol>
+            <div class="col-md-6">
+                <div id="accordion-2">
+                    <div class="card wow fadeInRight" data-wow-delay="0.1s">
+                        @foreach ($intergrities->slice(7, 10) as $key => $intergrity)
+                            <div class="card-header">
+                                <a class="card-link collapsed" data-toggle="collapse" href="#collapse{{ $key }}">
+                                    {{ $intergrity->name }}
+                                </a>
                             </div>
-                        </div>
-                    </div>
+                            <div id="collapse{{ $key }}" class="collapse" data-parent="#accordion-2">
+                                <div class="card-body">
+                                    @if($intergrity->children->count() > 0)
+                                        @foreach($intergrity->children as $child)
+                                            <ul style="list-style-type: square;">
+                                                <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><a class="text-primary" @if(!empty($child->url))href="{{ $child->url}}"@endif target="_blank">{{ $child->name }} @if(!empty($child->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($child->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                            </ul>
+                                            @foreach($child->children as $subchild)
+                                                <ul style="list-style-type: circle;">
+                                                    <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px; margin-left:25px;"><a class="text-dark" @if(!empty($subchild->url))href="{{ $subchild->url}}"@endif @if(!empty($subchild->file))href="{{ route('showPDF',$subchild->id) }}"@endif target="_blank">{{ $subchild->name }} @if(!empty($subchild->file)) <i class="fas fa-file-pdf"></i> @endif @if(!empty($subchild->url)) <i class="fas fa-angle-double-left"></i> @endif</a></li>
+                                                </ul>
+                                            @endforeach
 
-                    <div class="card">
-                        <div class="card-header p-0" id="headingThree" role="tab">
-                            <h2 class="mb-0">
-                                <button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
-                                    <p class="mb-0">What is the best grooming for your pets?</p>
-                                    <i class="fa" aria-hidden="true"></i>
-                                </button>
-                            </h2>
-                        </div>
-                        <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="card-body py-3 px-0">
-                                <ol>
-                                    <li>Far far away, behind the word mountains</li>
-                                    <li>Consonantia, there live the blind texts</li>
-                                    <li>When she reached the first hills of the Italic Mountains</li>
-                                    <li>Bookmarksgrove, the headline of Alphabet Village</li>
-                                    <li>Separated they live in Bookmarksgrove right</li>
-                                </ol>
+                                        @endforeach
+                                        @else
+                                            <strong class="text-center">ไม่พบข้อมูล</strong>
+                                        @endif
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        @endforeach
 
-                    <div class="card">
-                        <div class="card-header p-0" id="headingFour" role="tab">
-                            <h2 class="mb-0">
-                                <button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
-                                    <p class="mb-0">What are those requirements for sitting pets?</p>
-                                    <i class="fa" aria-hidden="true"></i>
-                                </button>
-                            </h2>
-                        </div>
-                        <div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
-                            <div class="card-body py-3 px-0">
-                                <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                    Consonantia, there live the blind texts. Separated they live in Bookmarksgrove
-                                    right at the coast of the Semantics, a large language ocean.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
-</section>
+</div>
 <!-- สิ้นสุด ITA -->
 
 <!-- ประชาสัมพันธ์ รับสมัครงาน จัดซื้อ-จัดจ้าง แจ้งโอนเงิน -->
@@ -463,37 +415,154 @@
             </div>
             <div class="col-md-8">
                 <div class="tab-content">
-                    <div class="tab-pane container p-0 active" id="services-1">
-                        <h3><a href="#">Relation Problem</a></h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.</p>
+
+                    <!-- ประชาสัมพันธ์-->
+                    @if ($notices->isNotEmpty())
+                        @foreach ($notices as $notice)
+                            <div class="tab-pane container active" id="services-1">
+                                <div class="card p-4">
+                                    <span class="time">{{ $notice->created_at->format('d/m/Y') }}</span>
+                                    <h3><a href="{{ route('noticeShow', $notice->slug) }}">{{ Str::limit($notice->name, 80) }}</a></h3>
+                                    <p>{{ Str::limit($notice->description, 150) }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="">
+                                            <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $notice->user->name }}</span></h6>
+                                        </div>
+                                        <div><a style="color:#fd7e14;" href="#">Download</a></div>
+                                    </div>
+                                </div>
+
+                                @if ($notices->isNotEmpty())
+                                    <p class="mt-5" align="center"><a href="{{ route('noticeAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                                @endif
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="tab-pane container fade" id="services-1">
+                            <div class="card p-4">
+                                <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
+                            </div>
+                        </div>
+                    @endif
+
+                    <!-- รับสมัครงาน-->
+                    @if ($jobs->isNotEmpty())
+                        @foreach ($jobs as $job)
+                            <div class="tab-pane container fade" id="services-2">
+                                <div class="card p-4">
+                                    <span class="time">{{ $job->created_at->format('d/m/Y') }}</span>
+                                    <h3><a href="{{ route('jobShow', $job->slug) }}">{{ Str::limit($job->name, 80) }}</a></h3>
+                                    <p>{{ Str::limit($job->description, 150) }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="">
+                                            <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $job->user->name }}</span></h6>
+                                        </div>
+                                        <div><a style="color:#fd7e14;" href="#">Download</a></div>
+                                    </div>
+                                </div>
+
+                                @if ($jobs->isNotEmpty())
+                                    <p class="mt-5" align="center"><a href="{{ route('jobAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                                @endif
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="tab-pane container fade" id="services-2">
+                            <div class="card p-4">
+                                <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
+                            </div>
+                        </div>
+                    @endif
+
+
+                    <!-- จัดซื้อ-จัดจ้าง-->
+
+                    @if ($purchases->isNotEmpty())
+                        @foreach ($purchases as $purchase)
+                            <div class="tab-pane container" id="services-3">
+                                <div class="card p-4">
+                                    <span class="time">{{ $purchase->created_at->format('d/m/Y') }}</span>
+                                    <h3><a href="{{ route('purchaseShow', $purchase->slug) }}">{{ Str::limit($purchase->name, 80) }}</a></h3>
+                                    <p>{{ Str::limit($purchase->description, 150) }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="">
+                                            <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $purchase->user->name }}</span></h6>
+                                        </div>
+                                        <div><a style="color:#fd7e14;" href="#">Download</a></div>
+                                    </div>
+                                </div>
+
+                                @if ($purchases->isNotEmpty())
+                                    <p class="mt-5" align="center"><a href="{{ route('purchaseAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                                @endif
+                            </div>
+                        @endforeach
+                    @else
+                    <div class="tab-pane container fade" id="services-3">
+                        <div class="card p-4">
+                            <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
+                        </div>
                     </div>
-                    <div class="tab-pane container p-0 fade" id="services-2">
-                        <h3><a href="#">Couples Counseling</a></h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.</p>
-                    </div>
-                    <div class="tab-pane container p-0 fade" id="services-3">
-                        <h3><a href="#">Depression Treatment</a></h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.</p>
-                    </div>
-                    <div class="tab-pane container p-0 fade" id="services-4">
-                        <h3><a href="#">Family Problem</a></h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.</p>
-                    </div>
-                    <div class="tab-pane container p-0 fade" id="services-5">
-                        <h3><a href="#">Personal Problem</a></h3>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                            there live the blind texts. Separated they live in Bookmarksgrove right at the coast of
-                            the Semantics, a large language ocean.</p>
-                    </div>
+                    @endif
+
+                    <!-- แจ้งการโอนเงิน-->
+                    @if ($paymentSlips->isNotEmpty())
+                        @foreach ($paymentSlips as $paymentSlip)
+                            <div class="tab-pane container active" id="services-4">
+                                <div class="card p-4">
+                                    <span class="time">{{ $paymentSlip->created_at->format('d/m/Y') }}</span>
+                                    <h3><a href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">{{ Str::limit($paymentSlip->name, 80) }}</a></h3>
+                                    <p>{{ Str::limit($paymentSlip->description, 150) }}</p>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="">
+                                            <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $paymentSlip->user->name }}</span></h6>
+                                        </div>
+                                        <div><a style="color:#fd7e14;" href="#">Download</a></div>
+                                    </div>
+                                </div>
+
+                                @if ($paymentSlips->isNotEmpty())
+                                    <p class="mt-5" align="center"><a href="{{ route('paymentSlipAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                                @endif
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="tab-pane container fade" id="services-4">
+                            <div class="card p-4">
+                                <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
+                            </div>
+                        </div>
+                    @endif
+                     <!-- งบทดลอง-->
+                     @if ($budgets->isNotEmpty())
+                     @foreach ($budgets as $budget)
+                         <div class="tab-pane container active" id="services-5">
+                             <div class="card p-4">
+                                 <span class="time">{{ $budget->created_at->format('d/m/Y') }}</span>
+                                 <h3><a href="{{ route('budgetShow', $budget->slug) }}">{{ Str::limit($budget->name, 80) }}</a></h3>
+                                 <p>{{ Str::limit($budget->description, 150) }}</p>
+                                 <div class="d-flex justify-content-between">
+                                     <div class="">
+                                         <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $budget->user->name }}</span></h6>
+                                     </div>
+                                     <div><a style="color:#fd7e14;" href="#">Download</a></div>
+                                 </div>
+                             </div>
+
+                             @if ($budgets->isNotEmpty())
+                                 <p class="mt-5" align="center"><a href="{{ route('budgetAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                             @endif
+                         </div>
+                     @endforeach
+                 @else
+                     <div class="tab-pane container fade" id="services-5">
+                         <div class="card p-4">
+                             <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
+                         </div>
+                     </div>
+                 @endif
                 </div>
+
             </div>
         </div>
     </div>
@@ -510,178 +579,135 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial bg-white h-100">
-                    <blockquote class="mb-3">
-                        <p>&ldquo;Far far away, behind the word mountains, <strong>far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</strong> right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-                    </blockquote>
-                    <div class="d-flex align-items-center vcard">
-                        <figure class="mb-0 mr-3">
-                            <img src="{{ asset('funder-template/images/person_3.jpg') }}" alt="Image" class="img-fluid ounded-circle">
-                        </figure>
-                        <div class="vcard-text">
-                            <span class="d-block">Jacob Spencer</span>
-                            <span class="position">Web Designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial bg-white h-100">
-                    <blockquote class="mb-3">
-                        <p>&ldquo;A small river named Duden <strong>flows by their place and supplies it with the necessary regelialia</strong>. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
-                    </blockquote>
-                    <div class="d-flex align-items-center vcard">
-                        <figure class="mb-0 mr-3">
-                            <img src="{{ asset('funder-template/images/person_4.jpg') }}" alt="Image" class="img-fluid ounded-circle">
-                        </figure>
-                        <div class="vcard-text">
-                            <span class="d-block">Jean Smith</span>
-                            <span class="position">Web Designer</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial bg-white h-100">
-                    <blockquote class="mb-3">
-                        <p>&ldquo;A small river named Duden <strong>flows by their place and supplies it with the necessary regelialia</strong>. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.&rdquo;</p>
-                    </blockquote>
-                    <div class="d-flex align-items-center vcard">
-                        <figure class="mb-0 mr-3">
-                            <img src="{{ asset('funder-template/images/person_4.jpg') }}" alt="Image" class="img-fluid ounded-circle">
-                        </figure>
-                        <div class="vcard-text">
-                            <span class="d-block">Jean Smith</span>
-                            <span class="position">Web Designer</span>
-                        </div>
-                    </div>
-                </div>
+            @if ($noticeSchools->isNotEmpty())
+                @foreach ($noticeSchools as $noticeSchool)
+                    <a href="{{ route('noticeSchoolShow',$noticeSchool->slug ) }}" class="col-lg-6 mb-4">
+                        <div class="testimonial bg-white h-100">
+                            <h5 class="card-title">{{ Str::limit($noticeSchool->name, 70) }}</h5>
+                            <blockquote class="mb-3">
+                                <p>&ldquo;{{ Str::limit($noticeSchool->description, 150) }}&rdquo;</p>
+                            </blockquote>
+                            <div class="d-flex align-items-center vcard">
+                                <figure class="mb-0 mr-3">
+                                    <img src="@if(!empty($noticeSchool->user->avatar)) {{ asset('storage/user_avatars/'. $noticeSchool->user->avatar) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid ounded-circle">
 
-            </div>
-            <div class="col-lg-6 mb-4">
-                <div class="testimonial bg-white h-100">
-                    <blockquote class="mb-3">
-                        <p>&ldquo;Far far away, behind the word mountains, <strong>far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove</strong> right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-                    </blockquote>
-                    <div class="d-flex align-items-center vcard">
-                        <figure class="mb-0 mr-3">
-                            <img src="{{ asset('funder-template/images/person_3.jpg') }}" alt="Image" class="img-fluid ounded-circle">
-                        </figure>
-                        <div class="vcard-text">
-                            <span class="d-block">Jacob Spencer</span>
-                            <span class="position">Web Designer</span>
+                                </figure>
+                                <div class="vcard-text">
+                                    <span class="d-block">{{ $noticeSchool->user->name }}</span>
+                                    <span class="position">{{ $noticeSchool->user->role->name }}</span>
+                                </div>
+                            </div>
                         </div>
+                    </a>
+                @endforeach
+            @else
+                <div class="mx-auto">
+                    <div class="card-body">
+                        <h3 class="card-title text-muted">ไม่พบข้อมูล</h3>
                     </div>
                 </div>
-            </div>
-            <p class="mt-5 mx-auto" align="center"><a href="#" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+            @endif
+
+            @if ($noticeSchools->isNotEmpty() && $noticeSchools->count() > 4)
+                <div class="col-12 mx-auto">
+                    <p class="mt-5" align="center"><a href="{{ route('noticeSchoolAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                </div>
+            @endif
+
         </div>
     </div>
 </div>
 <!-- สิ้นสุดประชาสัมพันธ์โรงเรียน-->
 
 
-
-
-
-
-<div class="site-half">
-    <div class="img-bg-1 right" style="background-image: url('{{ asset('funder-template/images/hero_bg_1.jpg') }}');"></div>
-    <div class="container">
-        <div class="row no-gutters align-items-stretch">
-            <div class="col-md-5 mr-md-auto py-5">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">Outstanding Services</span>
-                <h2 class="site-section-heading text-uppercase font-secondary mb-5">Why Choose Us</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus aliquid eius facilis voluptatem eligendi magnam accusamus vel commodi asperiores sint rem reprehenderit nobis nesciunt veniam qui fugit doloremque numquam quod.</p>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur tempora distinctio ipsam nesciunt recusandae repellendus asperiores amet.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="site-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-12 text-center">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">Outstanding Services</span>
-                <h2 class="site-section-heading text-uppercase text-center font-secondary">Why Choose Us</h2>
-            </div>
-        </div>
-        <div class="row border-responsive">
-            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 border-right">
-                <div class="text-center">
-                    <span class="flaticon-customer-service display-4 d-block mb-3 text-primary"></span>
-                    <h3 class="text-uppercase h4 mb-3">24/7 Support</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nobis?</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 border-right">
-                <div class="text-center">
-                    <span class="flaticon-group display-4 d-block mb-3 text-primary"></span>
-                    <h3 class="text-uppercase h4 mb-3">Trusted People</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nobis?</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0 border-right">
-                <div class="text-center">
-                    <span class="flaticon-medal display-4 d-block mb-3 text-primary"></span>
-                    <h3 class="text-uppercase h4 mb-3">12 Years Experience</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nobis?</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3 mb-4 mb-lg-0">
-                <div class="text-center">
-                    <span class="flaticon-agreement display-4 d-block mb-3 text-primary"></span>
-                    <h3 class="text-uppercase h4 mb-3">Join With Us</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque, nobis?</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="site-section">
+<!-- service_area_start -->
+<section class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <p class="mb-5"><img src="{{ asset('funder-template/images/img_1.jpg') }}" alt="Image" class="img-fluid"></p>
-            </div>
-            <div class="col-lg-5 ml-auto">
-                <h2 class="site-section-heading mb-3 font-secondary text-uppercase">Thousands of Houses Damage Each Year</h2>
-                <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim ad, tempora incidunt accusantium. Similique magni quaerat beatae illo aliquid. Libero non ipsa nisi, corporis architecto incidunt rem repellendus asperiores numquam!</p>
-                <p><a href="#" class="btn btn-outline-primary py-2 px-4">Insured Yours Now</a></p>
+            <div class="col-md-12 mb-4 text-center">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">E-SERVICES</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">ระบบภายในสำนักงาน</h2>
             </div>
         </div>
-    </div>
-</div>
+        <div class="row no-gutters">
+            <div class="col-lg-4 d-flex">
 
-<div class="site-section" style="background-image: url('{{ asset('funder-template/images/topography.png') }}'); background-attachment: fixed">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md-12">
-                <h2 class="site-section-heading text-center text-uppercase">Our Founders</h2>
+                <a href="#" class="services-2 noborder-left text-center ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-keyboard"></i></span></div>
+                    <div class="text media-body">
+                        <h3>ช่องทางแจ้งเรื่องร้องเรียนการทุจริตและประพฤติมิชอบ</h3>
+                    </div>
+                </a>
             </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-md-6 text-center">
-                <img src="{{ asset('funder-template/images/person_2.jpg') }}" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-                <h2 class="h5 ">Alex Peters</h2>
-                <span class="d-block mb-4">CEO, Co-Founder</span>
-                <p class="font-weig mb-5 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita et aliquam fuga dicta amet ad laborum error recusandae, voluptatibus quam minima sed, saepe odio voluptatem. Sed unde hic, vitae fugiat.</p>
-            </div>
-            <div class="col-md-6 text-center">
-                <img src="{{ asset('funder-template/images/person_3.jpg') }}" alt="Image" class="img-fluid rounded-circle w-25 mb-4">
-                <h2 class="h5">Shane Cripton</h2>
-                <span class="d-block mb-4">President, Co-Founder</span>
-                <p class="font-weig mb-5 lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita et aliquam fuga dicta amet ad laborum error recusandae, voluptatibus quam minima sed, saepe odio voluptatem. Sed unde hic, vitae fugiat.</p>
-            </div>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-book"></i></span></div>
+                    <div class="text media-body">
+                        <h3>คู่มือ/มาตรฐานการปฏิบัติงานของกลุ่ม/หน่วย/บุคลากร</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-insurance"><i class="fas fa-atlas"></i></span></div>
+                    <div class="text media-body">
+                        <h3>คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 noborder-left noborder-bottom text-center ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-money"><i class="fas fa-chart-line"></i></span></div>
+                    <div class="text media-body">
+                        <h3>การบริหารงานตามแผนงานและการรายงานผล</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-rating"><i class="fas fa-coins"></i></span></div>
+                    <div class="text media-body">
+                        <h3>การบริหารเงินงบประมาณ &amp; การรายงานผล</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-cubes"></i></span></div>
+                    <div class="text media-body">
+                        <h3>การจัดซื้อจัดจ้าง&amp;จัดหาพัสดุและรายงานผล</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-users"></i></span></div>
+                    <div class="text media-body">
+                        <h3>การบริหารและพัฒนาทรัพยากรบุคคลและการรายงานผล</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-handshake"></i></span></div>
+                    <div class="text media-body">
+                        <h3>เปิดโอกาศการมีส่วนร่วมในการขับเคลื่อนองค์กร</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-fist-raised"></i></span></div>
+                    <div class="text media-body">
+                        <h3>ประกาศเจตจำนงสุจริตในการบริหาร</h3>
+                    </div>
+                </div>
+            </a>
         </div>
     </div>
-</div>
+</section>
+<!-- service_area_end -->
 
 
 <div class="py-5 bg-primary">

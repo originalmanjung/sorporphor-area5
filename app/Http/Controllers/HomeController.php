@@ -13,6 +13,7 @@ use App\Models\BlogSchool;
 use App\Models\Banner;
 use App\Models\Intergrity;
 use App\Models\Video;
+use App\Models\Personal;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -25,19 +26,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $videos = Video::limit(3)->orderBy('created_at', 'desc')->get();
+        $videos = Video::limit(6)->orderBy('created_at', 'desc')->get();
         $bannercarousels = Banner::carousel()->latest()->get();
         $bannercontents = Banner::Content()->latest()->get();
         $news = News::active()->latest()->take(15)->get();
         $blogschools = BlogSchool::active()->latest()->take(15)->get();
-        $purchases = Purchase::limit(3)->orderBy('created_at', 'desc')->get();
-        $paymentSlips = PaymentSlip::limit(3)->orderBy('created_at', 'desc')->get();
-        $jobs = Job::limit(3)->orderBy('created_at', 'desc')->get();
-        $budgets = Budget::limit(3)->orderBy('created_at', 'desc')->get();
-        $notices = Notice::limit(3)->orderBy('created_at', 'desc')->get();
+        $purchases = Purchase::limit(2)->orderBy('created_at', 'desc')->get();
+        $paymentSlips = PaymentSlip::limit(2)->orderBy('created_at', 'desc')->get();
+        $jobs = Job::limit(2)->orderBy('created_at', 'desc')->get();
+        $budgets = Budget::limit(2)->orderBy('created_at', 'desc')->get();
+        $notices = Notice::limit(2)->orderBy('created_at', 'desc')->get();
         $noticeSchools = NoticeSchool::limit(4)->orderBy('created_at', 'desc')->get();
         $intergrities = Intergrity::where('parent_id',NULL)->get();
-        return view('home',[
+        $personals = Personal::whereIn('position_general', ['ผู้อำนวยการ สพป.เชียงใหม่ เขต 5', 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5'])->active()->get();
+        return view('index',[
             'purchases' => $purchases,
             'jobs' => $jobs,
             'paymentSlips' => $paymentSlips,
@@ -49,7 +51,8 @@ class HomeController extends Controller
             'bannercarousels' => $bannercarousels,
             'bannercontents' => $bannercontents,
             'videos' => $videos,
-            'intergrities' => $intergrities
+            'intergrities' => $intergrities,
+            'personals' => $personals
         ]);
     }
 

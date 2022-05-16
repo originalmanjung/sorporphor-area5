@@ -164,7 +164,7 @@
                     <div class="row">
                         <div class="col-12 col-md-4">
                             <div class="accordion" id="accordionExample">
-                
+
                                     @foreach ($intergrities->slice(0, 5) as $key => $intergrity)
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingTwo">
@@ -193,12 +193,12 @@
                                         </div>
                                         </div>
                                     </div>
-                                    @endforeach 
+                                    @endforeach
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
                             <div class="accordion" id="accordionExample">
-                
+
                                     @foreach ($intergrities->slice(5, 5) as $key => $intergrity)
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingTwo">
@@ -227,7 +227,7 @@
                                         </div>
                                         </div>
                                     </div>
-                                    @endforeach 
+                                    @endforeach
                             </div>
                         </div>
                         <div class="col-12 col-md-4">
@@ -260,7 +260,7 @@
                                         </div>
                                         </div>
                                     </div>
-                                    @endforeach 
+                                    @endforeach
                             </div>
                         </div>
                     </div>

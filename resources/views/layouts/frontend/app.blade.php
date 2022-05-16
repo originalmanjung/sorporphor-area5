@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('funder-template/fonts/flaticon/font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ asset('funder-template/css/aos.css') }}">
     <link rel="stylesheet" href="{{ asset('funder-template/css/jquery.fancybox.min.css') }}">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('funder-template/css/style.css') }}">
 
     @stack('css')

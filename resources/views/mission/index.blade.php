@@ -1,22 +1,24 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
+<style>
+
+</style>
 @endpush
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>วิสัยทัศน์ พันธกิจ</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>วิสัยทัศน์ พันธกิจ</li>
-                </ol>
-            </div>
 
+    <div class="back_re">
+        <div class="container">
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="title">
+                     <h2>วิสัยทัศน์/พันธกิจ/ค่านิยม</h2>
+                 </div>
+              </div>
+           </div>
         </div>
-    </section><!-- End Breadcrumbs -->
+     </div>
 
     <!-- ======= About Section ======= -->
     <section>
