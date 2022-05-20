@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Law;
+namespace App\Http\Requests\StandardPraticeGuide;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class StoreLawRequest extends FormRequest
+class StoreStandardPraticeGuideRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class StoreLawRequest extends FormRequest
      */
     public function authorize()
     {
-        Gate::authorize('app.laws.create');
+        Gate::authorize('app.standardPraticeGuides.create');
         return true;
     }
 
@@ -27,13 +27,13 @@ class StoreLawRequest extends FormRequest
     {
         if ($this->parent_id != null) {
             return [
-                'name'=>'required|string|max:255|unique:laws,name',
+                'name'=>'required|string|max:255|unique:standard_pratice_guides,name',
                 'parent_id' => 'nullable|numeric',
                 'file' => 'required|mimes:pdf',
             ];
         } else {
             return [
-                'name'=>'required|string|max:255|unique:laws,name', 
+                'name'=>'required|string|max:255|unique:standard_pratice_guides,name', 
             ];
         }
     }

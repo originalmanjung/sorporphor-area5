@@ -71,9 +71,13 @@
                     </div>
 
                     <div class="sb-sidenav-menu-heading">ALL</div>
-                    <a class="nav-link {{ Route::is('app.menuPersonalWorks*') ? 'active' : '' }}" href="{{ route('app.menuPersonalWorks.index') }}">
-                        <div class="sb-nav-link-icon"><i class="fas fa-folder-minus"></i></div>
-                        คู่มือปฎิบัติงานรายบุคคล
+                     <a class="nav-link {{ Route::is('app.standardPraticeGuides*') ? 'active' : '' }}" href="{{ route('app.standardPraticeGuides.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
+                        คู่มือการปฏิบัติงาน
+                    </a>
+                     <a class="nav-link {{ Route::is('app.standardServices*') ? 'active' : '' }}" href="{{ route('app.standardServices.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                        คู่มือการให้บริการ
                     </a>
                     <a class="nav-link {{ Route::is('app.laws*') ? 'active' : '' }}" href="{{ route('app.laws.index') }}">
                         <div class="sb-nav-link-icon"><i class="fas fa-archway"></i></div>

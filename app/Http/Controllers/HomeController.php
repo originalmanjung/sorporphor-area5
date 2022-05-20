@@ -12,8 +12,10 @@ use App\Models\News;
 use App\Models\BlogSchool;
 use App\Models\Banner;
 use App\Models\Intergrity;
+use App\Models\Law;
 use App\Models\Video;
 use App\Models\Personal;
+use App\Models\StandardPraticeGuide;
 use Illuminate\Http\Request;
 use PDF;
 
@@ -82,6 +84,33 @@ class HomeController extends Controller
     {
         return view('viewPDF',[
             'intergrity' => $intergrity,
+        ]);
+    }
+
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function law()
+    {
+        $laws = Law::where('parent_id',NULL)->get();
+        return view('law.index',[
+            'laws' => $laws
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function standardPraticeGuide()
+    {
+        $standardPraticeGuides = StandardPraticeGuide::where('parent_id',NULL)->get();
+        return view('standard-pratice-guide.index',[
+            'standardPraticeGuides' => $standardPraticeGuides
         ]);
     }
 }

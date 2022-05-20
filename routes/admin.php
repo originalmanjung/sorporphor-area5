@@ -7,7 +7,6 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\NewsPhotoController;
 use App\Http\Controllers\Admin\BlogSchoolController;
 use App\Http\Controllers\Admin\BlogSchoolPhotoController;
-use App\Http\Controllers\Admin\MenuPersonalWorkController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\NoticeSchoolController;
 use App\Http\Controllers\Admin\PurchaseController;
@@ -26,6 +25,8 @@ use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\IntergrityController;
 use App\Http\Controllers\Admin\LawController;
 use App\Http\Controllers\Admin\ManageStructureController;
+use App\Http\Controllers\Admin\StandardPraticeGuideController;
+use App\Http\Controllers\Admin\StandardServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,9 +48,6 @@ Route::resource('news-photos', NewsPhotoController::class)->only(['destroy']);
 // กิจกรรมโรงเรียน
 Route::resource('blogSchools', BlogSchoolController::class);
 Route::resource('blogSchoolPhotos', BlogSchoolPhotoController::class)->only(['destroy']);
-
-// คู่มือปฏิบัติงานรายบุคคล
-Route::resource('menuPersonalWorks', MenuPersonalWorkController::class);
 // ประกาศประชาสัมพันธ์ สพป.
 Route::resource('notices', NoticeController::class);
 // ประกาศประชาสัมพันธ์โรงเรียน
@@ -91,3 +89,13 @@ Route::delete('intergrities/file/{intergrity}', [IntergrityController::class,'de
 // กฏหมายที่เกี่ยวข้อง
 Route::resource('laws', LawController::class);
 Route::get('laws/child-law/{law}', [LawController::class,'createChild'])->name('laws.createChild');
+// คู่มือมาตรฐานการปฏิบัติงาน
+Route::resource('standardPraticeGuides', StandardPraticeGuideController::class);
+Route::get('standardPraticeGuides/child-standardPraticeGuide/{standardPraticeGuide}', [StandardPraticeGuideController::class,'createChild'])->name('standardPraticeGuides.createChild');
+// คู่มือมาตรฐานการให้บริการ
+Route::resource('standardServices', StandardServiceController::class);
+Route::get('standardServices/child-standardService/{standardService}', [StandardServiceController::class,'createChild'])->name('standardServices.createChild');
+Route::post('standardServices/child/store', [StandardServiceController::class,'storeChild'])->name('standardServices.storeChild');
+
+Route::get('standardServices/sub-child-standardService/{standardService}', [StandardServiceController::class,'createSubChild'])->name('standardServices.createSubChild');
+Route::post('standardServices/sub-child/store', [StandardServiceController::class,'storeSubChild'])->name('standardServices.storeSubChild');

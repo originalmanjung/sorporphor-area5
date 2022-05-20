@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\MenuPersonalWork;
+namespace App\Http\Requests\StandardService;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
-class StoreMenuPersonalWorkRequest extends FormRequest
+class UpdateStandardServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,6 +14,7 @@ class StoreMenuPersonalWorkRequest extends FormRequest
      */
     public function authorize()
     {
+        Gate::authorize('app.standardServices.edit');
         return true;
     }
 
@@ -24,8 +26,9 @@ class StoreMenuPersonalWorkRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required|string|max:255',
-            'file' => 'required|file|mimes:pdf',
+            'name'=>'string|max:255|unique:laws,name,'.$this->standardService->id, 
+            'parent_id' => 'nullable|numeric',
+            'file' => 'nullable|mimes:pdf',
         ];
     }
 }

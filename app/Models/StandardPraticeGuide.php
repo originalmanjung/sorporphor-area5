@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
-class Law extends Model
+class StandardPraticeGuide extends Model
 {
     use HasFactory, HasRecursiveRelationships;
 
@@ -30,12 +30,12 @@ class Law extends Model
 
     public static function boot() {
         parent::boot();
-        self::deleting(function($law) {
-            foreach ($law->children()->get() as $lawItem) {
-                if (Storage::exists('public/law_files/'.$lawItem->file)) {
-                    Storage::delete('public/law_files/'.$lawItem->file);
+        self::deleting(function($StandardPraticeGuides) {
+            foreach ($StandardPraticeGuides->children()->get() as $StandardPraticeGuidesItem) {
+                if (Storage::exists('public/StandardPraticeGuide_files/'.$StandardPraticeGuidesItem->file)) {
+                    Storage::delete('public/StandardPraticeGuide_files/'.$StandardPraticeGuidesItem->file);
                 }
-                $lawItem->delete();
+                $StandardPraticeGuidesItem->delete();
             }
         });
     }

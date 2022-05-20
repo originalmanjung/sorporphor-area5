@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Law;
+namespace App\Http\Requests\StandardService;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Gate;
 
-class StoreLawRequest extends FormRequest
+class StoreStandardServiceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class StoreLawRequest extends FormRequest
      */
     public function authorize()
     {
-        Gate::authorize('app.laws.create');
+        Gate::authorize('app.standardServices.create');
         return true;
     }
 
@@ -25,16 +25,19 @@ class StoreLawRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->parent_id != null) {
+
+        if ($this->checkFile == true) {
             return [
-                'name'=>'required|string|max:255|unique:laws,name',
-                'parent_id' => 'nullable|numeric',
+                'name'=>'required|string|max:255|unique:standard_services,name',
+                'parent_id' => 'exists:standard_services,id|numeric',
                 'file' => 'required|mimes:pdf',
             ];
         } else {
             return [
-                'name'=>'required|string|max:255|unique:laws,name', 
+                'name'=>'required|string|max:255|unique:standard_services,name', 
+                'parent_id' => 'nullable|numeric|exists:standard_services,id',
             ];
         }
+        
     }
 }

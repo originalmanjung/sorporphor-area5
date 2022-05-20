@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Staudenmeir\LaravelAdjacencyList\Eloquent\HasRecursiveRelationships;
 
-class Law extends Model
+class StandardService extends Model
 {
     use HasFactory, HasRecursiveRelationships;
 
@@ -19,7 +19,7 @@ class Law extends Model
     protected $guarded = ['id'];
 
     /**
-     * Get the user that owns the Law
+     * Get the user that owns the StandardService
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
@@ -30,12 +30,12 @@ class Law extends Model
 
     public static function boot() {
         parent::boot();
-        self::deleting(function($law) {
-            foreach ($law->children()->get() as $lawItem) {
-                if (Storage::exists('public/law_files/'.$lawItem->file)) {
-                    Storage::delete('public/law_files/'.$lawItem->file);
+        self::deleting(function($standardService) {
+            foreach ($standardService->children()->get() as $standardServiceItem) {
+                if (Storage::exists('public/StandardService_files/'.$standardServiceItem->file)) {
+                    Storage::delete('public/StandardService_files/'.$standardServiceItem->file);
                 }
-                $lawItem->delete();
+                $standardServiceItem->delete();
             }
         });
     }

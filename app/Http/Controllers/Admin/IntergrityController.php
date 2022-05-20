@@ -85,6 +85,7 @@ class IntergrityController extends Controller
      */
     public function show(Intergrity $intergrity)
     {
+        Gate::authorize('app.intergrities.index');
         $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('admin.intergrity.show',[
             'intergrity' => $intergrity,
@@ -161,6 +162,7 @@ class IntergrityController extends Controller
 
     public function deleteFile(Intergrity $intergrity)
     {
+        Gate::authorize('app.intergrities.destroy');
         if (Storage::exists('public/intergrity_files/'.$intergrity->file)) {
             Storage::delete('public/intergrity_files/'.$intergrity->file);
             $intergrity->update([
@@ -187,6 +189,7 @@ class IntergrityController extends Controller
      */
     public function showPDF(Intergrity $intergrity)
     {
+        Gate::authorize('app.intergrities.destroy');
         return view('admin.intergrity.viewPDF',[
             'intergrity' => $intergrity,
         ]);

@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests\MenuPersonalWork;
+namespace App\Http\Requests\Law;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
 
-class UpdateMenuPersonalWorkRequest extends FormRequest
+class UpdateLawRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,6 +14,7 @@ class UpdateMenuPersonalWorkRequest extends FormRequest
      */
     public function authorize()
     {
+        Gate::authorize('app.laws.edit');
         return true;
     }
 
@@ -24,8 +26,10 @@ class UpdateMenuPersonalWorkRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'   => 'required|string|max:255',
-            'file' => 'nullable|file|mimes:pdf',
+            'name'=>'string|max:255|unique:laws,name,'.$this->law->id, 
+            'parent_id' => 'nullable|numeric',
+            'file' => 'nullable|mimes:pdf',
         ];
+    
     }
 }

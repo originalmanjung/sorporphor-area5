@@ -478,5 +478,74 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.questions.edit',
         ]);
 
+        // Law
+        $moduleAppLaw = Module::updateOrCreate(['name' => 'กฏหมายที่เกี่ยวข้อง']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLaw->id,
+            'name' => 'Access Laws',
+            'slug' => 'app.laws.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLaw->id,
+            'name' => 'Create Laws',
+            'slug' => 'app.laws.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLaw->id,
+            'name' => 'Edit Laws',
+            'slug' => 'app.laws.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLaw->id,
+            'name' => 'Delete Laws',
+            'slug' => 'app.laws.destroy',
+        ]);
+
+        // คู่มือมาตรฐานการปฏิบัติงาน
+        $moduleAppStandardPraticeGuide = Module::updateOrCreate(['name' => 'คู่มือมาตรฐานการปฏิบัติงาน']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardPraticeGuide->id,
+            'name' => 'Access Standard Pratice Guide',
+            'slug' => 'app.standardPraticeGuides.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardPraticeGuide->id,
+            'name' => 'Create Standard Pratice Guide',
+            'slug' => 'app.standardPraticeGuides.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardPraticeGuide->id,
+            'name' => 'Edit Standard Pratice Guide',
+            'slug' => 'app.standardPraticeGuides.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardPraticeGuide->id,
+            'name' => 'Delete Standard Pratice Guide',
+            'slug' => 'app.standardPraticeGuides.destroy',
+        ]);
+
+        // คู่มือมาตรฐานการให้บริการ
+        $moduleAppStandardService = Module::updateOrCreate(['name' => 'คู่มือมาตรฐานการให้บริการ']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardService->id,
+            'name' => 'Access Standard Service',
+            'slug' => 'app.standardServices.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardService->id,
+            'name' => 'Create Standard Service',
+            'slug' => 'app.standardServices.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardService->id,
+            'name' => 'Edit Standard Service',
+            'slug' => 'app.standardServices.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppStandardService->id,
+            'name' => 'Delete Standard Service',
+            'slug' => 'app.standardServices.destroy',
+        ]);
+
     }
 }

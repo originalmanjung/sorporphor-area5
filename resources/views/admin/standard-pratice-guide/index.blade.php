@@ -10,17 +10,17 @@
 @endpush
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Laws</h1>
+    <h1 class="mt-4">Standard Pratice Guides</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">กฏหมายที่เกี่ยวข้อง</li>
+        <li class="breadcrumb-item active">คู่มือมาตรฐานการปฏิบัติงาน</li>
     </ol>
 
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
-            <div><i class="fas fa-table me-1"></i>ประเภททั้งหมด</div>
+            <div><i class="fas fa-table me-1"></i>กลุ่มงานทั้งหมด</div>
             <div>
-                @can('app.laws.create')
-                    <a href="{{ route('app.laws.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
+                @can('app.standardPraticeGuides.create')
+                    <a href="{{ route('app.standardPraticeGuides.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
                 @endcan
             </div>
         </div>
@@ -43,20 +43,20 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($laws as $key => $law)
+                    @foreach ($standardPraticeGuides as $key => $standardPraticeGuide)
                         <tr>
                             <td>{{ $key+1 }}</td>
-                            <td>{{ $law->name }}</td>
-                            <td>{{ $law->user->name }}</td>
+                            <td>{{ $standardPraticeGuide->name }}</td>
+                            <td>{{ $standardPraticeGuide->user->name }}</td>
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-                                    <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.laws.show', $law->id)}}" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
-                                    @can('app.laws.edit')
-                                        <a href="{{ route('app.laws.edit', $law->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                    <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.standardPraticeGuides.show', $standardPraticeGuide->id)}}" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
+                                    @can('app.standardPraticeGuides.edit')
+                                        <a href="{{ route('app.standardPraticeGuides.edit', $standardPraticeGuide->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                     @endcan
-                                    @can('app.laws.destroy')
-                                        <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $law->id }})"><i class="fa fa-trash"></i></a>
-                                        <form id="delete-form-{{ $law->id }}" action="{{ route('app.laws.destroy',$law->id) }}" method="POST" style="display: none;">
+                                    @can('app.standardPraticeGuides.destroy')
+                                        <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $standardPraticeGuide->id }})"><i class="fa fa-trash"></i></a>
+                                        <form id="delete-form-{{ $standardPraticeGuide->id }}" action="{{ route('app.standardPraticeGuides.destroy',$standardPraticeGuide->id) }}" method="POST" style="display: none;">
                                             @csrf
                                             @method('DELETE')
                                         </form>

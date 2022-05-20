@@ -15,7 +15,6 @@ use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ComplaintController;
 use App\Http\Controllers\OpinionController;
 use App\Http\Controllers\QuestionController;
-use App\Http\Controllers\MenuPersonalWorkController;
 use App\Http\Controllers\MissionController;
 use App\Http\Controllers\DutyController;
 use App\Http\Controllers\HistoryController;
@@ -71,13 +70,6 @@ Route::resource('complaints', ComplaintController::class)->only(['index','create
 Route::resource('opinions', OpinionController::class)->only(['create','store']);
 // Q&A
 Route::resource('questions', QuestionController::class)->except(['edit','update','destroy']);
-//คู่มือปฏิบัติงานกลุ่ม
-Route::get('intergrityMenualWork', [HomeController::class, 'intergrityMenualWork'])->name('menual.work');
-//ยุธศาสตร์แผนปฏิบัติราชการ
-Route::get('intergrityMenualPlanWork', [HomeController::class, 'intergrityMenualPlaneWork'])->name('menual.planework');
-// คู่มือปฏิบัติงานรายบุคคล
-Route::get('menualPersonalWork', [MenuPersonalWorkController::class, 'menualPersonalWorkAll'])->name('menualPersonalWorkAll');
-Route::get('menualPersonalWorkFile/{slug}', [MenuPersonalWorkController::class, 'menualPersonalWorkShow'])->name('menualPersonalWorkShow');
 // วิสัยทัศน์ พันธกิจ
 Route::get('missions', [MissionController::class, 'index'])->name('mission.index');
 // ภาระกิจหน้าที่
@@ -86,9 +78,14 @@ Route::get('dutys', [DutyController::class, 'index'])->name('duty.index');
 Route::get('histories', [HistoryController::class, 'index'])->name('histories.index');
 // โครงสร้างการบริหารงาน
 Route::get('manageStructures', [ManageStructureController::class, 'index'])->name('manageStructure.index');
-
 // pdf
 Route::get('intergrity-pdf-view/{intergrity}', [HomeController::class, 'showPDF'])->name('showPDF');
+// กฏหมายที่เกี่ยวข้อง
+Route::get('laws', [HomeController::class, 'law'])->name('law');
+// กฏหมายที่เกี่ยวข้อง
+Route::get('standard-pratice-guide', [HomeController::class, 'law'])->name('law');
+// คู่มือมาตรการปฏิบัติงานของ กลุ่ม/หน่วย/บุคลากร
+Route::get('standard-pratice-guide', [HomeController::class, 'standardPraticeGuide'])->name('standardPraticeGuide');
 
 Route::get('contact/', function () {
     return view('contact');

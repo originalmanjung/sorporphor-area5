@@ -78,7 +78,7 @@
 </script>
 @endpush
 @section('content')
-
+<!-- แบนเนอร์ -->
 <div class="slide-one-item home-slider owl-carousel">
     @if ($bannercarousels->isNotEmpty())
         @foreach ($bannercarousels as $carousel)
@@ -138,7 +138,20 @@
                             </div>
                         @endforeach
                     @else
-
+                        <div class="item">
+                            <div class="speaker">
+                                <img src="{{ config('app.placeholder').'800x852.png' }}" class="img-fluid" alt="Colorlib HTML5 Template">
+                                <div class="text text-center py-3">
+                                    <h3>ไม่พบข้อมูล</h3>
+                                    <span class="position">ไม่พบข้อมูล</span>
+                                    <ul class="ftco-social mt-3">
+                                        <li class="ftco-animate"><a href=""><span class="icon-twitter"></span></a></li>
+                                        <li class="ftco-animate"><a href=""><span class="icon-facebook"></span></a></li>
+                                        <li class="ftco-animate"><a href=""><span class="icon-instagram"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     @endif
                     {{-- <div class="item">
                         <div class="speaker">
@@ -419,7 +432,7 @@
                     <!-- ประชาสัมพันธ์-->
                     @if ($notices->isNotEmpty())
                         @foreach ($notices as $notice)
-                            <div class="tab-pane container active" id="services-1">
+                            <div class="tab-pane container fade" id="services-1">
                                 <div class="card p-4">
                                     <span class="time">{{ $notice->created_at->format('d/m/Y') }}</span>
                                     <h3><a href="{{ route('noticeShow', $notice->slug) }}">{{ Str::limit($notice->name, 80) }}</a></h3>
@@ -438,7 +451,7 @@
                             </div>
                         @endforeach
                     @else
-                        <div class="tab-pane container fade" id="services-1">
+                        <div class="tab-pane container active" id="services-1">
                             <div class="card p-4">
                                 <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
                             </div>
@@ -479,7 +492,7 @@
 
                     @if ($purchases->isNotEmpty())
                         @foreach ($purchases as $purchase)
-                            <div class="tab-pane container" id="services-3">
+                            <div class="tab-pane container fade" id="services-3">
                                 <div class="card p-4">
                                     <span class="time">{{ $purchase->created_at->format('d/m/Y') }}</span>
                                     <h3><a href="{{ route('purchaseShow', $purchase->slug) }}">{{ Str::limit($purchase->name, 80) }}</a></h3>
@@ -508,7 +521,7 @@
                     <!-- แจ้งการโอนเงิน-->
                     @if ($paymentSlips->isNotEmpty())
                         @foreach ($paymentSlips as $paymentSlip)
-                            <div class="tab-pane container active" id="services-4">
+                            <div class="tab-pane container fade" id="services-4">
                                 <div class="card p-4">
                                     <span class="time">{{ $paymentSlip->created_at->format('d/m/Y') }}</span>
                                     <h3><a href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">{{ Str::limit($paymentSlip->name, 80) }}</a></h3>
@@ -536,7 +549,7 @@
                      <!-- งบทดลอง-->
                      @if ($budgets->isNotEmpty())
                      @foreach ($budgets as $budget)
-                         <div class="tab-pane container active" id="services-5">
+                         <div class="tab-pane container fade" id="services-5">
                              <div class="card p-4">
                                  <span class="time">{{ $budget->created_at->format('d/m/Y') }}</span>
                                  <h3><a href="{{ route('budgetShow', $budget->slug) }}">{{ Str::limit($budget->name, 80) }}</a></h3>
@@ -640,7 +653,7 @@
                     </div>
                 </a>
             </div>
-            <a href="#" class="col-lg-4 d-flex">
+            <a href="{{ route('standardPraticeGuide') }}" class="col-lg-4 d-flex">
                 <div class="services-2 text-center ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-book"></i></span></div>
                     <div class="text media-body">
@@ -648,7 +661,7 @@
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-4 d-flex">
+            <a href="" class="col-lg-4 d-flex">
                 <div class="services-2 text-center ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-insurance"><i class="fas fa-atlas"></i></span></div>
                     <div class="text media-body">
