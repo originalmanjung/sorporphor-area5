@@ -161,8 +161,8 @@ jQuery(document).ready(function($) {
 		if ( $('.nonloop-block-13').length > 0 ) {
 			$('.nonloop-block-13').owlCarousel({
 		    center: false,
-		    items: 1,
-		    loop: false,
+		    items: 3,
+		    loop: true,
 				stagePadding: 10,
 				autoplay: true,
 		    margin: 20,

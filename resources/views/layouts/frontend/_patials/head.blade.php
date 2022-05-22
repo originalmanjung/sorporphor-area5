@@ -81,7 +81,7 @@
                                         <li><a href="#">หน่วยตรวจสอบภายใน</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">ติดต่อเรา</a></li>
+                                <li><a href="{{ route('contact') }}">ติดต่อเรา</a></li>
                                 <li>
                                     @if (Route::has('login'))
                                     @auth

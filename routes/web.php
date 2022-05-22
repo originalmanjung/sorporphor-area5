@@ -86,10 +86,12 @@ Route::get('laws', [HomeController::class, 'law'])->name('law');
 Route::get('standard-pratice-guide', [HomeController::class, 'law'])->name('law');
 // คู่มือมาตรการปฏิบัติงานของ กลุ่ม/หน่วย/บุคลากร
 Route::get('standard-pratice-guide', [HomeController::class, 'standardPraticeGuide'])->name('standardPraticeGuide');
+Route::get('standard-pratice-guide/show/{standardPraticeGuide}', [HomeController::class, 'standardPraticeGuideShow'])->name('standardPraticeGuideShow');
+Route::get('standard-pratice-guide/view-pdf/{standardPraticeGuide}', [HomeController::class, 'standardPraticeGuidePDF'])->name('standardPraticeGuidePDF');
 
 Route::get('contact/', function () {
     return view('contact');
-});
+})->name('contact');;
 
 Route::get('bigdata/', function () {
     return view('bigdata');

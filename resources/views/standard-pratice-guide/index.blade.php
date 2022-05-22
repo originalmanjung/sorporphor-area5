@@ -111,8 +111,8 @@
             <div class="row">
             @if ($standardPraticeGuides->isNotEmpty())
                 @foreach ($standardPraticeGuides as $standardPraticeGuide)
-                <div class="col-lg-4 col-md-4">
-                    <a href="">
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <a href="{{ route('standardPraticeGuideShow',$standardPraticeGuide) }}">
                         <div class="services__item d-flex align-items-center h-100">
                             <div class="services__item__icon">
                                 <span><i class="fas fa-book"></i></span>
@@ -120,7 +120,7 @@
                             <div class="services__item__text">
                             <p style="font-size:14px;">คู่มือมาตรฐานการปฏิบัติงานของกลุ่ม</p>
                             <h5>{{ $standardPraticeGuide->name }}</h5>
-                                
+
                             </div>
                         </div>
                     </a>
@@ -138,7 +138,7 @@
                     </div>
                 </div>
             @endif
-              
+
             </div>
         </div>
     </section>

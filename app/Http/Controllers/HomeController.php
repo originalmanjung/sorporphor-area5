@@ -58,23 +58,6 @@ class HomeController extends Controller
         ]);
     }
 
-    public function intergrityMenualWork()
-    {
-        $intergrityMenualwork = Intergrity::menualwork()->active()->get();
-        return view('intergrity-plane-menual.intergrityMenualWork',[
-            'intergrityMenualwork' => $intergrityMenualwork
-        ]);
-    }
-
-    public function intergrityMenualPlaneWork()
-    {
-
-        $intergrityPlanelwork = Intergrity::menualplanework()->active()->get();
-        return view('intergrity-plane-menual.intergrityPlaneWork',[
-            'intergrityPlanelwork' => $intergrityPlanelwork
-        ]);
-    }
-
     /**
     * Write code on Method
     *
@@ -101,8 +84,9 @@ class HomeController extends Controller
         ]);
     }
 
+
     /**
-     * Display a listing of the resource.
+     * คู่มือ/มาตรฐานการปฏิบัติงานของกลุ่ม/หน่วย/บุคลากร
      *
      * @return \Illuminate\Http\Response
      */
@@ -111,6 +95,31 @@ class HomeController extends Controller
         $standardPraticeGuides = StandardPraticeGuide::where('parent_id',NULL)->get();
         return view('standard-pratice-guide.index',[
             'standardPraticeGuides' => $standardPraticeGuides
+        ]);
+    }
+
+    /**
+     * คู่มือ/มาตรฐานการปฏิบัติงานของกลุ่ม/หน่วย/บุคลากร
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function standardPraticeGuideShow(StandardPraticeGuide $standardPraticeGuide)
+    {
+        $standardPraticeGuides = StandardPraticeGuide::where('parent_id',$standardPraticeGuide->id)->get();
+        return view('standard-pratice-guide.show',[
+            'standardPraticeGuides' => $standardPraticeGuides
+        ]);
+    }
+
+    /**
+     * คู่มือ/มาตรฐานการปฏิบัติงานของกลุ่ม/หน่วย/บุคลากร
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function standardPraticeGuidePDF(StandardPraticeGuide $standardPraticeGuide)
+    {
+        return view('standard-pratice-guide.viewPDF',[
+            'standardPraticeGuide' => $standardPraticeGuide
         ]);
     }
 }

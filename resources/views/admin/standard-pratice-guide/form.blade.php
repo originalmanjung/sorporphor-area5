@@ -15,7 +15,7 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>สร้างคู่มือมาตรฐานการปฏิบัติงาน</div>
-            <a href="@if (isset($standardPraticeGuideParent)){{ redirect()->getUrlGenerator()->previous() }}@else {{ route('app.standardPraticeGuides.index') }} @endif" type="button" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> ย้อนกลับ</a>
+            <a href="@if (isset($standardPraticeGuide->parent_id)){{ route('app.standardPraticeGuides.show',$standardPraticeGuide->parent_id) }} @elseif(isset($standardPraticeGuideParent)) {{ route('app.standardPraticeGuides.show',$standardPraticeGuideParent->id) }} @else {{ route('app.standardPraticeGuides.index') }} @endif" type="button" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>
         <div class="card-body">
             <form class="row g-3" id="standardPraticeGuideForm" ita="form" method="POST" action="{{ isset($standardPraticeGuide) ? route('app.standardPraticeGuides.update',$standardPraticeGuide->id) : route('app.standardPraticeGuides.store') }}" enctype="multipart/form-data">

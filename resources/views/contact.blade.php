@@ -1,28 +1,24 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @section('content')
 <main id="main">
-
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Contact</h2>
-                <ol>
-                    <li><a href="index.html">Home</a></li>
-                    <li>Contact</li>
-                </ol>
+<div class="back_re mb-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <h2>ติดต่อเรา</h2>
+                </div>
             </div>
-
         </div>
-    </section><!-- End Breadcrumbs -->
+    </div>
+</div>
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
         <div class="container">
 
             <div>
-            
+
                 <iframe style="border:0; width: 100%; height: 270px;"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3790.547207580807!2d98.60971121478458!3d18.184760784104228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30da3aa236b8be71%3A0x4f302ee70b5d7126!2z4Liq4Liz4LiZ4Lix4LiB4LiH4Liy4LiZ4Lie4Li34LmJ4LiZ4LiX4Li14LmI4LiB4Liy4Lij4Lio4Li24LiB4Lip4Liy4Lib4Lij4Liw4LiW4Lih4Lio4Li24LiB4Lip4Liy4LmA4LiK4Li14Lii4LiH4LmD4Lir4Lih4LmIIOC5gOC4guC4lSA1!5e0!3m2!1sth!2sth!4v1628221475419!5m2!1sth!2sth"
                     frameborder="0" allowfullscreen></iframe>
@@ -58,8 +54,8 @@
                     </div>
 
                 </div>
-                
-    
+
+
             </div>
 
         </div>

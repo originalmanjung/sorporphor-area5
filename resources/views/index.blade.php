@@ -727,10 +727,10 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                <h2 class="text-uppercase text-white mb-0">Small Business Insurance Company</h2>
+                <img src="{{ asset('images/resist/korortor2.jpg') }}" class="img-fluid" alt="Responsive image">
             </div>
-            <div class="col-md-3 ml-auto text-center text-md-left">
-                <a href="#" class="btn btn-bg-primary d-inline-block d-md-block font-secondary text-uppercase">Contact Us</a>
+            <div class="col-md-6 ml-auto text-center text-md-left">
+                <img src="{{ asset('images/resist/korortor1.jpg') }}" class="img-fluid" alt="Responsive image">
             </div>
         </div>
     </div>

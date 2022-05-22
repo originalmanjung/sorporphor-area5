@@ -34,10 +34,10 @@ class StoreStandardServiceRequest extends FormRequest
             ];
         } else {
             return [
-                'name'=>'required|string|max:255|unique:standard_services,name', 
+                'name'=>'required|string|max:255|unique:standard_services,name',
                 'parent_id' => 'nullable|numeric|exists:standard_services,id',
             ];
         }
-        
+
     }
 }

@@ -62,6 +62,18 @@ class StandardPraticeGuideController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function viewPDF(StandardPraticeGuide $standardPraticeGuide)
+    {
+        return view('admin.standard-pratice-guide.viewPDF',[
+            'standardPraticeGuide' => $standardPraticeGuide
+        ]);
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request

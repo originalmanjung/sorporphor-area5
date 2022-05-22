@@ -105,7 +105,7 @@
           </div>
        </div>
     </div>
- </div>
+</div>
 <!-- ======= Team Section ======= -->
 <section id="team" class="team bg-white">
     <div class="container">

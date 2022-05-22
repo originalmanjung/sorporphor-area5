@@ -92,10 +92,7 @@ Route::get('laws/child-law/{law}', [LawController::class,'createChild'])->name('
 // คู่มือมาตรฐานการปฏิบัติงาน
 Route::resource('standardPraticeGuides', StandardPraticeGuideController::class);
 Route::get('standardPraticeGuides/child-standardPraticeGuide/{standardPraticeGuide}', [StandardPraticeGuideController::class,'createChild'])->name('standardPraticeGuides.createChild');
+Route::get('standardPraticeGuides/view-pdf/{standardPraticeGuide}', [StandardPraticeGuideController::class,'viewPDF'])->name('standardPraticeGuides.viewPDF');
 // คู่มือมาตรฐานการให้บริการ
 Route::resource('standardServices', StandardServiceController::class);
 Route::get('standardServices/child-standardService/{standardService}', [StandardServiceController::class,'createChild'])->name('standardServices.createChild');
-Route::post('standardServices/child/store', [StandardServiceController::class,'storeChild'])->name('standardServices.storeChild');
-
-Route::get('standardServices/sub-child-standardService/{standardService}', [StandardServiceController::class,'createSubChild'])->name('standardServices.createSubChild');
-Route::post('standardServices/sub-child/store', [StandardServiceController::class,'storeSubChild'])->name('standardServices.storeSubChild');

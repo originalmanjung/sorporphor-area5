@@ -27,7 +27,7 @@
             @if(isset($standardServiceParent)){{ route('app.standardServices.show', $standardServiceParent->id ?? $standardServiceParent->parent_id)}}@elseif(isset($standardService->parent_id)){{ route('app.standardServices.show', $standardService->parent_id)}}@else{{ route('app.standardServices.index') }}@endisset" type="button" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> ย้อนกลับ</a>
         </div>
         <div class="card-body">
-            <form class="row g-3" id="standardServiceForm" ita="form" method="POST" action="{{ isset($standardService) ? route('app.standardServices.update',$standardService->id) : route('app.standardServices.store') }}">
+            <form class="row g-3" id="standardServiceForm" ita="form" method="POST" action="{{ isset($standardService) ? route('app.standardServices.update',$standardService->id) : route('app.standardServices.store') }}" enctype="multipart/form-data">
                 @csrf
                 @if (isset($standardService))
                     @method('PUT')
@@ -49,8 +49,8 @@
                     <div class="row g-2">
                         <div class="col-md-6">
                             <div class="col mb-3 form-group">
-                                <label for="formFileSm" class="form-label">@if(isset($standardPraticeGuide->file))แนบไฟล์ใหม่ @else แนบไฟล์ @endif</label>
-                                <input class="form-control form-control-sm @error('file') is-invalid @enderror" id="formFileSm" type="file" name="file">
+                                <label for="formFileSm" class="form-label">แนบไฟล์</label>
+                                <input class="form-control form-control-sm @error('file') is-invalid @enderror" type="file" name="file">
                                 @error('file')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -62,7 +62,7 @@
                     <input class="form-check-input d-none" type="checkbox" name="checkFile" checked>
                 @endif
                 @if(!empty($standardServiceParent) || !empty($standardService))
-                    <input name="parent_id" type="hidden" value="{{ $standardServiceParent->id ?? $standardService->parent_id }}"> 
+                    <input name="parent_id" type="hidden" value="{{ $standardServiceParent->id ?? $standardService->parent_id }}">
                 @endif
             </form>
             <div class="col-12">

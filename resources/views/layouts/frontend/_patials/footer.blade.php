@@ -4,30 +4,35 @@
 
         <div class="row">
             <div class="col-md-4">
-                <h3 class="footer-heading mb-4 text-white">About</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat quos rem ullam, placeat amet.</p>
-                <p><a href="#" class="btn btn-primary rounded text-white px-4">Read More</a></p>
+                <h3 class="footer-heading mb-4 text-white">สำนักงานเขตพื้นที่การศึกษาประถมศึกษาเชียงใหม่ เขต 5</h3>
+                <p>
+                    404 หมู่ 10 ถนนเชียงใหม่-ฮอด ตำบลหางดง<br>อำเภอฮอด จังหวัดเชียงใหม่ 50240<br>
+                    <strong>โทร:</strong>053-461-089 , 053-461-627<br>
+                    <strong>แฟกซ์:</strong>ต่อ 127<br>
+                    <strong>Email: </strong>ict_cma5@hotmail.com<br>
+                </p>
+                <p><a href="{{ route('contact') }}" class="btn btn-primary rounded text-white px-4">เพิ่มเติม</a></p>
             </div>
             <div class="col-md-5 ml-auto">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="footer-heading mb-4 text-white">Quick Menu</h3>
+                        <h3 class="footer-heading mb-4 text-white">เมนูลัด</h3>
                         <ul class="list-unstyled">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Insurance</a></li>
-                            <li><a href="#">Blog</a></li>
-                            <li><a href="#">Contacts</a></li>
-                            <li><a href="#">Privacy</a></li>
+                            <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
+                            <li><a href="{{ route('histories.index') }}">ประวัติความเป็นมา</a></li>
+                            <li><a href="{{ route('mission.index') }}">วิสัยทัศน์ พันธกิจ</a></li>
+                            <li><a href="{{ route('duty.index') }}">ภาระกิจหน้าที่</a></li>
+                            <li><a href="{{ route('manageStructure.index') }}">โครงสร้างการบริหารงาน</a></li>
+                            <li><a href="{{ route('contact') }}">ติดต่อเรา</a></li>
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h3 class="footer-heading mb-4 text-white">Insurance</h3>
+                        <h3 class="footer-heading mb-4 text-white">อี-เซอร์วิส</h3>
                         <ul class="list-unstyled">
-                            <li><a href="#">Home Insurance</a></li>
-                            <li><a href="#">Auto Insurance</a></li>
-                            <li><a href="#">Travel Insurance</a></li>
-                            <li><a href="#">Business Insurance</a></li>
+                            <li><a href="#">ระบบเงินเดือนอิเล็กทรอนิกส์(E-Money)</a></li>
+                            <li><a href="#">ระบบสำนักงานอิเล็กทรอนิกส์(E-Paperless)</a></li>
+                            <li><a href="#">ระบบ E-Learning บทเรียนออนไลน์</a></li>
+                            <li><a href="#">ระบบบริหารจัดการศึกษา (Schoolmis)</a></li>
                         </ul>
                     </div>
                 </div>
@@ -52,12 +57,16 @@
         <div class="row pt-5 mt-5 text-center">
             <div class="col-md-12">
                 <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy; <script>
-                        document.write(new Date().getFullYear());
-
-                    </script> All Rights Reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>ChiangMai Primary Educational Service Area Office 5</span></strong>. All Rights Reserved
+                      </div>
+                      <div class="credits">
+                        <!-- All the links in the footer should remain intact. -->
+                        <!-- You can delete the links only if you purchased the pro version. -->
+                        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/sailor-free-bootstrap-theme/ -->
+                        Power by: <a href="http://www.itchiangmai.net/portfolio/">iTChiangmai.net | 0819983112</a>
+                      </div>
                 </p>
             </div>
 
