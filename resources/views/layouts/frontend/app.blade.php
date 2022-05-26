@@ -39,11 +39,11 @@
 
         <div class="site-wrap">
 
-        @include('layouts.frontend._patials.head')
+            @include('layouts.frontend._patials.head')
 
-            @yield('content')
+                @yield('content')
 
-        @include('layouts.frontend._patials.footer')
+            @include('layouts.frontend._patials.footer')
         </div>
 
 

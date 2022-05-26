@@ -1,5 +1,6 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
+ <link href="{{ asset('plugins/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
 <style>
     .card {
         border-radius: 3px;
@@ -76,27 +77,23 @@
 @endpush
 @section('content')
 <main id="main" class="bg-white">
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>กิจกรรม สพป.เชียงใหม่ เขต 5</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li><a href="{{ route('newsAll') }}">กิจกรรม สพป.เชียงใหม่ เขต 5 ทั้งหมด</a></li>
-                    <li>กิจกรรม สพป.เชียงใหม่ เขต 5</li>
-                </ol>
-            </div>
-
+           <div class="row">
+              <div class="col-md-12">
+                 <div class="title">
+                     <h2>กิจกรรมสพป.เชียงใหม่ เขต 5</h2>
+                 </div>
+              </div>
+           </div>
         </div>
-    </section><!-- End Breadcrumbs -->
+     </div>
 
 <section>
     <div class="container">
-        <div class="card">
+        <div class="card mt-5 mb-5">
             <div class="card-header">
-              Featured
+              รายละเอียด
             </div>
             <div class="card-body">
               <div class="p-5">
@@ -111,10 +108,6 @@
                                         <a class="glightbox" href="{{ asset('storage/news_photos/'.$photos->filename) }}">
                                             <img src="{{ asset('storage/news_photos/'.$photos->filename) }}" alt="" class="img-fluid card-img-top rounded">
                                         </a>
-                                        <form id="delete-form-{{ $photos->id }}" action="{{ route('app.news-photos.destroy',$photos->id) }}" method="POST" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
                                     </div>
                             @endforeach
                             </div>
@@ -131,6 +124,7 @@
 </main>
 @endsection
 @push('js')
+<script src="{{ asset('plugins/glightbox/js/glightbox.min.js') }}"></script>
 <script type="text/javascript">
     const glightbox = GLightbox({
         openEffect: 'zoom',

@@ -1,4 +1,4 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
     .card {
@@ -73,25 +73,21 @@
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+     <div class="back_re">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>ประกาศรับสมัครงาน</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li><a href="{{ route('jobAll') }}">ประกาศรับสมัครงาน ทั้งหมด</a></li>
-                    <li>ประกาศรับสมัครงาน</li>
-                </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>ประกาศรับสมัครงาน</h2>
+                    </div>
+                </div>
             </div>
-
         </div>
-    </section><!-- End Breadcrumbs -->
+    </div>
 
 <section>
     <div class="container">
-        <div class="card">
+        <div class="card mt-4">
             <div class="card-header">
               Information
             </div>
@@ -104,7 +100,7 @@
                         <h5><span class="badge bg-danger">ไม่มีเอกสารแนบ</span></h5>
                     </div>
                 @else
-                    <iframe class="vh-100" style="height: 100%" height="100%" width=100% src="{{ asset('storage/job_files/'.$job->file) }}"></iframe>
+                    <iframe class="vh-100" style="height: 800px;" height="100%" width=100% src="{{ asset('storage/job_files/'.$job->file) }}"></iframe>
                 @endif
               </div>
             </div>

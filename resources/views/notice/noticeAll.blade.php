@@ -1,4 +1,4 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
     .card {
@@ -73,26 +73,23 @@
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
-        <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>ประชาสัมพันธ์</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>ประชาสัมพันธ์</li>
-                </ol>
-            </div>
-
-        </div>
-    </section><!-- End Breadcrumbs -->
-
-
-   <section>
+    <div class="back_re">
         <div class="container">
             <div class="row">
-            @if ($notices->isNotEmpty())
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>ประชาสัมพันธ์</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="mt-5 mb-5">
+        <div class="container">
+            <div class="row">
+                @if ($notices->isNotEmpty())
                 @foreach ($notices as $notice)
                 <div class="col-md-6">
                     <div class="card">
@@ -100,8 +97,7 @@
                             <h5 class="card-title">{{ $notice->name }}</h5>
                             <p class="card-text">{{ Str::limit($notice->description, 150) }}</p>
                             <div class="d-flex align-items-center">
-                                <a href="{{ route('noticeShow', $notice->slug) }}"
-                                    class="btn btn-danger btn-sm text-white me-auto">ดูเพิ่มเติม</a>
+                                <a href="{{ route('noticeShow', $notice->slug) }}" class="btn btn-primary btn-sm text-white me-auto">ดูเพิ่มเติม</a>
                                 <h6>ผู้โพส: <span class="badge bg-secondary">{{ $notice->user->name }}</span></h6>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -111,20 +107,22 @@
                     </div>
                 </div>
                 @endforeach
-                {{ $notices->links('vendor.pagination.custom') }}
-            @else
+                @else
                 <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
-                        <div class="card-header">
-                            Notification
-                        </div>
-                        <div class="card-body">
+                    <div class="card-header">
+                        Notification
+                    </div>
+                    <div class="card-body">
                         <p class="card-text">No information was found at this time.</p>
-                        </div>
+                    </div>
                 </div>
-            @endif
-                
+                @endif
 
+            </div>
+            <div class="d-flex justify-content-center">
+                {{ $notices->links('vendor.pagination.custom') }}
+            </div>
         </div>
-   </section>
+    </section>
 </main>
 @endsection

@@ -1,4 +1,4 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
     .card {
@@ -73,25 +73,22 @@
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>ประกาศรับสมัครงาน</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>ประกาศรับสมัครงาน ทั้งหมด</li>
-                </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>ประกาศรับสมัครงาน</h2>
+                    </div>
+                </div>
             </div>
-
         </div>
-    </section><!-- End Breadcrumbs -->
+    </div>
 
-   <section>
-    <div class="container">
-        <div class="row">
-           @if ($jobs->isNotEmpty())
+    <section class="mt-5 mb-3">
+        <div class="container">
+            <div class="row">
+                @if ($jobs->isNotEmpty())
                 @foreach ($jobs as $job)
                 <div class="col-md-6">
                     <div class="card">
@@ -99,8 +96,7 @@
                             <h5 class="card-title">{{ $job->name }}</h5>
                             <p class="card-text">{{ Str::limit($job->description, 150) }}</p>
                             <div class="d-flex align-items-center">
-                                <a href="{{ route('jobShow', $job->slug) }}"
-                                    class="btn btn-danger btn-sm text-white me-auto">ดูเพิ่มเติม</a>
+                                <a href="{{ route('jobShow', $job->slug) }}" class="btn btn-primary btn-sm text-white me-auto">ดูเพิ่มเติม</a>
                                 <h6>ผู้โพส: <span class="badge bg-secondary">{{ $job->user->name }}</span></h6>
                             </div>
                             <div class="d-flex justify-content-end">
@@ -109,19 +105,22 @@
                         </div>
                     </div>
                 </div>
-            @endforeach
-            {{ $jobs->links('vendor.pagination.custom') }}
-           @else
+                @endforeach
+                @else
                 <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
                     <div class="card-header">
                         Notification
                     </div>
                     <div class="card-body">
-                    <p class="card-text">No information was found at this time.</p>
+                        <p class="card-text">No information was found at this time.</p>
                     </div>
                 </div>
-           @endif
-    </div>
-   </section>
+                @endif
+            </div>
+            <div class="d-flex justify-content-center">
+                {{ $jobs->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+    </section>
 </main>
 @endsection

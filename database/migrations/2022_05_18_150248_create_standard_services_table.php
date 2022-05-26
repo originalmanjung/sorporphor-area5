@@ -19,6 +19,7 @@ class CreateStandardServicesTable extends Migration
             $table->foreignId('parent_id')->nullable()->constrained('standard_services')->onDelete('cascade');
             $table->string('name')->unique();
             $table->string('file')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }

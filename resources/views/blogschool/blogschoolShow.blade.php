@@ -1,5 +1,6 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
+<link href="{{ asset('plugins/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
 <style>
     .card {
         border-radius: 3px;
@@ -68,45 +69,43 @@
         background: #fff;
         color: #d9232d;
     }
+
     .card-author {
         margin-top: -40px;
         padding: 15px;
     }
+
 </style>
 @endpush
 @section('content')
 <main id="main" class="bg-white">
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>กิจกรรม สพป.เชียงใหม่ เขต 5</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li><a href="{{ route('blogschoolAll') }}">กิจกรรม สพป.เชียงใหม่ เขต 5 ทั้งหมด</a></li>
-                    <li>กิจกรรม สพป.เชียงใหม่ เขต 5</li>
-                </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>กิจกรรมโรงเรียนในสัดกัด</h2>
+                    </div>
+                </div>
             </div>
-
         </div>
-    </section><!-- End Breadcrumbs -->
+    </div>
 
-<section>
-    <div class="container">
-        <div class="card">
-            <div class="card-header">
-              Information
-            </div>
-            <div class="card-body">
-              <div class="p-5">
-                <h5 class="card-title">{{ $blogschool->title }}</h5>
-                <p class="card-text p-3">{{ $blogschool->description }}</p>
-                @if ($blogschool->blogSchoolPhotos->isNotEmpty())
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <div class="row g-3">
-                            @foreach ($blogschool->blogSchoolPhotos as $key=>$photos )
+    <section class="mt-5 mb-5">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    รายละเอียด
+                </div>
+                <div class="card-body">
+                    <div class="p-5">
+                        <h5 class="card-title">{{ $blogschool->title }}</h5>
+                        <p class="card-text p-3">{{ $blogschool->description }}</p>
+                        @if ($blogschool->blogSchoolPhotos->isNotEmpty())
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <div class="row g-3">
+                                    @foreach ($blogschool->blogSchoolPhotos as $key=>$photos )
                                     <div class="col-xl-3 col-lg-4 col-md-6 mb-4 image-area">
                                         <a class="glightbox" href="{{ asset('storage/blogschool_photos/'.$photos->filename) }}">
                                             <img src="{{ asset('storage/blogschool_photos/'.$photos->filename) }}" alt="" class="img-fluid card-img-top rounded">
@@ -116,21 +115,24 @@
                                             @method('DELETE')
                                         </form>
                                     </div>
-                            @endforeach
+                                    @endforeach
+                                </div>
                             </div>
                         </div>
+                        @else
+                        <div class="mb-5" align="center">
+                            <h5><span class="badge bg-danger">ไม่มีรูปภาพที่อัฟโหลด</span></h5>
+                        </div>
+                        @endif
                     </div>
-                @else
-                <div class="mb-5" align="center"><h5><span class="badge bg-danger">ไม่มีรูปภาพที่อัฟโหลด</span></h5></div>
-                @endif
-              </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 </main>
 @endsection
 @push('js')
+<script src="{{ asset('plugins/glightbox/js/glightbox.min.js') }}"></script>
 <script type="text/javascript">
     const glightbox = GLightbox({
         openEffect: 'zoom',

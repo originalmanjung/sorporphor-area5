@@ -1,4 +1,4 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
     .card {
@@ -73,57 +73,54 @@
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>แจ้งการโอนเงิน</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>แจ้งการโอนเงิน ทั้งหมด</li>
-                </ol>
-            </div>
-
-        </div>
-    </section><!-- End Breadcrumbs -->
-
-   <section>
-    <div class="container">
-        <div class="row">
-        @if ($paymentSlips->isNotEmpty())
-             @foreach ($paymentSlips as $paymentSlip)
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $paymentSlip->name }}</h5>
-                        <p class="card-text">{{ Str::limit($paymentSlip->description, 150) }}</p>
-                        <div class="d-flex align-items-center">
-                            <a href="{{ route('paymentSlipShow', $paymentSlip->slug) }}"
-                                class="btn btn-danger btn-sm text-white me-auto">ดูเพิ่มเติม</a>
-                            <h6>ผู้โพส: <span class="badge bg-secondary">{{ $paymentSlip->user->name }}</span></h6>
-                        </div>
-                        <div class="d-flex justify-content-end">
-                            <p>{{ $paymentSlip->created_at->format('d/m/Y') }}</p>
-                        </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>แจ้งการโอนเงิน</h2>
                     </div>
                 </div>
             </div>
-            @endforeach
-
-            {{ $paymentSlips->links('vendor.pagination.custom') }}
-        @else
-            <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
-                <div class="card-header">
-                    Notification
-                </div>
-                <div class="card-body">
-                <p class="card-text">No information was found at this time.</p>
-                </div>
-            </div>
-        @endif
-           
+        </div>
     </div>
-   </section>
+
+    <section class="mt-5 mb-5">
+        <div class="container">
+            <div class="row">
+                @if ($paymentSlips->isNotEmpty())
+                @foreach ($paymentSlips as $paymentSlip)
+                <div class="col-md-6 mb-5">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $paymentSlip->name }}</h5>
+                            <p class="card-text">{{ Str::limit($paymentSlip->description, 150) }}</p>
+                            <div class="d-flex align-items-center" style="position: absolute; bottom: 10px;">
+                                <a href="{{ route('paymentSlipShow', $paymentSlip->slug) }}" class="btn btn-primary btn-sm text-white me-auto">ดูเพิ่มเติม</a>
+                                <h6>ผู้โพส: <span class="badge bg-secondary">{{ $paymentSlip->user->name }}</span></h6>
+                            </div>
+                            <div class="d-flex justify-content-end">
+                                <p>{{ $paymentSlip->created_at->format('d/m/Y') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @else
+                <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
+                    <div class="card-header">
+                        Notification
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">No information was found at this time.</p>
+                    </div>
+                </div>
+                @endif
+            </div>
+            <div class="d-flex justify-content-center">
+                {{ $paymentSlips->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+    </section>
 </main>
 @endsection

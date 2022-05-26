@@ -547,5 +547,28 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.standardServices.destroy',
         ]);
 
+        // Letter
+        $moduleAppLetter = Module::updateOrCreate(['name' => 'จัดการจดหมายข่าว']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLetter->id,
+            'name' => 'Access Letter',
+            'slug' => 'app.letters.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLetter->id,
+            'name' => 'Create Letter',
+            'slug' => 'app.letters.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLetter->id,
+            'name' => 'Edit Letter',
+            'slug' => 'app.letters.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppLetter->id,
+            'name' => 'Delete Letter',
+            'slug' => 'app.letters.destroy',
+        ]);
+
     }
 }

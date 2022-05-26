@@ -1,69 +1,97 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
-    .gallery-item {
-    overflow: hidden;
-    border-right: 3px solid #fff;
-    border-bottom: 3px solid #fff;
-  }
 
-  .gallery-item img {
-    transition: all ease-in-out 0.4s;
-  }
 
-  .gallery-item:hover img {
-    transform: scale(1.1);
-  }
-    .img-span {
-        position: relative;
-        width: 100%;
-  }
-   .img-span  h4 {
+
+.block-img-video-1 > a {
+  display: block;
+  position: relative;
+  cursor: pointer; }
+  .block-img-video-1 > a .icon {
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 100%;
-    font-size: 14px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #fff;
+    -webkit-transition: .3s all ease-in-out;
+    -o-transition: .3s all ease-in-out;
+    transition: .3s all ease-in-out; }
+    .block-img-video-1 > a .icon > span {
+      position: absolute;
+      top: 50%;
+      font-size: .8rem;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      color: #000; }
+  .block-img-video-1 > a:hover .icon {
+    background: #fff;
+    width: 50px;
+    height: 50px; }
 
-    }
+    .top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
+.bottom-right {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+ background: rgba(0, 0, 0, 0.7);
+  font-size: 12px;
+}
+
 </style>
 @endpush
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>วีดีโอ สพป.เชียงใหม่ เขต 5</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>วีดีโอทั้งหมด</li>
-                </ol>
-            </div>
-
-        </div>
-    </section><!-- End Breadcrumbs -->
-
-   <section>
-    <div class="container">
-        <div class="row">
-            @foreach ($videos as $video)
-            <div class="col-lg-3 col-md-4 mb-4">
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                <a href="{{ route('videoShow',$video->slug) }}">
-                    <div class="img-span">
-                        <img src="{{ asset('storage/video_photos/' .$video->filename) }}" alt="" class="img-fluid">
-                        <h4><span class="badge bg-danger">VIDEO SPECIAL</span></h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>วีดีโอ สพป.เชียงใหม่ เขต 5</h2>
                     </div>
-                </a>
                 </div>
             </div>
-            @endforeach
-
-            {{ $videos->links('vendor.pagination.custom') }}
+        </div>
     </div>
-   </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+             
+                    @foreach ($videos as $video)
+                   
+                        <div class="col-md-3 mt-5 mb-5">
+                            <figure class="block-img-video-1" data-aos="fade">
+                                <a href="https://vimeo.com/45830194" data-fancybox data-ratio="2">
+                                    <span class="icon"><span class="icon-play"></span></span>
+                                    <img src="{{ asset('storage/video_photos/' .$video->filename) }}" alt="Image" class="img-fluid">
+                                    <div class="top-left text-white">{{ Str::limit($video->name, 65) ?? '' }}</div>
+                                      <div class="bottom-right"><p class="card-text text-white p-1">{{ $video->user->name }}</p></div>
+                                </a>
+                            </figure>
+                        </div>
+                    @endforeach
+                           
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+                {{ $videos->links('vendor.pagination.custom') }}
+        </div>
+        
+       
+    </section>
 </main>
 @endsection

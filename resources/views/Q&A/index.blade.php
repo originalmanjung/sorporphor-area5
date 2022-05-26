@@ -1,4 +1,4 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
 <style>
@@ -11,27 +11,26 @@
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Q&A</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>Q&A ทั้งหมด</li>
-                </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>Q&A ถาม-ตอบ ข้อสงสัย</h2>
+                    </div>
+                </div>
             </div>
-
         </div>
-    </section><!-- End Breadcrumbs -->
+    </div>
+
 
   <section>
     <div class="container">
         <div class="container-fluid px-4">
-            <div class="card mb-4">
+            <div class="card mb-4 mt-5">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <div><i class="fas fa-table me-1"></i>Q&A ทั้งหมด</div>
-                    <a href="{{ route('questions.create') }}" type="button" class="btn btn-danger text-white"><i class="fas fa-plus-circle"></i> สร้าง</a>
+                    <a href="{{ route('questions.create') }}" type="button" class="btn btn-primary text-white"><i class="fas fa-plus-circle"></i> สร้าง</a>
                 </div>
                 <div class="card-body">
                     <table id="datatablesSimple">

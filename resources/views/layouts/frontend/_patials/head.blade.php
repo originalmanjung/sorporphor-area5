@@ -52,20 +52,20 @@
                                 <li class="has-children">
                                     <a href="insurance.html">อี-เซอร์วิส</a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="#">ระบบเงินเดือนอิเล็กทรอนิกส์(E-Money)</a></li>
-                                        <li><a href="#">ระบบสำนักงานอิเล็กทรอนิกส์(E-Paperless)</a></li>
-                                        <li><a href="#">ระบบแจ้งความประสงค์ขอสำเนาทะเบียนประวัติข้าราชการ</a></li>
-                                        <li><a href="#">ระบบ E-Learning บทเรียนออนไลน์</a></li>
-                                        <li><a href="#">ระบบบริหารจัดการศึกษา (Schoolmis)</a></li>
-                                        <li><a href="#">ระบบจัดเก็บข้อมูลนักเรียนรายบุคคล (DMC)</a></li>
-                                        <li><a href="#">ระบบข้อมูลสารสนเทศเพื่อการบริหาร (EMIS)</a></li>
-                                        <li><a href="#">ระบบบริหารโรงเรียนและเขตพื้นที่ (E-SEASS)</a></li>
-                                        <li><a href="#">ระบบฐานข้อมูลสิ่งก่อสร้าง (B-obec)</a></li>
-                                        <li><a href="#">ระบบปัจจัยพื้นฐานเด็กยากจน (CCT)</a></li>
-                                        <li><a href="#">ระบบรายงานการรับนักเรียน</a></li>
-                                        <li><a href="#">ระบบข้อมูลฯ โรงเรียนสุจริต</a></li>
-                                        <li><a href="#">สำนักงานลูกเสือจังหวัดเชียงใหม่</a></li>
-                                        <li><a href="#">ศูนย์ Covid – 19 สพป.เชียงใหม่ เขต 1</a></li>
+                                        <li><a href="http://www.chiangmai1.ksom.net/money/index.php">ระบบเงินเดือนอิเล็กทรอนิกส์(E-Money)</a></li>
+                                        <li><a href="http://61.19.21.20/neof/">ระบบสำนักงานอิเล็กทรอนิกส์(E-Paperless)</a></li>
+                                        <li><a href="https://www.chiangmaiarea1.go.th/kp7/">ระบบแจ้งความประสงค์ขอสำเนาทะเบียนประวัติข้าราชการ</a></li>
+                                        <li><a href="https://sites.google.com/a/chiangmaiarea1.go.th/cm1e-learning/home">ระบบ E-Learning บทเรียนออนไลน์</a></li>
+                                        <li><a href="http://schoolmis.obec.expert">ระบบบริหารจัดการศึกษา (Schoolmis)</a></li>
+                                        <li><a href="https://www.bopp-obec.info/home/">ระบบจัดเก็บข้อมูลนักเรียนรายบุคคล (DMC)</a></li>
+                                        <li><a href="https://data.bopp-obec.info/emis/">ระบบข้อมูลสารสนเทศเพื่อการบริหาร (EMIS)</a></li>
+                                        <li><a href="http://eme3.obec.go.th/~eme53/">ระบบบริหารโรงเรียนและเขตพื้นที่ (E-SEASS)</a></li>
+                                        <li><a href="https://bobec.bopp-obec.info/index.php">ระบบฐานข้อมูลสิ่งก่อสร้าง (B-obec)</a></li>
+                                        <li><a href="https://cct.thaieduforall.org/">ระบบปัจจัยพื้นฐานเด็กยากจน (CCT)</a></li>
+                                        <li><a href="https://admission.bopp-obec.info/login.php">ระบบรายงานการรับนักเรียน</a></li>
+                                        <li><a href="http://www.uprightcode.xyz/index.php">ระบบข้อมูลฯ โรงเรียนสุจริต</a></li>
+                                        <li><a href="https://sites.google.com/view/scoutchiangmai">สำนักงานลูกเสือจังหวัดเชียงใหม่</a></li>
+                                        <li><a href="https://sites.google.com/chiangmaiarea1.go.th/covid19-area1/%E0%B8%AB%E0%B8%99%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81">ศูนย์ Covid – 19 สพป.เชียงใหม่ เขต 5</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-children">

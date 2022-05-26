@@ -1,4 +1,4 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
 
@@ -8,24 +8,21 @@
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Q&A</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li><a href="{{ route('questions.index') }}">Q&A ทั้งหมด</a></li>
-                    <li>Q&A</li>
-                </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>Q&A ถาม-ตอบ ข้อสงสัย</h2>
+                    </div>
+                </div>
             </div>
-
         </div>
-    </section><!-- End Breadcrumbs -->
+    </div>
 
     <section>
         <div class="container">
-            <div class="col-md-9 mx-auto">
+            <div class="col-md-9 mx-auto mt-5 mb-5">
                 <div class="card">
                     <div class="card-header">
                         ถาม - ตอบ Q&A

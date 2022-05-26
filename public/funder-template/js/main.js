@@ -161,7 +161,7 @@ jQuery(document).ready(function($) {
 		if ( $('.nonloop-block-13').length > 0 ) {
 			$('.nonloop-block-13').owlCarousel({
 		    center: false,
-		    items: 3,
+		    items: 1,
 		    loop: true,
 				stagePadding: 10,
 				autoplay: true,
@@ -194,7 +194,7 @@ jQuery(document).ready(function($) {
 		if ( $('.nonloop-block-14').length > 0 ) {
 			$('.nonloop-block-14').owlCarousel({
 		    center: false,
-		    items: 1,
+		    items: 4,
 		    loop: true,
 				stagePadding: 0,
 				autoplay: true,
@@ -221,7 +221,7 @@ jQuery(document).ready(function($) {
 		if ( $('.nonloop-block-15').length > 0 ) {
 			$('.nonloop-block-15').owlCarousel({
 		    center: false,
-		    items: 1,
+		    items: 4,
 		    loop: true,
 				stagePadding: 0,
 				autoplay: true,
@@ -247,7 +247,7 @@ jQuery(document).ready(function($) {
 	        1200:{
 	        	margin: 20,
 	        	stagePadding: 0,
-	          items: 3,
+	          items: 4,
 	          nav: true,
 		    		dots: true
 	        }

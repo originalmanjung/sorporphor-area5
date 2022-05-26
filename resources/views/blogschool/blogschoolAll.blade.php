@@ -1,4 +1,4 @@
-@extends('layouts.home.app')
+@extends('layouts.frontend.app')
 @push('css')
 <style>
     .card {
@@ -13,6 +13,7 @@
         position: relative;
         width: 100%;
     }
+
     .card h4 {
         position: absolute;
         top: 8px;
@@ -67,71 +68,67 @@
         background: #fff;
         color: #d9232d;
     }
+
     .card-author {
         margin-top: -40px;
         padding: 15px;
     }
+
 </style>
 @endpush
 @section('content')
 <main id="main" class="bg-white">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section id="breadcrumbs" class="breadcrumbs">
+    <div class="back_re">
         <div class="container">
-
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>กิจกรรมโรงเรียนในสังกัด สพป.เชียงใหม่ เขต 5</h2>
-                <ol>
-                    <li><a href="{{ route('home') }}">หน้าหลัก</a></li>
-                    <li>กิจกรรมโรงเรียนในสังกัด สพป.เชียงใหม่ เขต 5 ทั้งหมด</li>
-                </ol>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title">
+                        <h2>กิจกรรมโรงเรียนในสังกัด</h2>
+                    </div>
+                </div>
             </div>
-
         </div>
+    </div>
     </section><!-- End Breadcrumbs -->
 
-   <section>
-    <div class="container">
-        <div class="row">
-        @if ($blogschools->isNotEmpty())
-             @foreach ($blogschools as $blogschool)
-            <div class="col-md-4">
-                <a href="{{ route('blogschoolShow',$blogschool->slug ) }}">
-                    <div class="card h-100">
-                        <img src="@if($blogschool->blogSchoolPhotos->isNotEmpty()) {{ asset('storage/blogschool_photos/'. $blogschool->blogSchoolPhotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" class="card-img-top" alt="...">
-                        <h4><span class="badge bg-danger">กิจกรรมโรงเรียนเชียงใหม่ เขต 5</span></h4>
-                        <div class="card-icon">
-                            <i class="bx bx-book-reader"></i>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><a>{{ Str::limit($blogschool->title, 150) }}</a></h5>
-                            <p class="card-text">{{ Str::limit($blogschool->description, 200) }}</p>
-
-                        </div>
-                        <div class="d-flex card-author">
-                            <small class="text-muted me-auto">{{ $blogschool->created_at->format('d/m/Y') }}</small>
-                            <h6>ผู้โพส : <span class="badge bg-secondary">{{ $blogschool->user->name }}</span></h6>
-                        </div>
+    <section>
+        <div class="container">
+            <div class="row">
+                @if ($blogschools->isNotEmpty())
+                    @foreach ($blogschools as $blogschool)
+                    <div class="col-md-4 mt-5 mb-5">
+                        <a href="{{ route('blogschoolShow', $blogschool->slug) }}">
+                            <div class="media-image card w-100 h-100  border-0">
+                                <a class="wrap-card-img" href="{{ route('blogschoolShow', $blogschool->slug) }}"><img src="@if($blogschool->blogSchoolPhotos->isNotEmpty()) {{ asset('storage/blogschool_photos/'. $blogschool->blogSchoolPhotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
+                                <div class="media-image-body card-body">
+                                    <h2 class="card-title">{{ Str::limit($blogschool->title, 65) ?? '' }}</h2>
+                                    <p class="card-text">{{ Str::limit($blogschool->description, 120) ?? '' }}</p>
+                                </div>
+                                <div class="p-4 mb-3">
+                                    <a href="{{ route('blogschoolShow', $blogschool->slug) }}" class="btn btn-primary text-white px-4"><span>อ่านเพิ่มเติม</span></a>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-            @endforeach
-            {{ $blogschools->links('vendor.pagination.custom') }}
-        @else
-            <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
-                <div class="card-header">
-                    Notification
+                    @endforeach
+                @else
+                <div class="card text-center border border-1" style="--bs-gutter-x: 0rem;">
+                    <div class="card-header">
+                        Notification
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">No information was found at this time.</p>
+                    </div>
                 </div>
-                <div class="card-body">
-                <p class="card-text">No information was found at this time.</p>
-                </div>
-            </div>
-        @endif
-           
+                @endif
 
-            
-    </div>
-   </section>
+
+            </div>
+            <div class="d-flex justify-content-center">
+                {{ $blogschools->links('vendor.pagination.custom') }}
+            </div>
+        </div>
+    </section>
 </main>
 @endsection

@@ -24,6 +24,7 @@ use App\Http\Controllers\Admin\DutyController;
 use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\Admin\IntergrityController;
 use App\Http\Controllers\Admin\LawController;
+use App\Http\Controllers\Admin\LetterController;
 use App\Http\Controllers\Admin\ManageStructureController;
 use App\Http\Controllers\Admin\StandardPraticeGuideController;
 use App\Http\Controllers\Admin\StandardServiceController;
@@ -96,3 +97,5 @@ Route::get('standardPraticeGuides/view-pdf/{standardPraticeGuide}', [StandardPra
 // คู่มือมาตรฐานการให้บริการ
 Route::resource('standardServices', StandardServiceController::class);
 Route::get('standardServices/child-standardService/{standardService}', [StandardServiceController::class,'createChild'])->name('standardServices.createChild');
+// จดหมายข่าว
+Route::resource('letters', LetterController::class)->except(['show']);

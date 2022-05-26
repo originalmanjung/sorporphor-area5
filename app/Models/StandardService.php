@@ -17,7 +17,11 @@ class StandardService extends Model
      * @var array
      */
     protected $guarded = ['id'];
-
+    
+    public function setNameAttribute($name){
+        $this->attributes['name'] = $name;
+        $this->attributes['slug'] = slugUnicode($name);
+    }
     /**
      * Get the user that owns the StandardService
      *

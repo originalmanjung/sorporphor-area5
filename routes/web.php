@@ -36,7 +36,7 @@ use App\Http\Controllers\ManageStructureController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 // ประชาสัมพันธ์
 Route::get('notices', [NoticeController::class, 'noticeAll'])->name('noticeAll');
-Route::get('notice/{slug}', [NoticeController::class, 'noticeShow'])->name('noticeShow');
+Route::get('notices/{slug}', [NoticeController::class, 'noticeShow'])->name('noticeShow');
 // ประชาสัมพันธ์โรงเรียน
 Route::get('noticeSchools', [NoticeSchoolController::class, 'noticeSchoolAll'])->name('noticeSchoolAll');
 Route::get('noticeSchools/{slug}', [NoticeSchoolController::class, 'noticeSchoolShow'])->name('noticeSchoolShow');
@@ -88,6 +88,10 @@ Route::get('standard-pratice-guide', [HomeController::class, 'law'])->name('law'
 Route::get('standard-pratice-guide', [HomeController::class, 'standardPraticeGuide'])->name('standardPraticeGuide');
 Route::get('standard-pratice-guide/show/{standardPraticeGuide}', [HomeController::class, 'standardPraticeGuideShow'])->name('standardPraticeGuideShow');
 Route::get('standard-pratice-guide/view-pdf/{standardPraticeGuide}', [HomeController::class, 'standardPraticeGuidePDF'])->name('standardPraticeGuidePDF');
+// คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ
+Route::get('standard-service', [HomeController::class, 'standardService'])->name('standardService');
+Route::get('standard-service/show/{standardService}', [HomeController::class, 'standardServiceShow'])->name('standardServiceShow');
+Route::get('standard-service/view-pdf/{standardService}', [HomeController::class, 'standardServicePDF'])->name('standardServicePDF');
 
 Route::get('contact/', function () {
     return view('contact');

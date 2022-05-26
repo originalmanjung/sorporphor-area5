@@ -27,13 +27,13 @@
                         </ul>
                     </div>
                     <div class="col-md-6">
-                        <h3 class="footer-heading mb-4 text-white">อี-เซอร์วิส</h3>
-                        <ul class="list-unstyled">
-                            <li><a href="#">ระบบเงินเดือนอิเล็กทรอนิกส์(E-Money)</a></li>
-                            <li><a href="#">ระบบสำนักงานอิเล็กทรอนิกส์(E-Paperless)</a></li>
-                            <li><a href="#">ระบบ E-Learning บทเรียนออนไลน์</a></li>
-                            <li><a href="#">ระบบบริหารจัดการศึกษา (Schoolmis)</a></li>
-                        </ul>
+                        <h3 class="footer-heading mb-4 text-white">เวลาทำการ</h3>
+                        <div class="opening-hours">
+                            <h6 style="font-size:16px; color:#fd7e14;">ในเวลาราชการ:</h6>
+                            <p class="pl-3">
+                                <span>จันทร์ – ศุกร์ <br> 8.00 น. - 17.00 น.</span>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

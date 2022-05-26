@@ -1,11 +1,11 @@
 
 <style>
 .page-item.active .page-link {
-    background-color: #d9232d;
-    border-color: #d9232d;
+    background-color: #fd7e14;
+    border-color: #fd7e14;
 }
 .page-link {
-    color: #d9232d;
+    color: #fd7e14;
 }
 </style>
 

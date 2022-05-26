@@ -13,11 +13,12 @@ use App\Models\BlogSchool;
 use App\Models\Banner;
 use App\Models\Intergrity;
 use App\Models\Law;
+use App\Models\Letter;
 use App\Models\Video;
 use App\Models\Personal;
 use App\Models\StandardPraticeGuide;
+use App\Models\StandardService;
 use Illuminate\Http\Request;
-use PDF;
 
 class HomeController extends Controller
 {
@@ -41,6 +42,8 @@ class HomeController extends Controller
         $noticeSchools = NoticeSchool::limit(4)->orderBy('created_at', 'desc')->get();
         $intergrities = Intergrity::where('parent_id',NULL)->get();
         $personals = Personal::whereIn('position_general', ['ผู้อำนวยการ สพป.เชียงใหม่ เขต 5', 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5'])->active()->get();
+        $letterRegions = Letter::Region()->limit(10)->orderBy('created_at', 'desc')->get();
+        $letterDistricts = Letter::District()->limit(10)->orderBy('created_at', 'desc')->get();
         return view('index',[
             'purchases' => $purchases,
             'jobs' => $jobs,
@@ -54,7 +57,10 @@ class HomeController extends Controller
             'bannercontents' => $bannercontents,
             'videos' => $videos,
             'intergrities' => $intergrities,
-            'personals' => $personals
+            'personals' => $personals,
+            'letterRegions' => $letterRegions,
+            'letterDistricts' => $letterDistricts,
+
         ]);
     }
 
@@ -69,6 +75,7 @@ class HomeController extends Controller
             'intergrity' => $intergrity,
         ]);
     }
+
 
 
     /**
@@ -120,6 +127,44 @@ class HomeController extends Controller
     {
         return view('standard-pratice-guide.viewPDF',[
             'standardPraticeGuide' => $standardPraticeGuide
+        ]);
+    }
+
+    /**
+     * คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function standardService()
+    {
+        $standardServices = StandardService::where('parent_id',NULL)->get();
+        return view('standard-service.index',[
+            'standardServices' => $standardServices
+        ]);
+    }
+
+    /**
+     * คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function standardServiceShow(StandardService $standardService)
+    {
+        $standardServices = StandardService::where('slug', $standardService->slug)->first();
+        return view('standard-service.show',[
+            'standardServices' => $standardServices
+        ]);
+    }
+
+    /**
+     * คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function standardServicePDF(StandardService $standardService)
+    {
+        return view('standard-service.viewPDF',[
+            'standardService' => $standardService
         ]);
     }
 }

@@ -83,6 +83,10 @@
                         <div class="sb-nav-link-icon"><i class="fas fa-archway"></i></div>
                         กฏหมายที่เกี่ยวข้อง
                     </a>
+                     <a class="nav-link {{ Route::is('app.letters*') ? 'active' : '' }}" href="{{ route('app.letters.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-chalkboard"></i></div>
+                        จดหมายข่าว
+                    </a>
 
                     <div class="sb-sidenav-menu-heading">Complaint</div>
                     @if (Auth::user()->role->slug == 'แอดมิน' || Auth::user()->role->slug == 'กลุ่มกฎหมายและคดี')
