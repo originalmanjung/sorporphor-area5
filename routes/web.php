@@ -92,6 +92,8 @@ Route::get('standard-pratice-guide/view-pdf/{standardPraticeGuide}', [HomeContro
 Route::get('standard-service', [HomeController::class, 'standardService'])->name('standardService');
 Route::get('standard-service/show/{standardService}', [HomeController::class, 'standardServiceShow'])->name('standardServiceShow');
 Route::get('standard-service/view-pdf/{standardService}', [HomeController::class, 'standardServicePDF'])->name('standardServicePDF');
+// คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ
+Route::get('letters/show/{letter}', [HomeController::class, 'letterAll'])->name('letterAll');
 
 Route::get('contact/', function () {
     return view('contact');

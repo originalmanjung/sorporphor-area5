@@ -570,5 +570,28 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.letters.destroy',
         ]);
 
+        // Corruption
+        $moduleAppCorruption = Module::updateOrCreate(['name' => 'การดำเนินงานเพื่อป้องกันการทุจริต']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCorruption->id,
+            'name' => 'Access Corruption',
+            'slug' => 'app.corruptions.index',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCorruption->id,
+            'name' => 'Create Corruption',
+            'slug' => 'app.corruptions.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCorruption->id,
+            'name' => 'Edit Corruption',
+            'slug' => 'app.corruptions.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppCorruption->id,
+            'name' => 'Delete Corruption',
+            'slug' => 'app.corruptions.destroy',
+        ]);
+
     }
 }

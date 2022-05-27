@@ -88,6 +88,11 @@
                         จดหมายข่าว
                     </a>
 
+                    <a class="nav-link {{ Route::is('app.corruptions*') ? 'active' : '' }}" href="{{ route('app.corruptions.index') }}">
+                        <div class="sb-nav-link-icon"><i class="fas fa-fist-raised"></i></div>
+                        ป้องกันการทุจริต
+                    </a>
+
                     <div class="sb-sidenav-menu-heading">Complaint</div>
                     @if (Auth::user()->role->slug == 'แอดมิน' || Auth::user()->role->slug == 'กลุ่มกฎหมายและคดี')
                     <a class="nav-link {{ Route::is('app.complaints*') ? 'active' : '' }}" href="{{ route('app.complaints.index') }}">

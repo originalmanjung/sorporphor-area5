@@ -167,4 +167,19 @@ class HomeController extends Controller
             'standardService' => $standardService
         ]);
     }
+
+
+    /**
+     * จดหมายข่าว
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function letterAll(Letter $letter)
+    {
+        $letters = Letter::where('type', $letter->type)->orderBy('created_at')->paginate(8);
+        return view('letter.letterAll',[
+            'letters' => $letters,
+            'letter' => $letter  
+        ]);
+    }
 }

@@ -741,14 +741,6 @@
                     </div>
                 </div>
             </a>
-            <a href="{{ route('questions.index') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center ftco-animate">
-                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-heart"></i></span></div>
-                    <div class="text media-body">
-                        <h3>ประเมินความพึงพอใจในการรับบริการ</h3>
-                    </div>
-                </div>
-            </a>
             <a href="{{ route('standardPraticeGuide') }}" class="col-lg-4 d-flex">
                 <div class="services-2 text-center ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-book"></i></span></div>
@@ -765,11 +757,11 @@
                     </div>
                 </div>
             </a>
-            <a href="https://e-budget.jobobec.in.th/" class="col-lg-4 d-flex">
-                <div class="services-2 noborder-left noborder-bottom text-center ftco-animate">
-                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-money"><i class="fas fa-chart-line"></i></span></div>
+            <a href="#" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-fist-raised"></i></span></div>
                     <div class="text media-body">
-                        <h3>ผลการบริหารงบประมาณรายจ่ายประจำปี</h3>
+                        <h3>ประกาศเจตจำนงสุจริตในการบริหาร</h3>
                     </div>
                 </div>
             </a>
@@ -804,15 +796,8 @@
                         <h3>เปิดโอกาศการมีส่วนร่วมในการขับเคลื่อนองค์กร</h3>
                     </div>
                 </div>
-            </a>
-            <a href="#" class="col-lg-4 d-flex">
-                <div class="services-2 text-center noborder-bottom ftco-animate">
-                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-fist-raised"></i></span></div>
-                    <div class="text media-body">
-                        <h3>ประกาศเจตจำนงสุจริตในการบริหาร</h3>
-                    </div>
-                </div>
             </a> --}}
+            
         </div>
     </div>
 </section>
@@ -873,7 +858,7 @@
                     </div>
                 </div>
                 @if ($letterRegions->isNotEmpty())
-                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="#" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif 
             </div>
         </div>
@@ -885,12 +870,15 @@
 <div class="py-5 bg-primary">
     <div class="container">
         <div class="row align-items-center">
+        @if($bannercontents->isNotEmpty())
+        @foreach($bannercontents as $bannercontent)
             <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                <img src="{{ asset('images/resist/korortor2.jpg') }}" class="img-fluid" alt="Responsive image">
+                <img src="{{ asset('storage/banner_files/'. $bannercontent->file) }}" class="img-fluid" alt="Responsive image">
             </div>
-            <div class="col-md-6 ml-auto text-center text-md-left">
-                <img src="{{ asset('images/resist/korortor1.jpg') }}" class="img-fluid" alt="Responsive image">
-            </div>
+        @endforeach
+        @else  
+            <h5 class="card-title text-white mx-auto">ไม่พบข้อมูล</h5>
+        @endif
         </div>
     </div>
 </div>
@@ -951,7 +939,7 @@
                     </div>
                 </div>
                 @if ($letterDistricts->isNotEmpty())
-                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="#" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif 
             </div>
         </div>

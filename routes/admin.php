@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\PersonalController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\ComplaintController;
+use App\Http\Controllers\Admin\CorruptionController;
 use App\Http\Controllers\Admin\OpinionController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\MissionController;
@@ -99,3 +100,5 @@ Route::resource('standardServices', StandardServiceController::class);
 Route::get('standardServices/child-standardService/{standardService}', [StandardServiceController::class,'createChild'])->name('standardServices.createChild');
 // จดหมายข่าว
 Route::resource('letters', LetterController::class)->except(['show']);
+// การดำเนินงานเพื่อป้องกันการทุจริต
+Route::resource('corruptions', CorruptionController::class);
