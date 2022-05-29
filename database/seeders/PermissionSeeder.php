@@ -28,7 +28,7 @@ class PermissionSeeder extends Seeder
         Permission::updateOrCreate([
             'module_id' => $moduleAppRole->id,
             'name' => 'Access Role',
-            'slug' => 'app.roles.index'
+            'slug' => 'app.roles.index',
         ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppRole->id,
@@ -51,7 +51,7 @@ class PermissionSeeder extends Seeder
         $moduleAppUser = Module::updateOrCreate(['name' => 'จัดการยูชเซอร์']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppUser->id,
-            'name' => 'Access Users',
+            'name' => 'Access User',
             'slug' => 'app.users.index',
         ]);
         Permission::updateOrCreate([
@@ -74,11 +74,6 @@ class PermissionSeeder extends Seeder
         $moduleAppPersonal = Module::updateOrCreate(['name' => 'จัดการบุคลากร']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppPersonal->id,
-            'name' => 'Access Personals',
-            'slug' => 'app.personals.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppPersonal->id,
             'name' => 'Create Personal',
             'slug' => 'app.personals.create',
         ]);
@@ -95,11 +90,6 @@ class PermissionSeeder extends Seeder
 
         // Banner
         $moduleAppBanner = Module::updateOrCreate(['name' => 'จัดการแบนเนอร์']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppBanner->id,
-            'name' => 'Access Banners',
-            'slug' => 'app.banners.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppBanner->id,
             'name' => 'Create Banner',
@@ -120,11 +110,6 @@ class PermissionSeeder extends Seeder
         $moduleAppHistory = Module::updateOrCreate(['name' => 'จัดการประวัติความเป็นมา']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppHistory->id,
-            'name' => 'Access Histories',
-            'slug' => 'app.histories.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppHistory->id,
             'name' => 'Create History',
             'slug' => 'app.histories.create',
         ]);
@@ -141,11 +126,6 @@ class PermissionSeeder extends Seeder
 
         // Duty
         $moduleAppDuty = Module::updateOrCreate(['name' => 'จัดการภาระกิจหน้าที่']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppDuty->id,
-            'name' => 'Access Dutys',
-            'slug' => 'app.dutys.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppDuty->id,
             'name' => 'Create Duty',
@@ -166,11 +146,6 @@ class PermissionSeeder extends Seeder
         $moduleAppMission = Module::updateOrCreate(['name' => 'จัดการวิสัยทัศน์ พันธกิจ']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppMission->id,
-            'name' => 'Access Missions',
-            'slug' => 'app.missions.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppMission->id,
             'name' => 'Create Mission',
             'slug' => 'app.missions.create',
         ]);
@@ -187,11 +162,6 @@ class PermissionSeeder extends Seeder
 
         // ManageStructure
         $moduleAppManageStructure = Module::updateOrCreate(['name' => 'จัดการโครงการสร้างการบริหาร']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppManageStructure->id,
-            'name' => 'Access ManageStructures',
-            'slug' => 'app.manageStructures.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppManageStructure->id,
             'name' => 'Create ManageStructure',
@@ -212,11 +182,6 @@ class PermissionSeeder extends Seeder
         $moduleAppNews = Module::updateOrCreate(['name' => 'กิจกรรม สพป.']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppNews->id,
-            'name' => 'Access News',
-            'slug' => 'app.news.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppNews->id,
             'name' => 'Create News',
             'slug' => 'app.news.create',
         ]);
@@ -233,11 +198,6 @@ class PermissionSeeder extends Seeder
 
         // BlogSchool
         $moduleAppBlogSchool = Module::updateOrCreate(['name' => 'กิจกรรมโรงเรียน']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppBlogSchool->id,
-            'name' => 'Access BlogSchool',
-            'slug' => 'app.blogSchools.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppBlogSchool->id,
             'name' => 'Create BlogSchool',
@@ -258,11 +218,6 @@ class PermissionSeeder extends Seeder
         $moduleAppVideo = Module::updateOrCreate(['name' => 'จัดการวีดีโอ']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppVideo->id,
-            'name' => 'Access Videos',
-            'slug' => 'app.videos.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppVideo->id,
             'name' => 'Create Video',
             'slug' => 'app.videos.create',
         ]);
@@ -279,11 +234,6 @@ class PermissionSeeder extends Seeder
 
         // Notice
         $moduleAppNotice = Module::updateOrCreate(['name' => 'จัดการประกาศ']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppNotice->id,
-            'name' => 'Access Notices',
-            'slug' => 'app.notices.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppNotice->id,
             'name' => 'Create Notice',
@@ -304,11 +254,6 @@ class PermissionSeeder extends Seeder
         $moduleAppNoticeSchool = Module::updateOrCreate(['name' => 'จัดการประชาสัมพันธ์']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppNoticeSchool->id,
-            'name' => 'Access NoticeSchools',
-            'slug' => 'app.noticeSchools.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppNoticeSchool->id,
             'name' => 'Create NoticeSchool',
             'slug' => 'app.noticeSchools.create',
         ]);
@@ -325,11 +270,6 @@ class PermissionSeeder extends Seeder
 
         // Purchase
         $moduleAppPurchase = Module::updateOrCreate(['name' => 'จัดการประกาศจัดซื้อ-จัดจ้าง']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppPurchase->id,
-            'name' => 'Access Purchases',
-            'slug' => 'app.purchases.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppPurchase->id,
             'name' => 'Create Purchase',
@@ -350,11 +290,6 @@ class PermissionSeeder extends Seeder
         $moduleAppJob = Module::updateOrCreate(['name' => 'จัดการสมัครงาน']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppJob->id,
-            'name' => 'Access Jobs',
-            'slug' => 'app.jobs.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppJob->id,
             'name' => 'Create Job',
             'slug' => 'app.jobs.create',
         ]);
@@ -373,11 +308,6 @@ class PermissionSeeder extends Seeder
         $moduleAppPaymentSlip = Module::updateOrCreate(['name' => 'จัดการแจ้งการโอนเงิน']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppPaymentSlip->id,
-            'name' => 'Access PaymentSlips',
-            'slug' => 'app.paymentSlips.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppPaymentSlip->id,
             'name' => 'Create PaymentSlip',
             'slug' => 'app.paymentSlips.create',
         ]);
@@ -394,11 +324,6 @@ class PermissionSeeder extends Seeder
 
         // Budget
         $moduleAppBudget = Module::updateOrCreate(['name' => 'จัดการงบทดลอง']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppBudget->id,
-            'name' => 'Access Budgets',
-            'slug' => 'app.budgets.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppBudget->id,
             'name' => 'Create Budget',
@@ -420,11 +345,6 @@ class PermissionSeeder extends Seeder
         $moduleAppIntergrity = Module::updateOrCreate(['name' => 'จัดการเพิ่มข้อมูล ITA']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppIntergrity->id,
-            'name' => 'Access Intergrities',
-            'slug' => 'app.intergrities.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppIntergrity->id,
             'name' => 'Create Intergrities',
             'slug' => 'app.intergrities.create',
         ]);
@@ -443,22 +363,12 @@ class PermissionSeeder extends Seeder
         $moduleAppComplaint = Module::updateOrCreate(['name' => 'รับเรื่องร้องเรียน-ร้องทุกข์']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppComplaint->id,
-            'name' => 'Access Complaints',
-            'slug' => 'app.complaints.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppComplaint->id,
             'name' => 'Edit Complaint',
             'slug' => 'app.complaints.edit',
         ]);
 
         // Opinion
         $moduleAppOpinion = Module::updateOrCreate(['name' => 'รับฟังความคิดเห็น']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppOpinion->id,
-            'name' => 'Access Opinions',
-            'slug' => 'app.opinions.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppOpinion->id,
             'name' => 'Edit Opinion',
@@ -469,22 +379,12 @@ class PermissionSeeder extends Seeder
         $moduleQuestion = Module::updateOrCreate(['name' => 'Q&A']);
         Permission::updateOrCreate([
             'module_id' => $moduleQuestion->id,
-            'name' => 'Access Questions',
-            'slug' => 'app.questions.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleQuestion->id,
             'name' => 'Edit Question',
             'slug' => 'app.questions.edit',
         ]);
 
         // Law
         $moduleAppLaw = Module::updateOrCreate(['name' => 'กฏหมายที่เกี่ยวข้อง']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppLaw->id,
-            'name' => 'Access Laws',
-            'slug' => 'app.laws.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppLaw->id,
             'name' => 'Create Laws',
@@ -505,11 +405,6 @@ class PermissionSeeder extends Seeder
         $moduleAppStandardPraticeGuide = Module::updateOrCreate(['name' => 'คู่มือมาตรฐานการปฏิบัติงาน']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppStandardPraticeGuide->id,
-            'name' => 'Access Standard Pratice Guide',
-            'slug' => 'app.standardPraticeGuides.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppStandardPraticeGuide->id,
             'name' => 'Create Standard Pratice Guide',
             'slug' => 'app.standardPraticeGuides.create',
         ]);
@@ -526,11 +421,6 @@ class PermissionSeeder extends Seeder
 
         // คู่มือมาตรฐานการให้บริการ
         $moduleAppStandardService = Module::updateOrCreate(['name' => 'คู่มือมาตรฐานการให้บริการ']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppStandardService->id,
-            'name' => 'Access Standard Service',
-            'slug' => 'app.standardServices.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppStandardService->id,
             'name' => 'Create Standard Service',
@@ -551,11 +441,6 @@ class PermissionSeeder extends Seeder
         $moduleAppLetter = Module::updateOrCreate(['name' => 'จัดการจดหมายข่าว']);
         Permission::updateOrCreate([
             'module_id' => $moduleAppLetter->id,
-            'name' => 'Access Letter',
-            'slug' => 'app.letters.index',
-        ]);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppLetter->id,
             'name' => 'Create Letter',
             'slug' => 'app.letters.create',
         ]);
@@ -572,11 +457,6 @@ class PermissionSeeder extends Seeder
 
         // Corruption
         $moduleAppCorruption = Module::updateOrCreate(['name' => 'การดำเนินงานเพื่อป้องกันการทุจริต']);
-        Permission::updateOrCreate([
-            'module_id' => $moduleAppCorruption->id,
-            'name' => 'Access Corruption',
-            'slug' => 'app.corruptions.index',
-        ]);
         Permission::updateOrCreate([
             'module_id' => $moduleAppCorruption->id,
             'name' => 'Create Corruption',

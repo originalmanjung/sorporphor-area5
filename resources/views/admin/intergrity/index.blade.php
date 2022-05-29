@@ -30,12 +30,14 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>ประเภททั้งหมด</div>
+            @can('app.intergrities.create')
             <!-- Button Modal -->
             <div>
                 <button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#intergrityModal">
                     <i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม
                 </button>
             </div>
+            @endcan
         </div>
         <div class="card-body">
             <!-- Modal -->
@@ -89,8 +91,8 @@
                         <td>{{ $intergrity->user->name }}</td>
                         <td class="text-center">
                             <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.intergrities.show', $intergrity->id)}}"><i class="fas fa-eye"></i></a>
                                 @canany(['update', 'delete'], $intergrity)
-                                    <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.intergrities.show', $intergrity->id)}}"><i class="fas fa-eye"></i></a>
                                     <a class="btn btn-success btn-sm rounded-3" style="" type="button" href="{{ route('app.intergrities.edit', $intergrity->id)}}"><i class="fas fa-edit"></i></a>
                                     <a class="btn btn-danger btn-sm rounded-0" type="button" onclick="deleteData({{ $intergrity->id }})"><i class="fa fa-trash"></i></a>
                                     <form id="delete-form-{{ $intergrity->id }}" action="{{ route('app.intergrities.destroy',$intergrity->id) }}" method="POST" style="display: none;">

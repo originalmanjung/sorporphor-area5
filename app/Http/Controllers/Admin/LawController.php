@@ -25,7 +25,6 @@ class LawController extends Controller
 
     public function index()
     {
-        Gate::authorize('app.laws.index');
         $laws = Law::where('parent_id',NULL)->get();
         return view('admin.law.index',[
             'laws' => $laws
@@ -97,6 +96,19 @@ class LawController extends Controller
         ]);
     }
 
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Law  $law
+     * @return \Illuminate\Http\Response
+     */
+    public function viewPDF(Law $law)
+    {
+        return view('admin.law.viewPDF',[
+            'law' => $law,
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -110,7 +122,7 @@ class LawController extends Controller
             'law' => $law,
         ]);
     }
-    
+
 
     /**
      * Update the specified resource in storage.

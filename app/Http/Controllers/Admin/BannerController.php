@@ -32,7 +32,6 @@ class BannerController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.banners.index');
         $banners = Banner::all();
         return view('admin.banner.index',[
             'banners' => $banners

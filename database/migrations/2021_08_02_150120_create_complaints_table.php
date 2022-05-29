@@ -22,6 +22,7 @@ class CreateComplaintsTable extends Migration
             $table->string('email');
             $table->string('title');
             $table->longText('description');
+            $table->string('file');
             $table->boolean('approved')->default(false);
             $table->timestamp('approved_at')->nullable();
             $table->timestamps();

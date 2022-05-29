@@ -18,9 +18,9 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>ประวัติความเป็นมา ทั้งหมด</div>
-            @if ($histories->isEmpty())
+            @can('app.histories.create')
                 <a href="{{ route('app.histories.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
-            @endif
+            @endcan
         </div>
         <div class="card-body">
             <table id="datatablesSimple">

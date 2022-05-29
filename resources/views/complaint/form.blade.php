@@ -26,7 +26,7 @@
                 <div><i class="fas fa-table me-1"></i> ฟอร์มกรอกข้อมูล</div>
             </div>
             <div class="card-body">
-                <form id="complaintFrom" complaint="form" method="POST" action="{{ route('complaints.store') }}">
+                <form id="complaintFrom" complaint="form" method="POST" action="{{ route('complaints.store') }}" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-row">
@@ -86,6 +86,16 @@
                             </span>
                             @enderror
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="formFile" class="form-label">แนบไฟล์</label>
+                            <input class="form-control form-control-sm @error('file') is-invalid @enderror" type="file" id="formFile" name="file">
+                            @error('file')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
                         <div style="margin-top:0px;" class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
                             <label class="form-label">Captcha</label>
                             <div class="mb-3">

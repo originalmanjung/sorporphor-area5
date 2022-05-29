@@ -19,5 +19,8 @@ class DatabaseSeeder extends Seeder
         $this->call(UserSeeder::Class);
         $this->call(PersonalSeeder::Class);
         $this->call(IntergritySeeder::Class);
+        $this->call(LawSeeder::Class);
+        $this->call(StandardPraticeGuideSeeder::Class);
+        $this->call(StandardServiceSeeder::Class);
     }
 }

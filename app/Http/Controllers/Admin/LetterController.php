@@ -31,7 +31,6 @@ class LetterController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.letters.index');
         $letters = Letter::all();
         return view('admin.letter.index',[
             'letters' => $letters

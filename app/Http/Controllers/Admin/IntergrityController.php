@@ -31,7 +31,6 @@ class IntergrityController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.intergrities.index');
         $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('admin.intergrity.index',[
             'intergrities' => $intergrities
@@ -85,7 +84,6 @@ class IntergrityController extends Controller
      */
     public function show(Intergrity $intergrity)
     {
-        Gate::authorize('app.intergrities.index');
         $intergrities = Intergrity::where('parent_id',NULL)->get();
         return view('admin.intergrity.show',[
             'intergrity' => $intergrity,
@@ -189,7 +187,6 @@ class IntergrityController extends Controller
      */
     public function showPDF(Intergrity $intergrity)
     {
-        Gate::authorize('app.intergrities.destroy');
         return view('admin.intergrity.viewPDF',[
             'intergrity' => $intergrity,
         ]);

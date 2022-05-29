@@ -21,24 +21,12 @@ class Personal extends Model
         return $query->where('status', '=', 1);
     }
 
-    public function scopeDepartment($query, $id)
+    public function scopeDepartment($query, $group)
     {
-        return $query->where('role_id', $id);
+        return $query->where('group', $group);
     }
 
-    public function scopeManager($query)
-    {
-        return $query->where('position_general', '!=', '');
-    }
-    /**
-     * Get the user that owns the Personal
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
+
     /**
      * Get the user that owns the Personal
      *

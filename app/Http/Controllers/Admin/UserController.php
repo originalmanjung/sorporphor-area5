@@ -32,7 +32,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.users.index');
         $users = User::whereNotIn('name', ['Admin'])->get();
         return view('admin.user.index',[
             'users' => $users

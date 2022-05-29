@@ -11,6 +11,7 @@ use App\Models\NoticeSchool;
 use App\Models\News;
 use App\Models\BlogSchool;
 use App\Models\Banner;
+use App\Models\Corruption;
 use App\Models\Intergrity;
 use App\Models\Law;
 use App\Models\Letter;
@@ -41,7 +42,7 @@ class HomeController extends Controller
         $notices = Notice::limit(2)->orderBy('created_at', 'desc')->get();
         $noticeSchools = NoticeSchool::limit(4)->orderBy('created_at', 'desc')->get();
         $intergrities = Intergrity::where('parent_id',NULL)->get();
-        $personals = Personal::whereIn('position_general', ['ผู้อำนวยการ สพป.เชียงใหม่ เขต 5', 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5'])->active()->get();
+        $personals = Personal::where('group', 'ผู้บริหาร')->active()->get();
         $letterRegions = Letter::Region()->limit(10)->orderBy('created_at', 'desc')->get();
         $letterDistricts = Letter::District()->limit(10)->orderBy('created_at', 'desc')->get();
         return view('index',[
@@ -179,7 +180,32 @@ class HomeController extends Controller
         $letters = Letter::where('type', $letter->type)->orderBy('created_at')->paginate(8);
         return view('letter.letterAll',[
             'letters' => $letters,
-            'letter' => $letter  
+            'letter' => $letter
         ]);
     }
+
+     /**
+     * ประกาศเจตจำนงสุจริตในการบริหาร
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function corruptionAll()
+    {
+        $corruptions = Corruption::all();
+        return view('corruption.index',[
+            'corruptions' => $corruptions
+        ]);
+    }
+    /**
+     * คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function corruptionShow(Corruption $corruption)
+    {
+        return view('corruption.show',[
+            'corruption' => $corruption
+        ]);
+    }
+
 }

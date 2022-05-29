@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 Use Alert;
+use App\Http\Requests\Corruption\StoreCorruptionRequest;
+use App\Http\Requests\Corruption\UpdateCorruptionRequest;
 
 class CorruptionController extends Controller
 {
@@ -19,6 +21,7 @@ class CorruptionController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(Corruption::class, 'corruption');
     }
 
     /**
@@ -28,7 +31,6 @@ class CorruptionController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.corruptions.index');
         $corruptions = Corruption::orderBy('created_at', 'desc')->get();
         return view('admin.corruption.index',[
             'corruptions' => $corruptions
@@ -52,23 +54,23 @@ class CorruptionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCorruptionRequest $request)
     {
         Gate::authorize('app.corruptions.create');
         if ($request->hasfile('file')) {
             $file = $request->file('file');
             $filename  = 'file-' . uniqid() . '.' .$file->getClientOriginalExtension();
-            $file->storeAs('law_files', $filename, 'public');
+            $file->storeAs('corruption_files', $filename, 'public');
         }
-        $lawID = Law::create([
+        Corruption::create([
             'name' => $request->name,
             'user_id' => auth()->user()->id,
-            'parent_id' => $request->parent_id,
+            'description' => $request->description,
             'file' => $filename ?? null,
         ]);
 
         Alert::toast('เพิ่มข้อมูลสำเร็จ!','success');
-        return  redirect()->route('app.laws.show',$request->parent_id ?? $lawID->id);
+        return  redirect()->route('app.corruptions.index');
     }
 
     /**
@@ -79,7 +81,9 @@ class CorruptionController extends Controller
      */
     public function show(Corruption $corruption)
     {
-        //
+        return view('admin.corruption.show',[
+            'corruption' => $corruption
+        ]);
     }
 
     /**
@@ -90,7 +94,10 @@ class CorruptionController extends Controller
      */
     public function edit(Corruption $corruption)
     {
-        //
+        Gate::authorize('app.corruptions.edit');
+        return view('admin.corruption.form',[
+            'corruption' => $corruption
+        ]);
     }
 
     /**
@@ -100,9 +107,26 @@ class CorruptionController extends Controller
      * @param  \App\Models\Corruption  $corruption
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Corruption $corruption)
+    public function update(UpdateCorruptionRequest $request, Corruption $corruption)
     {
-        //
+        Gate::authorize('app.corruptions.edit');
+        if ($request->hasfile('file')) {
+            $file = $request->file('file');
+            if($corruption->file != null){
+                storage::disk('public')->delete('corruption_files/'.$corruption->file);
+            }
+            $filename  = 'file-' . uniqid() . '.' .$file->getClientOriginalExtension();
+            $file->storeAs('corruption_files', $filename, 'public');
+        }
+        $corruption->update([
+            'name' => $request->name,
+            'user_id' => $corruption->user_id,
+            'description' => $corruption->description,
+            'file' => !isset($file) ? $corruption->file : $filename,
+        ]);
+        Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
+        return  redirect()->route('app.corruptions.index');
+
     }
 
     /**
@@ -113,6 +137,15 @@ class CorruptionController extends Controller
      */
     public function destroy(Corruption $corruption)
     {
-        //
+        Gate::authorize('app.corruptions.destroy');
+        if (Storage::exists('public/corruption_files/'.$corruption->file)) {
+            Storage::delete('public/corruption_files/'.$corruption->file);
+            $corruption->delete();
+            Alert::toast('ลบข้อมูลสำเร็จ!','success');
+            return back();
+        } else {
+            Alert::error('File Not Found');
+            return back();
+        }
     }
 }

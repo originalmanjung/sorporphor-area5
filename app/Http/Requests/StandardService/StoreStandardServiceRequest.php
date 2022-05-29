@@ -28,13 +28,13 @@ class StoreStandardServiceRequest extends FormRequest
 
         if ($this->checkFile == true) {
             return [
-                'name'=>'required|string|max:255|unique:standard_services,name',
+                'name'=>'required|string|max:255',
                 'parent_id' => 'exists:standard_services,id|numeric',
                 'file' => 'required|mimes:pdf',
             ];
         } else {
             return [
-                'name'=>'required|string|max:255|unique:standard_services,name',
+                'name'=>'required|string|max:255',
                 'parent_id' => 'nullable|numeric|exists:standard_services,id',
             ];
         }

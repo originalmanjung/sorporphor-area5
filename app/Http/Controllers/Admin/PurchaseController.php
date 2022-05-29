@@ -31,7 +31,6 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.purchases.index');
         $purchases = Purchase::orderBy('created_at', 'desc')->get();
         return view('admin.purchase.index',[
             'purchases' => $purchases
@@ -63,6 +62,7 @@ class PurchaseController extends Controller
             $file = $request->file('file');
             Purchase::UploadFile($file, $purchase);
         }
+        $purchase->user_id = auth()->user()->id;
         $purchase->name = $request->name;
         $purchase->description = $request->description;
         $purchase->save();

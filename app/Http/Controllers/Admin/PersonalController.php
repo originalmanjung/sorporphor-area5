@@ -32,7 +32,6 @@ class PersonalController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.personals.index');
         $personals = Personal::all();
         return view('admin.personal.index',[
             'personals' => $personals
@@ -47,10 +46,7 @@ class PersonalController extends Controller
     public function create()
     {
         Gate::authorize('app.personals.create');
-        $roles = Role::whereNotIn('name', ['แอดมิน', 'ผู้ใช้ทั่วไป', 'โรงเรียน'])->get();
-        return view('admin.personal.form',[
-            'roles' => $roles
-        ]);
+        return view('admin.personal.form');
     }
 
     /**
@@ -98,10 +94,8 @@ class PersonalController extends Controller
     public function edit(Personal $personal)
     {
         Gate::authorize('app.personals.edit');
-        $roles = Role::whereNotIn('name', ['แอดมิน', 'ผู้ใช้ทั่วไป', 'โรงเรียน'])->get();
         return view('admin.personal.form',[
             'personal' => $personal,
-            'roles' => $roles
         ]);
     }
 

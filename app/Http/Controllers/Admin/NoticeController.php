@@ -32,7 +32,6 @@ class NoticeController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.notices.index');
         $notices = Notice::orderBy('created_at', 'desc')->get();
         return view('admin.notice.index',[
             'notices' => $notices
@@ -64,6 +63,7 @@ class NoticeController extends Controller
             $file = $request->file('file');
             Notice::UploadFile($file, $notice);
         }
+        $notice->user_id = auth()->user()->id;
         $notice->name = $request->name;
         $notice->description = $request->description;
         $notice->save();

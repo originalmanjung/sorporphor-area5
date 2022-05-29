@@ -28,7 +28,6 @@ class ManageStructureController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.manageStructures.index');
         $manageStructures = ManageStructure::orderBy('created_at', 'desc')->get();
         return view('admin.manageStructure.index',[
             'manageStructures' => $manageStructures

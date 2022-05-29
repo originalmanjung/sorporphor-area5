@@ -34,14 +34,6 @@ class Budget extends Model
         $budget->file = !isset($file) ? $budget->file : $filename;
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($budget) {
-            $budget->user_id = Auth::id();
-        });
-    }
     /**
      * Get the user that owns the budget
      *

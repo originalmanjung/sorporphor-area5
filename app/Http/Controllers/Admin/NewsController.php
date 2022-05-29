@@ -31,7 +31,6 @@ class NewsController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.news.index');
         $news = News::with('newsphotos')->orderBy('created_at', 'desc')->get();
         return view('admin.news.index',[
             'news' => $news
@@ -81,7 +80,6 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        Gate::authorize('app.news.index');
         return view('admin.news.show',[
             'news' => $news,
         ]);

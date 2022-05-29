@@ -55,7 +55,7 @@ class User extends Authenticatable
 
     public function isAdmin()
     {
-         return $this->role->slug == 'แอดมิน';
+         return $this->role->slug == 'admin';
     }
 
     public static function UploadAvatar($photo, $user)

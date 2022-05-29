@@ -30,7 +30,6 @@ class StandardServiceController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.standardServices.index');
         $standardServices = StandardService::where('parent_id',NULL)->get();
         return view('admin.standard-service.index',[
             'standardServices' => $standardServices
@@ -55,7 +54,6 @@ class StandardServiceController extends Controller
      */
     public function createChild(StandardService $standardService)
     {
-        // return $standardService->parent;
         Gate::authorize('app.standardServices.create');
         return view('admin.standard-service.form',[
             'standardServiceParent' => $standardService
@@ -87,7 +85,7 @@ class StandardServiceController extends Controller
         return  redirect()->route('app.standardServices.show',$request->parent_id ?? $standardServiceID->id);
     }
 
-    
+
     /**
      * Display the specified resource.
      *
@@ -121,7 +119,7 @@ class StandardServiceController extends Controller
             'standardService' => $standardService,
         ]);
 
-        
+
     }
 
     /**

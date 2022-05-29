@@ -100,7 +100,7 @@
        <div class="row">
           <div class="col-md-12">
              <div class="title">
-                 <h2>{{ $slug ?? 'คณะผู้บริหาร สพป.เชียงใหม่ เขต 5' }}</h2>
+                 <h2>{{ $group  }}</h2>
              </div>
           </div>
        </div>
@@ -110,7 +110,7 @@
 <section id="team" class="team bg-white">
     <div class="container">
 
-        <div class="row">
+        <div class="row mb-5">
 
             @if ($personals->isNotEmpty())
             @foreach ($personals as $personal)
@@ -119,7 +119,7 @@
                     <div class="pic"><img src="@if(isset($personal->avatar)) {{ asset('storage/personal_avatars/'. $personal->avatar) }} @else {{ config('app.placeholder').'600x600.png' }}@endif" class="img-fluid" alt=""></div>
                     <div class="member-info">
                         <h4>{{ $personal->name }}</h4>
-                        <span>{{ $personal->position ?? 'ยังไม่มีข้อมูล' }}</span>
+                        <span>@if ($personal->position_general) {{ $personal->position_general }} @elseif ($personal->position) {{ $personal->position }} @else {{ 'ไม่พบข้อมูล' }} @endif</span>
                         <p>{{ $personal->email ?? 'ยังไม่มีข้อมูล' }}</p>
                         <p>{{ $personal->phone ?? 'ยังไม่มีข้อมูล' }}</p>
                         <div class="social">

@@ -200,12 +200,13 @@
                                 <li class="list-group-item">รายละเอียด : {{ $complaint->description }}</li>
                                 <li class="list-group-item">ชื่อผู้ร้องเรียน : {{ $complaint->name }}</li>
                                 <li class="list-group-item">ที่อยู่ผู้ร้องเรียน : {{ $complaint->address }}</li>
-                                <li class="list-group-item">เลขบัตรประชาชนผู้ร้องเรียน : {{ $complaint->idCardnumber }}
-                                </li>
+                                <li class="list-group-item">เลขบัตรประชาชนผู้ร้องเรียน : {{ $complaint->idCardnumber }}</li>
                                 <li class="list-group-item">อีเมลล์ผู้ร้องเรียน : {{ $complaint->email }}</li>
                                 <li class="list-group-item">วันที่ร้องเรียน: {{ $complaint->created_at->format('d/m/Y') }}</li>
                                 <li class="list-group-item">วันที่รับเรื่อง : {{ isset($complaint->approved_at) ? $complaint->approved_at->format('d/m/Y') : 'ยังไม่มีวันที่รับเรื่อง' }}</li>
                                 <li class="list-group-item">@if($complaint->approved == '1') <span class="badge bg-success">รับเรื่องโดย : {{ $complaint->user->name }}</span> @else <span class="badge bg-danger">ยังไม่มีการรับเรื่อง</span> @endif</li>
+                                <li class="list-group-item d-flex align-items-center">ไฟล์แนบ : @if ($complaint->file) <a style="margin-left: 10px;" href="{{ route('app.complaints.viewPDF', $complaint) }}"><i class="fas fa-file-pdf fa-2x text-danger"></i></a> @else ไม่มีไฟล์แนบ @endif</li>
+
                             </ul>
                         </div>
                     </div>

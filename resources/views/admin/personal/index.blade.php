@@ -18,7 +18,9 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>บุคลากรในสังกัด ทั้งหมด</div>
+            @can('app.personals.create')
             <a href="{{ route('app.personals.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
+            @endcan
         </div>
         <div class="card-body">
             <table id="datatablesSimple">
@@ -26,10 +28,10 @@
                     <tr>
                         <th scope="col">รูป</th>
                         <th scope="col">ชื่อ</th>
+                        <th scope="col">กลุ่มงาน</th>
                         <th scope="col">ตำแหน่ง</th>
                         <th scope="col">สถานะ</th>
                         <th scope="col">ผู้สร้าง</th>
-                        <th scope="col">อัฟเดทล่าสุด</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </thead>
@@ -37,10 +39,10 @@
                     <tr>
                         <th scope="col">รูป</th>
                         <th scope="col">ชื่อ</th>
-                        <th scope="col">ตำแหน่ง</th>
+                        <th scope="col">กลุ่มงาน</th>
+                        <th scope="col">ตำแหน่งทางการบริหาร</th>
                         <th scope="col">สถานะ</th>
                         <th scope="col">ผู้สร้าง</th>
-                        <th scope="col">อัฟเดทล่าสุด</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </tfoot>
@@ -49,7 +51,8 @@
                         <tr>
                             <td><img src="{{ $personal->avatar ? asset('storage/personal_avatars/'.$personal->avatar) : config('app.placeholder').'150.png' }}" alt="Admin" class="rounded-circle" width="70" height="70"></td>
                             <td>{{ $personal->name ?? 'ยังไม่มีข้อมูล' }}</td>
-                            <td>{{ $personal->position ?? 'ยังไม่มีข้อมูล' }}</td>
+                            <td>{{ $personal->group ?? 'ยังไม่มีข้อมูล' }}</td>
+                            <td>{{ $personal->position_general ?? 'ยังไม่มีข้อมูล' }}</td>
                             <td>
                                 @if ($personal->status == '1')
                                     <span class="badge bg-success">Active</span>
@@ -58,7 +61,6 @@
                                 @endif
                             </td>
                             <td>{{ $personal->user->name }}</td>
-                            <td>{{ $personal->updated_at->diffForHumans() }}</td>
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                     <a href="{{ route('app.personals.show', $personal->id)}}" class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></a>

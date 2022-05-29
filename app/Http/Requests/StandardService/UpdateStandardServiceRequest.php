@@ -26,7 +26,7 @@ class UpdateStandardServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'string|max:255|unique:laws,name,'.$this->standardService->id, 
+            'name'=>'required|string|max:255',
             'parent_id' => 'nullable|numeric',
             'file' => 'nullable|mimes:pdf',
         ];

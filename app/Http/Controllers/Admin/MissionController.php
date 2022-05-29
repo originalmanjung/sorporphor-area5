@@ -28,7 +28,6 @@ class MissionController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.missions.index');
         $missions = Mission::all()->sortBy('created_at');
         return view('admin.mission.index',[
             'missions' => $missions
@@ -76,7 +75,6 @@ class MissionController extends Controller
      */
     public function show(Mission $mission)
     {
-        Gate::authorize('app.missions.edit');
         return view('admin.mission.show',[
             'mission' => $mission
         ]);

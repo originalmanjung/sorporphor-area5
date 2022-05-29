@@ -30,6 +30,8 @@ use App\Models\Mission;
 use App\Policies\MissionPolicy;
 use App\Models\Intergrity;
 use App\Policies\IntergrityPolicy;
+use App\Models\Corruption;
+use App\Policies\CorruptionPolicy;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -54,6 +56,7 @@ class AuthServiceProvider extends ServiceProvider
         MenuPersonalWork::class => MenuPersonalWorkPolicy::class,
         Mission::class => MissionPolicy::class,
         Intergrity::class => IntergrityPolicy::class,
+        Corruption::class => CorruptionPolicy::class,
     ];
 
     /**

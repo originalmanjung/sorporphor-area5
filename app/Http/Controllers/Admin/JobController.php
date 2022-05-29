@@ -31,7 +31,6 @@ class JobController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.jobs.index');
         $jobs = Job::orderBy('created_at', 'desc')->get();
         return view('admin.job.index',[
             'jobs' => $jobs
@@ -63,6 +62,7 @@ class JobController extends Controller
             $file = $request->file('file');
             Job::UploadFile($file, $job);
         }
+        $job->user_id = auth()->user()->id;
         $job->name = $request->name;
         $job->description = $request->description;
         $job->save();

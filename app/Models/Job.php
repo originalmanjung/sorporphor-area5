@@ -34,14 +34,6 @@ class Job extends Model
         $job->file = !isset($file) ? $job->file : $filename;
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($job) {
-            $job->user_id = Auth::id();
-        });
-    }
     /**
      * Get the user that owns the job
      *

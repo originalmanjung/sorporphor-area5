@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         User::updateOrCreate([
-            'role_id' => Role::where('slug','แอดมิน')->first()->id,
+            'role_id' => Role::where('slug','admin')->first()->id,
             'name' => 'Admin',
             'email' => 'admin@mail.com',
             'username' => 'manage',
@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
             'deletable' => false
         ]);
         User::updateOrCreate([
-            'role_id' => Role::where('slug','กลุ่มกฎหมายและคดี')->first()->id,
+            'role_id' => Role::where('slug','user')->first()->id,
             'name' => 'test',
             'email' => 'test@mail.com',
             'username' => 'test',

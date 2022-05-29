@@ -33,7 +33,6 @@ class BudgetController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.budgets.index');
         $budgets = Budget::orderBy('created_at', 'desc')->get();
         return view('admin.budget.index',[
             'budgets' => $budgets
@@ -65,6 +64,7 @@ class BudgetController extends Controller
             $file = $request->file('file');
             budget::UploadFile($file, $budget);
         }
+        $budget->user_id = auth()->user()->id;
         $budget->name = $request->name;
         $budget->description = $request->description;
         $budget->save();

@@ -19,9 +19,9 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>รูปโครงสร้างการบริหาร ทั้งหมด</div>
-             @if ($manageStructures->isEmpty())
+            @can('app.manageStructures.create')
                 <a href="{{ route('app.manageStructures.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
-            @endif
+            @endcan
         </div>
         <div class="card-body">
             <table id="datatablesSimple">

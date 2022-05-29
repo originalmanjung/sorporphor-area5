@@ -18,7 +18,6 @@ class OpinionController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.opinions.index');
         $opinions = Opinion::all()->sortByDesc('created_at');
         return view('admin.opinion.index',[
             'opinions' => $opinions
@@ -54,7 +53,6 @@ class OpinionController extends Controller
      */
     public function show(Opinion $opinion)
     {
-        Gate::authorize('app.opinions.index');
         return view('admin.opinion.show',[
             'opinion' => $opinion
         ]);

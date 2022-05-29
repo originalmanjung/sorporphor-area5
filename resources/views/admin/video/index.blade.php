@@ -19,7 +19,9 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>อัฟโหลดลิ้งวีดีโอจากยูทูป ทั้งหมด</div>
+            @can('app.videos.create')
             <a href="{{ route('app.videos.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
+            @endcan
         </div>
         <div class="card-body">
             <table class="table table-striped" style="width:100%" id="table_test">

@@ -69,7 +69,8 @@ Route::resource('personals', PersonalController::class);
 // รูปแบนเนอร์
 Route::resource('banners', BannerController::class)->except(['show']);
 // แจ้งเรื่องร้องทุกข์
-Route::resource('complaints', ComplaintController::class)->only(['index', 'show', 'update']);
+Route::resource('complaints', ComplaintController::class)->only(['index', 'show', 'update', 'viewPDF']);
+Route::get('complaints/pdf/{complaint}', [ComplaintController::class,'viewPDF'])->name('complaints.viewPDF');
 Route::get('complaints/approved', [ComplaintController::class, 'approved'])->name('complaints.approved');
 // รับฟังความคิดเห็น
 Route::resource('opinions', OpinionController::class)->only(['index', 'show', 'update']);
@@ -91,6 +92,7 @@ Route::delete('intergrities/file/{intergrity}', [IntergrityController::class,'de
 // กฏหมายที่เกี่ยวข้อง
 Route::resource('laws', LawController::class);
 Route::get('laws/child-law/{law}', [LawController::class,'createChild'])->name('laws.createChild');
+Route::get('laws/pdf/{law}', [LawController::class,'viewPDF'])->name('laws.viewPDF');
 // คู่มือมาตรฐานการปฏิบัติงาน
 Route::resource('standardPraticeGuides', StandardPraticeGuideController::class);
 Route::get('standardPraticeGuides/child-standardPraticeGuide/{standardPraticeGuide}', [StandardPraticeGuideController::class,'createChild'])->name('standardPraticeGuides.createChild');

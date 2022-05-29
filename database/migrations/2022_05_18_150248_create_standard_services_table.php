@@ -17,7 +17,7 @@ class CreateStandardServicesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('parent_id')->nullable()->constrained('standard_services')->onDelete('cascade');
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('file')->nullable();
             $table->string('slug');
             $table->timestamps();

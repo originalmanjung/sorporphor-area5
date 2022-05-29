@@ -62,8 +62,7 @@ Route::get('blogschools/{slug}', [BlogSchoolController::class, 'blogschoolShow']
 Route::get('videos', [VideoController::class, 'videoAll'])->name('videoAll');
 Route::get('videos/{slug}', [VideoController::class, 'videoShow'])->name('videoShow');
 // บุคลกรแต่ละกลุ่ม
-Route::get('personalDepartment/{slug?}', [PersonalController::class, 'personalDepartment'])->name('personalDepartment');
-Route::get('personalDepartment/{slug?}', [PersonalController::class, 'personalDepartment'])->name('personalDepartment');
+Route::get('personalDepartment/{group?}', [PersonalController::class, 'personalDepartment'])->name('personalDepartment');
 // แจ้งเรื่องร้องทุกข์
 Route::resource('complaints', ComplaintController::class)->only(['index','create','store']);
 // รับฟังความคิดเห็น
@@ -94,6 +93,9 @@ Route::get('standard-service/show/{standardService}', [HomeController::class, 's
 Route::get('standard-service/view-pdf/{standardService}', [HomeController::class, 'standardServicePDF'])->name('standardServicePDF');
 // คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ
 Route::get('letters/show/{letter}', [HomeController::class, 'letterAll'])->name('letterAll');
+// ประกาศเจตจำนงสุจริตในการบริหาร
+Route::get('corruptions', [HomeController::class, 'corruptionAll'])->name('corruptionAll');
+Route::get('corruptions/show/{corruption}', [HomeController::class, 'corruptionShow'])->name('corruptionShow');
 
 Route::get('contact/', function () {
     return view('contact');

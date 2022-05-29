@@ -46,24 +46,4 @@ class Role extends Model
         return $this->belongsToMany(Permission::class);
     }
 
-
-    /**
-     * Get all of the comments for the Role
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function menuPersonalWorks()
-    {
-        return $this->hasMany(MenuPersonalWork::class);
-    }
-
-        /**
-     * Get all of the comments for the Role
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function personals()
-    {
-        return $this->hasMany(Personal::class);
-    }
 }

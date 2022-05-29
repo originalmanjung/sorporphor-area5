@@ -12,18 +12,18 @@
     <div class="card">
         <div class="card-header d-flex align-items-center">
          <div class="me-auto">รายละเอียด</div>
-          <a href="{{ route('app.budgets.index') }}" class="btn btn-danger">ย้อนกลับ</a>
+          <a href="{{ route('app.corruptions.index') }}" class="btn btn-danger">ย้อนกลับ</a>
         </div>
         <div class="card-body">
-          <h5 class="card-title">{{ $budget->name }}</h5>
-          <p class="card-text">{{ $budget->description }}</p>
+          <h5 class="card-title">{{ $corruption->name }}</h5>
+          <p class="card-text">{{ $corruption->description }}</p>
         </div>
-        @if (empty($budget->file))
+        @if (empty($corruption->file))
             <div class="mb-2" align="center">
                 <h5><span class="badge bg-danger">ไม่มีเอกสารแนบ</span></h5>
             </div>
         @else
-            <iframe class="vh-100" style="height: 100%" height="100%" width=100% src="{{ asset('storage/budget_files/'.$budget->file) }}"></iframe>
+            <iframe class="vh-100" style="height: 100%" height="100%" width=100% src="{{ asset('storage/corruption_files/'.$corruption->file) }}"></iframe>
         @endif
     </div>
 </div>

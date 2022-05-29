@@ -27,7 +27,6 @@ class DutyController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.dutys.index');
         $dutys = Duty::all()->sortBy('created_at');
         return view('admin.duty.index',[
             'dutys' => $dutys

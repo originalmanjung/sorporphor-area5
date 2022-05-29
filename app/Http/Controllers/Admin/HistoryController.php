@@ -27,7 +27,6 @@ class HistoryController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.histories.index');
         $histories = History::all()->sortBy('created_at');
         return view('admin.history.index',[
             'histories' => $histories

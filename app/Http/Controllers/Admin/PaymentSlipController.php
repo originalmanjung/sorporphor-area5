@@ -31,7 +31,6 @@ class PaymentSlipController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.paymentSlips.index');
         $paymentSlips = PaymentSlip::orderBy('created_at', 'desc')->get();
         return view('admin.paymentSlip.index',[
             'paymentSlips' => $paymentSlips
@@ -63,6 +62,7 @@ class PaymentSlipController extends Controller
             $file = $request->file('file');
             paymentSlip::UploadFile($file, $paymentSlip);
         }
+        $paymentSlip->user_id = auth()->user()->id;
         $paymentSlip->name = $request->name;
         $paymentSlip->description = $request->description;
         $paymentSlip->save();

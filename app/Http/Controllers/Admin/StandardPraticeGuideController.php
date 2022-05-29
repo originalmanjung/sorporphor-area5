@@ -30,7 +30,6 @@ class StandardPraticeGuideController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.standardPraticeGuides.index');
         $standardPraticeGuides = StandardPraticeGuide::where('parent_id',NULL)->get();
         return view('admin.standard-pratice-guide.index',[
             'standardPraticeGuides' => $standardPraticeGuides

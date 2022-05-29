@@ -16,10 +16,12 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div>
+                @can('app.intergrities.create')
                 <!-- Button Child Modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#childModal">
                     <i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม
                 </button>
+                @endcan
                  <!-- Modal Child-->
                  <form id="ITAFrom" ita="form" method="POST" action="{{ route('app.intergrities.store') }}" enctype="multipart/form-data">
                     @csrf
@@ -89,7 +91,7 @@
                         <ul class="mt-2">
                             @foreach ($intergrity->children as $child)
                             <li class="tree-content">
-                                <a href="{{ $child->url ?? '#' }}" class="text-secondary">{{ $child->name }}</a>
+                                <a @isset($child->url) target="_blank" href="{{ $child->url ?? '#' }}" @endisset class="text-secondary">{{ $child->name }}</a>
                                 <span class="ml-5" style="margin-left:20px;">
                                     @isset($child->file)<a class="" style="margin-right: 5px;" href="{{ route('app.intergrities.showPDF',$child->id) }}" target="_blank"><i class="fas fa-eye" data-toggle="tooltip" title="View PDF"></i></a>@endisset
                                     @canany(['update', 'delete'], $child)
@@ -100,8 +102,10 @@
                                         @method('DELETE')
                                     </form>
                                     @endcanany
+                                    @can('app.intergrities.create')
                                     <!-- Button Sub Child Modal -->
                                     <a class="text-success" style="margin-right: 5px;"  type="button" data-bs-toggle="modal" data-bs-target="#subChildModal-{{ $child->id }}"><i class="fas fa-plus" data-toggle="tooltip" title="Add"></i></a>
+                                    @endcan
                                     <!-- Modal Sub Child-->
                                     <form id="subChild" ita="form" method="POST" action="{{ route('app.intergrities.store') }}" enctype="multipart/form-data">
                                         @csrf
@@ -156,7 +160,7 @@
                                 @foreach($child->children as $subchild)
                                     <ul>
                                         <li>
-                                            <a href="{{ $subchild->url ?? '#' }}" class="text-secondary">{{ $subchild->name }}</a>
+                                            <a @isset($subchild->url) target="_blank" href="{{ $subchild->url ?? '#' }}" @endisset  class="text-secondary">{{ $subchild->name }}</a>
                                             <span class="ml-5" style="margin-left:20px;">
                                                 @isset($subchild->file)<a class="" style="margin-right: 5px;" href="{{ route('app.intergrities.showPDF',$subchild->id) }}" target="_blank"><i class="fas fa-eye" data-toggle="tooltip" title="View PDF"></i></a>@endisset
                                                 @canany(['update', 'delete'], $subchild)

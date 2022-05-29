@@ -20,8 +20,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการ
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
-            'role_id' => Role::where('slug','ผู้บริหารสพป.ชม.5')->first()->id,
+            'group' => 'ผู้บริหาร',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
@@ -32,8 +31,7 @@ class PersonalSeeder extends Seeder
         // รองผู้อำนวยการ
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
-            'role_id' => Role::where('slug','ผู้บริหารสพป.ชม.5')->first()->id,
+            'group' => 'ผู้บริหาร',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
@@ -43,8 +41,7 @@ class PersonalSeeder extends Seeder
 
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
-            'role_id' => Role::where('slug','ผู้บริหารสพป.ชม.5')->first()->id,
+            'group' => 'ผู้บริหาร',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
@@ -54,8 +51,7 @@ class PersonalSeeder extends Seeder
 
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
-            'role_id' => Role::where('slug','ผู้บริหารสพป.ชม.5')->first()->id,
+            'group' => 'ผู้บริหาร',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
@@ -65,8 +61,7 @@ class PersonalSeeder extends Seeder
 
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
-            'role_id' => Role::where('slug','ผู้บริหารสพป.ชม.5')->first()->id,
+            'group' => 'ผู้บริหาร',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
@@ -76,8 +71,7 @@ class PersonalSeeder extends Seeder
 
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
-            'role_id' => Role::where('slug','ผู้บริหารสพป.ชม.5')->first()->id,
+            'group' => 'ผู้บริหาร',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'รองผู้อำนวยการ สพป.เชียงใหม่ เขต 5',
@@ -88,8 +82,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มอำนวยการ
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มอำนวยการ',
-            'role_id' => Role::where('slug','กลุ่มอำนวยการ')->first()->id,
+            'group' => 'กลุ่มอำนวยการ',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มอำนวยการ',
@@ -100,8 +93,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มบริหารงานการเงินและสินทรัพย์
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มบริหารงานการเงินและสินทรัพย์',
-            'role_id' => Role::where('slug','กลุ่มบริหารงานการเงินและสินทรัพย์')->first()->id,
+            'group' => 'กลุ่มบริหารงานการเงินและสินทรัพย์',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มบริหารงานการเงินและสินทรัพย์',
@@ -112,8 +104,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มนโยบายและแผน
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มนโยบายและแผน',
-            'role_id' => Role::where('slug','กลุ่มนโยบายและแผน')->first()->id,
+            'group' => 'กลุ่มนโยบายและแผน',
             'user_id' => 1,
             'position_general' => 'ผู้อำนวยการกลุ่มนโยบายและแผน',
             'status' => false,
@@ -123,8 +114,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มส่งเสริมการจัดการศึกษา
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มส่งเสริมการจัดการศึกษา',
-            'role_id' => Role::where('slug','กลุ่มส่งเสริมการจัดการศึกษา')->first()->id,
+            'group' => 'กลุ่มส่งเสริมการจัดการศึกษา',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มส่งเสริมการจัดการศึกษา',
@@ -135,8 +125,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มบริหารงานบุคคล
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มบริหารงานบุคคล',
-            'role_id' => Role::where('slug','กลุ่มบริหารงานบุคคล')->first()->id,
+            'group' => 'กลุ่มบริหารงานบุคคล',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มบริหารงานบุคคล',
@@ -147,8 +136,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา',
-            'role_id' => Role::where('slug','กลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา')->first()->id,
+            'group' => 'กลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา',
@@ -159,8 +147,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร',
-            'role_id' => Role::where('slug','กลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร')->first()->id,
+            'group' => 'กลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร',
@@ -170,9 +157,8 @@ class PersonalSeeder extends Seeder
 
          // ผู้อำนวยการหน่วยตรวจสอบภายใน
          Personal::updateOrCreate([
-             'name' => str_random(10),
-             'position' => 'ผู้อำนวยการหน่วยตรวจสอบภายใน',
-            'role_id' => Role::where('slug','หน่วยตรวจสอบภายใน')->first()->id,
+            'name' => str_random(10),
+            'group' => 'หน่วยตรวจสอบภายใน',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการหน่วยตรวจสอบภายใน',
@@ -183,8 +169,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา',
-            'role_id' => Role::where('slug','กลุ่มพัฒนาครูและบุคลากรทางการศึกษา')->first()->id,
+            'group' => 'กลุ่มพัฒนาครูและบุคลากรทางการศึกษา',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา',
@@ -195,8 +180,7 @@ class PersonalSeeder extends Seeder
         // ผู้อำนวยการกลุ่มกฎหมายและคดี
         Personal::updateOrCreate([
             'name' => str_random(10),
-            'position' => 'ผู้อำนวยการกลุ่มกฎหมายและคดี',
-            'role_id' => Role::where('slug','กลุ่มกฎหมายและคดี')->first()->id,
+            'group' => 'กลุ่มกฎหมายและคดี',
             'user_id' => 1,
             'personal_type' => 'ข้าราชการ',
             'position_general' => 'ผู้อำนวยการกลุ่มกฎหมายและคดี',

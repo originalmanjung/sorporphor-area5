@@ -8,18 +8,19 @@ use Illuminate\Http\Request;
 
 class PersonalController extends Controller
 {
-    public function personalDepartment($slug = null)
+    public function personalDepartment($group = null)
     {
-        if ($slug != null) {
-            $id = Role::where('slug', $slug)->firstOrFail()->id;
-            $personals = Personal::with('role')->department($id)->active()->orderBy('id', 'asc')->get();
-            
+        if ($group != null) {
+
+            $personals = Personal::department($group)->active()->orderBy('id', 'asc')->get();
+
         } else {
-            $personals = Personal::manager()->active()->orderBy('id', 'asc')->get();
+            return abort(404);
         }
         return view('personal',[
             'personals' => $personals,
-            'slug' => $slug
+            'group' => $group,
+
         ]);
     }
 }

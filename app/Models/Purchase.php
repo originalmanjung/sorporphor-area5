@@ -34,14 +34,6 @@ class Purchase extends Model
         $purchase->file = !isset($file) ? $purchase->file : $filename;
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($purchase) {
-            $purchase->user_id = Auth::id();
-        });
-    }
     /**
      * Get the user that owns the purchase
      *

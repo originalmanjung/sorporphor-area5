@@ -47,7 +47,7 @@ class RoleController extends Controller
     {
         Gate::authorize('app.roles.create');
         // $modules = Module::all();
-        $modules = Module::whereNotIn('id', ['1','2','3','4','5','6','7','8'])->get();
+        $modules = Module::whereNotIn('id', ['1','2'])->get();
         return view('admin.role.form',[
             'modules' => $modules
         ]);

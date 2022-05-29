@@ -17,7 +17,6 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.questions.index');
         $questions = Question::all()->sortByDesc('create_at');
         return view('admin.Q&A.index',[
             'questions' => $questions
@@ -53,7 +52,6 @@ class QuestionController extends Controller
      */
     public function show(Question $question)
     {
-        Gate::authorize('app.questions.index');
         return view('admin.Q&A.show',[
             'question' => $question
         ]);

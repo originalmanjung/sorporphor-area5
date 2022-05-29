@@ -151,7 +151,7 @@
                             <div class="col-md-6">
                                 <div id="accordion-1">
                                     <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                                        @foreach ($laws->slice(0, 7) as $key => $law)
+                                        @foreach ($laws->slice(0, 4) as $key => $law)
                                         <div class="card-header mb-3">
                                             <a class="card-link collapsed" data-toggle="collapse" aria-expanded="true"  href="#collapse{{ $key }}">
                                                 {{ $law->name }}
@@ -178,13 +178,13 @@
                             <div class="col-md-6">
                                 <div id="accordion-2">
                                     <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                                        @foreach ($laws->slice(7, 10) as $key => $law)
+                                        @foreach ($laws->slice(4, 7) as $key => $law)
                                         <div class="card-header mb-3">
-                                            <a class="card-link collapsed" data-toggle="collapse" href="#collapse{{ $key }}">
+                                            <a class="card-link collapsed" data-toggle="collapse" aria-expanded="true" href="#collapse{{ $key }}">
                                                 {{ $law->name }}
                                             </a>
                                         </div>
-                                        <div id="collapse{{ $key }}" class="collapse" data-parent="#accordion-2">
+                                        <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-2">
                                             <div class="card-body mb-3">
                                                 @if($law->children->count() > 0)
                                                    @foreach($law->children as $child)

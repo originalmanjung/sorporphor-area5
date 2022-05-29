@@ -31,6 +31,7 @@ class StoreComplaintRequest extends FormRequest
             'email' => 'required|string|email|max:255',
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
+            'file' => 'nullable|file|mimes:pdf',
         ];
     }
 }

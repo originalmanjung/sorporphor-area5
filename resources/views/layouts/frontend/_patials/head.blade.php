@@ -54,17 +54,17 @@
                                 <li class="has-children">
                                     <a href="insurance.html">หน่วยงานในสังกัด</a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="{{ route('personalDepartment')}} ">ผู้บริหารการศึกษา</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานการเงินและสินทรัพย์') }}">กลุ่มบริหารงานการเงินและสินทรัพย์</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานบุคคล') }}">กลุ่มบริหารงานบุคคล</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มนโยบายและแผน') }}">กลุ่มนโยบายและแผน</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา') }}">กลุ่มนิเทศติดตาม และประเมินผลการจัดการศึกษา</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มส่งเสริมการจัดการศึกษา') }}">กลุ่มส่งเสริมการจัดการศึกษา</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มอำนวยการ') }}">กลุ่มอำนวยการ</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร') }}">กลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร</a></li>
-                                                <li><a href="{{ route('personalDepartment','กลุ่มพัฒนาครูและบุคลกรทางการศึกษา') }}">กลุ่มพัฒนาครูและบุคลกรทางการศึกษา</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'กลุ่มกฎหมายและคดี') }}">กลุ่มกฎหมายและคดี</a></li>
-                                                <li><a href="{{ route('personalDepartment', 'หน่วยตรวจสอบภายใน') }}">หน่วยตรวจสอบภายใน</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'ผู้บริหาร')}} ">ผู้บริหารการศึกษา</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานการเงินและสินทรัพย์') }}">กลุ่มบริหารงานการเงินและสินทรัพย์</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานบุคคล') }}">กลุ่มบริหารงานบุคคล</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มนโยบายและแผน') }}">กลุ่มนโยบายและแผน</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา') }}">กลุ่มนิเทศติดตาม และประเมินผลการจัดการศึกษา</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มส่งเสริมการจัดการศึกษา') }}">กลุ่มส่งเสริมการจัดการศึกษา</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มอำนวยการ') }}">กลุ่มอำนวยการ</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร') }}">กลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร</a></li>
+                                        <li><a href="{{ route('personalDepartment','กลุ่มพัฒนาครูและบุคลกรทางการศึกษา') }}">กลุ่มพัฒนาครูและบุคลกรทางการศึกษา</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มกฎหมายและคดี') }}">กลุ่มกฎหมายและคดี</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'หน่วยตรวจสอบภายใน') }}">หน่วยตรวจสอบภายใน</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('contact') }}">ติดต่อเรา</a></li>

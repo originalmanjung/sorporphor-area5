@@ -34,14 +34,6 @@ class Notice extends Model
         $notice->file = !isset($file) ? $notice->file : $filename;
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($notice) {
-            $notice->user_id = Auth::id();
-        });
-    }
     /**
      * Get the user that owns the Notice
      *

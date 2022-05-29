@@ -37,7 +37,14 @@ class ComplaintController extends Controller
      */
     public function store(StoreComplaintRequest $request)
     {
-        Complaint::create($request->all());
+        $data = $request->all();
+        if ($request->hasfile('file')) {
+            $file = $request->file('file');
+            $filename  = 'file-' . uniqid() . '.' .$file->getClientOriginalExtension();
+            $file->storeAs('complaint_files', $filename, 'public');
+            $data['file'] = $filename;
+        }
+        Complaint::create($data);
         Alert::toast('บันทึกข้อมูลสำเร็จ!','success');
         return back();
     }

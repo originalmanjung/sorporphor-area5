@@ -32,7 +32,6 @@ class NoticeSchoolController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.noticeSchools.index');
         $noticeSchools = NoticeSchool::orderBy('created_at', 'desc')->get();
         return view('admin.noticeSchool.index',[
             'noticeSchools' => $noticeSchools

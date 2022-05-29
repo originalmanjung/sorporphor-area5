@@ -34,14 +34,6 @@ class PaymentSlip extends Model
         $paymentSlip->file = !isset($file) ? $paymentSlip->file : $filename;
     }
 
-    public static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($paymentSlip) {
-            $paymentSlip->user_id = Auth::id();
-        });
-    }
     /**
      * Get the user that owns the paymentSlip
      *

@@ -31,7 +31,6 @@ class VideoController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.videos.index');
         $videos = Video::all();
         return view('admin.video.index',[
             'videos' => $videos

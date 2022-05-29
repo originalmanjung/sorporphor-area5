@@ -18,7 +18,9 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>แจ้งการโอนเงิน ทั้งหมด</div>
+            @can('app.paymentSlips.create')
             <a href="{{ route('app.paymentSlips.create') }}" type="button" class="btn btn-primary"><i class="fas fa-plus-circle"></i> สร้าง</a>
+            @endcan
         </div>
         <div class="card-body">
             <table id="datatablesSimple">

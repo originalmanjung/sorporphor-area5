@@ -23,7 +23,9 @@
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
             <div><i class="fas fa-table me-1"></i>Q&A ทั้งหมด</div>
+            @can('app.questions.create')
             <a href="{{ route('questions.create') }}" type="button" class="btn btn-danger text-white"><i class="fas fa-plus-circle"></i> สร้าง</a>
+            @endcan
         </div>
         <div class="card-body">
             <table id="datatablesSimple">

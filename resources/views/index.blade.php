@@ -89,7 +89,7 @@
         }, 400, function(){
             window.location.hash = hash;
         });
-        } 
+        }
     });**/
 
     // Pop up
@@ -176,7 +176,7 @@
     <div class="container">
         <div class="row" style="margin-top:130px;">
             <div class="col-md-12 text-center mb-5">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">WELCOME</span>
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">MANAGER TEAM</span>
                 <h2 class="site-section-heading text-uppercase text-center font-secondary">คณะผู้บริหาร สพป.เชียงใหม่ เขต 5</h2>
             </div>
         </div>
@@ -496,7 +496,7 @@
 
                     <!-- ประชาสัมพันธ์-->
                     @if ($notices->isNotEmpty())
-                  
+
                     <div class="tab-pane container active" id="services-1">
                       @foreach ($notices as $notice)
                         <div class="card p-4 mb-4">
@@ -515,8 +515,8 @@
                             <p class="mt-5" align="center"><a href="{{ route('noticeAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                         @endif
                     </div>
-                    
-                       
+
+
                     @else
                     <div class="tab-pane container active" id="services-1">
                         <div class="card p-4">
@@ -527,7 +527,7 @@
 
                     <!-- รับสมัครงาน-->
                     @if ($jobs->isNotEmpty())
-                   
+
                     <div class="tab-pane container fade" id="services-2">
                     @foreach ($jobs as $job)
                         <div class="card p-4 mb-4">
@@ -546,7 +546,7 @@
                             <p class="mt-5" align="center"><a href="{{ route('jobAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                         @endif
                     </div>
-    
+
                     @else
                     <div class="tab-pane container fade" id="services-2">
                         <div class="card p-4">
@@ -559,7 +559,7 @@
                     <!-- จัดซื้อ-จัดจ้าง-->
 
                     @if ($purchases->isNotEmpty())
-                  
+
                     <div class="tab-pane container fade" id="services-3">
                          @foreach ($purchases as $purchase)
                         <div class="card p-4 mb-4">
@@ -578,7 +578,7 @@
                         <p class="mt-5" align="center"><a href="{{ route('purchaseAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                         @endif
                     </div>
-                   
+
                     @else
                     <div class="tab-pane container fade" id="services-3">
                         <div class="card p-4">
@@ -589,7 +589,7 @@
 
                     <!-- แจ้งการโอนเงิน-->
                     @if ($paymentSlips->isNotEmpty())
-                   
+
                     <div class="tab-pane container fade" id="services-4">
                     @foreach ($paymentSlips as $paymentSlip)
                         <div class="card p-4 mb-4">
@@ -608,7 +608,7 @@
                         <p class="mt-5" align="center"><a href="{{ route('paymentSlipAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                         @endif
                     </div>
-                   
+
                     @else
                     <div class="tab-pane container fade" id="services-4">
                         <div class="card p-4">
@@ -618,7 +618,7 @@
                     @endif
                     <!-- งบทดลอง-->
                     @if ($budgets->isNotEmpty())
-                  
+
                     <div class="tab-pane container fade" id="services-5">
                     @foreach ($budgets as $budget)
                         <div class="card p-4 mb-4">
@@ -637,7 +637,7 @@
                         <p class="mt-5" align="center"><a href="{{ route('budgetAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                         @endif
                     </div>
-                   
+
                     @else
                     <div class="tab-pane container fade" id="services-5">
                         <div class="card p-4">
@@ -666,7 +666,7 @@
 
             @if ($noticeSchools->isNotEmpty())
             @foreach ($noticeSchools as $noticeSchool)
-           
+
             <div class="col-md-6 mt-3">
                 <a href="{{ route('noticeSchoolShow',$noticeSchool->slug ) }}">
                     <div class="card h-100 " style="border-radius: 3px;border: 0;box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);">
@@ -718,7 +718,7 @@
         </div>
         <div class="row no-gutters">
             <a href="{{ route('complaints.index') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center ftco-animate">
+                <div class="services-2 text-center noborder-left ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-keyboard"></i></span></div>
                     <div class="text media-body">
                         <h3>ช่องทางแจ้งเรื่องร้องเรียนการทุจริตและประพฤติมิชอบ</h3>
@@ -742,7 +742,7 @@
                 </div>
             </a>
             <a href="{{ route('standardPraticeGuide') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center ftco-animate">
+                <div class="services-2 text-center noborder-bottom noborder-left ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-book"></i></span></div>
                     <div class="text media-body">
                         <h3>คู่มือ/มาตรฐานการปฏิบัติงานของกลุ่ม/หน่วย/บุคลากร</h3>
@@ -750,14 +750,14 @@
                 </div>
             </a>
             <a href="{{ route('standardService') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center ftco-animate">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-insurance"><i class="fas fa-atlas"></i></span></div>
                     <div class="text media-body">
                         <h3>คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ</h3>
                     </div>
                 </div>
             </a>
-            <a href="#" class="col-lg-4 d-flex">
+            <a href="{{ route('corruptionAll') }}" class="col-lg-4 d-flex">
                 <div class="services-2 text-center noborder-bottom ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-fist-raised"></i></span></div>
                     <div class="text media-body">
@@ -797,7 +797,7 @@
                     </div>
                 </div>
             </a> --}}
-            
+
         </div>
     </div>
 </section>
@@ -853,13 +853,13 @@
                                 </figure>
                             </a>
                         @endif
-                   
-                    
+
+
                     </div>
                 </div>
                 @if ($letterRegions->isNotEmpty())
                     <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
-                @endif 
+                @endif
             </div>
         </div>
     </div>
@@ -876,7 +876,7 @@
                 <img src="{{ asset('storage/banner_files/'. $bannercontent->file) }}" class="img-fluid" alt="Responsive image">
             </div>
         @endforeach
-        @else  
+        @else
             <h5 class="card-title text-white mx-auto">ไม่พบข้อมูล</h5>
         @endif
         </div>
@@ -934,13 +934,13 @@
                                 </figure>
                             </a>
                         @endif
-                   
-                    
+
+
                     </div>
                 </div>
                 @if ($letterDistricts->isNotEmpty())
                     <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
-                @endif 
+                @endif
             </div>
         </div>
     </div>

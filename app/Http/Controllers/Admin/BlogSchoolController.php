@@ -31,7 +31,6 @@ class BlogSchoolController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.blogSchools.index');
         $blogSchools = BlogSchool::with('blogSchoolPhotos')->orderBy('created_at', 'desc')->get();
         return view('admin.blogschool.index',[
             'blogSchools' => $blogSchools
@@ -81,7 +80,6 @@ class BlogSchoolController extends Controller
      */
     public function show(BlogSchool $blogSchool)
     {
-        Gate::authorize('app.blogSchools.index');
         return view('admin.blogschool.show',[
             'blogSchool' => $blogSchool,
         ]);
@@ -114,7 +112,6 @@ class BlogSchoolController extends Controller
         $blogSchool->update([
             'title' => $request->title,
             'description' => $request->description,
-            'conditions' => $request->conditions,
             'status' => $request->filled('status')
         ]);
         if ($request->hasfile('file')) {

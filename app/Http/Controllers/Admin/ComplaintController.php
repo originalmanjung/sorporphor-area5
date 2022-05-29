@@ -18,7 +18,6 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        Gate::authorize('app.complaints.index');
         $complaints = Complaint::all()->sortByDesc('created_at');
         return view('admin.complaint.index',[
             'complaints' => $complaints
@@ -58,8 +57,21 @@ class ComplaintController extends Controller
      */
     public function show(Complaint $complaint)
     {
-        Gate::authorize('app.complaints.index');
         return view('admin.complaint.show',[
+            'complaint' => $complaint
+        ]);
+    }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Complaint  $complaint
+     * @return \Illuminate\Http\Response
+     */
+    public function viewPDF(Complaint $complaint)
+    {
+        Gate::authorize('app.complaints.index');
+        return view('admin.complaint.viewPDF',[
             'complaint' => $complaint
         ]);
     }
