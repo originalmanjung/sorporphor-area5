@@ -60,16 +60,17 @@
                                         @if(empty($standardService->parent))
                                             <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.standardServices.show', $child->id)}}" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
                                         @endif
-                                         
-                                        @can('app.standardServices.edit')
-                                            <a href="{{ route('app.standardServices.edit', $child->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                        @endcan  
-                                        @can('app.standardServices.destroy')
-                                            <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $child->id }})"><i class="fa fa-trash"></i></a>
-                                            <form id="delete-form-{{ $child->id }}" action="{{ route('app.standardServices.destroy',$child->id) }}" method="POST" style="display: none;">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
+                                        @canany(['update', 'delete'], $child) 
+                                            @can('app.standardServices.edit')
+                                                <a href="{{ route('app.standardServices.edit', $child->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                            @endcan  
+                                            @can('app.standardServices.destroy')
+                                                <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $child->id }})"><i class="fa fa-trash"></i></a>
+                                                <form id="delete-form-{{ $child->id }}" action="{{ route('app.standardServices.destroy',$child->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            @endcan
                                         @endcan
                                         </div>
                                     </td>

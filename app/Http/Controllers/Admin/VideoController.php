@@ -119,7 +119,6 @@ class VideoController extends Controller
             'description' => $request->description,
             'filename' => isset($filename) ? $filename : $video->filename,
             'url' => $request->url,
-            'user_id' => auth()->user()->id,
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
         return  redirect()->route('app.videos.index');

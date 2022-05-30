@@ -21,6 +21,7 @@ class StandardPraticeGuideController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(StandardPraticeGuide::class, 'standardPraticeGuide');
     }
 
     /**
@@ -146,7 +147,6 @@ class StandardPraticeGuideController extends Controller
         }
         $standardPraticeGuide->update([
             'name' => $request->name,
-            'user_id' => auth()->user()->id,
             'parent_id' => $standardPraticeGuide->parent_id,
             'file' => !isset($file) ? $standardPraticeGuide->file : $filename,
         ]);

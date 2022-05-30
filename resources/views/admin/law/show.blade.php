@@ -58,15 +58,17 @@
                                     <td class="text-center">
                                         <div class="d-grid gap-2 d-md-flex">
                                         <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.laws.viewPDF', $child->id)}}" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-file-pdf"></i></a>
-                                        @can('app.laws.edit')
-                                            <a href="{{ route('app.laws.edit', $child->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                        @endcan
-                                        @can('app.laws.destroy')
-                                            <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $child->id }})"><i class="fa fa-trash"></i></a>
-                                            <form id="delete-form-{{ $child->id }}" action="{{ route('app.laws.destroy',$child->id) }}" method="POST" style="display: none;">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
+                                        @canany(['update', 'delete'], $child)
+                                            @can('app.laws.edit')
+                                                <a href="{{ route('app.laws.edit', $child->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                            @endcan
+                                            @can('app.laws.destroy')
+                                                <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $child->id }})"><i class="fa fa-trash"></i></a>
+                                                <form id="delete-form-{{ $child->id }}" action="{{ route('app.laws.destroy',$child->id) }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            @endcan
                                         @endcan
                                         </div>
                                     </td>

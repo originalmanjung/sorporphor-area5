@@ -32,7 +32,7 @@ class RoleController extends Controller
     public function index()
     {
         Gate::authorize('app.roles.index');
-        $roles = Role::whereNotIn('name', ['แอดมิน'])->get()->sortDesc();
+        $roles = Role::whereNotIn('name', ['admin'])->get()->sortDesc();
         return view('admin.role.index',[
             'roles' => $roles
         ]);

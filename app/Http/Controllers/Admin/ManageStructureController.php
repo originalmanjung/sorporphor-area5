@@ -124,7 +124,6 @@ class ManageStructureController extends Controller
         $manageStructure->update([
             'name' => $request->name,
             'file' => !isset($file) ? $manageStructure->file : $filename,
-            'user_id' => auth()->user()->id
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
         return  redirect()->route('app.manageStructures.index');

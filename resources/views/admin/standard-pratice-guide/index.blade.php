@@ -51,15 +51,17 @@
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                     <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('app.standardPraticeGuides.show', $standardPraticeGuide->id)}}" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-eye"></i></a>
-                                    @can('app.standardPraticeGuides.edit')
-                                        <a href="{{ route('app.standardPraticeGuides.edit', $standardPraticeGuide->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
-                                    @endcan
-                                    @can('app.standardPraticeGuides.destroy')
-                                        <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $standardPraticeGuide->id }})"><i class="fa fa-trash"></i></a>
-                                        <form id="delete-form-{{ $standardPraticeGuide->id }}" action="{{ route('app.standardPraticeGuides.destroy',$standardPraticeGuide->id) }}" method="POST" style="display: none;">
-                                            @csrf
-                                            @method('DELETE')
-                                        </form>
+                                    @canany(['update', 'delete'], $standardPraticeGuide)
+                                        @can('app.standardPraticeGuides.edit')
+                                            <a href="{{ route('app.standardPraticeGuides.edit', $standardPraticeGuide->id)}}" class="btn btn-success btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
+                                        @endcan
+                                        @can('app.standardPraticeGuides.destroy')
+                                            <a class="btn btn-danger btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Delete" onclick="deleteData({{ $standardPraticeGuide->id }})"><i class="fa fa-trash"></i></a>
+                                            <form id="delete-form-{{ $standardPraticeGuide->id }}" action="{{ route('app.standardPraticeGuides.destroy',$standardPraticeGuide->id) }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        @endcan
                                     @endcan
                                 </div>
                             </td>

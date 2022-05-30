@@ -21,6 +21,7 @@ class LawController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(Law::class, 'law');
     }
 
     public function index()
@@ -144,7 +145,6 @@ class LawController extends Controller
         }
         $law->update([
             'name' => $request->name,
-            'user_id' => auth()->user()->id,
             'parent_id' => $law->parent_id,
             'file' => !isset($file) ? $law->file : $filename,
         ]);

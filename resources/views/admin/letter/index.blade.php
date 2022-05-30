@@ -63,6 +63,7 @@
                             <td>{{ $letter->updated_at->diffForHumans() }}</td>
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                                @canany(['update', 'delete'], $letter)
                                     @can('app.letters.edit')
                                     <a href="{{ route('app.letters.edit', $letter->id)}}" class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></a>
                                     @endcan
@@ -73,6 +74,7 @@
                                         @method('DELETE')
                                     </form>
                                     @endcan
+                                @endcan
                                 </div>
                             </td>
                         </tr>

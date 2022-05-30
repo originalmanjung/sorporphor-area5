@@ -32,6 +32,14 @@ use App\Models\Intergrity;
 use App\Policies\IntergrityPolicy;
 use App\Models\Corruption;
 use App\Policies\CorruptionPolicy;
+use App\Models\Letter;
+use App\Policies\LetterPolicy;
+use App\Models\StandardService;
+use App\Policies\StandardServicePolicy;
+use App\Models\StandardPraticeGuide;
+use App\Policies\StandardPraticeGuidePolicy;
+use App\Models\Law;
+use App\Policies\LawPolicy;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -57,6 +65,10 @@ class AuthServiceProvider extends ServiceProvider
         Mission::class => MissionPolicy::class,
         Intergrity::class => IntergrityPolicy::class,
         Corruption::class => CorruptionPolicy::class,
+        Letter::class => LetterPolicy::class,
+        StandardService::class => StandardServicePolicy::class,
+        StandardPraticeGuide::class => StandardPraticeGuidePolicy::class,
+        Law::class => LawPolicy::class,
     ];
 
     /**

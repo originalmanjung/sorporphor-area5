@@ -21,6 +21,7 @@ class StandardServiceController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->authorizeResource(StandardService::class, 'standardService');
     }
 
     /**
@@ -142,7 +143,6 @@ class StandardServiceController extends Controller
         }
         $standardService->update([
             'name' => $request->name,
-            'user_id' => auth()->user()->id,
             'parent_id' => $standardService->parent_id,
             'file' => !isset($file) ? $standardService->file : $filename,
         ]);
