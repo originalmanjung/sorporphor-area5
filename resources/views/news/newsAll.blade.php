@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title">
-                        <h2>กิจกรรมสพป.เชียงใหม่ เขต 5</h2>
+                        <h2>{{ $titleNews }}</h2>
                     </div>
                 </div>
             </div>

@@ -19,6 +19,7 @@ class CreateNewsTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->longText('description')->nullable();
+            $table->enum('content', ['general','honest','culture','participation']); //general = ทั่วไป honest = กิจกรรมเขตพื้นที่สุจริต-การมีส่วนร่วมของผู้บริหาร, culture = กิจกรรมการเสริมสร้างวัฒนธรรมองค์กร, participation = กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

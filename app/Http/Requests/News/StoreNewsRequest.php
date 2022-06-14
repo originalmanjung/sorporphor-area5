@@ -28,6 +28,7 @@ class StoreNewsRequest extends FormRequest
         return [
             'title'   => 'required|string|max:255',
             'descriptions' => 'nullable|string',
+            'content' => 'required|in:general,honest,culture,participation',
             'file' => 'nullable',
             'file.*' => 'image|mimes:jpeg,png,jpg|max:5120',
         ];

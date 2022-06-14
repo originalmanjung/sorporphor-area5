@@ -33,7 +33,10 @@ class HomeController extends Controller
         $videos = Video::limit(6)->orderBy('created_at', 'desc')->get();
         $bannercarousels = Banner::carousel()->latest()->get();
         $bannercontents = Banner::Content()->latest()->get();
-        $news = News::active()->latest()->take(15)->get();
+        $newsGeneral = News::general()->latest()->take(15)->get();
+        $newsHonest = News::honest()->latest()->take(15)->get();
+        $newsCulture = News::culture()->latest()->take(15)->get();
+        $newsnewsParticipation = News::participation()->latest()->take(15)->get();
         $blogschools = BlogSchool::active()->latest()->take(15)->get();
         $purchases = Purchase::limit(2)->orderBy('created_at', 'desc')->get();
         $paymentSlips = PaymentSlip::limit(2)->orderBy('created_at', 'desc')->get();
@@ -52,7 +55,10 @@ class HomeController extends Controller
             'budgets' => $budgets,
             'notices' => $notices,
             'noticeSchools' => $noticeSchools,
-            'news' => $news,
+            'newsGeneral' => $newsGeneral,
+            'newsHonest' => $newsHonest,
+            'newsCulture' => $newsCulture,
+            'newsnewsParticipation' => $newsnewsParticipation,
             'blogschools' => $blogschools,
             'bannercarousels' => $bannercarousels,
             'bannercontents' => $bannercontents,
@@ -92,6 +98,17 @@ class HomeController extends Controller
         ]);
     }
 
+    /**
+    * Write code on Method
+    *
+    * @return response()
+    */
+    public function lawviewPDF(Law $law)
+    {
+        return view('law.viewPDF',[
+            'law' => $law,
+        ]);
+    }
 
     /**
      * คู่มือ/มาตรฐานการปฏิบัติงานของกลุ่ม/หน่วย/บุคลากร

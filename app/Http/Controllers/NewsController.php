@@ -7,13 +7,46 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-    public function newsAll()
+    public function newsGeneralAll()
     {
-        $news = News::active()->orderBy('created_at')->paginate(8);
+        $news = News::general()->orderBy('created_at')->paginate(8);
+        $titleNews = 'กิจกรรม สพป.';
         return view('news.newsAll',[
-            'news' => $news
+            'news' => $news,
+            'titleNews' => $titleNews
         ]);
     }
+
+    public function newsHonestAll()
+    {
+        $news = News::honest()->orderBy('created_at')->paginate(8);
+        $titleNews = 'กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร';
+        return view('news.newsAll',[
+            'news' => $news,
+            'titleNews' => $titleNews
+        ]);
+    }
+
+    public function newsCultureAll()
+    {
+        $news = News::culture()->orderBy('created_at')->paginate(8);
+        $titleNews = 'กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร';
+        return view('news.newsAll',[
+            'news' => $news,
+            'titleNews' => $titleNews
+        ]);
+    }
+
+    public function newsParticipationAll()
+    {
+        $news = News::participation()->orderBy('created_at')->paginate(8);
+        $titleNews = 'กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร';
+        return view('news.newsAll',[
+            'news' => $news,
+            'titleNews' => $titleNews
+        ]);
+    }
+
 
     public function newsShow($news)
     {

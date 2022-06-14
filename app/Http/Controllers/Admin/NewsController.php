@@ -60,7 +60,7 @@ class NewsController extends Controller
         $news = News::create([
             'title' => $request->title,
             'description' => $request->description,
-            'conditions' => $request->conditions,
+            'content' => $request->content,
             'user_id' => auth()->user()->id,
             'status' => $request->filled('status')
         ]);
@@ -112,7 +112,7 @@ class NewsController extends Controller
         $news->update([
             'title' => $request->title,
             'description' => $request->description,
-            'conditions' => $request->conditions,
+            'content' => $request->content,
             'status' => $request->filled('status')
         ]);
         if ($request->hasfile('file')) {

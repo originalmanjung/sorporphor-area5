@@ -142,7 +142,38 @@
 @endpush
 @section('content')
 <!-- แบนเนอร์ -->
-<div class="slide-one-item home-slider owl-carousel">
+<div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+    @if ($bannercarousels->isNotEmpty())
+        <ol class="carousel-indicators">
+            @foreach ($bannercarousels as $key=>$carousel)
+                <li data-target="#carouselExampleCaptions" data-slide-to="{{ $key }}" class=" @if($key == 0) active @endif"></li>
+            @endforeach
+        </ol>
+        <div class="carousel-inner">
+            @foreach ($bannercarousels as $key=>$carousel)
+                <div class="carousel-item @if($key == 0) active @endif">
+                    <img src="{{ asset('storage/banner_files/'. $carousel->file) }}" class="d-block w-100" alt="...">
+                </div>
+            @endforeach
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    @else
+       <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ config('app.placeholder').'1170x400.png' }}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    @endif
+
+</div>
+{{-- <div class="slide-one-item home-slider owl-carousel">
     @if ($bannercarousels->isNotEmpty())
     @foreach ($bannercarousels as $carousel)
     <div class="site-blocks-cover inner-page overlay" style="background-image: url({{ asset('storage/banner_files/'. $carousel->file) }})" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -169,7 +200,7 @@
     </div>
     @endif
 
-</div>
+</div> --}}
 
 <!-- กลุ่มผู้บริหาร สพป. -->
 <section class="ftco-section">
@@ -252,8 +283,8 @@
             <div class="col-md-12 block-13 nav-direction-white">
                 <div class="nonloop-block-13 owl-carousel">
 
-                    @if ($news->isNotEmpty())
-                    @foreach ($news as $newsItem)
+                    @if ($newsGeneral->isNotEmpty())
+                    @foreach ($newsGeneral as $newsItem)
                     <div class="media-image card w-100 h-100  border-0">
                         <a class="wrap-card-img" href="{{ route('newsShow', $newsItem->slug) }}"><img src="@if($newsItem->newsphotos->isNotEmpty()) {{ asset('storage/news_photos/'. $newsItem->newsphotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
                         <div class="media-image-body card-body">
@@ -277,8 +308,8 @@
                     @endif
 
                 </div>
-                @if ($news->isNotEmpty())
-                <p class="mt-5" align="center"><a href="{{ route('newsAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @if ($newsGeneral->isNotEmpty())
+                <p class="mt-5" align="center"><a href="{{ route('newsGeneralAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
 
             </div>
@@ -287,53 +318,158 @@
 </div>
 <!-- สิ้นสุด กิจกรรม สพป. -->
 
-<!-- Video Section Begin -->
-<section class="site-section">
+
+
+<!-- กิจกรรม กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร -->
+<div class="site-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center mb-5">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">VIDEO &amp; VTR</span>
-                <h2 class="site-section-heading text-uppercase text-center font-secondary">วีดีโอ สพป.เชียงใหม่ เขต 5</h2>
+            <div class="col-md-12 text-center">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">ACTIVETY</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร</h2>
             </div>
         </div>
         <div class="row">
-            <div class="video-slider owl-carousel">
 
+            <div class="col-md-12 block-13 nav-direction-white">
+                <div class="nonloop-block-13 owl-carousel">
 
-                @if ($videos->isNotEmpty())
-                @foreach ($videos as $video)
-                <div class="col-lg-3">
-                    <div class="video-item set-bg" data-setbg="{{ asset('storage/video_photos/' .$video->filename) }}">
-                        <div class="vi-title">
-                            <h5>{{ Str::limit($video->name, 65) ?? '' }}</h5>
+                    @if ($newsHonest->isNotEmpty())
+                    @foreach ($newsHonest as $newsItem)
+                    <div class="media-image card w-100 h-100  border-0">
+                        <a class="wrap-card-img" href="{{ route('newsShow', $newsItem->slug) }}"><img src="@if($newsItem->newsphotos->isNotEmpty()) {{ asset('storage/news_photos/'. $newsItem->newsphotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
+                        <div class="media-image-body card-body">
+                            <h2 class="card-title">{{ Str::limit($newsItem->title, 65) ?? '' }}</h2>
+                            <p class="card-text">{{ Str::limit($newsItem->description, 120) ?? '' }}</p>
                         </div>
-                        <a href="{{ $video->url }}" class="play-btn video-popup"><img src="{{ asset('images/videos/play.png') }}" alt=""></a>
-                        <div class="vi-time">{{ $video->user->name }}</div>
-                    </div>
-                </div>
-                @endforeach
-                @else
-                <div class="col-lg-3">
-                    <div class="video-item set-bg" data-setbg="{{ config('app.placeholder').'200x200.png' }}">
-                        <div class="vi-title">
-                            <h5>Title not fund.</h5>
+                        <div class="p-4 mb-3">
+                            <a href="{{ route('newsShow', $newsItem->slug) }}" class="btn btn-primary text-white px-4"><span>อ่านเพิ่มเติม</span></a>
                         </div>
-                        <a href="" class="play-btn video-popup"><img src="{{ asset('images/videos/play.png') }}" alt=""></a>
-                        <div class="vi-time">author not fund</div>
                     </div>
+                    @endforeach
+                    @else
+                    <div class="media-image card w-100 h-100  border-0">
+                        <img src="{{ config('app.placeholder').'1024x768.png' }}" alt="Image" class="img-fluid">
+                        <div class="media-image-body card-body">
+                            <h5 class="card-title">ไม่พบข้อมูล</h5>
+                            <p class="card-text">ไม่พบข้อมูล</p>
+                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">อ่านเพิ่มเติม</span></a></p>
+                        </div>
+                    </div>
+                    @endif
+
                 </div>
+                @if ($newsHonest->isNotEmpty())
+                <p class="mt-5" align="center"><a href="{{ route('newsHonestAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
 
             </div>
-
-
-            @if ($videos->isNotEmpty())
-            <p class="mt-5 mx-auto" align="center"><a href="{{ route('videoAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
-            @endif
         </div>
     </div>
-</section>
-<!-- Video Section End -->
+</div>
+<!-- สิ้นสุด กิจกรรม กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร -->
+
+
+<!-- กิจกรรม กิจกรรมการเสริมสร้างวัฒนธรรมองค์กร -->
+<div class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">ACTIVETY</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">กิจกรรมการเสริมสร้างวัฒนธรรมองค์กร</h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 block-13 nav-direction-white">
+                <div class="nonloop-block-13 owl-carousel">
+
+                    @if ($newsCulture->isNotEmpty())
+                    @foreach ($newsCulture as $newsItem)
+                    <div class="media-image card w-100 h-100  border-0">
+                        <a class="wrap-card-img" href="{{ route('newsShow', $newsItem->slug) }}"><img src="@if($newsItem->newsphotos->isNotEmpty()) {{ asset('storage/news_photos/'. $newsItem->newsphotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
+                        <div class="media-image-body card-body">
+                            <h2 class="card-title">{{ Str::limit($newsItem->title, 65) ?? '' }}</h2>
+                            <p class="card-text">{{ Str::limit($newsItem->description, 120) ?? '' }}</p>
+                        </div>
+                        <div class="p-4 mb-3">
+                            <a href="{{ route('newsShow', $newsItem->slug) }}" class="btn btn-primary text-white px-4"><span>อ่านเพิ่มเติม</span></a>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="media-image card w-100 h-100  border-0">
+                        <img src="{{ config('app.placeholder').'1024x768.png' }}" alt="Image" class="img-fluid">
+                        <div class="media-image-body card-body">
+                            <h5 class="card-title">ไม่พบข้อมูล</h5>
+                            <p class="card-text">ไม่พบข้อมูล</p>
+                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">อ่านเพิ่มเติม</span></a></p>
+                        </div>
+                    </div>
+                    @endif
+
+                </div>
+                @if ($newsCulture->isNotEmpty())
+                <p class="mt-5" align="center"><a href="{{ route('newsCultureAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @endif
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- สิ้นสุด กิจกรรม กิจกรรมการเสริมสร้างวัฒนธรรมองค์กร -->
+
+
+<!-- กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน -->
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">ACTIVETY</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน</h2>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 block-13 nav-direction-white">
+                <div class="nonloop-block-13 owl-carousel">
+
+                    @if ($newsnewsParticipation->isNotEmpty())
+                    @foreach ($newsnewsParticipation as $newsItem)
+                    <div class="media-image card w-100 h-100  border-0">
+                        <a class="wrap-card-img" href="{{ route('newsShow', $newsItem->slug) }}"><img src="@if($newsItem->newsphotos->isNotEmpty()) {{ asset('storage/news_photos/'. $newsItem->newsphotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
+                        <div class="media-image-body card-body">
+                            <h2 class="card-title">{{ Str::limit($newsItem->title, 65) ?? '' }}</h2>
+                            <p class="card-text">{{ Str::limit($newsItem->description, 120) ?? '' }}</p>
+                        </div>
+                        <div class="p-4 mb-3">
+                            <a href="{{ route('newsShow', $newsItem->slug) }}" class="btn btn-primary text-white px-4"><span>อ่านเพิ่มเติม</span></a>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="media-image card w-100 h-100  border-0">
+                        <img src="{{ config('app.placeholder').'1024x768.png' }}" alt="Image" class="img-fluid">
+                        <div class="media-image-body card-body">
+                            <h5 class="card-title">ไม่พบข้อมูล</h5>
+                            <p class="card-text">ไม่พบข้อมูล</p>
+                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">อ่านเพิ่มเติม</span></a></p>
+                        </div>
+                    </div>
+                    @endif
+
+                </div>
+                @if ($newsGeneral->isNotEmpty())
+                <p class="mt-5" align="center"><a href="{{ route('newsParticipationAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @endif
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- สิ้นสุด กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน -->
+
+
 
 <!-- กิจกรรม โรงเรียน. -->
 <div class="site-section bg-light">
@@ -707,6 +843,199 @@
 <!-- สิ้นสุดประชาสัมพันธ์โรงเรียน-->
 
 
+<!-- จดหมายข่าว สพป -->
+<section id="work" class="tm-section-pad-top">
+    <div class="container tm-container-gallery">
+        <div class="row">
+            <div class="col-md-12 mb-4 text-center">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">Letters</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">จดหมายข่าว สพป.</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mx-auto tm-gallery-container">
+                    <div class="grid tm-gallery">
+                        @if ($letterRegions->isNotEmpty())
+                            @foreach ($letterRegions as $letter)
+                                <a href="{{ asset('storage/letter_files/'. $letter->file) }}">
+                                    <figure class="effect-honey tm-gallery-item">
+                                        <img src="{{ asset('storage/letter_files/'. $letter->file) }}" alt="Image" class="img-fluid">
+                                        <figcaption>
+                                            <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            @endforeach
+                        @else
+                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
+                                <figure class="effect-honey tm-gallery-item">
+                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
+                                    <figcaption>
+                                        <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
+                                <figure class="effect-honey tm-gallery-item">
+                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
+                                    <figcaption>
+                                        <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
+                                <figure class="effect-honey tm-gallery-item">
+                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
+                                    <figcaption>
+                                        <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        @endif
+
+
+                    </div>
+                </div>
+                @if ($letterRegions->isNotEmpty())
+                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
+<!-- สิ้นสุดจดหมายข่าว สพป -->
+
+
+<div class="py-5 bg-primary">
+    <div class="container">
+        <div class="row align-items-center">
+        @if($bannercontents->isNotEmpty())
+        @foreach($bannercontents as $bannercontent)
+            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                <img src="{{ asset('storage/banner_files/'. $bannercontent->file) }}" class="img-fluid" alt="Responsive image">
+            </div>
+        @endforeach
+        @else
+            <h5 class="card-title text-white mx-auto">ไม่พบข้อมูล</h5>
+        @endif
+        </div>
+    </div>
+</div>
+
+
+<!-- จดหมายข่าว โรงเรียน -->
+<section id="work" class="tm-section-pad-top">
+    <div class="container tm-container-gallery">
+        <div class="row">
+            <div class="col-md-12 mb-4 text-center">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">Letters</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">จดหมายข่าว โรงเรียน</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+               <div class="mx-auto tm-gallery-container">
+                    <div class="grid tm-gallery">
+                        @if ($letterDistricts->isNotEmpty())
+                            @foreach ($letterDistricts as $letter)
+                                <a href="{{ asset('storage/letter_files/'. $letter->file) }}">
+                                    <figure class="effect-honey tm-gallery-item">
+                                        <img src="{{ asset('storage/letter_files/'. $letter->file) }}" alt="Image" class="img-fluid">
+                                        <figcaption>
+                                            <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
+                                        </figcaption>
+                                    </figure>
+                                </a>
+                            @endforeach
+                        @else
+                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
+                                <figure class="effect-honey tm-gallery-item">
+                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
+                                    <figcaption>
+                                        <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
+                                <figure class="effect-honey tm-gallery-item">
+                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
+                                    <figcaption>
+                                        <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
+                                <figure class="effect-honey tm-gallery-item">
+                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
+                                    <figcaption>
+                                        <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        @endif
+
+
+                    </div>
+                </div>
+                @if ($letterDistricts->isNotEmpty())
+                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @endif
+            </div>
+        </div>
+    </div>
+</section>
+<!-- สิ้นสุดจดหมายข่าว โรงเรียน -->
+
+
+<!-- Video Section Begin -->
+<section class="site-section bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-5">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">VIDEO &amp; VTR</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">วีดีโอ สพป.เชียงใหม่ เขต 5</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="video-slider owl-carousel">
+
+
+                @if ($videos->isNotEmpty())
+                @foreach ($videos as $video)
+                <div class="col-lg-3">
+                    <div class="video-item set-bg" data-setbg="{{ asset('storage/video_photos/' .$video->filename) }}">
+                        <div class="vi-title">
+                            <h5>{{ Str::limit($video->name, 65) ?? '' }}</h5>
+                        </div>
+                        <a href="{{ $video->url }}" class="play-btn video-popup"><img src="{{ asset('images/videos/play.png') }}" alt=""></a>
+                        <div class="vi-time">{{ $video->user->name }}</div>
+                    </div>
+                </div>
+                @endforeach
+                @else
+                <div class="col-lg-3">
+                    <div class="video-item set-bg" data-setbg="{{ config('app.placeholder').'200x200.png' }}">
+                        <div class="vi-title">
+                            <h5>Title not fund.</h5>
+                        </div>
+                        <a href="" class="play-btn video-popup"><img src="{{ asset('images/videos/play.png') }}" alt=""></a>
+                        <div class="vi-time">author not fund</div>
+                    </div>
+                </div>
+                @endif
+
+            </div>
+
+
+            @if ($videos->isNotEmpty())
+            <p class="mt-5 mx-auto" align="center"><a href="{{ route('videoAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+            @endif
+        </div>
+    </div>
+</section>
+<!-- Video Section End -->
+
 <!-- service_area_start -->
 <section class="site-section">
     <div class="container">
@@ -803,147 +1132,4 @@
 </section>
 <!-- service_area_end -->
 
-<!-- จดหมายข่าว สพป -->
-<section id="work" class="tm-section-pad-top bg-light">
-    <div class="container tm-container-gallery">
-        <div class="row">
-            <div class="col-md-12 mb-4 text-center">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">Letters</span>
-                <h2 class="site-section-heading text-uppercase text-center font-secondary">จดหมายข่าว สพป.</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="mx-auto tm-gallery-container">
-                    <div class="grid tm-gallery">
-                        @if ($letterRegions->isNotEmpty())
-                            @foreach ($letterRegions as $letter)
-                                <a href="{{ asset('storage/letter_files/'. $letter->file) }}">
-                                    <figure class="effect-honey tm-gallery-item">
-                                        <img src="{{ asset('storage/letter_files/'. $letter->file) }}" alt="Image" class="img-fluid">
-                                        <figcaption>
-                                            <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            @endforeach
-                        @else
-                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>จดหมาย <span>ข่าว</span> สพป</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        @endif
-
-
-                    </div>
-                </div>
-                @if ($letterRegions->isNotEmpty())
-                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
-                @endif
-            </div>
-        </div>
-    </div>
-</section>
-<!-- สิ้นสุดจดหมายข่าว สพป -->
-
-
-<div class="py-5 bg-primary">
-    <div class="container">
-        <div class="row align-items-center">
-        @if($bannercontents->isNotEmpty())
-        @foreach($bannercontents as $bannercontent)
-            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                <img src="{{ asset('storage/banner_files/'. $bannercontent->file) }}" class="img-fluid" alt="Responsive image">
-            </div>
-        @endforeach
-        @else
-            <h5 class="card-title text-white mx-auto">ไม่พบข้อมูล</h5>
-        @endif
-        </div>
-    </div>
-</div>
-
-
-<!-- จดหมายข่าว โรงเรียน -->
-<section id="work" class="tm-section-pad-top">
-    <div class="container tm-container-gallery">
-        <div class="row">
-            <div class="col-md-12 mb-4 text-center">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">Letters</span>
-                <h2 class="site-section-heading text-uppercase text-center font-secondary">จดหมายข่าว สพป.</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-               <div class="mx-auto tm-gallery-container">
-                    <div class="grid tm-gallery">
-                        @if ($letterDistricts->isNotEmpty())
-                            @foreach ($letterDistricts as $letter)
-                                <a href="{{ asset('storage/letter_files/'. $letter->file) }}">
-                                    <figure class="effect-honey tm-gallery-item">
-                                        <img src="{{ asset('storage/letter_files/'. $letter->file) }}" alt="Image" class="img-fluid">
-                                        <figcaption>
-                                            <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
-                                        </figcaption>
-                                    </figure>
-                                </a>
-                            @endforeach
-                        @else
-                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                            <a href="{{  config('app.placeholder').'300x450.png'  }}">
-                                <figure class="effect-honey tm-gallery-item">
-                                    <img src="{{  config('app.placeholder').'300x450.png'  }}" alt="Image" class="img-fluid">
-                                    <figcaption>
-                                        <h2><i>จดหมาย <span>ข่าว</span> โรงเรียน</i></h2>
-                                    </figcaption>
-                                </figure>
-                            </a>
-                        @endif
-
-
-                    </div>
-                </div>
-                @if ($letterDistricts->isNotEmpty())
-                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
-                @endif
-            </div>
-        </div>
-    </div>
-</section>
-<!-- สิ้นสุดจดหมายข่าว โรงเรียน -->
 @endsection

@@ -29,7 +29,7 @@ class StoreLawRequest extends FormRequest
             return [
                 'name'=>'required|string|max:255|unique:laws,name',
                 'parent_id' => 'nullable|numeric',
-                'file' => 'required|mimes:pdf',
+                'file' => 'required|mimes:pdf|max:10000',
             ];
         } else {
             return [

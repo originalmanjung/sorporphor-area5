@@ -23,6 +23,26 @@ class News extends Model
         $this->attributes['slug'] = slugUnicode($title);
     }
 
+    public function scopeGeneral($query)
+    {
+        return $query->where([['status', '=', '1'],['content', '=', 'general']]);
+    }
+
+    public function scopeHonest($query)
+    {
+        return $query->where([['status', '=', '1'],['content', '=', 'honest']]);
+    }
+
+    public function scopeCulture($query)
+    {
+        return $query->where([['status', '=', '1'],['content', '=', 'culture']]);
+    }
+
+    public function scopeParticipation($query)
+    {
+        return $query->where([['status', '=', '1'],['content', '=', 'participation']]);
+    }
+
     public function scopeActive($query)
     {
         return $query->where('status', '=', 1);

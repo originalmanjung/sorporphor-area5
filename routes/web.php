@@ -53,7 +53,10 @@ Route::get('paymentSlip/{slug}', [PaymentSlipController::class, 'paymentSlipShow
 Route::get('budgets', [BudgetController::class, 'budgetAll'])->name('budgetAll');
 Route::get('budget/{slug}', [BudgetController::class, 'budgetShow'])->name('budgetShow');
 // กิจกรรม สพป.
-Route::get('news', [NewsController::class, 'newsAll'])->name('newsAll');
+Route::get('news/general', [NewsController::class, 'newsGeneralAll'])->name('newsGeneralAll');
+Route::get('news/honest', [NewsController::class, 'newsHonestAll'])->name('newsHonestAll');
+Route::get('news/culture', [NewsController::class, 'newsCultureAll'])->name('newsCultureAll');
+Route::get('news/participation', [NewsController::class, 'newsParticipationAll'])->name('newsParticipationAll');
 Route::get('news/{slug}', [NewsController::class, 'newsShow'])->name('newsShow');
 // กิจกรรมโรงเรียนในสังกัด
 Route::get('blogschools', [BlogSchoolController::class, 'blogschoolAll'])->name('blogschoolAll');
@@ -81,6 +84,7 @@ Route::get('manageStructures', [ManageStructureController::class, 'index'])->nam
 Route::get('intergrity-pdf-view/{intergrity}', [HomeController::class, 'showPDF'])->name('showPDF');
 // กฏหมายที่เกี่ยวข้อง
 Route::get('laws', [HomeController::class, 'law'])->name('law');
+Route::get('laws/law-viewPDF/{law}', [HomeController::class, 'lawviewPDF'])->name('law.viewPDF');
 // กฏหมายที่เกี่ยวข้อง
 Route::get('standard-pratice-guide', [HomeController::class, 'law'])->name('law');
 // คู่มือมาตรการปฏิบัติงานของ กลุ่ม/หน่วย/บุคลากร

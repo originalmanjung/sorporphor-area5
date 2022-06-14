@@ -69,7 +69,7 @@
                                         <div class="alert alert-danger d-flex align-items-center" role="alert">
                                             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
                                             <div>
-                                              แนะนำ : Carousel ขนาด 1920x1128 Pixel | Conent ขนาด 750x180 Pixel
+                                              แนะนำ : Carousel ขนาด 1170x400 Pixel | Conent ขนาด 750x180 Pixel
                                             </div>
                                           </div>
                                         <div class="custom-file">

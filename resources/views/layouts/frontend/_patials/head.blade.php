@@ -47,12 +47,11 @@
                                         <li><a href="https://cct.thaieduforall.org/">ระบบปัจจัยพื้นฐานเด็กยากจน (CCT)</a></li>
                                         <li><a href="https://admission.bopp-obec.info/login.php">ระบบรายงานการรับนักเรียน</a></li>
                                         <li><a href="http://www.uprightcode.xyz/index.php">ระบบข้อมูลฯ โรงเรียนสุจริต</a></li>
-                                        <li><a href="https://sites.google.com/view/scoutchiangmai">สำนักงานลูกเสือจังหวัดเชียงใหม่</a></li>
-                                        <li><a href="https://sites.google.com/chiangmaiarea1.go.th/covid19-area1/%E0%B8%AB%E0%B8%99%E0%B8%B2%E0%B9%81%E0%B8%A3%E0%B8%81">ศูนย์ Covid – 19 สพป.เชียงใหม่ เขต 5</a></li>
+                                        <li><a href="http://www.chiangmaiarea5.go.th/salary/">รายละเอียดบัญชีจ่ายเงินรายเดือน</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-children">
-                                    <a href="insurance.html">หน่วยงานในสังกัด</a>
+                                    <a href="insurance.html">ข้อมูลบุคลากร</a>
                                     <ul class="dropdown arrow-top">
                                         <li><a href="{{ route('personalDepartment', 'ผู้บริหาร')}} ">ผู้บริหารการศึกษา</a></li>
                                         <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานการเงินและสินทรัพย์') }}">กลุ่มบริหารงานการเงินและสินทรัพย์</a></li>

@@ -162,7 +162,7 @@
                                                 @if($law->children->count() > 0)
                                                    @foreach($law->children as $child)
                                                    <ul>
-                                                      <li ><a class="text-success d-flex align-items-center" href="{{ $child->file}}" target="_blank"><h6><span><i class="far fa-check-circle text-primary mr-2"></i></span>{{ $child->name }}</h6></a></li>
+                                                      <li ><a class="text-success d-flex align-items-center" href="{{ route('law.viewPDF', $child->id)}}" target="_blank"><h6><span><i class="far fa-check-circle text-primary mr-2"></i></span>{{ $child->name }}</h6></a></li>
                                                    </ul>
                                                    @endforeach
                                                 @else
@@ -178,7 +178,7 @@
                             <div class="col-md-6">
                                 <div id="accordion-2">
                                     <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                                        @foreach ($laws->slice(4, 7) as $key => $law)
+                                        @foreach ($laws->slice(4, 10) as $key => $law)
                                         <div class="card-header mb-3">
                                             <a class="card-link collapsed" data-toggle="collapse" aria-expanded="true" href="#collapse{{ $key }}">
                                                 {{ $law->name }}
@@ -189,7 +189,7 @@
                                                 @if($law->children->count() > 0)
                                                    @foreach($law->children as $child)
                                                    <ul>
-                                                      <li style="margin-bottom: 0px; padding: 0px; background: transparent; border-radius: 4px;"><span><i class="far fa-check-circle text-primary me-3"></i></span><a class="text-black-50" href="{{ $child->file}}" target="_blank">{{ $child->name }}</a></li>
+                                                      <li ><a class="text-success d-flex align-items-center" href="{{ route('law.viewPDF', $child->id)}}" target="_blank"><h6><span><i class="far fa-check-circle text-primary mr-2"></i></span>{{ $child->name }}</h6></a></li>
                                                    </ul>
                                                    @endforeach
                                                 @else

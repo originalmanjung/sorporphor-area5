@@ -29,7 +29,7 @@
                         <th scope="col">รูป</th>
                         <th scope="col">ชื่อเรื่อง</th>
                         <th scope="col">สถานะ</th>
-                        <th scope="col">อัฟเดทล่าสุด</th>
+                        <th scope="col">ประเภท</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </thead>
@@ -38,7 +38,7 @@
                         <th scope="col">รูป</th>
                         <th scope="col">ชื่อเรื่อง</th>
                         <th scope="col">สถานะ</th>
-                        <th scope="col">อัฟเดทล่าสุด</th>
+                        <th scope="col">ประเภท</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </tfoot>
@@ -54,7 +54,17 @@
                                     <span class="badge bg-danger">Inactive</span>
                                 @endif
                             </td>
-                            <td>{{ $newss->created_at->diffForHumans() }}</td>
+                            <td>
+                                @if ($newss->content == 'general')
+                                    กิจกรรม สพป.
+                                @elseif($newss->content == 'honest')
+                                    กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร
+                                @elseif($newss->content == 'culture')
+                                    กิจกรรมการเสริมสร้างวัฒนธรรมองค์กร
+                                @else
+                                    กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน
+                                @endif
+                            </td>
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                     <a href="{{ route('app.news.show', $newss->id)}}" class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></a>

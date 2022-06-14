@@ -105,6 +105,23 @@
                     </div>
                     <div class="row g-2">
                         <div class="col-md mb-3">
+                            <label for="inputType" class="form-label">ประเภท</label>
+                            <select id="inputState" class="form-select @error('content') is-invalid @enderror" name="content">
+                                <option value="" selected>Choose...</option>
+                                <option value="general" @if(isset($news)) {{ $news->content == 'general' ? 'selected' : '' }} @else {{ old('content') == 'general' ? 'selected':'' }}  @endif>กิจกรรม สพป.</option>
+                                <option value="honest" @if(isset($news)) {{ $news->content == 'honest' ? 'selected' : '' }} @else {{ old('content') == 'honest' ? 'selected':'' }}  @endif>กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร</option>
+                                <option value="culture" @if(isset($news)) {{ $news->content == 'culture' ? 'selected' : '' }} @else {{ old('content') == 'culture' ? 'selected':'' }}  @endif>กิจกรรมการเสริมสร้างวัฒนธรรมองค์กร</option>
+                                <option value="participation" @if(isset($news)) {{ $news->content == 'participation' ? 'selected' : '' }} @else {{ old('content') == 'participation' ? 'selected':'' }}  @endif>กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน</option>
+                            </select>
+                            @error('content')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col-md mb-3">
                             <label for="inputState" class="form-label">สถานะ</label>
                             <div class="form-check form-switch">
                                 <input class="form-check-input" type="checkbox" id="status" name="status" @if(isset($news)) {{ $news->status == true ? 'checked' : '' }} @endif>

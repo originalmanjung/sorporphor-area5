@@ -9,7 +9,7 @@
                     404 หมู่ 10 ถนนเชียงใหม่-ฮอด ตำบลหางดง<br>อำเภอฮอด จังหวัดเชียงใหม่ 50240<br>
                     <strong>โทร:</strong>053-461-089 , 053-461-627<br>
                     <strong>แฟกซ์:</strong>ต่อ 127<br>
-                    <strong>Email: </strong>ict_cma5@hotmail.com<br>
+                    <strong>Email: </strong>cma5@chiangmaiarea5.go.th<br>
                 </p>
                 <p><a href="{{ route('contact') }}" class="btn btn-primary rounded text-white px-4">เพิ่มเติม</a></p>
             </div>
@@ -31,7 +31,7 @@
                         <div class="opening-hours">
                             <h6 style="font-size:16px; color:#fd7e14;">ในเวลาราชการ:</h6>
                             <p class="pl-3">
-                                <span>จันทร์ – ศุกร์ <br> 8.00 น. - 17.00 น.</span>
+                                <span>จันทร์ – ศุกร์ <br> 8.00 น. - 16.30 น.</span>
                             </p>
                         </div>
                     </div>
@@ -45,11 +45,7 @@
                 </div>
                 <div class="col-md-12">
                     <p>
-                        <a href="#" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
-                        <a href="#" class="p-2"><span class="icon-twitter"></span></a>
-                        <a href="#" class="p-2"><span class="icon-instagram"></span></a>
-                        <a href="#" class="p-2"><span class="icon-vimeo"></span></a>
-
+                        <a href="https://www.facebook.com/profile.php?id=100069225249500" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
                     </p>
                 </div>
             </div>
