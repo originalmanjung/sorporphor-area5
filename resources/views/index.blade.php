@@ -471,51 +471,6 @@
 
 
 
-<!-- กิจกรรม โรงเรียน. -->
-<div class="site-section bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">ACTIVETY</span>
-                <h2 class="site-section-heading text-uppercase text-center font-secondary">กิจกรรม โรงเรียนในสังกัด</h2>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12 block-13 nav-direction-white">
-                <div class="nonloop-block-13 owl-carousel">
-                    @if ($blogschools->isNotEmpty())
-                    @foreach ($blogschools as $blogschool)
-                    <div class="media-image card w-100 h-100  border-0">
-                        <a class="wrap-card-img" href="{{ route('blogschoolShow', $blogschool->slug) }}"><img src="@if($blogschool->blogSchoolPhotos->isNotEmpty()) {{ asset('storage/blogschool_photos/'. $blogschool->blogSchoolPhotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
-                        <div class="media-image-body card-body">
-                            <h2 class="card-title">{{ Str::limit($blogschool->title, 65) ?? '' }}</h2>
-                            <p class="card-text">{{ Str::limit($blogschool->description, 120) ?? '' }}</p>
-                        </div>
-                        <div class="p-4 mb-3">
-                            <a href="{{ route('blogschoolShow', $blogschool->slug) }}" class="btn btn-primary text-white px-4"><span>อ่านเพิ่มเติม</span></a>
-                        </div>
-                    </div>
-                    @endforeach
-                    @else
-                    <div class="media-image card w-100 h-100  border-0">
-                        <img src="{{ config('app.placeholder').'1024x768.png' }}" alt="Image" class="img-fluid">
-                        <div class="media-image-body card-body">
-                            <h5 class="card-title">ไม่พบข้อมูล</h5>
-                            <p class="card-text">ไม่พบข้อมูล</p>
-                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">อ่านเพิ่มเติม</span></a></p>
-                        </div>
-                    </div>
-                    @endif
-                </div>
-                @if ($blogschools->isNotEmpty())
-                <p class="mt-5" align="center"><a href="{{ route('blogschoolAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
-                @endif
-            </div>
-        </div>
-    </div>
-</div>
-<!-- สิ้นสุด กิจกรรม โรงเรียน. -->
-
 <!-- ITA -->
 
 <div class="faqs">
@@ -789,8 +744,27 @@
 </section>
 <!-- สิ้นสุด ประชาสัมพันธ์ รับสมัครงาน จัดซื้อ-จัดจ้าง แจ้งโอนเงิน -->
 
+
+<div class="py-5 bg-primary">
+    <div class="container">
+        <div class="row align-items-center">
+        @if($bannercontents->isNotEmpty())
+        @foreach($bannercontents as $bannercontent)
+            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                <a @isset($bannercontent->url) href="{{ $bannercontent->url }}" @endisset>
+                    <img src="{{ asset('storage/banner_files/'. $bannercontent->file) }}" class="img-fluid" alt="Responsive image">
+                </a>
+            </div>
+        @endforeach
+        @else
+            <h5 class="card-title text-white mx-auto">ไม่พบข้อมูล</h5>
+        @endif
+        </div>
+    </div>
+</div>
+
 <!-- ประชาสัมพันธ์โรงเรียน-->
-<div class="site-section" style="background-image: url('{{ asset('funder-template/images/topography.png') }}'); background-attachment: fixed">
+{{-- <div class="site-section" style="background-image: url('{{ asset('funder-template/images/topography.png') }}'); background-attachment: fixed">
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-4 text-center">
@@ -839,7 +813,7 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 <!-- สิ้นสุดประชาสัมพันธ์โรงเรียน-->
 
 
@@ -906,22 +880,50 @@
 </section>
 <!-- สิ้นสุดจดหมายข่าว สพป -->
 
-
-<div class="py-5 bg-primary">
+<!-- กิจกรรม โรงเรียน. -->
+<div class="site-section bg-light">
     <div class="container">
-        <div class="row align-items-center">
-        @if($bannercontents->isNotEmpty())
-        @foreach($bannercontents as $bannercontent)
-            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
-                <img src="{{ asset('storage/banner_files/'. $bannercontent->file) }}" class="img-fluid" alt="Responsive image">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">ACTIVETY</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">กิจกรรม โรงเรียนในสังกัด</h2>
             </div>
-        @endforeach
-        @else
-            <h5 class="card-title text-white mx-auto">ไม่พบข้อมูล</h5>
-        @endif
+        </div>
+        <div class="row">
+            <div class="col-md-12 block-13 nav-direction-white">
+                <div class="nonloop-block-13 owl-carousel">
+                    @if ($blogschools->isNotEmpty())
+                    @foreach ($blogschools as $blogschool)
+                    <div class="media-image card w-100 h-100  border-0">
+                        <a class="wrap-card-img" href="{{ route('blogschoolShow', $blogschool->slug) }}"><img src="@if($blogschool->blogSchoolPhotos->isNotEmpty()) {{ asset('storage/blogschool_photos/'. $blogschool->blogSchoolPhotos[0]->filename) }}  @else {{ config('app.placeholder').'200.png' }}@endif" alt="Image" class="img-fluid"></a>
+                        <div class="media-image-body card-body">
+                            <h2 class="card-title">{{ Str::limit($blogschool->title, 65) ?? '' }}</h2>
+                            <p class="card-text">{{ Str::limit($blogschool->description, 120) ?? '' }}</p>
+                        </div>
+                        <div class="p-4 mb-3">
+                            <a href="{{ route('blogschoolShow', $blogschool->slug) }}" class="btn btn-primary text-white px-4"><span>อ่านเพิ่มเติม</span></a>
+                        </div>
+                    </div>
+                    @endforeach
+                    @else
+                    <div class="media-image card w-100 h-100  border-0">
+                        <img src="{{ config('app.placeholder').'1024x768.png' }}" alt="Image" class="img-fluid">
+                        <div class="media-image-body card-body">
+                            <h5 class="card-title">ไม่พบข้อมูล</h5>
+                            <p class="card-text">ไม่พบข้อมูล</p>
+                            <p><a href="#" class="btn btn-primary text-white px-4"><span class="caption">อ่านเพิ่มเติม</span></a></p>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+                @if ($blogschools->isNotEmpty())
+                <p class="mt-5" align="center"><a href="{{ route('blogschoolAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                @endif
+            </div>
         </div>
     </div>
 </div>
+<!-- สิ้นสุด กิจกรรม โรงเรียน. -->
 
 
 <!-- จดหมายข่าว โรงเรียน -->

@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="row g-2">
-                                <div class="col-md mb-3">
+                                <div class="col mb-3">
                                     <label for="inputType" class="form-label">ประเภท</label>
                                     <select id="inputState" class="form-select @error('banners') is-invalid @enderror" name="banners">
                                         <option value="" selected>Choose...</option>
@@ -61,6 +61,19 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col">
+                                    <div class="col mb-3 form-group">
+                                        <label for="url" class="form-label">ลิ้ง URL</label>
+                                        <input type="text" class="form-control @error('url') is-invalid @enderror" id="url" name="url" value="{{ $banner->url ?? old('url') }}" autofocus>
+                                        @error('url')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="row g-2">

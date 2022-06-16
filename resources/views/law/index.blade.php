@@ -157,7 +157,7 @@
                                                 {{ $law->name }}
                                             </a>
                                         </div>
-                                        <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-2">
+                                        <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-1">
                                             <div class="card-body mb-3">
                                                 @if($law->children->count() > 0)
                                                    @foreach($law->children as $child)

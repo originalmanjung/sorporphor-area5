@@ -29,6 +29,7 @@ class UpdateBannerRequest extends FormRequest
             'name' => 'nullable|string|max:255',
             'description' => 'nullable|string|max:255',
             'banners' => 'required|in:carousel,content',
+            'url' => 'nullable|string|max:255',
             'file' => 'nullable|image|mimes:png,jpg,jpeg|max:5120'
         ];
     }

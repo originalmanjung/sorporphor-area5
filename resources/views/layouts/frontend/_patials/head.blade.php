@@ -33,21 +33,24 @@
                                     </ul>
                                 </li>
                                 <li class="has-children">
-                                    <a href="insurance.html">อี-เซอร์วิส</a>
+                                    <a href="insurance.html">E-Service</a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="http://www.chiangmai1.ksom.net/money/index.php">ระบบเงินเดือนอิเล็กทรอนิกส์(E-Money)</a></li>
-                                        <li><a href="http://61.19.21.20/neof/">ระบบสำนักงานอิเล็กทรอนิกส์(E-Paperless)</a></li>
-                                        <li><a href="https://www.chiangmaiarea1.go.th/kp7/">ระบบแจ้งความประสงค์ขอสำเนาทะเบียนประวัติข้าราชการ</a></li>
-                                        <li><a href="https://sites.google.com/a/chiangmaiarea1.go.th/cm1e-learning/home">ระบบ E-Learning บทเรียนออนไลน์</a></li>
-                                        <li><a href="http://schoolmis.obec.expert">ระบบบริหารจัดการศึกษา (Schoolmis)</a></li>
-                                        <li><a href="https://www.bopp-obec.info/home/">ระบบจัดเก็บข้อมูลนักเรียนรายบุคคล (DMC)</a></li>
-                                        <li><a href="https://data.bopp-obec.info/emis/">ระบบข้อมูลสารสนเทศเพื่อการบริหาร (EMIS)</a></li>
-                                        <li><a href="http://eme3.obec.go.th/~eme53/">ระบบบริหารโรงเรียนและเขตพื้นที่ (E-SEASS)</a></li>
+                                        <li><a href="http://1.179.155.142/amssplus/">ระบบสำนักงานอิเล็กทรอนิกส์ (Smart Area)</a></li>
+                                        <li><a href="http://www.chiangmaiarea5.go.th/salary/">ระบบพิมพ์บัญชีจ่ายเงินรายเดือน (E-Salary)</a></li>
+                                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXKV1I3HebFwDawIdOLPbaomLGlbWQkc1mARReTbMZnUMZ2w/viewform">แบบบันทึกการนิเทศ กำกับ ติดตาม โรงเรียน</a></li>
+                                        <li><a href="http://1.179.155.141/bigdata/">ระบบฐานข้อมูลสารสนเทศ (BigData)</a></li>
+                                        <li><a href="http://1.179.155.140/studentscare/">ระบบการดูแลช่วยเหลือนักเรียน (StudentsCare)</a></li>
+                                        <li><a href="http://eic.chiangmaiarea5.go.th/">ศุนย์ข้อมูลสารสนเทศทางการศึกษา (EIC)</a></li>
+                                        <li><a href="https://data.bopp-obec.info/emis/index_area.php?Area_CODE=5005">ระบบสารสนเทศเพื่อบริหารการศึกษา (EMIS)</a></li>
+                                        <li><a href="https://schoolmis.obec.expert/">ระบบบริหารจัดการสถานศึกษา (SchoolMIS)</a></li>
                                         <li><a href="https://bobec.bopp-obec.info/index.php">ระบบฐานข้อมูลสิ่งก่อสร้าง (B-obec)</a></li>
-                                        <li><a href="https://cct.thaieduforall.org/">ระบบปัจจัยพื้นฐานเด็กยากจน (CCT)</a></li>
-                                        <li><a href="https://admission.bopp-obec.info/login.php">ระบบรายงานการรับนักเรียน</a></li>
+                                        <li><a href="https://cct.thaieduforall.org/">ระบบปัจจัยพื้นฐานนักเรียนยากจน (CCT)</a></li>
+                                        <li><a href="http://eme3.obec.go.th/~eme53/index.php">ระบบบริหารโรงเรียนและเขตพื้นที่การศึกษา (e-SEASS)</a></li>
+                                        <li><a href="https://smart.obec.go.th/">ระบบสำนักงานอิเล็กทรอนิกส์ (Smart OBEC)</a></li>
+                                        <li><a href="https://www.obecmail.obec.go.th/">ระบบจดหมายอิเล็กทรอนิกส์ (OBEC Mail)</a></li>
+                                        <li><a href="http://www.gprocurement.go.th/new_index.html">ระบบการจัดซื้อจัดจ้างภาครัฐ (e-GP)</a></li>
                                         <li><a href="http://www.uprightcode.xyz/index.php">ระบบข้อมูลฯ โรงเรียนสุจริต</a></li>
-                                        <li><a href="http://www.chiangmaiarea5.go.th/salary/">รายละเอียดบัญชีจ่ายเงินรายเดือน</a></li>
+                                        <li><a href="https://e-budget.jobobec.in.th/">ระบบบัญชีการศึกษาขั้นพื้นฐาน (E-Budget)</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-children">

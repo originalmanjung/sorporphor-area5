@@ -69,6 +69,7 @@ class BannerController extends Controller
             'file' => $filename,
             'user_id' => auth()->user()->id,
             'banners' => $request->banners,
+            'url' => $request->url,
             'status' => $request->filled('status'),
         ]);
         Alert::toast('บันทึกข้อมูลสำเร็จ!','success');
@@ -123,6 +124,7 @@ class BannerController extends Controller
             'description' => $request->description,
             'file' => !isset($file) ? $banner->file : $filename,
             'banners' => $request->banners,
+            'url' => $request->url,
             'status' => $request->filled('status'),
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
