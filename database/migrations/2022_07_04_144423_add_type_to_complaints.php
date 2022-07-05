@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUrlToBanners extends Migration
+class AddTypeToComplaints extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUrlToBanners extends Migration
      */
     public function up()
     {
-        Schema::table('banners', function (Blueprint $table) {
-            $table->string('url')->nullable()->after('file');
+        Schema::table('complaints', function (Blueprint $table) {
+            $table->enum('type', ['general','corrupt'])->after('name');
         });
     }
 
@@ -25,7 +25,7 @@ class AddUrlToBanners extends Migration
      */
     public function down()
     {
-        Schema::table('banners', function (Blueprint $table) {
+        Schema::table('complaints', function (Blueprint $table) {
             //
         });
     }

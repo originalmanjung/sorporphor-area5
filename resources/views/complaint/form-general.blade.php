@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title">
-                        <h2>ช่องทางแจ้งเรื่องร้องเรียนการทุจริตและประพฤติมิชอบ</h2>
+                        <h2>ช่องทางแจ้งเรื่องร้องเรียนทั่วไป</h2>
                     </div>
                 </div>
             </div>
@@ -28,7 +28,7 @@
             <div class="card-body">
                 <form id="complaintFrom" complaint="form" method="POST" action="{{ route('complaints.store') }}" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" id="type" name="type" value="corrupt">
+                    <input type="hidden" id="type" name="type" value="general">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="name" class="form-label">ชื่อ - นามสกุล</label>

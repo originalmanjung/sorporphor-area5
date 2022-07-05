@@ -1056,11 +1056,19 @@
                     </div>
                 </div>
             </a>
+            <a href="{{ route('complaint.general') }}" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-bottom ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-rating"><i class="fas fa-desktop"></i></span></div>
+                    <div class="text media-body">
+                        <h3>ช่องทางแจ้งเรื่องร้องเรียนทั่วไป</h3>
+                    </div>
+                </div>
+            </a>
             <a href="{{ route('opinions.create') }}" class="col-lg-4 d-flex">
                 <div class="services-2 text-center ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-american-sign-language-interpreting"></i></span></div>
                     <div class="text media-body">
-                        <h3>รับฟังความคิดเห็นข้อเสนอแนะ</h3>
+                        <h3>ช่องทางการรับฟังความคิดเห็น</h3>
                     </div>
                 </div>
             </a>
@@ -1084,7 +1092,7 @@
                 <div class="services-2 text-center noborder-bottom ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-insurance"><i class="fas fa-atlas"></i></span></div>
                     <div class="text media-body">
-                        <h3>คู่มือ/มาตรฐานการให้บริการสถิติการให้บริการ</h3>
+                        <h3>รายงานผลการสารวจความพึงพอใจการให้บริการ</h3>
                     </div>
                 </div>
             </a>

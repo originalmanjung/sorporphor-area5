@@ -26,6 +26,7 @@ class StoreComplaintRequest extends FormRequest
         return [
             'g-recaptcha-response' => 'required|captcha',
             'name'   => 'required|string|max:255',
+            'type' => 'required|in:general,corrupt',
             'idCardnumber' => 'numeric|digits:13',
             'address'   => 'required|string',
             'email' => 'required|string|email|max:255',

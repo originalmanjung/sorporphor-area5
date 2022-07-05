@@ -44,8 +44,17 @@
                 <tbody>
                     @foreach ($complaints as $key => $complaint)
                         <tr>
-                            <td>{{ $key + 1 }}</td>
-                            <td>{{ $complaint->title }}</td>
+                            <td>{{ ++$i }}</td>
+                            <td class="d-flex flex-column">
+                                {{ $complaint->title }}
+                                <div>
+                                    @if ($complaint->type == 'general')
+                                        <span class="badge bg-secondary">เรื่องทั่วไป</span>
+                                    @else
+                                        <span class="badge bg-secondary">การทุจริตและประพฤติมิชอบ</span>
+                                    @endif
+                                </div>
+                            </td>
                             <td>
                                 @if ($complaint->approved == '0')
                                     <div class="text-center">

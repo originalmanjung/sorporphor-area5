@@ -68,6 +68,7 @@ Route::get('videos/{slug}', [VideoController::class, 'videoShow'])->name('videoS
 Route::get('personalDepartment/{group?}', [PersonalController::class, 'personalDepartment'])->name('personalDepartment');
 // แจ้งเรื่องร้องทุกข์
 Route::resource('complaints', ComplaintController::class)->only(['index','create','store']);
+Route::get('complaints/general', [ComplaintController::class, 'general'])->name('complaint.general');
 // รับฟังความคิดเห็น
 Route::resource('opinions', OpinionController::class)->only(['create','store']);
 // Q&A

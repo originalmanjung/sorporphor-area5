@@ -21,7 +21,7 @@ class ComplaintController extends Controller
         $complaints = Complaint::all()->sortByDesc('created_at');
         return view('admin.complaint.index',[
             'complaints' => $complaints
-        ]);
+        ])->with('i');
     }
 
     public function approved()
