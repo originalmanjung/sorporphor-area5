@@ -254,8 +254,7 @@ a {
       padding: 10px 5px; }
       .site-navbar .site-navigation .site-menu > li > a {
         padding: 10px 2px;
-        text-transform: uppercase;
-        letter-spacing: .05em;
+       
         color: rgba(0, 0, 0, 0.6);
         font-size: 15px;
         text-decoration: none !important; }
@@ -343,8 +342,7 @@ a {
             top: 0; }
           .site-navbar .site-navigation .site-menu .has-children .dropdown > li.has-children:hover > a, .site-navbar .site-navigation .site-menu .has-children .dropdown > li.has-children:active > a, .site-navbar .site-navigation .site-menu .has-children .dropdown > li.has-children:focus > a {
             color: #fd7e14; }
-      .site-navbar .site-navigation .site-menu .has-children a {
-        text-transform: uppercase; }
+      
       .site-navbar .site-navigation .site-menu .has-children:hover > a, .site-navbar .site-navigation .site-menu .has-children:focus > a, .site-navbar .site-navigation .site-menu .has-children:active > a {
         color: #000; }
       .site-navbar .site-navigation .site-menu .has-children:hover, .site-navbar .site-navigation .site-menu .has-children:focus, .site-navbar .site-navigation .site-menu .has-children:active {
@@ -403,7 +401,7 @@ a {
       margin-left: 0px; }
       .site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo a {
         display: inline-block;
-        text-transform: uppercase; }
+        }
         .site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo a img {
           max-width: 70px; }
         .site-mobile-menu .site-mobile-menu-header .site-mobile-menu-logo a:hover {
@@ -487,6 +485,11 @@ a {
               .site-mobile-menu .site-nav-wrap > li > ul > li > ul > li > a {
                 font-size: 16px;
                 padding-left: 60px; }
+                .site-navbar .site-navigation .site-menu > li:last-child > .icon-login  {
+                  color: #fd7e14 !important;
+
+                }
+
 
 /* Blocks */
 .site-blocks-cover {
@@ -511,7 +514,7 @@ a {
     height: calc(80vh); }
   .site-blocks-cover .sub-text {
     font-size: 1.1rem;
-    text-transform: uppercase;
+   
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: .2em; }
   .site-blocks-cover h1 {
@@ -530,11 +533,11 @@ a {
 
 .caption {
   font-size: 16px;
-  text-transform: uppercase; }
+  }
 
 .site-heading {
   font-weight: 300;
-  text-transform: uppercase;
+ 
   font-size: 2rem; }
   @media (min-width: 768px) {
     .site-heading {

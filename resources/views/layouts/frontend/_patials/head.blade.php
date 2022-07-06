@@ -23,7 +23,7 @@
                             <ul class="site-menu js-clone-nav d-none d-lg-block">
                                 <li class="active"><a href="{{ route('home') }}">หน้าแรก</a></li>
                                 <li class="has-children">
-                                    <a href="insurance.html">เกี่ยวกับเรา</a>
+                                    <a>เกี่ยวกับเรา</a>
                                     <ul class="dropdown arrow-top">
                                         <li><a href="{{ route('histories.index') }}">ประวัติความเป็นมา</a></li>
                                         <li><a href="{{ route('mission.index') }}">วิสัยทัศน์/พันธกิจ/ค่านิยม</a></li>
@@ -33,7 +33,7 @@
                                     </ul>
                                 </li>
                                 <li class="has-children">
-                                    <a href="insurance.html">E-Service</a>
+                                    <a href="{{ route('eServices') }}">E-Service</a>
                                     <ul class="dropdown arrow-top">
                                         <li><a href="http://1.179.155.142/amssplus/">ระบบสำนักงานอิเล็กทรอนิกส์ (Smart Area)</a></li>
                                         <li><a href="http://www.chiangmaiarea5.go.th/salary/">ระบบพิมพ์บัญชีจ่ายเงินรายเดือน (E-Salary)</a></li>
@@ -54,10 +54,10 @@
                                     </ul>
                                 </li>
                                 <li class="has-children">
-                                    <a href="insurance.html">ข้อมูลบุคลากร</a>
+                                    <a>ข้อมูลบุคลากร</a>
                                     <ul class="dropdown arrow-top">
                                         <li><a href="{{ route('personalDepartment', 'ผู้บริหาร')}} ">ผู้บริหารการศึกษา</a></li>
-                                        <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานการเงินและสินทรัพย์') }}">กลุ่มบริหารงานการเงินและสินทรัพย์</a></li>
+                                        <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานการเงินและสินทรัพย์') }}">กลุ่มบริหารการเงินและสินทรัพย์</a></li>
                                         <li><a href="{{ route('personalDepartment', 'กลุ่มบริหารงานบุคคล') }}">กลุ่มบริหารงานบุคคล</a></li>
                                         <li><a href="{{ route('personalDepartment', 'กลุ่มนโยบายและแผน') }}">กลุ่มนโยบายและแผน</a></li>
                                         <li><a href="{{ route('personalDepartment', 'กลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา') }}">กลุ่มนิเทศติดตาม และประเมินผลการจัดการศึกษา</a></li>
@@ -69,13 +69,28 @@
                                         <li><a href="{{ route('personalDepartment', 'หน่วยตรวจสอบภายใน') }}">หน่วยตรวจสอบภายใน</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="{{ route('contact') }}">ติดต่อเรา</a></li>
+                                <li class="has-children">
+                                    <a href="{{ route('contact') }}">ติดต่อเรา</a>
+                                    <ul class="dropdown arrow-top">
+                                        <li><a href="{{ route('questions.index') }}">Q&A (ถาม-ตอบ)</a></li>
+                                        <li><a href="{{ route('opinions.create') }}">ช่องทางการรับฟังความคิดเห็น</a></li>
+                                        <li><a href="{{ route('complaint.general') }}">ช่องทางแจ้งเรื่องร้องเรียนทั่วไป</a></li>
+                                        <li><a href="{{ route('complaints.index') }}">ช่องทางแจ้งเรื่องร้องเรียนการทุจริตประพฤติมิชอบ</a></li>
+                                    </ul>
+                                </li>
+                                <li class="has-children">
+                                    <a href="{{ route('contact') }}">Social Network</a>
+                                    <ul class="dropdown arrow-top">
+                                        <li><a href="https://www.facebook.com/profile.php?id=100069225249500">Facebook</a></li>
+                                        <li><a href="https://www.youtube.com/channel/UCpd6DpwfhNsKEdwfRcIJvLQ">Youtube</a></li>
+                                    </ul>
+                                </li>
                                 <li>
                                     @if (Route::has('login'))
                                     @auth
-                                    <a href="{{ route('app.dashboard') }}"><span class="d-inline-block p-2 bg-primary text-white btn btn-primary btn-sm">Dashboard</span></a>
+                                    <a class="icon-login" href="{{ route('app.dashboard') }}"><span class=""><i class="fas fa-user-check fa-lg"></i></span></a>
                                     @else
-                                    <a href="{{ route('login') }}"><span class="d-inline-block p-2 bg-primary text-white btn btn-primary btn-sm">Login</span></a>
+                                    <a class="icon-login" href="{{ route('login') }}"><span class=""><i class="fas fa-user-circle fa-lg"></i></span></a>
                                     @if (Route::has('register'))
                                     <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
                                     @endif

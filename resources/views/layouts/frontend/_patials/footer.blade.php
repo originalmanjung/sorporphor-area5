@@ -31,7 +31,7 @@
                         <div class="opening-hours">
                             <h6 style="font-size:16px; color:#fd7e14;">ในเวลาราชการ:</h6>
                             <p class="pl-3">
-                                <span>จันทร์ – ศุกร์ <br> 8.00 น. - 16.30 น.</span>
+                                <span>จันทร์ – ศุกร์ <br> 8.30 น. - 16.30 น.</span>
                             </p>
                         </div>
                     </div>

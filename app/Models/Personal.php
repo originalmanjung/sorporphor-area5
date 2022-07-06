@@ -26,6 +26,12 @@ class Personal extends Model
         return $query->where('group', $group);
     }
 
+    public function scopeManager($query)
+    {
+        return $query->where('position_general', '!=', '');
+    }
+
+
 
     /**
      * Get the user that owns the Personal

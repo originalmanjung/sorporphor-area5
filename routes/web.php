@@ -65,7 +65,7 @@ Route::get('blogschools/{slug}', [BlogSchoolController::class, 'blogschoolShow']
 Route::get('videos', [VideoController::class, 'videoAll'])->name('videoAll');
 Route::get('videos/{slug}', [VideoController::class, 'videoShow'])->name('videoShow');
 // บุคลกรแต่ละกลุ่ม
-Route::get('personalDepartment/{group?}', [PersonalController::class, 'personalDepartment'])->name('personalDepartment');
+Route::get('personalDepartment/{group}', [PersonalController::class, 'personalDepartment'])->name('personalDepartment');
 // แจ้งเรื่องร้องทุกข์
 Route::resource('complaints', ComplaintController::class)->only(['index','create','store']);
 Route::get('complaints/general', [ComplaintController::class, 'general'])->name('complaint.general');
@@ -104,7 +104,11 @@ Route::get('corruptions/show/{corruption}', [HomeController::class, 'corruptionS
 
 Route::get('contact/', function () {
     return view('contact');
-})->name('contact');;
+})->name('contact');
+
+Route::get('e-services/', function () {
+    return view('e-services');
+})->name('eServices');
 
 Route::get('bigdata/', function () {
     return view('bigdata');

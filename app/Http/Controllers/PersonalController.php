@@ -3,24 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personal;
-use App\Models\Role;
 use Illuminate\Http\Request;
 
 class PersonalController extends Controller
 {
-    public function personalDepartment($group = null)
+    public function personalDepartment($group)
     {
-        if ($group != null) {
-
-            $personals = Personal::department($group)->active()->orderBy('id', 'asc')->get();
-
+        $myArr = ['ผู้บริหาร', 'กลุ่มบริหารงานการเงินและสินทรัพย์', 'กลุ่มบริหารงานบุคคล', 'กลุ่มนโยบายและแผน', 'กลุ่มนิเทศติดตามและประเมินผลการจัดการศึกษา', 'กลุ่มส่งเสริมการจัดการศึกษา', 'กลุ่มอำนวยการ','กลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร', 'กลุ่มพัฒนาครูและบุคลกรทางการศึกษา', 'กลุ่มกฎหมายและคดี','หน่วยตรวจสอบภายใน'];
+        if (in_array($group, $myArr)) {
+            if ($group == 'ผู้บริหาร') {
+                $personals = Personal::manager()->active()->orderBy('id', 'asc')->get();
+            } else {
+                $personals = Personal::department($group)->active()->orderBy('id', 'asc')->get();
+            }
+            return view('personal',[
+                'personals' => $personals,
+                'group' => $group,
+    
+            ]);
         } else {
             return abort(404);
         }
-        return view('personal',[
-            'personals' => $personals,
-            'group' => $group,
-
-        ]);
     }
+
 }

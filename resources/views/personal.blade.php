@@ -100,7 +100,7 @@
        <div class="row">
           <div class="col-md-12">
              <div class="title">
-                 <h2>{{ $group  }}</h2>
+                 <h2>{{ $group }}</h2>
              </div>
           </div>
        </div>
@@ -117,7 +117,7 @@
             <div class="col-md-6 mt-3 mb-3">
                 <div class="member d-flex align-items-start h-100">
                     <div class="pic"><img src="@if(isset($personal->avatar)) {{ asset('storage/personal_avatars/'. $personal->avatar) }} @else {{ config('app.placeholder').'600x600.png' }}@endif" class="img-fluid" alt=""></div>
-                    <div class="member-info">
+                    <div class="member-info col-8">
                         <h4>{{ $personal->name }}</h4>
                         <span>@if ($personal->position_general) {{ $personal->position_general }} @elseif ($personal->position) {{ $personal->position }} @else {{ 'ไม่พบข้อมูล' }} @endif</span>
                         <p>{{ $personal->email ?? 'ยังไม่มีข้อมูล' }}</p>

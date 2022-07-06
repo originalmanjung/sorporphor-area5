@@ -152,7 +152,7 @@
         <div class="carousel-inner">
             @foreach ($bannercarousels as $key=>$carousel)
                 <div class="carousel-item @if($key == 0) active @endif">
-                    <img src="{{ asset('storage/banner_files/'. $carousel->file) }}" class="d-block w-100" alt="...">
+                    <a @isset($carousel->url) href="{{ $carousel->url }}" @endisset><img src="{{ asset('storage/banner_files/'. $carousel->file) }}" class="d-block w-100" alt="..."></a>
                 </div>
             @endforeach
         </div>
@@ -1048,19 +1048,19 @@
             </div>
         </div>
         <div class="row no-gutters">
-            <a href="{{ route('complaints.index') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center noborder-left ftco-animate">
-                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-keyboard"></i></span></div>
-                    <div class="text media-body">
-                        <h3>ช่องทางแจ้งเรื่องร้องเรียนการทุจริตและประพฤติมิชอบ</h3>
-                    </div>
-                </div>
-            </a>
             <a href="{{ route('complaint.general') }}" class="col-lg-4 d-flex">
                 <div class="services-2 text-center noborder-bottom ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-rating"><i class="fas fa-desktop"></i></span></div>
                     <div class="text media-body">
                         <h3>ช่องทางแจ้งเรื่องร้องเรียนทั่วไป</h3>
+                    </div>
+                </div>
+            </a>
+            <a href="{{ route('complaints.index') }}" class="col-lg-4 d-flex">
+                <div class="services-2 text-center noborder-left ftco-animate">
+                    <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-keyboard"></i></span></div>
+                    <div class="text media-body">
+                        <h3>ช่องทางแจ้งเรื่องร้องเรียนการทุจริตและประพฤติมิชอบ</h3>
                     </div>
                 </div>
             </a>
@@ -1092,7 +1092,7 @@
                 <div class="services-2 text-center noborder-bottom ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-insurance"><i class="fas fa-atlas"></i></span></div>
                     <div class="text media-body">
-                        <h3>รายงานผลการสารวจความพึงพอใจการให้บริการ</h3>
+                        <h3>คู่มือ/มาตรฐานการให้บริการและสถิติการให้บริการ</h3>
                     </div>
                 </div>
             </a>

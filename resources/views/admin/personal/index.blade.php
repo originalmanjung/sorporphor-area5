@@ -51,8 +51,20 @@
                         <tr>
                             <td><img src="{{ $personal->avatar ? asset('storage/personal_avatars/'.$personal->avatar) : config('app.placeholder').'150.png' }}" alt="Admin" class="rounded-circle" width="70" height="70"></td>
                             <td>{{ $personal->name ?? 'ยังไม่มีข้อมูล' }}</td>
-                            <td>{{ $personal->group ?? 'ยังไม่มีข้อมูล' }}</td>
-                            <td>{{ $personal->position_general ?? 'ยังไม่มีข้อมูล' }}</td>
+                            <td>
+                                @if ($personal->group == 'กลุ่มบริหารงานการเงินและสินทรัพย์')
+                                    กลุ่มบริหารการเงินและสินทรัพย์
+                                @else
+                                    {{ $personal->group ?? 'ยังไม่มีข้อมูล' }}
+                                @endif
+                            </td>
+                            <td>
+                                @if ($personal->group == 'กลุ่มบริหารงานการเงินและสินทรัพย์')
+                                    ผู้อำนวยการกลุ่มบริหารการเงินและสินทรัพย์
+                                @else
+                                    {{ $personal->position_general ?? 'ยังไม่มีข้อมูล' }}
+                                @endif
+                            </td>
                             <td>
                                 @if ($personal->status == '1')
                                     <span class="badge bg-success">Active</span>

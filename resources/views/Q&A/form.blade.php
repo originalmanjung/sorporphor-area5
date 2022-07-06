@@ -30,7 +30,7 @@
             @csrf
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="name" class="form-label">ชื่อ - นาสกุล</label>
+                        <label for="name" class="form-label">ชื่อ - นามสกุล</label>
                         <input type="text" class="form-control form-control-sm @error('name') is-invalid @enderror" id="name" name="name" value="{{ old('name') }}">
                         @error('name')
                         <span class="invalid-feedback" role="alert">
@@ -49,7 +49,7 @@
                         @enderror
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="email" class="form-label">อีเมลล์</label>
+                        <label for="email" class="form-label">อีเมล</label>
                         <input type="email" class="form-control form-control-sm @error('email') is-invalid @enderror" id="email" name="email" value="{{ $personal->email ?? old('email') }}" autocomplete="email">
                         @error('email')
                         <span class="invalid-feedback" role="alert">

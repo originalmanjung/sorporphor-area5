@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title">
-                        <h2>รับฟังความคิดเห็นข้อเสนอแนะ</h2>
+                        <h2>ช่องทางการรับฟังความคิดเห็น</h2>
                     </div>
                 </div>
             </div>
