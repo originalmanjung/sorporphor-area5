@@ -9,7 +9,7 @@ class NewsController extends Controller
 {
     public function newsGeneralAll()
     {
-        $news = News::general()->orderBy('created_at')->paginate(8);
+        $news = News::general()->latest()->paginate(8);
         $titleNews = 'กิจกรรม สพป.';
         return view('news.newsAll',[
             'news' => $news,
@@ -19,7 +19,7 @@ class NewsController extends Controller
 
     public function newsHonestAll()
     {
-        $news = News::honest()->orderBy('created_at')->paginate(8);
+        $news = News::honest()->latest()->paginate(8);
         $titleNews = 'กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร';
         return view('news.newsAll',[
             'news' => $news,
@@ -29,8 +29,8 @@ class NewsController extends Controller
 
     public function newsCultureAll()
     {
-        $news = News::culture()->orderBy('created_at')->paginate(8);
-        $titleNews = 'กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร';
+        $news = News::culture()->latest()->paginate(8);
+        $titleNews = 'กิจกรรมการเสริมสร้างวัฒนธรรมองค์กร';
         return view('news.newsAll',[
             'news' => $news,
             'titleNews' => $titleNews
@@ -39,8 +39,8 @@ class NewsController extends Controller
 
     public function newsParticipationAll()
     {
-        $news = News::participation()->orderBy('created_at')->paginate(8);
-        $titleNews = 'กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร';
+        $news = News::participation()->latest()->paginate(8);
+        $titleNews = 'กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน';
         return view('news.newsAll',[
             'news' => $news,
             'titleNews' => $titleNews

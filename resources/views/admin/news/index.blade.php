@@ -30,6 +30,7 @@
                         <th scope="col">ชื่อเรื่อง</th>
                         <th scope="col">สถานะ</th>
                         <th scope="col">ประเภท</th>
+                        <th scope="col">สร้างเมื่อ</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </thead>
@@ -39,6 +40,7 @@
                         <th scope="col">ชื่อเรื่อง</th>
                         <th scope="col">สถานะ</th>
                         <th scope="col">ประเภท</th>
+                        <th scope="col">สร้างเมื่อ</th>
                         <th scope="col">การจัดการ</th>
                     </tr>
                 </tfoot>
@@ -65,6 +67,7 @@
                                     กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน
                                 @endif
                             </td>
+                            <td>{{ $newss->created_at->diffForHumans() }}</td>
                             <td class="text-center">
                                 <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                     <a href="{{ route('app.news.show', $newss->id)}}" class="btn btn-primary btn-sm" type="button" data-toggle="tooltip" data-placement="top" title="Add"><i class="fa fa-table"></i></a>
