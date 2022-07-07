@@ -22,12 +22,12 @@
                     </div>
                 @endif
                 <div class="sb-sidenav-menu-heading">Interface</div>
-                <a class="nav-link collapsed {{ Route::is('app.personals*') || Route::is('app.banners*') || Route::is('app.histories*') || Route::is('app.missions*') || Route::is('app.dutys*') || Route::is('app.manageStructures*') ? 'show' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsWeb" aria-expanded="false" aria-controls="collapseLayoutsWeb">
+                <a class="nav-link collapsed {{ Route::is('app.personals*') || Route::is('app.banners*') || Route::is('app.histories*') || Route::is('app.missions*') || Route::is('app.dutys*') || Route::is('app.manageStructures*') || Route::is('app.popupimages*') ? 'show' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsWeb" aria-expanded="false" aria-controls="collapseLayoutsWeb">
                     <div class="sb-nav-link-icon"><i class="fas fa-cogs"></i></div>
                     ตั้งค่าส่วนเว็ปไซด์
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse {{ Route::is('app.personals*') || Route::is('app.banners*') || Route::is('app.histories*') || Route::is('app.missions*') || Route::is('app.dutys*') || Route::is('app.manageStructures*')  ? 'show' : '' }}" id="collapseLayoutsWeb" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse {{ Route::is('app.personals*') || Route::is('app.banners*') || Route::is('app.histories*') || Route::is('app.missions*') || Route::is('app.dutys*') || Route::is('app.manageStructures*') || Route::is('app.popupimages*')  ? 'show' : '' }}" id="collapseLayoutsWeb" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ Route::is('app.histories*') ? 'active' : '' }}" href="{{ route('app.histories.index') }}">ประวัติความเป็นมา</a>
                         <a class="nav-link {{ Route::is('app.missions*') ? 'active' : '' }}" href="{{ route('app.missions.index') }}">วิสัยทัศน์ พันธกิจ</a>
@@ -35,6 +35,7 @@
                         <a class="nav-link {{ Route::is('app.manageStructures*') ? 'active' : '' }}" href="{{ route('app.manageStructures.index') }}">โครงสร้างการบริหาร</a>
                         <a class="nav-link {{ Route::is('app.banners*') ? 'active' : '' }}" href="{{ route('app.banners.index') }}">แบนเนอร์</a>
                         <a class="nav-link {{ Route::is('app.personals*') ? 'active' : '' }}" href="{{ route('app.personals.index') }}">บุคลากร</a>
+                        <a class="nav-link {{ Route::is('app.popupimages*') ? 'active' : '' }}" href="{{ route('app.popupimages.index') }}">รูปป๊อบอัฟ</a>
                     </nav>
                 </div>
 

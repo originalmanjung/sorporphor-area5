@@ -28,7 +28,7 @@ class Personal extends Model
 
     public function scopeManager($query)
     {
-        return $query->where('position_general', '!=', '');
+        return $query->where('position_general', '!=', '')->orWhere('position_sub', '!=', '');
     }
 
 

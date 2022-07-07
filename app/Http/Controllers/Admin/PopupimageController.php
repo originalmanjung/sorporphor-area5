@@ -3,15 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ManageStructure;
+use App\Models\Popupimage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 Use Alert;
 
-class ManageStructureController extends Controller
+class PopupimageController extends Controller
 {
-
     /**
      * Create a new controller instance.
      *
@@ -21,6 +20,7 @@ class ManageStructureController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,9 +28,9 @@ class ManageStructureController extends Controller
      */
     public function index()
     {
-        $manageStructures = ManageStructure::orderBy('created_at', 'desc')->get();
-        return view('admin.manageStructure.index',[
-            'manageStructures' => $manageStructures
+        $popupimages = Popupimage::orderBy('created_at', 'desc')->get();
+        return view('admin.popupimage.index',[
+            'popupimages' => $popupimages
         ]);
     }
 
@@ -41,8 +41,8 @@ class ManageStructureController extends Controller
      */
     public function create()
     {
-        Gate::authorize('app.manageStructures.create');
-        return view('admin.manageStructure.form');
+        Gate::authorize('app.popupimages.create');
+        return view('admin.popupimage.form');
     }
 
     /**
@@ -53,7 +53,7 @@ class ManageStructureController extends Controller
      */
     public function store(Request $request)
     {
-        Gate::authorize('app.manageStructures.create');
+        Gate::authorize('app.popupimages.create');
         $request->validate([
             'name' => 'required|max:255',
             'file' => 'required|required|image|mimes:png,jpg,jpeg|max:5120',
@@ -61,24 +61,24 @@ class ManageStructureController extends Controller
         if ($request->hasFile('file')) {
             $photo = $request->file('file');
             $filename  = 'photo-' . uniqid() . '.' .$photo->getClientOriginalExtension();
-            $photo->storeAs('manageStructure_photos', $filename, 'public');
+            $photo->storeAs('popupimage_photos', $filename, 'public');
         }
-        ManageStructure::create([
+        Popupimage::create([
             'name' => $request->name,
             'file' => $filename,
             'user_id' => auth()->user()->id,
         ]);
         Alert::toast('บันทึกข้อมูลสำเร็จ!','success');
-        return  redirect()->route('app.manageStructures.index');
+        return  redirect()->route('app.popupimages.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ManageStructure  $manageStructure
+     * @param  \App\Models\Popupimage  $popupimage
      * @return \Illuminate\Http\Response
      */
-    public function show(ManageStructure $manageStructure)
+    public function show(Popupimage $popupimage)
     {
         //
     }
@@ -86,14 +86,14 @@ class ManageStructureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ManageStructure  $manageStructure
+     * @param  \App\Models\Popupimage  $popupimage
      * @return \Illuminate\Http\Response
      */
-    public function edit(ManageStructure $manageStructure)
+    public function edit(Popupimage $popupimage)
     {
-        Gate::authorize('app.manageStructures.edit');
-        return view('admin.manageStructure.form',[
-            'manageStructure' => $manageStructure
+        Gate::authorize('app.popupimages.edit');
+        return view('admin.popupimage.form',[
+            'popupimage' => $popupimage
         ]);
     }
 
@@ -101,44 +101,44 @@ class ManageStructureController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ManageStructure  $manageStructure
+     * @param  \App\Models\Popupimage  $popupimage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ManageStructure $manageStructure)
+    public function update(Request $request, Popupimage $popupimage)
     {
-        Gate::authorize('app.manageStructures.edit');
+        Gate::authorize('app.popupimages.edit');
         $request->validate([
             'name' => 'required|max:255',
             'file' => 'nullable|image|mimes:png,jpg,jpeg|max:5120',
         ]);
         if ($request->hasfile('file')) {
             $file = $request->file('file');
-            if($manageStructure->file != null){
-                storage::disk('public')->delete('manageStructure_photos/'.$manageStructure->file);
+            if($popupimage->file != null){
+                storage::disk('public')->delete('popupimage_photos/'.$popupimage->file);
             }
             $filename  = 'file-' . uniqid() . '.' .$file->getClientOriginalExtension();
-            $file->storeAs('manageStructure_photos', $filename, 'public');
+            $file->storeAs('popupimage_photos', $filename, 'public');
         }
-        $manageStructure->update([
+        $popupimage->update([
             'name' => $request->name,
-            'file' => !isset($file) ? $manageStructure->file : $filename,
+            'file' => !isset($file) ? $popupimage->file : $filename,
         ]);
         Alert::toast('อัฟเดทข้อมูลสำเร็จ!','success');
-        return  redirect()->route('app.manageStructures.index');
+        return  redirect()->route('app.popupimages.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ManageStructure  $manageStructure
+     * @param  \App\Models\Popupimage  $popupimage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ManageStructure $manageStructure)
+    public function destroy(Popupimage $popupimage)
     {
-        Gate::authorize('app.manageStructures.destroy');
-        if (Storage::exists('public/manageStructure_photos/'.$manageStructure->file)) {
-            Storage::delete('public/manageStructure_photos/'.$manageStructure->file);
-            $manageStructure->delete();
+        Gate::authorize('app.popupimages.destroy');
+        if (Storage::exists('public/popupimage_photos/'.$popupimage->file)) {
+            Storage::delete('public/popupimage_photos/'.$popupimage->file);
+            $popupimage->delete();
             Alert::toast('ลบข้อมูลสำเร็จ!','success');
             return back();
         } else {

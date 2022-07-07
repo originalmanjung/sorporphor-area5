@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\IntergrityController;
 use App\Http\Controllers\Admin\LawController;
 use App\Http\Controllers\Admin\LetterController;
 use App\Http\Controllers\Admin\ManageStructureController;
+use App\Http\Controllers\Admin\PopupimageController;
 use App\Http\Controllers\Admin\StandardPraticeGuideController;
 use App\Http\Controllers\Admin\StandardServiceController;
 
@@ -104,3 +105,5 @@ Route::get('standardServices/child-standardService/{standardService}', [Standard
 Route::resource('letters', LetterController::class)->except(['show']);
 // การดำเนินงานเพื่อป้องกันการทุจริต
 Route::resource('corruptions', CorruptionController::class);
+// Popup หน้าโฮม
+Route::resource('popupimages', PopupimageController::class)->except(['show']);;

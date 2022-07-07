@@ -473,5 +473,23 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.corruptions.destroy',
         ]);
 
+        // Popup Images
+        $moduleAppPopupimage = Module::updateOrCreate(['name' => 'รูปป๊อบอัฟ']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPopupimage->id,
+            'name' => 'Create Popupimage',
+            'slug' => 'app.popupimages.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPopupimage->id,
+            'name' => 'Edit Popupimage',
+            'slug' => 'app.popupimages.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppPopupimage->id,
+            'name' => 'Delete Popupimage',
+            'slug' => 'app.popupimages.destroy',
+        ]);
+
     }
 }

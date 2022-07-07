@@ -173,6 +173,22 @@
 
                         <div clas="row g-2">
                             <div class="mb-3">
+                                <label for="inputState" class="form-label">ตำแหน่งทางบริหาร(ปฏิบัติหน้าที่แทน)</label>
+                                <select id="inputState" class="form-select @error('position_sub') is-invalid @enderror" name="position_sub">
+                                    <option value="" @if(empty($personal->position_sub)) selected @endif >Choose...</option>
+                                    <option value="ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มบริหารงานบุคคล" @if(isset($personal)) {{ $personal->position_sub == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มบริหารงานบุคคล' ? 'selected' : '' }} @else {{ old('position_sub') == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มบริหารงานบุคคล' ? 'selected':'' }} @endif>ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มบริหารงานบุคคล</option>
+                                    <option value="ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร" @if(isset($personal)) {{ $personal->position_sub == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร' ? 'selected' : '' }} @else {{ old('position_sub') == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีสารสนเทศและการสื่อสาร' ? 'selected':'' }} @endif>ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มส่งเสริมการศึกษาทางไกลเทคโนโลยีฯ</option>
+                                    <option value="ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มกฎหมายและคดี" @if(isset($personal)) {{ $personal->position_sub == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มกฎหมายและคดี' ? 'selected' : '' }} @else {{ old('position_sub') == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มกฎหมายและคดี' ? 'selected':'' }} @endif>ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มกฎหมายและคดี</option>
+                                    <option value="ปฏิบัติหน้าที่ผู้อำนวยการหน่วยตรวจสอบภายใน" @if(isset($personal)) {{ $personal->position_sub == 'ปฏิบัติหน้าที่ผู้อำนวยการหน่วยตรวจสอบภายใน' ? 'selected' : '' }} @else {{ old('position_sub') == 'ปฏิบัติหน้าที่ผู้อำนวยการหน่วยตรวจสอบภายใน' ? 'selected':'' }} @endif>ปฏิบัติหน้าที่ผู้อำนวยการหน่วยตรวจสอบภายใน</option>
+                                    <option value="ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา" @if(isset($personal)) {{ $personal->position_sub == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา' ? 'selected' : '' }} @else {{ old('position_sub') == 'ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา' ? 'selected':'' }} @endif>ปฏิบัติหน้าที่ผู้อำนวยการกลุ่มพัฒนาครูและบุคลากรทางการศึกษา</option>
+                                </select>
+                                @error('position_sub')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
                                 <label for="inputPersonalType" class="form-label">ประเภท</label>
                                 <select id="inputPersonalType" class="form-select @error('personal_type') is-invalid @enderror" name="personal_type">
                                     <option value="" @if(empty($personal->personal_type)) selected @endif >Choose...</option>

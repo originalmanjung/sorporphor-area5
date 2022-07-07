@@ -119,7 +119,17 @@
                     <div class="pic"><img src="@if(isset($personal->avatar)) {{ asset('storage/personal_avatars/'. $personal->avatar) }} @else {{ config('app.placeholder').'600x600.png' }}@endif" class="img-fluid" alt=""></div>
                     <div class="member-info col-8">
                         <h4>{{ $personal->name }}</h4>
-                        <span>@if ($personal->position_general) {{ $personal->position_general }} @elseif ($personal->position) {{ $personal->position }} @else {{ 'ไม่พบข้อมูล' }} @endif</span>
+                        <span>
+                            @if ($personal->position_general) 
+                                {{ $personal->position_general }} 
+                            @elseif ($personal->position_sub)  
+                                {{ $personal->position_sub }}   
+                            @elseif ($personal->position) 
+                                {{ $personal->position }} 
+                            @else 
+                                {{ 'ไม่พบข้อมูล' }} 
+                            @endif
+                        </span>
                         <p>{{ $personal->email ?? 'ยังไม่มีข้อมูล' }}</p>
                         <p>{{ $personal->phone ?? 'ยังไม่มีข้อมูล' }}</p>
                         <div class="social">

@@ -139,6 +139,11 @@
     ]
     });
 </script>
+<script type='text/javascript'>
+    $(document).ready(function(){       
+        $('#myModalPopup').modal('show');
+    }); 
+</script>
 @endpush
 @section('content')
 <!-- แบนเนอร์ -->
@@ -319,7 +324,6 @@
 <!-- สิ้นสุด กิจกรรม สพป. -->
 
 
-
 <!-- กิจกรรม กิจกรรมเขตพื้นที่สุจริต/การมีส่วนร่วมของผู้บริหาร -->
 <div class="site-section">
     <div class="container">
@@ -470,7 +474,6 @@
 <!-- สิ้นสุด กิจกรรมการมีส่วนร่วมจากทุกภาคส่วน -->
 
 
-
 <!-- ITA -->
 
 <div class="faqs">
@@ -549,7 +552,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- สิ้นสุด ITA -->
 
@@ -1141,5 +1143,22 @@
     </div>
 </section>
 <!-- service_area_end -->
+
+
+<!-- Modal Popup -->
+@if ($popupimages->isNotEmpty())
+    @foreach ($popupimages as $popupimage)
+        <div id="myModalPopup" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style=" right:0px; position:absolute;">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                    <img class="img-fluid" src="{{ asset('storage/popupimage_photos/'. $popupimage->file) }}" alt="">
+                </div>
+            </div>
+        </div>
+    @endforeach
+@endif
 
 @endsection

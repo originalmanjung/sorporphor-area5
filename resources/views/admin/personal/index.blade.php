@@ -62,7 +62,15 @@
                                 @if ($personal->group == 'กลุ่มบริหารงานการเงินและสินทรัพย์')
                                     ผู้อำนวยการกลุ่มบริหารการเงินและสินทรัพย์
                                 @else
-                                    {{ $personal->position_general ?? 'ยังไม่มีข้อมูล' }}
+                                    @if ($personal->position_general) 
+                                        {{ $personal->position_general }} 
+                                    @elseif ($personal->position_sub)  
+                                        {{ $personal->position_sub }}   
+                                    @elseif ($personal->position) 
+                                        {{ $personal->position }} 
+                                    @else 
+                                        {{ 'ไม่พบข้อมูล' }} 
+                                    @endif
                                 @endif
                             </td>
                             <td>

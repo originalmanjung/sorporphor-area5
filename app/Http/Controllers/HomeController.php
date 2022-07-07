@@ -17,6 +17,7 @@ use App\Models\Law;
 use App\Models\Letter;
 use App\Models\Video;
 use App\Models\Personal;
+use App\Models\Popupimage;
 use App\Models\StandardPraticeGuide;
 use App\Models\StandardService;
 use Illuminate\Http\Request;
@@ -48,6 +49,7 @@ class HomeController extends Controller
         $personals = Personal::where('group', 'ผู้บริหาร')->active()->get();
         $letterRegions = Letter::Region()->limit(10)->orderBy('created_at', 'desc')->get();
         $letterDistricts = Letter::District()->limit(10)->orderBy('created_at', 'desc')->get();
+        $popupimages = Popupimage::latest()->take(1)->get();
         return view('index',[
             'purchases' => $purchases,
             'jobs' => $jobs,
@@ -67,7 +69,7 @@ class HomeController extends Controller
             'personals' => $personals,
             'letterRegions' => $letterRegions,
             'letterDistricts' => $letterDistricts,
-
+            'popupimages' => $popupimages,
         ]);
     }
 
