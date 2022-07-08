@@ -9,7 +9,7 @@ class BudgetController extends Controller
 {
     public function budgetAll()
     {
-        $budgets = Budget::orderBy('created_at')->paginate(8);
+        $budgets = Budget::latest()->paginate(8);
         return view('budget.budgetAll',[
             'budgets' => $budgets
         ]);

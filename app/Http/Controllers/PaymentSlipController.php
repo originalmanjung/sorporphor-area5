@@ -9,7 +9,7 @@ class PaymentSlipController extends Controller
 {
     public function paymentSlipAll()
     {
-        $paymentSlips = paymentSlip::orderBy('created_at')->paginate(8);
+        $paymentSlips = paymentSlip::latest()->paginate(8);
         return view('paymentSlip.paymentSlipAll',[
             'paymentSlips' => $paymentSlips
         ]);

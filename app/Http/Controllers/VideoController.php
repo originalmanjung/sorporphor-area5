@@ -9,7 +9,7 @@ class VideoController extends Controller
 {
     public function videoAll()
     {
-        $videos = Video::orderBy('created_at')->paginate(8);
+        $videos = Video::latest()->paginate(8);
         return view('video.videoAll',[
             'videos' => $videos
         ]);

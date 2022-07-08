@@ -9,7 +9,7 @@ class NoticeController extends Controller
 {
     public function  noticeAll()
     {
-        $notices = Notice::orderBy('created_at')->paginate(8);
+        $notices = Notice::latest()->paginate(8);
         return view('notice.noticeAll',[
             'notices' => $notices
         ]);

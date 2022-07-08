@@ -9,7 +9,7 @@ class PurchaseController extends Controller
 {
     public function purchaseAll()
     {
-        $purchases = Purchase::orderBy('created_at')->paginate(8);
+        $purchases = Purchase::latest()->paginate(8);
         return view('purchase.purchaseAll',[
             'purchases' => $purchases
         ]);

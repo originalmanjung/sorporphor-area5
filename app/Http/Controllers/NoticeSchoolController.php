@@ -9,7 +9,7 @@ class NoticeSchoolController extends Controller
 {
     public function  noticeSchoolAll()
     {
-        $noticeSchools = NoticeSchool::orderBy('created_at')->paginate(8);
+        $noticeSchools = NoticeSchool::latest()->paginate(8);
         return view('noticeSchool.noticeSchoolAll',[
             'noticeSchools' => $noticeSchools
         ]);
