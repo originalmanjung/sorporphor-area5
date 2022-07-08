@@ -24,7 +24,7 @@
 <div class="container-fluid px-4">
     <h1 class="mt-4">Legislation</h1>
     <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">จัดการ ITA3</li>
+        <li class="breadcrumb-item active">จัดการ ITA</li>
     </ol>
 
     <div class="card mb-4">
@@ -60,7 +60,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                            <button type="submit" class="btn btn-primary">บันทึก</button>
+                            <button type="submit" class="btn btn-primary" onclick="showLoading('กำลังเพิ่มข้อมูล...',document.getElementById('ITAFrom').id);">บันทึก</button>
                         </div>
                     </div>
                     </div>

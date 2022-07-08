@@ -45,7 +45,7 @@
                 </div>
                 <div class="col-md-12">
                     <p>
-                        <a href="https://www.facebook.com/profile.php?id=100069225249500" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
+                        <a href="https://www.facebook.com/chiangmaiarea5/" class="pb-2 pr-2 pl-0"><span class="icon-facebook"></span></a>
                         <a href="https://www.youtube.com/channel/UCpd6DpwfhNsKEdwfRcIJvLQ" class="pb-2 pr-2 pl-0"><span class="icon-youtube"></span></a>
                     </p>
                 </div>

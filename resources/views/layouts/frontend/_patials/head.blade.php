@@ -81,7 +81,7 @@
                                 <li class="has-children">
                                     <a href="{{ route('contact') }}">Social Network</a>
                                     <ul class="dropdown arrow-top">
-                                        <li><a href="https://www.facebook.com/profile.php?id=100069225249500">Facebook</a></li>
+                                        <li><a href="https://www.facebook.com/chiangmaiarea5/">Facebook</a></li>
                                         <li><a href="https://www.youtube.com/channel/UCpd6DpwfhNsKEdwfRcIJvLQ">Youtube</a></li>
                                     </ul>
                                 </li>

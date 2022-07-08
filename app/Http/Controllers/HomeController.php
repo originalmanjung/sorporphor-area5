@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $videos = Video::limit(6)->orderBy('created_at', 'desc')->get();
+        $videos = Video::limit(6)->latest()->get();
         $bannercarousels = Banner::carousel()->latest()->get();
         $bannercontents = Banner::Content()->latest()->get();
         $newsGeneral = News::general()->latest()->take(15)->get();
@@ -39,16 +39,16 @@ class HomeController extends Controller
         $newsCulture = News::culture()->latest()->take(15)->get();
         $newsnewsParticipation = News::participation()->latest()->take(15)->get();
         $blogschools = BlogSchool::active()->latest()->take(15)->get();
-        $purchases = Purchase::limit(2)->orderBy('created_at', 'desc')->get();
-        $paymentSlips = PaymentSlip::limit(2)->orderBy('created_at', 'desc')->get();
-        $jobs = Job::limit(2)->orderBy('created_at', 'desc')->get();
-        $budgets = Budget::limit(2)->orderBy('created_at', 'desc')->get();
-        $notices = Notice::limit(2)->orderBy('created_at', 'desc')->get();
-        $noticeSchools = NoticeSchool::limit(4)->orderBy('created_at', 'desc')->get();
+        $purchases = Purchase::limit(2)->latest()->get();
+        $paymentSlips = PaymentSlip::limit(2)->latest()->get();
+        $jobs = Job::limit(2)->latest()->get();
+        $budgets = Budget::limit(2)->latest()->get();
+        $notices = Notice::limit(2)->latest()->get();
+        $noticeSchools = NoticeSchool::limit(4)->latest()->get();
         $intergrities = Intergrity::where('parent_id',NULL)->get();
         $personals = Personal::where('group', 'ผู้บริหาร')->active()->get();
-        $letterRegions = Letter::Region()->limit(10)->orderBy('created_at', 'desc')->get();
-        $letterDistricts = Letter::District()->limit(10)->orderBy('created_at', 'desc')->get();
+        $letterRegions = Letter::Region()->limit(10)->latest()->get();
+        $letterDistricts = Letter::District()->limit(10)->latest()->get();
         $popupimages = Popupimage::latest()->take(1)->get();
         return view('index',[
             'purchases' => $purchases,

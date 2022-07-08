@@ -9,7 +9,7 @@ class BlogSchoolController extends Controller
 {
     public function blogschoolAll()
     {
-        $blogschools = BlogSchool::active()->orderBy('created_at')->paginate(8);
+        $blogschools = BlogSchool::active()->latest()->paginate(8);
         return view('blogschool.blogschoolAll',[
             'blogschools' => $blogschools
         ]);

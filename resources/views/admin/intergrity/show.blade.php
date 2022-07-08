@@ -23,7 +23,7 @@
                 </button>
                 @endcan
                  <!-- Modal Child-->
-                 <form id="ITAFrom" ita="form" method="POST" action="{{ route('app.intergrities.store') }}" enctype="multipart/form-data">
+                 <form id="ITAForm" ita="form" method="POST" action="{{ route('app.intergrities.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="modal fade" id="childModal" tabindex="-1" aria-labelledby="childModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -66,7 +66,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-                                <button type="submit" class="btn btn-primary">บันทึก</button>
+                                <button type="submit" class="btn btn-primary" onclick="showLoading('กำลังเพิ่มข้อมูล...',document.getElementById('ITAForm').id);">บันทึก</button>
                             </div>
                         </div>
                         </div>
