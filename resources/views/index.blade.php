@@ -140,9 +140,9 @@
     });
 </script>
 <script type='text/javascript'>
-    $(document).ready(function(){       
+    $(document).ready(function(){
         $('#myModalPopup').modal('show');
-    }); 
+    });
 </script>
 @endpush
 @section('content')
@@ -1051,7 +1051,7 @@
         </div>
         <div class="row no-gutters">
             <a href="{{ route('complaint.general') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center noborder-bottom ftco-animate">
+                <div class="services-2 text-center noborder-left ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-rating"><i class="fas fa-desktop"></i></span></div>
                     <div class="text media-body">
                         <h3>ช่องทางแจ้งเรื่องร้องเรียนทั่วไป</h3>
@@ -1059,7 +1059,7 @@
                 </div>
             </a>
             <a href="{{ route('complaints.index') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center noborder-left ftco-animate">
+                <div class="services-2 text-center ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-keyboard"></i></span></div>
                     <div class="text media-body">
                         <h3>ช่องทางแจ้งเรื่องร้องเรียนการทุจริตและประพฤติมิชอบ</h3>
@@ -1075,7 +1075,7 @@
                 </div>
             </a>
             <a href="{{ route('questions.index') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center ftco-animate">
+                <div class="services-2 text-center noborder-left ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-hand-holding-heart"></i></span></div>
                     <div class="text media-body">
                         <h3>Q&A ถาม-ตอบ ข้อสงสัย</h3>
@@ -1083,7 +1083,7 @@
                 </div>
             </a>
             <a href="{{ route('standardPraticeGuide') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center noborder-bottom noborder-left ftco-animate">
+                <div class="services-2 text-center ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-business"><i class="fas fa-book"></i></span></div>
                     <div class="text media-body">
                         <h3>คู่มือ/มาตรฐานการปฏิบัติงานของกลุ่ม/หน่วย/บุคลากร</h3>
@@ -1099,7 +1099,7 @@
                 </div>
             </a>
             <a href="{{ route('corruptionAll') }}" class="col-lg-4 d-flex">
-                <div class="services-2 text-center noborder-bottom ftco-animate">
+                <div class="services-2 text-center noborder-bottom noborder-left ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-fist-raised"></i></span></div>
                     <div class="text media-body">
                         <h3>ประกาศเจตจำนงสุจริตในการบริหาร</h3>

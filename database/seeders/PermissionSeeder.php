@@ -491,5 +491,24 @@ class PermissionSeeder extends Seeder
             'slug' => 'app.popupimages.destroy',
         ]);
 
+        // Human Resource
+        $moduleAppHumanResource = Module::updateOrCreate(['name' => 'หลักเกณฑ์การบริหารและพัฒนาทรัพยากรบุคคล']);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppHumanResource->id,
+            'name' => 'Create HumanResource',
+            'slug' => 'app.humanResources.create',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppHumanResource->id,
+            'name' => 'Edit HumanResource',
+            'slug' => 'app.humanResources.edit',
+        ]);
+        Permission::updateOrCreate([
+            'module_id' => $moduleAppHumanResource->id,
+            'name' => 'Delete HumanResource',
+            'slug' => 'app.humanResources.destroy',
+        ]);
+
+
     }
 }

@@ -86,8 +86,10 @@ Route::get('intergrity-pdf-view/{intergrity}', [HomeController::class, 'showPDF'
 // กฏหมายที่เกี่ยวข้อง
 Route::get('laws', [HomeController::class, 'law'])->name('law');
 Route::get('laws/law-viewPDF/{law}', [HomeController::class, 'lawviewPDF'])->name('law.viewPDF');
-// กฏหมายที่เกี่ยวข้อง
-Route::get('standard-pratice-guide', [HomeController::class, 'law'])->name('law');
+// หลักเกณฑ์การบริหารและพัฒนาทรัพยากรบุคคล
+Route::get('humanResources', [HomeController::class, 'humanResource'])->name('humanResource');
+Route::get('humanResources/humanResource-viewPDF/{humanResource}', [HomeController::class, 'humanResourceviewPDF'])->name('humanResource.viewPDF');
+
 // คู่มือมาตรการปฏิบัติงานของ กลุ่ม/หน่วย/บุคลากร
 Route::get('standard-pratice-guide', [HomeController::class, 'standardPraticeGuide'])->name('standardPraticeGuide');
 Route::get('standard-pratice-guide/show/{standardPraticeGuide}', [HomeController::class, 'standardPraticeGuideShow'])->name('standardPraticeGuideShow');

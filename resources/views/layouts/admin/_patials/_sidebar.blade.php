@@ -69,16 +69,17 @@
 
 
                 <div class="sb-sidenav-menu-heading">SERVICE</div>
-                <a class="nav-link collapsed {{ Route::is('app.standardPraticeGuides*') || Route::is('app.standardServices*') || Route::is('app.laws*') || Route::is('app.corruptions*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsService" aria-expanded="false" aria-controls="collapseLayoutsService">
+                <a class="nav-link collapsed {{ Route::is('app.standardPraticeGuides*') || Route::is('app.standardServices*') || Route::is('app.laws*') || Route::is('app.corruptions*') || Route::is('app.humanResources*') ? 'active' : '' }}" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayoutsService" aria-expanded="false" aria-controls="collapseLayoutsService">
                     <div class="sb-nav-link-icon"><i class="fas fa-tools"></i></div>
                     มาตรฐานงาน-บริการ
                     <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                 </a>
-                <div class="collapse {{ Route::is('app.standardPraticeGuides*') || Route::is('app.standardServices*') || Route::is('app.laws*') || Route::is('app.corruptions*')  ? 'show' : '' }}" id="collapseLayoutsService" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                <div class="collapse {{ Route::is('app.standardPraticeGuides*') || Route::is('app.standardServices*') || Route::is('app.laws*') || Route::is('app.corruptions*') || Route::is('app.humanResources*')  ? 'show' : '' }}" id="collapseLayoutsService" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link {{ Route::is('app.standardPraticeGuides*') ? 'active' : '' }}" href="{{ route('app.standardPraticeGuides.index') }}">คู่มือการปฏิบัติงาน</a>
                         <a class="nav-link {{ Route::is('app.standardServices*') ? 'active' : '' }}" href="{{ route('app.standardServices.index') }}">คู่มือการให้บริการ</a>
                         <a class="nav-link {{ Route::is('app.laws*') ? 'active' : '' }}" href="{{ route('app.laws.index') }}">กฏหมายที่เกี่ยวข้อง</a>
+                        <a class="nav-link {{ Route::is('app.humanResources*') ? 'active' : '' }}" href="{{ route('app.humanResources.index') }}">หลักเกณฑ์การบริหารฯ</a>
                         <a class="nav-link {{ Route::is('app.corruptions*') ? 'active' : '' }}" href="{{ route('app.corruptions.index') }}">ป้องกันการทุจริต</a>
                     </nav>
                 </div>

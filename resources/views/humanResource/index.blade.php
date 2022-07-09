@@ -12,15 +12,6 @@
         position: relative;
     }
 
-    .faqs .row::after {
-        position: absolute;
-        content: "";
-        width: 1px;
-        height: 100%;
-        top: 0;
-        left: calc(50% - .5px);
-        background: #fd7e14;
-    }
 
     .faqs #accordion-1 {
         padding-right: 15px;
@@ -131,7 +122,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title">
-                        <h2>กฏหมายที่เกี่ยวข้อง</h2>
+                        <h2>หลักเกณฑ์การบริหารและพัฒนาทรัพยากรบุคคล</h2>
                     </div>
                 </div>
             </div>
@@ -143,54 +134,50 @@
         <div class="container">
             <div class="row content">
                 <div class="col-lg-12">
-                    @if ($laws->isNotEmpty())
+                    @if ($humanResources->isNotEmpty())
 
                     <div class="faqs">
 
                         <div class="row mb-5">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div id="accordion-1">
                                     <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                                        @foreach ($laws->slice(0, 4) as $key => $law)
+                                        @foreach ($humanResources as $key => $humanResource)
                                         <div class="card-header mb-3">
                                             <a class="card-link collapsed" data-toggle="collapse" aria-expanded="true"  href="#collapse{{ $key }}">
-                                                {{ $law->name }}
-                                            </a>
-                                        </div>
-                                        <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-2">
-                                            <div class="card-body mb-3">
-                                                @if($law->children->count() > 0)
-                                                   @foreach($law->children as $child)
-                                                   <ul>
-                                                      <li ><a class="text-success d-flex align-items-center" href="{{ route('law.viewPDF', $child->id)}}" target="_blank"><h6><span><i class="far fa-check-circle text-primary mr-2"></i></span>{{ $child->name }}</h6></a></li>
-                                                   </ul>
-                                                   @endforeach
-                                                @else
-                                                   <strong class="text-center">ไม่พบข้อมูล</strong>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        @endforeach
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div id="accordion-2">
-                                    <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                                        @foreach ($laws->slice(4, 10) as $key => $law)
-                                        <div class="card-header mb-3">
-                                            <a class="card-link collapsed" data-toggle="collapse" aria-expanded="true" href="#collapse{{ $key }}">
-                                                {{ $law->name }}
+                                                {{ $humanResource->name }}
                                             </a>
                                         </div>
                                         <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-1">
                                             <div class="card-body mb-3">
-                                                @if($law->children->count() > 0)
-                                                   @foreach($law->children as $child)
-                                                   <ul>
-                                                      <li ><a class="text-success d-flex align-items-center" href="{{ route('law.viewPDF', $child->id)}}" target="_blank"><h6><span><i class="far fa-check-circle text-primary mr-2"></i></span>{{ $child->name }}</h6></a></li>
-                                                   </ul>
+                                                @if($humanResource->children->count() > 0)
+                                                   @foreach($humanResource->children as $child)
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th scope="col">วันที่</th>
+                                                                        <th scope="col">ชื่อย่อ</th>
+                                                                        <th scope="col">เลขที่หนังสือ</th>
+                                                                        <th scope="col" width="500">ชื่อเรื่อง</th>
+                                                                        <th scope="col">ดาวโหลด</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>{{ $child->created_at->format('d-m-Y') }}</td>
+                                                                        <td>{{ $child->subname }}</td>
+                                                                        <td>{{ $child->number }}</td>
+                                                                        <td>{{ $child->name }}</td>
+                                                                        <td class="text-center">
+                                                                            <div class="d-grid gap-2 d-md-flex">
+                                                                                <a class="btn btn-primary btn-sm rounded-3" style="" type="button" href="{{ route('humanResource.viewPDF', $child->id)}}" data-toggle="tooltip" data-placement="top" title="View"><i class="fas fa-file-pdf"></i></a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                    @endforeach
                                                 @else
                                                    <strong class="text-center">ไม่พบข้อมูล</strong>
@@ -202,6 +189,33 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- <div class="col-md-6">
+                                <div id="accordion-2">
+                                    <div class="card wow fadeInRight" data-wow-delay="0.1s">
+                                        @foreach ($humanResources->slice(4, 10) as $key => $humanResource)
+                                        <div class="card-header mb-3">
+                                            <a class="card-link collapsed" data-toggle="collapse" aria-expanded="true" href="#collapse{{ $key }}">
+                                                {{ $humanResource->name }}
+                                            </a>
+                                        </div>
+                                        <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-2">
+                                            <div class="card-body mb-3">
+                                                @if($humanResource->children->count() > 0)
+                                                   @foreach($humanResource->children as $child)
+                                                   <ul>
+                                                      <li ><a class="text-success d-flex align-items-center" href="{{ route('humanResource.viewPDF', $child->id)}}" target="_blank"><h6><span><i class="far fa-check-circle text-primary mr-2"></i></span>{{ $child->name }}</h6></a></li>
+                                                   </ul>
+                                                   @endforeach
+                                                @else
+                                                   <strong class="text-center">ไม่พบข้อมูล</strong>
+                                                @endif
+                                            </div>
+                                        </div>
+                                        @endforeach
+
+                                    </div>
+                                </div>
+                            </div> --}}
                         </div>
 
                     </div>

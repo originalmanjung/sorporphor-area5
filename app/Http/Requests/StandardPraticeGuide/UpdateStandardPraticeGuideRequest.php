@@ -26,7 +26,7 @@ class UpdateStandardPraticeGuideRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'string|max:255|unique:laws,name,'.$this->standardPraticeGuide->id, 
+            'name'=>'string|max:255|unique:standard_pratice_guides,name,'.$this->standardPraticeGuide->id,
             'parent_id' => 'nullable|numeric',
             'file' => 'nullable|mimes:pdf',
         ];

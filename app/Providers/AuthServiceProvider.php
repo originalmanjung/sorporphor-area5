@@ -40,6 +40,8 @@ use App\Models\StandardPraticeGuide;
 use App\Policies\StandardPraticeGuidePolicy;
 use App\Models\Law;
 use App\Policies\LawPolicy;
+use App\Models\HumanResource;
+use App\Policies\HumanResourcePolicy;
 
 
 class AuthServiceProvider extends ServiceProvider
@@ -69,6 +71,7 @@ class AuthServiceProvider extends ServiceProvider
         StandardService::class => StandardServicePolicy::class,
         StandardPraticeGuide::class => StandardPraticeGuidePolicy::class,
         Law::class => LawPolicy::class,
+        HumanResource::class => HumanResourcePolicy::class,
     ];
 
     /**

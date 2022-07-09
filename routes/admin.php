@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\MissionController;
 use App\Http\Controllers\Admin\DutyController;
 use App\Http\Controllers\Admin\HistoryController;
+use App\Http\Controllers\Admin\HumanResourceController;
 use App\Http\Controllers\Admin\IntergrityController;
 use App\Http\Controllers\Admin\LawController;
 use App\Http\Controllers\Admin\LetterController;
@@ -94,6 +95,10 @@ Route::delete('intergrities/file/{intergrity}', [IntergrityController::class,'de
 Route::resource('laws', LawController::class);
 Route::get('laws/child-law/{law}', [LawController::class,'createChild'])->name('laws.createChild');
 Route::get('laws/pdf/{law}', [LawController::class,'viewPDF'])->name('laws.viewPDF');
+// หลักเกณฑ์การบริหารและพัฒนาทรัพยากรบุคคล
+Route::resource('humanResources', HumanResourceController::class);
+Route::get('humanResources/child-humanResource/{humanResource}', [HumanResourceController::class,'createChild'])->name('humanResources.createChild');
+Route::get('humanResources/pdf/{humanResource}', [HumanResourceController::class,'viewPDF'])->name('humanResources.viewPDF');
 // คู่มือมาตรฐานการปฏิบัติงาน
 Route::resource('standardPraticeGuides', StandardPraticeGuideController::class);
 Route::get('standardPraticeGuides/child-standardPraticeGuide/{standardPraticeGuide}', [StandardPraticeGuideController::class,'createChild'])->name('standardPraticeGuides.createChild');

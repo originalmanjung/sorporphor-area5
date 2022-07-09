@@ -30,6 +30,7 @@
                                         <li><a href="{{ route('manageStructure.index') }}">โครงสร้างองค์กร</a></li>
                                         <li><a href="{{ route('duty.index') }}">อำนาจหน้าที่</a></li>
                                         <li><a href="{{ route('law') }}">กฏหมายที่เกี่ยวข้อง</a></li>
+                                        <li><a href="{{ route('humanResource') }}">หลักเกณฑ์การบริหารและพัฒนาทรัพยากรบุคคล</a></li>
                                     </ul>
                                 </li>
                                 <li class="has-children">

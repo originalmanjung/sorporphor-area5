@@ -12,6 +12,7 @@ use App\Models\News;
 use App\Models\BlogSchool;
 use App\Models\Banner;
 use App\Models\Corruption;
+use App\Models\HumanResource;
 use App\Models\Intergrity;
 use App\Models\Law;
 use App\Models\Letter;
@@ -88,6 +89,7 @@ class HomeController extends Controller
 
 
     /**
+     * กฏหมายที่เกี่ยวข้อง
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -109,6 +111,32 @@ class HomeController extends Controller
     {
         return view('law.viewPDF',[
             'law' => $law,
+        ]);
+    }
+
+    /**
+     * หลักเกณฑ์การบริหารและพัฒนาทรัพยากรบุคคล
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function humanResource()
+    {
+        $humanResources = HumanResource::where('parent_id',NULL)->get();
+        return view('humanResource.index',[
+            'humanResources' => $humanResources
+        ]);
+    }
+
+    /**
+    * Write code on Method
+    *
+    * @return response()
+    */
+    public function humanResourceviewPDF(HumanResource $humanResource)
+    {
+        return view('humanResource.viewPDF',[
+            'humanResource' => $humanResource,
         ]);
     }
 

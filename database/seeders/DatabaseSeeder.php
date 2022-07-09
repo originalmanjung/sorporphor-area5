@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         $this->call(LawSeeder::Class);
         $this->call(StandardPraticeGuideSeeder::Class);
         $this->call(StandardServiceSeeder::Class);
+        $this->call(HumanResourceSeeder::Class);
     }
 }
