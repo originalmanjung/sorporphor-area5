@@ -2,7 +2,7 @@
 @push('css')
 <style>
 @media (max-width: 480px) {
-        button p,.return-back p {
+        button .text-add,.return-back .text-back {
           display: none;
         }
 }
@@ -23,8 +23,8 @@
             <div>
                 @can('app.intergrities.create')
                 <!-- Button Child Modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#childModal">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i><p>เพิ่ม</p>
+                <button type="button" class="btn btn-primary d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#childModal">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i><div class="text-add">เพิ่ม</div>
                 </button>
                 @endcan
                  <!-- Modal Child-->
@@ -85,7 +85,7 @@
                     @endforeach
                 </select>
             </div>
-            <div class="return-back"><a href="{{ route('app.intergrities.index') }}" type="button" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> <p>ย้อนกลับ</p></a></div>
+            <div class="return-back"><a href="{{ route('app.intergrities.index') }}" type="button" class="btn btn-danger d-flex justify-content-center align-items-center"><i class="fas fa-arrow-circle-left"></i> <div class="text-back">ย้อนกลับ</div></a></div>
         </div>
         <div class="card-body">
             <tr>
