@@ -199,6 +199,6 @@
             @endforeach
             footer: '<a href="">Why do I have this issue?</a>'
         })
-    @endisset
+    @endif
 </script>
 @endpush
