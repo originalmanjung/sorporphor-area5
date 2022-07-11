@@ -1,4 +1,14 @@
 /* Carousel */
+@media (max-width: 480px) {
+
+
+    .carousel-inner > .carousel-item > img {
+   
+        height: 800px !important;
+      }
+
+
+}
 .carousel-indicators li {
     width: 1rem;
     height: 1rem;
@@ -13,6 +23,8 @@
     background-color: #fd7e14;
     border: 1px solid #fd7e14;
 }
+
+
 /* Video */
 .block-img-video-1-wrap {
     margin-top: 4rem;
@@ -761,4 +773,8 @@
 
 .underline-on-hover:hover {
     text-decoration: underline;
+}
+
+.back_re .title h2 {
+    font-size: 100px;
 }

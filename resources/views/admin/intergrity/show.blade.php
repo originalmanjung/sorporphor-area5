@@ -1,6 +1,11 @@
 @extends('layouts.admin.app')
 @push('css')
 <style>
+@media (max-width: 480px) {
+        button p,.return-back p {
+          display: none;
+        }
+}
  .tree-content a {
      font-size:18px;
      text-decoration: none;
@@ -19,7 +24,7 @@
                 @can('app.intergrities.create')
                 <!-- Button Child Modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#childModal">
-                    <i class="fa fa-plus-circle" aria-hidden="true"></i> เพิ่ม
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i><p>เพิ่ม</p>
                 </button>
                 @endcan
                  <!-- Modal Child-->
@@ -80,7 +85,7 @@
                     @endforeach
                 </select>
             </div>
-            <div><a href="{{ route('app.intergrities.index') }}" type="button" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> ย้อนกลับ</a></div>
+            <div class="return-back"><a href="{{ route('app.intergrities.index') }}" type="button" class="btn btn-danger"><i class="fas fa-arrow-circle-left"></i> <p>ย้อนกลับ</p></a></div>
         </div>
         <div class="card-body">
             <tr>

@@ -1550,6 +1550,16 @@ a {
     color: #fff; }
 
 /** bradcam **/
+@media (max-width: 576px) {
+
+  .back_re .title h2 {
+    color:#fff;
+    font-size: 15px !important;
+    padding: 15px 0 !important;
+    font-weight: 600;
+    line-height: 20px !important;
+  }
+}
 .back_re {
     background-color: #fd7e14;
 }
@@ -1557,10 +1567,9 @@ a {
     text-align: center;
 }
 .back_re .title h2 {
-color:#fff;
-font-size: 40px;
-padding: 40px 0;
-font-weight: 600;
-text-transform: uppercase;
-line-height: 35px;
+  color:#fff;
+  font-size: 30px;
+  padding: 20px 0;
+  font-weight: 600;
+  line-height: 47px;
 }

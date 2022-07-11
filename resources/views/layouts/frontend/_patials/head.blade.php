@@ -13,7 +13,15 @@
         <div class="site-navbar bg-light">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h2 class="mb-0 site-logo"> <a href="{{ route('home') }}" class="logo me-auto"><img src="{{ asset('funder-template/images/logo/logo-responsive.png') }}" alt="" class="img-fluid"></a></h2>
+                    <h2 class="mb-0 site-logo"> 
+                    <a href="{{ route('home') }}" class="logo me-auto">
+                    <picture >
+                        <source style="" width="180" media="(min-width: 1200px)" srcset="{{ asset('funder-template/images/logo/logo-responsive.png') }}">
+                        <source width="150" media="(min-width: 768px)" srcset="{{ asset('funder-template/images/logo/logo-responsive.png') }}">
+                        <img width="70" src="{{ asset('funder-template/images/logo/logo-default.png') }}"/>
+                    </picture>
+                        {{-- <img src="{{ asset('funder-template/images/logo/logo-responsive.png') }}" alt="" class="img-fluid"> --}}
+                    </a></h2>
                 </div>
                 <div class="col-10">
                     <nav class="site-navigation text-right" role="navigation">
