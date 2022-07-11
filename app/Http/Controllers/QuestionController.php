@@ -18,7 +18,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::latest();
+        $questions = Question::latest()->get();
         return view('Q&A.index',[
             'questions' => $questions
         ]);

@@ -476,7 +476,7 @@
 
 <!-- ITA -->
 
-<div class="faqs">
+<div class="faqs bg-light">
     <div class="container">
         <div class="section-header text-center mb-5 mt-5">
             <span class="caption d-block mb-2 font-secondary font-weight-bold">PUBLIC DISCLOSURE OF INFORMATION</span>
@@ -525,7 +525,7 @@
                                 {{ $intergrity->name }}
                             </a>
                         </div>
-                        <div id="collapse{{ $key }}" class="collapse" data-parent="#accordion-2">
+                        <div id="collapse{{ $key }}" class="collapse" data-parent="#accordion-1">
                             <div class="card-body">
                                 @if($intergrity->children->count() > 0)
                                 @foreach($intergrity->children as $child)
@@ -556,7 +556,7 @@
 <!-- สิ้นสุด ITA -->
 
 <!-- ประชาสัมพันธ์ รับสมัครงาน จัดซื้อ-จัดจ้าง แจ้งโอนเงิน -->
-<section class="site-section bg-light">
+<section class="site-section">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">

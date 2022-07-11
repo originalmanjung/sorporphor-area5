@@ -367,8 +367,13 @@
 }
 
 .faqs .card-body ul li {
-    line-height: 20px;
+    line-height: 5px;
 }
+
+.faqs .card-body ul li a {
+    line-height: 17px;
+}
+
 
 /* Link Services */
 
