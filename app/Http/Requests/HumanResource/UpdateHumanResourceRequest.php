@@ -33,7 +33,7 @@ class UpdateHumanResourceRequest extends FormRequest
 
         if ($this->parent_id != null) {
             return [
-                'name'=>'string|unique:human_resources,name,'.$this->humanResource->id,
+                'name'=>'string',
                 'subname'=>'required|string',
                 'number'=>'required|string',
                 'parent_id' => 'nullable|numeric',
@@ -41,7 +41,7 @@ class UpdateHumanResourceRequest extends FormRequest
             ];
         } else {
             return [
-                'name'=>'string|unique:human_resources,name,'.$this->humanResource->id,
+                'name'=>'string',
             ];
         }
     }
