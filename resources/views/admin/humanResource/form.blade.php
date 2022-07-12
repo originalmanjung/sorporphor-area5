@@ -43,7 +43,7 @@
                     <div class="col-md-6">
                         <div class="col mb-3 form-group">
                             <label for="name" class="form-label">ชื่อหัวข้อ</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $humanResource->name ?? old('name') }}" autofocus>
+                            <textarea class="form-control @error('name') is-invalid @enderror" id="exampleFormControlTextarea1" id="name" name="name" rows="5">{{ $humanResource->name ?? old('name') }}</textarea>
                             @error('name')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
