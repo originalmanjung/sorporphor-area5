@@ -80,7 +80,7 @@ class HumanResourceController extends Controller
             'subname' => $request->subname,
             'number' => $request->number,
             'user_id' => auth()->user()->id,
-            'parent_id' => $request->parent_id,
+            'parent_id' => $request->has('parent_id') ? $request->parent_id : null,
             'file' => $filename ?? null,
         ]);
 
