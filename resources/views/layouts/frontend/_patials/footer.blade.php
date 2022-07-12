@@ -7,8 +7,8 @@
                 <h3 class="footer-heading mb-4 text-white">สำนักงานเขตพื้นที่การศึกษาประถมศึกษาเชียงใหม่ เขต 5</h3>
                 <p>
                     404 หมู่ 10 ถนนเชียงใหม่-ฮอด ตำบลหางดง<br>อำเภอฮอด จังหวัดเชียงใหม่ 50240<br>
-                    <strong>โทร:</strong>053-461-089 , 053-461-627<br>
-                    <strong>แฟกซ์:</strong>ต่อ 127<br>
+                    <strong>โทร:</strong>053-461089  , 053-461161<br>
+                    <strong>แฟกซ์:</strong>053-461125<br>
                     <strong>Email: </strong>cma5@chiangmaiarea5.go.th<br>
                 </p>
                 <p><a href="{{ route('contact') }}" class="btn btn-primary rounded text-white px-4">เพิ่มเติม</a></p>

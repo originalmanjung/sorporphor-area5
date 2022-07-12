@@ -27,15 +27,15 @@ class StoreHumanResourceRequest extends FormRequest
     {
         if ($this->parent_id != null) {
             return [
-                'name'=>'required|string|max:255|unique:human_resources,name',
-                'subname'=>'required|string|max:255',
-                'number'=>'required|string|max:255',
+                'name'=>'required|string|unique:human_resources,name',
+                'subname'=>'required|string',
+                'number'=>'required|string',
                 'parent_id' => 'nullable|numeric',
                 'file' => 'required|mimes:pdf',
             ];
         } else {
             return [
-                'name'=>'required|string|max:255|unique:human_resources,name',
+                'name'=>'required|string|unique:human_resources,name',
             ];
         }
     }

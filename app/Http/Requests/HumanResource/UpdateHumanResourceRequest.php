@@ -33,15 +33,15 @@ class UpdateHumanResourceRequest extends FormRequest
 
         if ($this->parent_id != null) {
             return [
-                'name'=>'string|max:255|unique:human_resources,name,'.$this->humanResource->id,
-                'subname'=>'required|string|max:255',
-                'number'=>'required|string|max:255',
+                'name'=>'string|unique:human_resources,name,'.$this->humanResource->id,
+                'subname'=>'required|string',
+                'number'=>'required|string',
                 'parent_id' => 'nullable|numeric',
                 'file' => 'nullable|mimes:pdf',
             ];
         } else {
             return [
-                'name'=>'string|max:255|unique:human_resources,name,'.$this->humanResource->id,
+                'name'=>'string|unique:human_resources,name,'.$this->humanResource->id,
             ];
         }
     }
