@@ -156,7 +156,7 @@
                                                         <table class="table table-bordered">
                                                             <thead>
                                                                 <tr>
-                                                                    <th scope="col">วันที่</th>
+                                                                    {{-- <th scope="col">วันที่</th> --}}
                                                                     <th scope="col">ชื่อย่อ</th>
                                                                     <th scope="col">เลขที่หนังสือ</th>
                                                                     <th scope="col" width="500">ชื่อเรื่อง</th>
@@ -166,7 +166,7 @@
                                                             <tbody>
                                                                 @foreach($humanResource->children as $child)
                                                                     <tr>
-                                                                        <td>{{ $child->created_at->format('d-m-Y') }}</td>
+                                                                        {{-- <td>{{ $child->created_at->format('d-m-Y') }}</td> --}}
                                                                         <td>{{ $child->subname }}</td>
                                                                         <td>{{ $child->number }}</td>
                                                                         <td>{{ $child->name }}</td>
