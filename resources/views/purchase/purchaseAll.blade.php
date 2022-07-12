@@ -100,9 +100,9 @@
                                 <a href="{{ route('purchaseShow', $purchase->slug) }}" class="btn btn-primary btn-sm text-white me-auto">ดูเพิ่มเติม</a>
                                 <h6>ผู้โพส: <span class="badge bg-secondary">{{ $purchase->user->name }}</span></h6>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            {{-- <div class="d-flex justify-content-end">
                                 <p>{{ $purchase->created_at->format('d/m/Y') }}</p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

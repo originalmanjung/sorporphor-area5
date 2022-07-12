@@ -99,9 +99,9 @@
                                 <a href="{{ route('jobShow', $job->slug) }}" class="btn btn-primary btn-sm text-white me-auto">ดูเพิ่มเติม</a>
                                 <h6>ผู้โพส: <span class="badge bg-secondary">{{ $job->user->name }}</span></h6>
                             </div>
-                            <div class="d-flex justify-content-end">
+                            {{-- <div class="d-flex justify-content-end">
                                 <p>{{ $job->created_at->format('d/m/Y') }}</p>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
