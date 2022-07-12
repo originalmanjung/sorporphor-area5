@@ -39,7 +39,7 @@
                                 <th scope="col">ลำดับที่</th>
                                 <th scope="col">ชื่อเรื่อง</th>
                                 <th scope="col">ผู้สร้าง</th>
-                                <th scope="col">วันที่</th>
+                                {{-- <th scope="col">วันที่</th> --}}
                                 <th scope="col">จัดการ</th>
                             </tr>
                         </thead>
@@ -48,7 +48,7 @@
                                 <th scope="col">ลำดับที่</th>
                                 <th scope="col">ชื่อเรื่อง</th>
                                 <th scope="col">ผู้สร้าง</th>
-                                <th scope="col">วันที่</th>
+                                {{-- <th scope="col">วันที่</th> --}}
                                 <th scope="col">จัดการ</th>
                             </tr>
                         </tfoot>
@@ -58,7 +58,7 @@
                                 <td>{{ $key + 1 }}</td>
                                 <td>{{ $question->title }}</td>
                                 <td>{{ $question->description }}</td>
-                                <td>{{ $question->created_at->format('d/m/Y') }}</td>
+                                {{-- <td>{{ $question->created_at->format('d/m/Y') }}</td> --}}
                                 <td class="text-center">
                                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
                                         <a href="{{ route('questions.show', $question->slug)}}" class="btn btn-primary text-white">

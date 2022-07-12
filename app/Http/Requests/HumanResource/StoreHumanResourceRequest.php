@@ -27,7 +27,7 @@ class StoreHumanResourceRequest extends FormRequest
     {
         if ($this->parent_id != null) {
             return [
-                'name'=>'required|string|max:255|unique:human_resources,name',
+                'name'=>'required|string|max:255',
                 'subname'=>'required|string|max:255',
                 'number'=>'required|string|max:255',
                 'parent_id' => 'nullable|numeric',
@@ -35,7 +35,7 @@ class StoreHumanResourceRequest extends FormRequest
             ];
         } else {
             return [
-                'name'=>'required|string|max:255|unique:human_resources,name',
+                'name'=>'required|string|max:255',
             ];
         }
     }

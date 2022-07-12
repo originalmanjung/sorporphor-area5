@@ -151,19 +151,20 @@
                                         <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-1">
                                             <div class="card-body mb-3">
                                                 @if($humanResource->children->count() > 0)
-                                                   @foreach($humanResource->children as $child)
-                                                        <div class="table-responsive">
-                                                            <table class="table table-bordered">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th scope="col">วันที่</th>
-                                                                        <th scope="col">ชื่อย่อ</th>
-                                                                        <th scope="col">เลขที่หนังสือ</th>
-                                                                        <th scope="col" width="500">ชื่อเรื่อง</th>
-                                                                        <th scope="col">ดาวโหลด</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody>
+                                                
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">วันที่</th>
+                                                                    <th scope="col">ชื่อย่อ</th>
+                                                                    <th scope="col">เลขที่หนังสือ</th>
+                                                                    <th scope="col" width="500">ชื่อเรื่อง</th>
+                                                                    <th scope="col">ดาวโหลด</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach($humanResource->children as $child)
                                                                     <tr>
                                                                         <td>{{ $child->created_at->format('d-m-Y') }}</td>
                                                                         <td>{{ $child->subname }}</td>
@@ -175,10 +176,11 @@
                                                                             </div>
                                                                         </td>
                                                                     </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                   @endforeach
+                                                                @endforeach
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                 
                                                 @else
                                                    <strong class="text-center">ไม่พบข้อมูล</strong>
                                                 @endif

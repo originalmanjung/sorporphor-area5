@@ -19,7 +19,7 @@ class CreateHumanResourcesTable extends Migration
             $table->foreignId('parent_id')->nullable()->constrained('human_resources')->onDelete('cascade');
             $table->string('subname')->nullable();
             $table->string('number')->nullable();
-            $table->string('name')->unique();
+            $table->string('name');
             $table->string('file')->nullable();
             $table->timestamps();
         });

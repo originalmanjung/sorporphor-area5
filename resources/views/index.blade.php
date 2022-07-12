@@ -593,7 +593,7 @@
                     <div class="tab-pane container active" id="services-1">
                       @foreach ($notices as $notice)
                         <div class="card p-4 mb-4">
-                            <span class="time">{{ $notice->created_at->format('d/m/Y') }}</span>
+                            {{-- <span class="time">{{ $notice->created_at->format('d/m/Y') }}</span> --}}
                             <h5><a class="text-dark" href="{{ route('noticeShow', $notice->slug) }}">{{ Str::limit($notice->name, 80) }}</a></h5>
                             <p>{{ Str::limit($notice->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
@@ -624,7 +624,7 @@
                     <div class="tab-pane container fade" id="services-2">
                     @foreach ($jobs as $job)
                         <div class="card p-4 mb-4">
-                            <span class="time">{{ $job->created_at->format('d/m/Y') }}</span>
+                            {{-- <span class="time">{{ $job->created_at->format('d/m/Y') }}</span> --}}
                             <h5><a class="text-dark" href="{{ route('jobShow', $job->slug) }}">{{ Str::limit($job->name, 80) }}</a></h5>
                             <p>{{ Str::limit($job->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
@@ -656,7 +656,7 @@
                     <div class="tab-pane container fade" id="services-3">
                          @foreach ($purchases as $purchase)
                         <div class="card p-4 mb-4">
-                            <span class="time">{{ $purchase->created_at->format('d/m/Y') }}</span>
+                            {{-- <span class="time">{{ $purchase->created_at->format('d/m/Y') }}</span> --}}
                             <h5><a class="text-dark" href="{{ route('purchaseShow', $purchase->slug) }}">{{ Str::limit($purchase->name, 80) }}</a></h5>
                             <p>{{ Str::limit($purchase->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
@@ -686,7 +686,7 @@
                     <div class="tab-pane container fade" id="services-4">
                     @foreach ($paymentSlips as $paymentSlip)
                         <div class="card p-4 mb-4">
-                            <span class="time">{{ $paymentSlip->created_at->format('d/m/Y') }}</span>
+                            {{-- <span class="time">{{ $paymentSlip->created_at->format('d/m/Y') }}</span> --}}
                             <h5><a class="text-dark" href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">{{ Str::limit($paymentSlip->name, 80) }}</a></h5>
                             <p>{{ Str::limit($paymentSlip->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
@@ -715,7 +715,7 @@
                     <div class="tab-pane container fade" id="services-5">
                     @foreach ($budgets as $budget)
                         <div class="card p-4 mb-4">
-                            <span class="time">{{ $budget->created_at->format('d/m/Y') }}</span>
+                            {{-- <span class="time">{{ $budget->created_at->format('d/m/Y') }}</span> --}}
                             <h5><a class="text-dark" href="{{ route('budgetShow', $budget->slug) }}">{{ Str::limit($budget->name, 80) }}</a></h5>
                             <p>{{ Str::limit($budget->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
