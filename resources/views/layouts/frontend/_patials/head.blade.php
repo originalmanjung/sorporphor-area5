@@ -13,7 +13,7 @@
         <div class="site-navbar bg-light">
             <div class="row align-items-center">
                 <div class="col-2">
-                    <h2 class="mb-0 site-logo"> 
+                    <h2 class="mb-0 site-logo">
                     <a href="{{ route('home') }}" class="logo me-auto">
                     <picture >
                         <source style="" width="180" media="(min-width: 1200px)" srcset="{{ asset('funder-template/images/logo/logo-responsive.png') }}">
@@ -47,6 +47,7 @@
                                         <li><a href="http://1.179.155.142/amssplus/">ระบบสำนักงานอิเล็กทรอนิกส์ (Smart Area)</a></li>
                                         <li><a href="http://www.chiangmaiarea5.go.th/salary/">ระบบพิมพ์บัญชีจ่ายเงินรายเดือน (E-Salary)</a></li>
                                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXKV1I3HebFwDawIdOLPbaomLGlbWQkc1mARReTbMZnUMZ2w/viewform">แบบบันทึกการนิเทศ กำกับ ติดตาม โรงเรียน</a></li>
+                                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScm_iPcmVx2bsnpEVUbRtuo9JmMZF_lJeAq6xtae602dfofPg/viewform">แบบรายงานการตอบรับการนิเทศฯ โรงเรียน</a></li>
                                         <li><a href="http://1.179.155.141/bigdata/">ระบบฐานข้อมูลสารสนเทศ (BigData)</a></li>
                                         <li><a href="http://1.179.155.140/studentscare/">ระบบการดูแลช่วยเหลือนักเรียน (StudentsCare)</a></li>
                                         <li><a href="http://eic.chiangmaiarea5.go.th/">ศุนย์ข้อมูลสารสนเทศทางการศึกษา (EIC)</a></li>

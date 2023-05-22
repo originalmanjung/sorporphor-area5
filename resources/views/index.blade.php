@@ -210,7 +210,7 @@
 <!-- กลุ่มผู้บริหาร สพป. -->
 <section class="ftco-section">
     <div class="container">
-        <div class="row" style="margin-top:130px;">
+        <div class="row" style="margin-top:50px;">
             <div class="col-md-12 text-center mb-5">
                 <span class="caption d-block mb-2 font-secondary font-weight-bold">MANAGER TEAM</span>
                 <h2 class="site-section-heading text-uppercase text-center font-secondary">คณะผู้บริหาร สพป.เชียงใหม่ เขต 5</h2>
@@ -218,7 +218,7 @@
         </div>
         <div class="row">
             <div class="col-md-12 ftco-animate">
-                <div class="carousel-testimony owl-carousel mb-5">
+                <div class="carousel-testimony owl-carousel">
                     @if($personals->isNotEmpty())
                     @foreach ($personals as $personal)
                     <div class="item">
@@ -314,7 +314,7 @@
 
                 </div>
                 @if ($newsGeneral->isNotEmpty())
-                <p class="mt-5" align="center"><a href="{{ route('newsGeneralAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                <p class="mt-2" align="center"><a href="{{ route('newsGeneralAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
 
             </div>
@@ -364,7 +364,7 @@
 
                 </div>
                 @if ($newsHonest->isNotEmpty())
-                <p class="mt-5" align="center"><a href="{{ route('newsHonestAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                <p class="mt-2" align="center"><a href="{{ route('newsHonestAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
 
             </div>
@@ -414,7 +414,7 @@
 
                 </div>
                 @if ($newsCulture->isNotEmpty())
-                <p class="mt-5" align="center"><a href="{{ route('newsCultureAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                <p class="mt-2" align="center"><a href="{{ route('newsCultureAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
 
             </div>
@@ -464,7 +464,7 @@
 
                 </div>
                 @if ($newsGeneral->isNotEmpty())
-                <p class="mt-5" align="center"><a href="{{ route('newsParticipationAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                <p class="mt-2" align="center"><a href="{{ route('newsParticipationAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
 
             </div>
@@ -576,9 +576,9 @@
                     <li class="nav-item text-left">
                         <a class="nav-link py-4" data-toggle="tab" href="#services-3">จัดซื้อ-จัดจ้าง</a>
                     </li>
-                    <li class="nav-item text-left">
+                    {{-- <li class="nav-item text-left">
                         <a class="nav-link py-4" data-toggle="tab" href="#services-4">แจ้งการโอนเงิน</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item text-left">
                         <a class="nav-link py-4" data-toggle="tab" href="#services-5">งบทดลอง</a>
                     </li>
@@ -681,34 +681,32 @@
                     @endif
 
                     <!-- แจ้งการโอนเงิน-->
-                    @if ($paymentSlips->isNotEmpty())
-
-                    <div class="tab-pane container fade" id="services-4">
-                    @foreach ($paymentSlips as $paymentSlip)
-                        <div class="card p-4 mb-4">
-                            {{-- <span class="time">{{ $paymentSlip->created_at->format('d/m/Y') }}</span> --}}
-                            <h5><a class="text-dark" href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">{{ Str::limit($paymentSlip->name, 80) }}</a></h5>
-                            <p>{{ Str::limit($paymentSlip->description, 150) }}</p>
-                            <div class="d-flex justify-content-between">
-                                <div class="">
-                                    <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $paymentSlip->user->name }}</span></h6>
+                    {{-- @if ($paymentSlips->isNotEmpty())
+                        <div class="tab-pane container fade" id="services-4">
+                        @foreach ($paymentSlips as $paymentSlip)
+                            <div class="card p-4 mb-4">
+                                <h5><a class="text-dark" href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">{{ Str::limit($paymentSlip->name, 80) }}</a></h5>
+                                <p>{{ Str::limit($paymentSlip->description, 150) }}</p>
+                                <div class="d-flex justify-content-between">
+                                    <div class="">
+                                        <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $paymentSlip->user->name }}</span></h6>
+                                    </div>
+                                    <div><a style="color:#fd7e14;" href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">ดูเพิ่มเติม</a></div>
                                 </div>
-                                <div><a style="color:#fd7e14;" href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">ดูเพิ่มเติม</a></div>
                             </div>
+                        @endforeach
+                            @if ($paymentSlips->isNotEmpty())
+                            <p class="mt-5" align="center"><a href="{{ route('paymentSlipAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                            @endif
                         </div>
-                    @endforeach
-                        @if ($paymentSlips->isNotEmpty())
-                        <p class="mt-5" align="center"><a href="{{ route('paymentSlipAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
-                        @endif
-                    </div>
 
                     @else
-                    <div class="tab-pane container fade" id="services-4">
-                        <div class="card p-4">
-                            <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
+                        <div class="tab-pane container fade" id="services-4">
+                            <div class="card p-4">
+                                <h3 class="text-center"><a href="#">ไม่พบข้อมูล</a></h3>
+                            </div>
                         </div>
-                    </div>
-                    @endif
+                    @endif --}}
                     <!-- งบทดลอง-->
                     @if ($budgets->isNotEmpty())
 
@@ -745,7 +743,6 @@
     </div>
 </section>
 <!-- สิ้นสุด ประชาสัมพันธ์ รับสมัครงาน จัดซื้อ-จัดจ้าง แจ้งโอนเงิน -->
-
 
 <div class="py-5 bg-primary">
     <div class="container">
@@ -823,7 +820,7 @@
 <section id="work" class="tm-section-pad-top">
     <div class="container tm-container-gallery">
         <div class="row">
-            <div class="col-md-12 mb-4 text-center">
+            <div class="col-md-12 text-center">
                 <span class="caption d-block mb-2 font-secondary font-weight-bold">Letters</span>
                 <h2 class="site-section-heading text-uppercase text-center font-secondary">จดหมายข่าว สพป.</h2>
             </div>
@@ -874,7 +871,7 @@
                     </div>
                 </div>
                 @if ($letterRegions->isNotEmpty())
-                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                    <p style="margin-top: -25px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
             </div>
         </div>
@@ -919,7 +916,7 @@
                     @endif
                 </div>
                 @if ($blogschools->isNotEmpty())
-                <p class="mt-5" align="center"><a href="{{ route('blogschoolAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                <p class="mt-2" align="center"><a href="{{ route('blogschoolAll') }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
             </div>
         </div>
@@ -932,7 +929,7 @@
 <section id="work" class="tm-section-pad-top">
     <div class="container tm-container-gallery">
         <div class="row">
-            <div class="col-md-12 mb-4 text-center">
+            <div class="col-md-12 text-center">
                 <span class="caption d-block mb-2 font-secondary font-weight-bold">Letters</span>
                 <h2 class="site-section-heading text-uppercase text-center font-secondary">จดหมายข่าว โรงเรียน</h2>
             </div>
@@ -983,7 +980,7 @@
                     </div>
                 </div>
                 @if ($letterDistricts->isNotEmpty())
-                    <p style="margin-top: -50px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
+                    <p style="margin-top: -25px;" class="mx-auto mb-5" align="center"><a href="{{ route('letterAll',$letter) }}" class="btn btn-outline-primary py-2 px-4">ดูทั้งหมด</a></p>
                 @endif
             </div>
         </div>
@@ -1045,8 +1042,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mb-4 text-center">
-                <span class="caption d-block mb-2 font-secondary font-weight-bold">E-SERVICES</span>
-                <h2 class="site-section-heading text-uppercase text-center font-secondary">ระบบภายในสำนักงาน</h2>
+                <span class="caption d-block mb-2 font-secondary font-weight-bold">Q-SERVICES</span>
+                <h2 class="site-section-heading text-uppercase text-center font-secondary">การบริการ</h2>
             </div>
         </div>
         <div class="row no-gutters">
@@ -1102,7 +1099,7 @@
                 <div class="services-2 text-center noborder-bottom noborder-left ftco-animate">
                     <div class="icon mt-2 d-flex justify-content-center align-items-center"><span class="flaticon-search-engine"><i class="fas fa-fist-raised"></i></span></div>
                     <div class="text media-body">
-                        <h3>ประกาศเจตจำนงสุจริตในการบริหาร</h3>
+                        <h3>ประกาศเจตนารมณ์นโยบาย No Gift Policy</h3>
                     </div>
                 </div>
             </a>

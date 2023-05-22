@@ -3,7 +3,7 @@
 
 
     .carousel-inner > .carousel-item > img {
-   
+
         height: 800px !important;
       }
 
@@ -279,7 +279,7 @@
 .faqs {
     position: relative;
     width: 100%;
-    padding: 45px 0;
+    padding: 1px 0;
 }
 
 .faqs .row {
@@ -559,7 +559,8 @@
 
 /* จดหมายข่าว */
 .tm-section-pad-top {
-    padding-top: 135px;
+    padding-top: 40px;
+    padding-bottom: -440px;
 }
 @media (min-width: 1200px) {
 
@@ -599,7 +600,7 @@
 
   .tm-gallery-container {
     padding-top: 70px;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
   }
 
   .tm-gallery-item {

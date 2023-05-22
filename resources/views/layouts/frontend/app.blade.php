@@ -75,7 +75,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         </script>
-        
+
         <!-- Frontend -->
         <script src="{{ asset('funder-template/js/jquery-3.3.1.min.js') }}"></script>
         <script src="{{ asset('funder-template/js/jquery-migrate-3.0.1.min.js') }}"></script>
