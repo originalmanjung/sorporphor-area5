@@ -45,7 +45,7 @@
                                     <a href="{{ route('eServices') }}">E-Service</a>
                                     <ul class="dropdown arrow-top">
                                         <li><a href="http://1.179.155.142/amssplus/">ระบบสำนักงานอิเล็กทรอนิกส์ (Smart Area)</a></li>
-                                        <li><a href="http://www.chiangmaiarea5.go.th/salary/">ระบบพิมพ์บัญชีจ่ายเงินรายเดือน (E-Salary)</a></li>
+                                        <li><a href="http://www2.chiangmaiarea5.go.th/salary/">ระบบพิมพ์บัญชีจ่ายเงินรายเดือน (E-Salary)</a></li>
                                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXKV1I3HebFwDawIdOLPbaomLGlbWQkc1mARReTbMZnUMZ2w/viewform">แบบบันทึกการนิเทศ กำกับ ติดตาม โรงเรียน</a></li>
                                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScm_iPcmVx2bsnpEVUbRtuo9JmMZF_lJeAq6xtae602dfofPg/viewform">แบบรายงานการตอบรับการนิเทศฯ โรงเรียน</a></li>
                                         <li><a href="http://1.179.155.141/bigdata/">ระบบฐานข้อมูลสารสนเทศ (BigData)</a></li>

@@ -98,7 +98,7 @@
                         </div>
                         <!-- feature item -->
                         <div class="col-md-6 mb-80">
-                            <a href="http://www.chiangmaiarea5.go.th/salary/" class="d-flex feature-item">
+                            <a href="http://www2.chiangmaiarea5.go.th/salary/" class="d-flex feature-item">
                                 <div>
                                     <i class="fas fa-money-check-alt feature-icon mr-4"></i>
                                 </div>
@@ -276,7 +276,7 @@
                                 </div>
                             </a>
                         </div>
-                       
+
                     </div>
                 </div>
                 <img class="feature-bg-1 up-down-animation" src="images/background-shape/feature-bg-1.png" alt="bg-shape">

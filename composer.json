@@ -20,6 +20,7 @@
         "laravel/ui": "^3.3",
         "laravelista/comments": "^4.5",
         "realrashid/sweet-alert": "^4.0",
+        "retinens/laravel-cookie-consent": "^4.1",
         "staudenmeir/laravel-adjacency-list": "^1.0"
     },
     "require-dev": {
