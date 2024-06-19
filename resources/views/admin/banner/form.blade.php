@@ -54,7 +54,8 @@
                                     <select id="inputState" class="form-select @error('banners') is-invalid @enderror" name="banners">
                                         <option value="" selected>Choose...</option>
                                         <option value="carousel" @if(isset($banner)) {{ $banner->banners == 'carousel' ? 'selected' : '' }} @else {{ old('banners') == 'carousel' ? 'selected':'' }}  @endif>แบนเนอร์สไลด์</option>
-                                        <option value="content" @if(isset($banner)) {{ $banner->banners == 'content' ? 'selected' : '' }} @else {{ old('banners') == 'content' ? 'selected':'' }}  @endif>ส่วนคอนเทนต์</option>
+                                        <option value="content" @if(isset($banner)) {{ $banner->banners == 'content' ? 'selected' : '' }} @else {{ old('banners') == 'content' ? 'selected':'' }}  @endif>คอนเทนต์ส่วนล่าง</option>
+                                        <option value="content2" @if(isset($banner)) {{ $banner->banners == 'content2' ? 'selected' : '' }} @else {{ old('banners') == 'content2' ? 'selected':'' }}  @endif>คอนเทนต์ส่วนบน</option>
                                     </select>
                                     @error('banners')
                                         <span class="invalid-feedback" role="alert">

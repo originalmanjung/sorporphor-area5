@@ -85,7 +85,7 @@
     }
 
     .team .member .social a:hover {
-        background: #fd7e14;
+        background: #30a42a;
     }
 
     .team .member .social a+a {
@@ -120,14 +120,14 @@
                     <div class="member-info col-8">
                         <h4>{{ $personal->name }}</h4>
                         <span>
-                            @if ($personal->position_general) 
-                                {{ $personal->position_general }} 
-                            @elseif ($personal->position_sub)  
-                                {{ $personal->position_sub }}   
-                            @elseif ($personal->position) 
-                                {{ $personal->position }} 
-                            @else 
-                                {{ 'ไม่พบข้อมูล' }} 
+                            @if ($personal->position_general)
+                                {{ $personal->position_general }}
+                            @elseif ($personal->position_sub)
+                                {{ $personal->position_sub }}
+                            @elseif ($personal->position)
+                                {{ $personal->position }}
+                            @else
+                                {{ 'ไม่พบข้อมูล' }}
                             @endif
                         </span>
                         <p>{{ $personal->email ?? 'ยังไม่มีข้อมูล' }}</p>

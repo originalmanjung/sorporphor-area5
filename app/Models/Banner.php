@@ -31,6 +31,11 @@ class Banner extends Model
         return $query->where([['status', '=', '1'],['banners', '=', 'content']]);
     }
 
+    public function scopeContent2($query)
+    {
+        return $query->where([['status', '=', '1'],['banners', '=', 'content2']]);
+    }
+
     public function scopeSlug($query, $slug)
     {
         return $query->where('slug', '=', $slug);

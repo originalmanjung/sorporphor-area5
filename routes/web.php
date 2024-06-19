@@ -116,5 +116,10 @@ Route::get('bigdata/', function () {
     return view('bigdata');
 });
 
+Route::get('cookie-consent/', function () {
+    return view('cookie');
+})->name('cookie');
+
+
 Auth::routes(['register' => false]);
 

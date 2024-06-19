@@ -28,7 +28,7 @@ class StoreBannerRequest extends FormRequest
         return [
             'name' => 'nullable|string|max:255',
             'description' => 'nullable|string|max:255',
-            'banners' => 'required|in:carousel,content',
+            'banners' => 'required|in:carousel,content,content2',
             'url' => 'nullable|string|max:255',
             'file' => 'required|image|mimes:png,jpg,jpeg|max:5120'
         ];

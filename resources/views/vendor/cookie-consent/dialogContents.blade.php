@@ -1,73 +1,18 @@
 <style>
-    :root {
-        --background: #007af7;
-        --white-text: #fff;
-        --hover-text: #222;
-        --button-background: #fff;
-        --button-background-hover: #000;
-        --button-text: #007af7;
 
-    }
-
-    html,
-    body {
-        padding: 0;
-        margin: 0;
-        font-family: Poppins;
-        font-size: 100%;
-        background: url(https://source.unsplash.com/random);
-        background-size: cover;
-        background-repeat: no-repeat;
-    }
-
-    .cookie-container {
-        display: flex;
-        align-content: center;
-        align-items: center;
-        padding: 1rem 2rem;
-        background: var(--background);
-        color: var(--white-text);
-        position: fixed;
-        bottom: 0;
-        font-size: 1rem;
-        gap: 2rem;
-        opacity: 1;
-        visibility: visible;
-        flex-wrap: wrap;
-    }
-
-    .cookie-container a {
-        color: var(--white-color);
-    }
-
-    .cookie-container a:hover {
-        color: var(--hover-text);
-    }
-
-    .cookie-container .cookie-text {
-        flex: 8 768px;
-    }
-
-    .cookie-container .agree {
-        flex: 1 150px;
-        text-align: center;
-    }
-
-    .agree button {
-        background: var(--button-background);
-        color: var(--button-text);
-        border: none;
-        /* padding: 0.4rem 1.2rem;
-        cursor: pointer;
-        border-radius: 20px;
-        font-size: 1rem; */
-    }
-
-    .agree button:hover {
-        background: var(--button-background-hover);
-        color: var(--white-text);
-    }
-
+.cookie-box {
+    background-color: #004b23;
+}
+.card-text {
+    font-size: 14px;
+}
+.card-text a {
+    color: #04e762;
+    font-size: 16px;
+}
+.card-text a:hover {
+    text-decoration: underline;
+}
 </style>
 {{-- <div class="js-cookie-consent cookie-consent fixed bottom-0 inset-x-0 pb-2">
     <div class="max-w-7xl mx-auto px-6">
@@ -95,17 +40,17 @@
 
 
 
-<div class="js-cookie-consent cookie-consent col-md-12 alert alert-primary fixed-bottom m-0" role="alert">
-    <h5 class="card-title fw-bolder">{!! trans('cookie-consent::texts.message') !!}</h5>
+<div class="cookie-box js-cookie-consent cookie-consent col-md-12 alert alert-primary fixed-bottom m-0" role="alert">
+    <h5 class="card-title font-weight-bold text-white">{!! trans('cookie-consent::texts.message') !!}</h5>
     <div class="row d-flex justify-content-between align-items-center pb-3 pl-3 pr-3">
         <div>
-            <p class="card-text">เราใช้คุกกี้ (Cookies) เพื่อพัฒนาประสิทธิภาพ และประสบการณ์ที่ดีในการใช้เว็บไซต์ของคุณ คุณสามารถศึกษารายละเอียดได้ที่<a href="http://"> นโยบายคุกกี้</a></p>
+            <p class="card-text text-white">เราใช้คุกกี้ (Cookies) เพื่อพัฒนาประสิทธิภาพ และประสบการณ์ที่ดีในการใช้เว็บไซต์ของคุณ คุณสามารถศึกษารายละเอียดได้ที่<a href="{{ route('cookie') }}" class="font-weight-bold"> นโยบายคุกกี้</a></p>
         </div>
         <div class="cookie-consent-selection d-flex bd-highlight text-center mt-2">
             @if (config('cookie-consent.refuse_enabled'))
                 <a type="button" class="js-cookie-consent-refuse cookie-consent__refuse cookie-consent-deny btn btn-dark text-light mr-2">{{ trans('cookie-consent::texts.refuse') }}</a>
             @endif
-            <a type="button" class="js-cookie-consent-agree cookie-consent__agree cookie-consent-allow btn btn-primary text-light">{{ trans('cookie-consent::texts.agree') }}</a>
+            <a type="button" class="js-cookie-consent-agree cookie-consent__agree cookie-consent-allow btn btn-primary text-light ">{{ trans('cookie-consent::texts.agree') }}</a>
         </div>
     </div>
 

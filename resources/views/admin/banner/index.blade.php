@@ -57,7 +57,7 @@
                                 <div class="d-flex flex-column user-name-table">
                                     <div>{{ $banner->name }}</div>
                                     <div>
-                                        <span class="badge bg-primary">{{ $banner->banners }}</span>
+                                        <span class="badge bg-primary"> @if($banner->banners == 'content') คอนเทนต์ส่วนล่าง @else คอนเทนต์ส่วนบน @endif </span>
                                     </div>
                                 </div>
                             </td>

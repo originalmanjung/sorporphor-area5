@@ -19,7 +19,7 @@
         height: 100%;
         top: 0;
         left: calc(50% - .5px);
-        background: #fd7e14;
+        background: #30a42a;
     }
 
     .faqs #accordion-1 {
@@ -74,14 +74,14 @@
     }
 
     .faqs .card-header [data-toggle="collapse"][aria-expanded="true"] {
-        background: #fd7e14;
+        background: #30a42a;
     }
 
     .faqs .card-header [data-toggle="collapse"]:after {
         font-family: 'font Awesome 5 Free';
         content: "\f067";
         float: right;
-        color: #fd7e14;
+        color: #30a42a;
         font-size: 12px;
         font-weight: 900;
         transition: .5s;

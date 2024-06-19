@@ -65,14 +65,14 @@
     }
 
     .faqs .card-header [data-toggle="collapse"][aria-expanded="true"] {
-        background: #fd7e14;
+        background: #30a42a;
     }
 
     .faqs .card-header [data-toggle="collapse"]:after {
         font-family: 'font Awesome 5 Free';
         content: "\f067";
         float: right;
-        color: #fd7e14;
+        color: #30a42a;
         font-size: 12px;
         font-weight: 900;
         transition: .5s;
@@ -151,7 +151,7 @@
                                         <div id="collapse{{ $key }}" class="collapse show" data-parent="#accordion-1">
                                             <div class="card-body mb-3">
                                                 @if($humanResource->children->count() > 0)
-                                                
+
                                                     <div class="table-responsive">
                                                         <table class="table table-bordered">
                                                             <thead>
@@ -180,7 +180,7 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                 
+
                                                 @else
                                                    <strong class="text-center">ไม่พบข้อมูล</strong>
                                                 @endif

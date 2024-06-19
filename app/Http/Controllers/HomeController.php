@@ -35,6 +35,7 @@ class HomeController extends Controller
         $videos = Video::limit(6)->latest()->get();
         $bannercarousels = Banner::carousel()->latest()->get();
         $bannercontents = Banner::Content()->latest()->get();
+        $bannercontent2 = Banner::content2()->latest()->get();
         $newsGeneral = News::general()->latest()->take(15)->get();
         $newsHonest = News::honest()->latest()->take(15)->get();
         $newsCulture = News::culture()->latest()->take(15)->get();
@@ -65,6 +66,7 @@ class HomeController extends Controller
             'blogschools' => $blogschools,
             'bannercarousels' => $bannercarousels,
             'bannercontents' => $bannercontents,
+            'bannercontent2' => $bannercontent2,
             'videos' => $videos,
             'intergrities' => $intergrities,
             'personals' => $personals,

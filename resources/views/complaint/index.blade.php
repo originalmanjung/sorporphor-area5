@@ -31,7 +31,7 @@
 
     .complaint-services .icon-box i {
         float: left;
-        color: #fd7e14;
+        color: #30a42a;
         font-size: 40px;
     }
 
@@ -55,7 +55,7 @@
     }
 
     .complaint-services .icon-box:hover h4 a {
-        color: #fd7e14;
+        color: #30a42a;
     }
 
 </style>
@@ -92,7 +92,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="icon-box h-100">
-                        <i class="fas fa-tty"></i>  
+                        <i class="fas fa-tty"></i>
                         <h4><a>ร้องเรียนทางสายด่วนการศึกษา 053-461089</a></h4>
                         <p>โทรศัพท์ไปยังสำนักงาน หมายเลข 053-461089
                             แจ้งชื่อ ที่อยู่ และหมายเลขโทรศัพท์ (ถ้ามี) ของผู้ร้องเรียน

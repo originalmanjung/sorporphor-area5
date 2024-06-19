@@ -274,6 +274,25 @@
 </section>
 <!-- สิ้นสุด กลุ่มผู้บริหาร สพป. -->
 
+<div class="py-5 bg-primary">
+    <div class="container">
+        <div class="row align-items-center">
+        @if($bannercontent2->isNotEmpty())
+        @foreach($bannercontent2 as $bannercontent)
+            <div class="col-md-6 text-center text-md-left mb-3 mb-md-0">
+                <a @isset($bannercontent->url) href="{{ $bannercontent->url }}" @endisset>
+                    <img src="{{ asset('storage/banner_files/'. $bannercontent->file) }}" class="img-fluid" alt="Responsive image">
+                </a>
+            </div>
+        @endforeach
+        @else
+            <h5 class="card-title text-white mx-auto">ไม่พบข้อมูล</h5>
+        @endif
+        </div>
+    </div>
+</div>
+
+
 <!-- กิจกรรม สพป. -->
 <div class="site-section bg-light">
     <div class="container">
@@ -598,9 +617,9 @@
                             <p>{{ Str::limit($notice->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
                                 <div class="">
-                                    <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $notice->user->name }}</span></h6>
+                                    <h6 class="speaker-name">&mdash; <span style="color:#30a42a;" href="#">Author:</span> <span class="position">{{ $notice->user->name }}</span></h6>
                                 </div>
-                                <div><a style="color:#fd7e14;" target="_blank" href="{{ route('noticeShow', $notice->slug) }}">ดูเพิ่มเติม</a></div>
+                                <div><a style="color:#30a42a;" target="_blank" href="{{ route('noticeShow', $notice->slug) }}">ดูเพิ่มเติม</a></div>
                             </div>
                         </div>
                        @endforeach
@@ -629,9 +648,9 @@
                             <p>{{ Str::limit($job->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
                                 <div class="">
-                                    <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $job->user->name }}</span></h6>
+                                    <h6 class="speaker-name">&mdash; <span style="color:#30a42a;" href="#">Author:</span> <span class="position">{{ $job->user->name }}</span></h6>
                                 </div>
-                                <div><a style="color:#fd7e14;" href="{{ route('jobShow', $job->slug) }}">ดูเพิ่มเติม</a></div>
+                                <div><a style="color:#30a42a;" href="{{ route('jobShow', $job->slug) }}">ดูเพิ่มเติม</a></div>
                             </div>
                         </div>
                     @endforeach
@@ -661,9 +680,9 @@
                             <p>{{ Str::limit($purchase->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
                                 <div class="">
-                                    <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $purchase->user->name }}</span></h6>
+                                    <h6 class="speaker-name">&mdash; <span style="color:#30a42a;" href="#">Author:</span> <span class="position">{{ $purchase->user->name }}</span></h6>
                                 </div>
-                                <div><a style="color:#fd7e14;" href="{{ route('purchaseShow', $purchase->slug) }}">ดูเพิ่มเติม</a></div>
+                                <div><a style="color:#30a42a;" href="{{ route('purchaseShow', $purchase->slug) }}">ดูเพิ่มเติม</a></div>
                             </div>
                         </div>
                         @endforeach
@@ -689,9 +708,9 @@
                                 <p>{{ Str::limit($paymentSlip->description, 150) }}</p>
                                 <div class="d-flex justify-content-between">
                                     <div class="">
-                                        <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $paymentSlip->user->name }}</span></h6>
+                                        <h6 class="speaker-name">&mdash; <span style="color:#30a42a;" href="#">Author:</span> <span class="position">{{ $paymentSlip->user->name }}</span></h6>
                                     </div>
-                                    <div><a style="color:#fd7e14;" href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">ดูเพิ่มเติม</a></div>
+                                    <div><a style="color:#30a42a;" href="{{ route('paymentSlipShow', $paymentSlip->slug) }}">ดูเพิ่มเติม</a></div>
                                 </div>
                             </div>
                         @endforeach
@@ -718,9 +737,9 @@
                             <p>{{ Str::limit($budget->description, 150) }}</p>
                             <div class="d-flex justify-content-between">
                                 <div class="">
-                                    <h6 class="speaker-name">&mdash; <span style="color:#fd7e14;" href="#">Author:</span> <span class="position">{{ $budget->user->name }}</span></h6>
+                                    <h6 class="speaker-name">&mdash; <span style="color:#30a42a;" href="#">Author:</span> <span class="position">{{ $budget->user->name }}</span></h6>
                                 </div>
-                                <div><a style="color:#fd7e14;" href="{{ route('budgetShow', $budget->slug) }}">ดูเพิ่มเติม</a></div>
+                                <div><a style="color:#30a42a;" href="{{ route('budgetShow', $budget->slug) }}">ดูเพิ่มเติม</a></div>
                             </div>
                         </div>
                     @endforeach

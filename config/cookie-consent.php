@@ -21,5 +21,5 @@ return [
     /*
      * Set the cookie duration in days.  Default is 365 * 1.
      */
-    'cookie_lifetime' => 1 * 1,
+    'cookie_lifetime' => 365 * 20,
 ];

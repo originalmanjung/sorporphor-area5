@@ -8,6 +8,9 @@
     .services {
         padding-bottom: 70px;
     }
+    .services a {
+        color: #30a42a;
+    }
 
     .services .section-title span {
         color: #13a2b7;
@@ -34,7 +37,7 @@
     }
 
     .services__item:hover {
-        background: #fd7e14;
+        background: #30a42a;
     }
 
     .services__item:hover .services__item__icon span {
@@ -55,7 +58,7 @@
     }
 
     .services__item__icon span {
-        color: #fd7e14;
+        color: #30a42a;
         font-size: 40px;
         display: inline-block;
         line-height: 76px;

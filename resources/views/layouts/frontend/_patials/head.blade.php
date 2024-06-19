@@ -48,12 +48,13 @@
                                         <li><a href="http://www2.chiangmaiarea5.go.th/salary/">ระบบพิมพ์บัญชีจ่ายเงินรายเดือน (E-Salary)</a></li>
                                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXKV1I3HebFwDawIdOLPbaomLGlbWQkc1mARReTbMZnUMZ2w/viewform">แบบบันทึกการนิเทศ กำกับ ติดตาม โรงเรียน</a></li>
                                         <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScm_iPcmVx2bsnpEVUbRtuo9JmMZF_lJeAq6xtae602dfofPg/viewform">แบบรายงานการตอบรับการนิเทศฯ โรงเรียน</a></li>
-                                        <li><a href="http://1.179.155.141/bigdata/">ระบบฐานข้อมูลสารสนเทศ (BigData)</a></li>
-                                        <li><a href="http://1.179.155.140/studentscare/">ระบบการดูแลช่วยเหลือนักเรียน (StudentsCare)</a></li>
+                                        <li><a href="http://www2.chiangmaiarea5.go.th/bigdata2024/index.php">ระบบบริการข้อมูลภาครัฐ (BigData)</a></li>
+                                        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSe75AYtmitRj-2QV_yH_nnAPAHVrimt9oJvJjd7smj7iPCwIQ/viewform">จองห้องประชุม สำหรับหน่วยงานภายนอก (Meeting Room)</a></li>
                                         <li><a href="http://eic.chiangmaiarea5.go.th/">ศุนย์ข้อมูลสารสนเทศทางการศึกษา (EIC)</a></li>
                                         <li><a href="https://data.bopp-obec.info/emis/index_area.php?Area_CODE=5005">ระบบสารสนเทศเพื่อบริหารการศึกษา (EMIS)</a></li>
+                                        <li><a href="https://portal.bopp-obec.info/obec66/">ระบบจัดเก็บข้อมูลนักเรียนรายบุคคล (DMC)</a></li>
                                         <li><a href="https://schoolmis.obec.expert/">ระบบบริหารจัดการสถานศึกษา (SchoolMIS)</a></li>
-                                        <li><a href="https://bobec.bopp-obec.info/index.php">ระบบฐานข้อมูลสิ่งก่อสร้าง (B-obec)</a></li>
+                                        <li><a href="https://asset.bopp-obec.info/">ระบบข้อมูลสินทรัพย์ สพฐ. (OBEC asset)</a></li>
                                         <li><a href="https://cct.thaieduforall.org/">ระบบปัจจัยพื้นฐานนักเรียนยากจน (CCT)</a></li>
                                         <li><a href="http://eme3.obec.go.th/~eme53/index.php">ระบบบริหารโรงเรียนและเขตพื้นที่การศึกษา (e-SEASS)</a></li>
                                         <li><a href="https://smart.obec.go.th/">ระบบสำนักงานอิเล็กทรอนิกส์ (Smart OBEC)</a></li>

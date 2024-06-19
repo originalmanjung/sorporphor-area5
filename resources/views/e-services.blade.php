@@ -54,7 +54,7 @@
         color: #fff;
         font-size: 45px;
         line-height: 90px;
-        background: #fd7e14;
+        background: #30a42a;
         box-shadow: 0px 18px 25px 0px rgba(0, 141, 236, 0.1);
         text-align: center;
         transition: .2s ease;
@@ -122,25 +122,25 @@
                         </div>
                         <!-- feature item -->
                         <div class="col-md-6 mb-80">
-                            <a href="http://1.179.155.141/bigdata/" class="d-flex feature-item">
+                            <a href="http://www2.chiangmaiarea5.go.th/bigdata2024/index.php" class="d-flex feature-item">
                                 <div>
                                     <i class="fas fa-coins feature-icon mr-4"></i>
                                 </div>
                                 <div>
-                                    <h4>ระบบฐานข้อมูลสารสนเทศ</h4>
+                                    <h4>ระบบบริการข้อมูลภาครัฐ</h4>
                                     <p>(BigData)</p>
                                 </div>
                             </a>
                         </div>
                         <!-- feature item -->
                         <div class="col-md-6 mb-80">
-                            <a href="http://1.179.155.140/studentscare/" class="d-flex feature-item">
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSe75AYtmitRj-2QV_yH_nnAPAHVrimt9oJvJjd7smj7iPCwIQ/viewform" class="d-flex feature-item">
                                 <div>
                                    <i class="fas fa-graduation-cap feature-icon mr-4"></i>
                                 </div>
                                 <div>
-                                    <h4>ระบบการดูแลช่วยเหลือนักเรียน</h4>
-                                    <p>(StudentsCare)</p>
+                                    <h4>ระบบจองห้องประชุม สำหรับหน่วยงานภายนอก</h4>
+                                    <p>(Meeting Room)</p>
                                 </div>
                             </a>
                         </div>
@@ -182,12 +182,12 @@
                         </div>
                         <!-- feature item -->
                         <div class="col-md-6 mb-80">
-                            <a href="https://bobec.bopp-obec.info/index.php" class="d-flex feature-item">
+                            <a href="http://1.179.155.140/studentscare/" class="d-flex feature-item">
                                 <div>
                                     <i class="fas fa-database feature-icon mr-4"></i>
                                 </div>
                                 <div>
-                                    <h4>ระบบฐานข้อมูลสิ่งก่อสร้าง</h4>
+                                    <h4>ระบบการดูแลช่วยเหลือนักเรียน</h4>
                                     <p>(B-obec)</p>
                                 </div>
                             </a>
