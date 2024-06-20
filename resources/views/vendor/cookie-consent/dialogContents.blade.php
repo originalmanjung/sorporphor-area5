@@ -1,18 +1,24 @@
 <style>
 
-.cookie-box {
-    background-color: #004b23;
-}
-.card-text {
-    font-size: 14px;
-}
-.card-text a {
-    color: #04e762;
-    font-size: 16px;
-}
-.card-text a:hover {
-    text-decoration: underline;
-}
+    .cookie-box {
+        background-color: #004b23;
+    }
+    .card-text {
+        font-size: 14px;
+    }
+    .card-text a {
+        color: #04e762;
+        font-size: 16px;
+    }
+    .card-text a:hover {
+        text-decoration: underline;
+    }
+    .cookie-consent-allow {
+        background-color: #0a0908 !important;
+    }
+    .cookie-consent-allow:hover {
+        background-color: #000000 !important;
+    }
 </style>
 {{-- <div class="js-cookie-consent cookie-consent fixed bottom-0 inset-x-0 pb-2">
     <div class="max-w-7xl mx-auto px-6">
